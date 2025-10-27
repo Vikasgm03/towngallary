@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post[1] }} - MyTown Gallery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">← Back</a>
+    </header>
+
+    <div class="post-container">
+        <img src="{{ url_for('static', filename='uploads/' + post[3]) }}" alt="{{ post[1] }}">
+        <h2>{{ post[1] }}</h2>
+        <p>{{ post[2] }}</p>
+        <h4>📍 {{ post[4] }}</h4>
+
+        <div id="map" style="height: 300px;"></div>
+    </div>
+
+    <script>
+        // Simple map placeholder (you can upgrade later to coordinates)
+        var map = L.map('map').setView([12.9716, 77.5946], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
+    </script>
+</body>
+</html>
