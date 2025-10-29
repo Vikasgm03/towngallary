@@ -1,12 +1,13 @@
 [
   {
     "name" : "Pramod Farm House",
-    "image" : "images/Farmhouse.jpg"
+    "image" : "Farmhouse.jpg"
   },
   {
     "name" : "View 2",
-    "image" : "images/View2.jpg"
+    "image" : "View2.jpg"
   }
 ] 
+
 
 
