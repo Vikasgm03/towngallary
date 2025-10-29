@@ -54,3 +54,11 @@ section {
   font-size: 0.9rem;
   color: #666;
 }
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 1rem;
+}
