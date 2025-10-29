@@ -4,8 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery | Namma Shravanabelagola</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ---------- GLOBAL STYLE ---------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 6px 12px;
+      border-radius: 5px;
+      background-color: #555;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #777;
+    }
+
+    nav a.active {
+      background-color: #0084ff;
+    }
+
+    section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---------- CATEGORY BUTTONS ---------- */
+    #category-buttons {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    #category-buttons button {
+      margin: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      background-color: #e0e0e0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #category-buttons button:hover,
+    #category-buttons button.active {
+      background-color: #0084ff;
+      color: white;
+    }
+
+    /* ---------- GALLERY GRID ---------- */
+    #gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 250px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 0.6rem;
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <h1>📸 Namma Shravanabelagola</h1>
@@ -29,35 +125,35 @@
   </section>
 
   <section id="gallery-grid">
-    <!-- Example images (replace with your own) -->
+    <!-- Replace with your actual image paths -->
     <div class="card" data-category="temples">
-      <img src="images/temple1.jpg" alt="Temple View">
+      <img src="images/View1.jpeg" alt="Temple View">
       <h3>Vindhyagiri Temple</h3>
     </div>
 
     <div class="card" data-category="nature">
-      <img src="images/nature1.jpg" alt="Nature View">
+      <img src="images/View2.jpeg" alt="Nature View">
       <h3>Peaceful Lake</h3>
     </div>
 
     <div class="card" data-category="food">
-      <img src="images/food1.jpg" alt="Local Food">
+      <img src="images/View3.jpeg" alt="Local Food">
       <h3>Authentic Jain Cuisine</h3>
     </div>
 
     <div class="card" data-category="temples">
-      <img src="images/temple2.jpg" alt="Temple 2">
+      <img src="images/View4.jpeg" alt="Temple 2">
       <h3>Chandragiri Hill Temple</h3>
     </div>
 
     <div class="card" data-category="nature">
-      <img src="images/nature2.jpg" alt="Hill View">
+      <img src="images/View5.jpeg" alt="Hill View">
       <h3>Scenic Hill View</h3>
     </div>
   </section>
 
   <script>
-    // Category filter
+    // Category filter logic
     const buttons = document.querySelectorAll("#category-buttons button");
     const cards = document.querySelectorAll(".card");
 
