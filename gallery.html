@@ -8,13 +8,18 @@
 </head>
 <body>
   <header>
-    <h1>📸 Namma Shravanabelagola Gallery</h1>
+    <h1>📸 Namma Shravanabelagola</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="gallery.html" class="active">Gallery</a>
       <a href="aboutus.html">About Us</a>
     </nav>
   </header>
+
+  <section>
+    <h2>Explore the Beauty of Shravanabelagola</h2>
+    <p>Discover the spiritual charm, scenic beauty, and cultural richness of our town through these snapshots.</p>
+  </section>
 
   <section id="category-buttons">
     <button data-category="all" class="active">All</button>
@@ -23,8 +28,54 @@
     <button data-category="food">Food</button>
   </section>
 
-  <section id="gallery-grid"></section>
+  <section id="gallery-grid">
+    <!-- Example images (replace with your own) -->
+    <div class="card" data-category="temples">
+      <img src="images/temple1.jpg" alt="Temple View">
+      <h3>Vindhyagiri Temple</h3>
+    </div>
 
-  <script src="gallery.js"></script>
+    <div class="card" data-category="nature">
+      <img src="images/nature1.jpg" alt="Nature View">
+      <h3>Peaceful Lake</h3>
+    </div>
+
+    <div class="card" data-category="food">
+      <img src="images/food1.jpg" alt="Local Food">
+      <h3>Authentic Jain Cuisine</h3>
+    </div>
+
+    <div class="card" data-category="temples">
+      <img src="images/temple2.jpg" alt="Temple 2">
+      <h3>Chandragiri Hill Temple</h3>
+    </div>
+
+    <div class="card" data-category="nature">
+      <img src="images/nature2.jpg" alt="Hill View">
+      <h3>Scenic Hill View</h3>
+    </div>
+  </section>
+
+  <script>
+    // Category filter
+    const buttons = document.querySelectorAll("#category-buttons button");
+    const cards = document.querySelectorAll(".card");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelector("#category-buttons button.active")?.classList.remove("active");
+        btn.classList.add("active");
+
+        const category = btn.dataset.category;
+        cards.forEach(card => {
+          if (category === "all" || card.dataset.category === category) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
