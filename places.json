@@ -1,13 +1,15 @@
 [
   {
-    "name" : "Pramod Farm House",
-    "image" : "Farmhouse.jpg"
+    "name": "View 1",
+    "image": "images/Farmhouse.jpg",
+    "description": "Beautiful view of Shravanabelagola hills."
   },
   {
-    "name" : "View 2",
-    "image" : "View2.jpg"
-  }
-] 
-
+    "name": "View 2",
+    "image": "images/View2.jpg",
+    "description": "A closer look at the Gomateshwara statue."
+  },
+ 
+]
 
 
