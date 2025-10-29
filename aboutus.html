@@ -1,30 +1,172 @@
-<section id="about">
-  <h2>About Us</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Namma Shravanabelagola</title>
 
-  <div class="about-container">
-    <img src="images/vikas.jpg" alt="Vikas G M">
-    <div class="about-text">
-      <h3>👋 Hi, I'm Vikas G M</h3>
-      <p>
-        I'm a passionate developer from <strong>Shravanabelagola</strong> 🇮🇳 — the land of culture, hills, and peace.
-        I created this project, <strong>"Namma Shravanabelagola"</strong>, to showcase the beauty of our hometown —
-        from scenic spots to local temples and the friendly faces that make it special.
-      </p>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
 
-      <p>
-        My goal is to help everyone explore and appreciate the rich heritage of Shravanabelagola through this digital gallery.
-        Each photo and location here represents a story — of people, faith, and community.
-      </p>
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+    }
 
-      <p>
-        Built with ❤️ using <strong>HTML, CSS, JavaScript</strong> — this website is designed and developed entirely by me.
-      </p>
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
 
-      <div class="social-links">
-        <a href="mailto:vikasgm03@gmail.com">📧 Email</a>
-        <a href="https://github.com/Vikasgm03" target="_blank">💻 GitHub</a>
-        <a href="https://www.instagram.com/" target="_blank">📸 Instagram</a>
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 6px 12px;
+      border-radius: 5px;
+      background-color: #666;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #999;
+    }
+
+    nav a.active {
+      background-color: #ff8c00;
+    }
+
+    /* ABOUT SECTION */
+    #about {
+      background-color: #fff;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: #333;
+    }
+
+    #about h2 {
+      font-size: 2rem;
+      color: #222;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 30px;
+    }
+
+    .about-container img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .about-text {
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .about-text h3 {
+      font-size: 1.3rem;
+      color: #111;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-text p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: white;
+      background: #333;
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 20px;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+
+    .social-links a:hover {
+      background: #0084ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏡 Namma Shravanabelagola</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Us</h2>
+
+    <div class="about-container">
+      <img src="images/vikas.jpg" alt="Vikas G M" />
+      <div class="about-text">
+        <h3>👋 Hi, I'm Vikas G M</h3>
+        <p>
+          I'm a passionate developer from <strong>Shravanabelagola</strong> 🇮🇳 — the land of culture, hills, and peace.
+          I created this project, <strong>"Namma Shravanabelagola"</strong>, to showcase the beauty of our hometown —
+          from scenic spots to local temples and the friendly faces that make it special.
+        </p>
+
+        <p>
+          My goal is to help everyone explore and appreciate the rich heritage of Shravanabelagola through this digital gallery.
+          Each photo and location here represents a story — of people, faith, and community.
+        </p>
+
+        <p>
+          Built with ❤️ using <strong>HTML, CSS, and JavaScript</strong> — this website is designed and developed entirely by me.
+        </p>
+
+        <div class="social-links">
+          <a href="mailto:vikasgm03@gmail.com">📧 Email</a>
+          <a href="https://github.com/Vikasgm03" target="_blank">💻 GitHub</a>
+          <a href="https://www.instagram.com/" target="_blank">📸 Instagram</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <footer>
+    <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
+  </footer>
+</body>
+</html>
