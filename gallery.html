@@ -6,7 +6,7 @@
   <title>Gallery | Namma Shravanabelagola</title>
 
   <style>
-    /* ---------- GLOBAL STYLE ---------- */
+    /* ---------- GLOBAL THEME ---------- */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -22,27 +22,41 @@
       padding: 1rem;
     }
 
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 10px;
       padding: 6px 12px;
       border-radius: 5px;
-      background-color: #555;
+      background-color: #666; /* Button color */
       transition: background 0.3s;
     }
 
     nav a:hover {
-      background-color: #777;
+      background-color: #999; /* Hover color */
     }
 
     nav a.active {
-      background-color: #0084ff;
+      background-color: #ff8c00; /* Orange active */
     }
 
     section {
       padding: 2rem;
       text-align: center;
+    }
+
+    h2 {
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
     }
 
     /* ---------- CATEGORY BUTTONS ---------- */
@@ -56,14 +70,15 @@
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 20px;
-      background-color: #e0e0e0;
+      background-color: #ddd;
       cursor: pointer;
       transition: 0.3s;
+      font-weight: 500;
     }
 
     #category-buttons button:hover,
     #category-buttons button.active {
-      background-color: #0084ff;
+      background-color: #ff8c00;
       color: white;
     }
 
@@ -99,12 +114,20 @@
       font-size: 1rem;
       color: #333;
     }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>📸 Namma Shravanabelagola</h1>
+    <h1>📸 Namma Shravanabelagola Gallery</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="gallery.html" class="active">Gallery</a>
@@ -114,7 +137,7 @@
 
   <section>
     <h2>Explore the Beauty of Shravanabelagola</h2>
-    <p>Discover the spiritual charm, scenic beauty, and cultural richness of our town through these snapshots.</p>
+    <p>Browse through the scenic locations, temples, and local culture of our town.</p>
   </section>
 
   <section id="category-buttons">
@@ -125,14 +148,14 @@
   </section>
 
   <section id="gallery-grid">
-    <!-- Replace with your actual image paths -->
+    <!-- Replace images with your own -->
     <div class="card" data-category="temples">
-      <img src="images/View1.jpeg" alt="Temple View">
+      <img src="images/View1.jpeg" alt="Vindhyagiri Temple">
       <h3>Vindhyagiri Temple</h3>
     </div>
 
     <div class="card" data-category="nature">
-      <img src="images/View2.jpeg" alt="Nature View">
+      <img src="images/View2.jpeg" alt="Lake View">
       <h3>Peaceful Lake</h3>
     </div>
 
@@ -142,18 +165,22 @@
     </div>
 
     <div class="card" data-category="temples">
-      <img src="images/View4.jpeg" alt="Temple 2">
-      <h3>Chandragiri Hill Temple</h3>
+      <img src="images/View4.jpeg" alt="Chandragiri Temple">
+      <h3>Chandragiri Temple</h3>
     </div>
 
     <div class="card" data-category="nature">
       <img src="images/View5.jpeg" alt="Hill View">
-      <h3>Scenic Hill View</h3>
+      <h3>Scenic Hilltop</h3>
     </div>
   </section>
 
+  <footer>
+    <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
+  </footer>
+
   <script>
-    // Category filter logic
+    // Filter gallery by category
     const buttons = document.querySelectorAll("#category-buttons button");
     const cards = document.querySelectorAll(".card");
 
