@@ -2,15 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("places.json")
     .then(response => response.json())
     .then(places => {
-      const container = document.getElementById("places-container");
+      const container = document.getElementById("gallery-container");
       if (!container) {
         console.error("Gallery container not found!");
         return;
       }
 
+      container.innerHTML = ""; // Clear if anything exists
+
       places.forEach(place => {
         const card = document.createElement("div");
-        card.className = "place-card";
+        card.className = "card";
 
         card.innerHTML = `
           <img src="images/${place.image}" alt="${place.name}">
