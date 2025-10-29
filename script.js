@@ -1,19 +1,21 @@
-// Dynamically load images from places.json
-fetch("places.json")
-  .then(response => response.json())
-  .then(data => {
-    const galleryContainer = document.getElementById("gallery-container");
-    if (!galleryContainer) {
-      console.error("Gallery container not found!");
-      return;
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("places.json")
+    .then(response => response.json())
+    .then(places => {
+      const container = document.getElementById("places-container");
+      places.forEach(place => {
+        const card = document.createElement("div");
+        card.className = "place-card";
 
-    data.forEach(place => {
-      const img = document.createElement("img");
-      img.src = place.image;
-      img.alt = place.name;
-      img.title = place.name;
-      galleryContainer.appendChild(img);
-    });
-  })
-  .catch(error => console.error("Error loading places:", error));
+        card.innerHTML = `
+          <img src="images/${place.image}" alt="${place.name}">
+          <h3>${place.name}</h3>
+          <p>${place.description}</p>
+          <a href="${place.map}" target="_blank">View on Google Maps</a>
+        `;
+
+        container.appendChild(card);
+      });
+    })
+    .catch(error => console.error("Error loading places:", error));
+});
