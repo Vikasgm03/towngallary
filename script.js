@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(places => {
       const container = document.getElementById("places-container");
+      if (!container) {
+        console.error("Gallery container not found!");
+        return;
+      }
+
       places.forEach(place => {
         const card = document.createElement("div");
         card.className = "place-card";
