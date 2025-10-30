@@ -3,26 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery Details | Namma Shravanabelagola</title>
+  <title>Farm House | Namma Shravanabelagola</title>
 
   <style>
-    /* ======= Global Reset ======= */
-    * {
+    /* ---------- GLOBAL THEME ---------- */
+    body {
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      transition: opacity 0.5s ease-in-out;
     }
 
-    body {
-      background: linear-gradient(180deg, #000000, #0f2027);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+    body.fade-in {
+      opacity: 1;
     }
 
-    /* ======= Header ======= */
     header {
       background-color: #333;
       color: white;
@@ -77,204 +74,174 @@
       background-color: #ff8c00;
     }
 
-    /* ======= Content Section ======= */
-    .content {
+    /* ---------- CONTENT SECTION ---------- */
+    .details-container {
       max-width: 900px;
       margin: 3rem auto;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      text-align: center;
-      animation: fadeInSection 1s ease-in-out;
-    }
-
-    .content img {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
-    }
-
-    .content h2 {
-      color: #00ffff;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .content p {
-      color: #ddd;
-      line-height: 1.8;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    @keyframes fadeInSection {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ======= Location Section ======= */
-    .location-section {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-      margin: 2rem auto;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      max-width: 700px;
-    }
-
-    .location-section h2 {
-      color: #00ffff;
-      margin-bottom: 1rem;
-    }
-
-    .location-section p {
-      color: #ccc;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .location-link {
-      display: inline-block;
-      background-color: #00ffff;
-      color: #000;
-      padding: 12px 25px;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    .location-link:hover {
-      background-color: #00bfbf;
-      transform: translateY(-3px);
-    }
-
-    /* ======= About Section ======= */
-    .about-section {
-      background: rgba(255, 255, 255, 0.05);
-      width: 90%;
-      max-width: 800px;
-      padding: 30px;
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      margin: 2rem auto;
-      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
     }
 
-    .profile-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+    .details-container img {
+      width: 100%;
+      border-radius: 10px;
       object-fit: cover;
-      border: 3px solid #00ffff;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+      margin-bottom: 1.5rem;
     }
 
-    .about-content h2 {
-      color: #00ffff;
+    .details-container h2 {
+      color: #ff8c00;
+      margin-bottom: 1rem;
+    }
+
+    .details-container p {
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    .location-box {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .location-box h3 {
+      color: #ff8c00;
       margin-bottom: 0.5rem;
     }
 
-    .about-content p {
-      color: #ccc;
-      line-height: 1.6;
+    .map-link {
+      display: inline-block;
+      background-color: #ff8c00;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .map-link:hover {
+      background-color: #e67e00;
+    }
+
+    /* ---------- AUTHOR / ABOUT ---------- */
+    .author-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 2rem;
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .author-box img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff8c00;
+    }
+
+    .author-content h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .author-content p {
+      margin-top: 5px;
+      color: #666;
+      line-height: 1.5;
     }
 
     @media (max-width: 600px) {
-      .about-section {
+      .author-box {
         flex-direction: column;
         text-align: center;
       }
     }
 
-    /* ======= Back Button ======= */
+    /* ---------- BACK BUTTON ---------- */
     .back-btn {
       display: inline-block;
       margin-top: 2rem;
-      background: #00ffff;
-      color: #000;
+      background: #333;
+      color: white;
       padding: 0.8rem 1.5rem;
-      border-radius: 10px;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       transition: 0.3s;
     }
 
     .back-btn:hover {
-      background: #00bfbf;
+      background: #555;
       transform: translateY(-2px);
     }
 
-    /* ======= Footer ======= */
+    /* ---------- FOOTER ---------- */
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: #111;
-      color: #aaa;
-      margin-top: auto;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: #333;
+      color: white;
+      margin-top: 2rem;
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <h1>🏡 Namma Shravanabelagola</h1>
+    <h1>📸 Namma Shravanabelagola</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="gallery.html" class="active">Gallery</a>
-      <a href="aboutus.html">About</a>
+      <a href="aboutus.html">About Us</a>
     </nav>
   </header>
 
-  <section class="content">
-    <img src="images/cow.jpeg" alt="Farm House">
-    <h2>Cow Farm — Sugganahalli</h2>
+  <div class="details-container">
+    <img src="Farmhouse.jpg" alt="Farm House">
+    <h2>Farm House — Sugganahalli</h2>
     <p>
-      Pramodh, a local resident of Sugganahalli, is embarking on a new agricultural venture by establishing a dedicated cow farm at his farmhouse. This initiative marks a significant investment in local animal husbandry, focusing on raising cattle. The new farm aims to support the community's dairy needs and strengthen the agricultural economy of Sugganahalli.
+      Pramodh, a resident of Sugganahalli, is building a new cow farm at his farmhouse.  
+      This initiative aims to boost local dairy production and support rural development through sustainable farming practices.
     </p>
 
-    <div class="location-section">
-      <h2>📍 Visit Location</h2>
-      <p>Sugganahalli, Karnataka 561101</p>
-      <a href="https://maps.app.goo.gl/Q2ub5WNbX4gZrHmN9" class="location-link" target="_blank">Open in Google Maps</a>
+    <div class="location-box">
+      <h3>📍 Location</h3>
+      <p>Sugganahalli, Karnataka</p>
+      <a href="https://maps.app.goo.gl/Q2ub5WNbX4gZrHmN9" class="map-link" target="_blank">Open in Google Maps</a>
     </div>
 
-    <div class="about-section">
-      <img src="images/pramodh.jpeg" alt="Profile Photo" class="profile-photo">
-      <div class="about-content">
-        <h2>About Pramodh</h2>
+    <div class="author-box">
+      <img src="pramodh.jpeg" alt="Pramodh">
+      <div class="author-content">
+        <h3>About Pramodh</h3>
         <p>
-          Pramodh, a resident of Sugganahalli, is in the process of establishing a new cow farm on his farmhouse property. This marks his entry into the dairy and livestock sector, reflecting his dedication to sustainable rural development.
+          Pramodh is a dedicated farmer from Sugganahalli, working on new ventures in the dairy and livestock sector.
         </p>
       </div>
     </div>
 
-    <div style="font-size: 1.5rem; color: #00ffff; margin-top: 1.5rem;">
-      💰 Price: <strong>₹15,000 onwards</strong>
-    </div>
-
     <a href="gallery.html" class="back-btn">← Back to Gallery</a>
-  </section>
+  </div>
 
   <footer>
-    © 2025 Namma Shravanabelagola | Built by Vikas G M
+    <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
   </footer>
 
+  <script>
+    // Fade-in transition effect
+    document.body.classList.add('fade-in');
+  </script>
 </body>
 </html>
