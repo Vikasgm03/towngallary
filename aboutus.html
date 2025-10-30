@@ -21,6 +21,26 @@
       text-align: center;
       padding: 1rem;
     }
+     header h1 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      letter-spacing: 1px;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeSlideDown 1s ease forwards;
+    }
+
+    @keyframes fadeSlideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
 
     nav {
       text-align: center;
