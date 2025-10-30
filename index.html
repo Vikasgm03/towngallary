@@ -3,100 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Namma Shravanabelagola</title>
+  <title>Namma Shravanabelagola Map</title>
 
-  <!-- Step 1: Paste your CSS here inside <style> -->
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f7f7f7;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: url('images/map-bg.jpg') center/cover no-repeat;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      color: white;
+    }
+
+    /* Dark overlay for depth */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
     }
 
     header {
-      background-color: #333;
-      color: white;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
-      padding: 1rem;
+      z-index: 10;
+      animation: fadeSlideDown 0.8s ease forwards;
     }
+
     header h1 {
-  font-size: 2rem;
-  color: #ffffff; /* white text */
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-shadow: 0 0 5px #00ffff33; /* subtle glow */
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: smoothFadeIn 0.8s ease-out forwards;
-}
-
-/* Simple fade + slight slide */
-@keyframes smoothFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px);
-    text-shadow: 0 0 0 #00ffff00;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    text-shadow: 0 0 8px #00ffff55;
-  }
-}
-
-
-    nav {
-      text-align: center;
-      margin-top: 10px;
+      font-size: 2rem;
+      color: #fff;
+      letter-spacing: 1px;
     }
 
     nav a {
       color: white;
-      text-decoration: none;
-      margin: 0 10px;
+      background: rgba(0, 255, 255, 0.1);
+      margin: 0 8px;
       padding: 6px 12px;
-      border-radius: 5px;
-      background-color: #666;  /* Button color */
-      transition: background 0.3s;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      background-color: #999; /* Hover color */
+      background: #00ffff;
+      color: black;
     }
 
-    nav a.active {
-      background-color: #ff8c00; /* Active page color */
+    /* Map marker points */
+    .marker {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #00ffff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ffff;
+      cursor: pointer;
+      animation: pulse 2s infinite;
     }
 
-    section {
-      padding: 2rem;
+    /* Each marker’s position (you can adjust these %) */
+    .marker#temple { top: 45%; left: 60%; }
+    .marker#hill { top: 65%; left: 30%; }
+    .marker#lake { top: 55%; left: 75%; }
+
+    /* Popup info */
+    .popup {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #00ffff;
+      border-radius: 8px;
+      padding: 10px;
+      width: 200px;
       text-align: center;
+      transform: translate(-50%, -120%);
+      display: none;
     }
 
-    .card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 250px;
-      margin: 1rem auto;
-      padding: 1rem;
+    .marker:hover + .popup {
+      display: block;
+      animation: fadeIn 0.3s ease;
     }
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
+    @keyframes fadeSlideDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #333;
-      color: white;
-      margin-top: 2rem;
+    @keyframes pulse {
+      0% { box-shadow: 0 0 5px #00ffff; }
+      50% { box-shadow: 0 0 20px #00ffff; }
+      100% { box-shadow: 0 0 5px #00ffff; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -130%); }
+      to { opacity: 1; transform: translate(-50%, -120%); }
     }
   </style>
 </head>
@@ -107,32 +116,27 @@
     <nav>
       <a href="index.html" class="active">Home</a>
       <a href="gallery.html">Gallery</a>
-      <a href="aboutus.html">About Us</a>
+      <a href="aboutus.html">About</a>
     </nav>
   </header>
 
-  <section>
-    <h2>Welcome to Our Town Gallery</h2>
-    <p>Explore the beauty of Shravanabelagola — temples, hills, and local vibes!</p>
+  <!-- Map Markers -->
+  <div class="marker" id="temple"></div>
+  <div class="popup" style="top:45%; left:60%;">
+    <h3>Bahubali Temple</h3>
+    <p>Click to view in Gallery</p>
+  </div>
 
- 
-    
-      <h3>Explore the beauty, culture, and life of our hometown ❤️</h3>
-      <p>>📍 Explore on Map</p>
-       <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.3726516676765!2d76.48866351430544!3d12.857819890936604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bafdb17e40b7d23%3A0x8a5a5b7e8d77c63f!2sShravanabelagola!5e0!3m2!1sen!2sin!4v1696589876543!5m2!1sen!2sin" 
-        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+  <div class="marker" id="hill"></div>
+  <div class="popup" style="top:65%; left:30%;">
+    <h3>Chandragiri Hill</h3>
+    <p>View scenic hill trails!</p>
+  </div>
 
-  </section>
-
-  <footer>
-    <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
-  </footer>
+  <div class="marker" id="lake"></div>
+  <div class="popup" style="top:55%; left:75%;">
+    <h3>Town Lake</h3>
+    <p>Peaceful evening spot 🌅</p>
+  </div>
 </body>
 </html>
-
-
-
-
