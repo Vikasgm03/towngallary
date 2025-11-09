@@ -127,28 +127,40 @@
     }
 
     /* Centered Back Button */
+/* Centered Back Button */
 .back-btn-container {
   display: flex;
   justify-content: center;
   margin: 3rem 0 2rem 0;
 }
 
-.back-btn {
-      display: inline-block;
-      margin-top: 2rem;
-      background: #333;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+.back-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff8c00, #ffb347);
+  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(255, 140, 0, 0.4);
+  transition: all 0.3s ease;
+}
 
-    .back-btn:hover {
-      background: #555;
-      transform: translateY(-2px);
-    }
+.back-link:hover {
+  background: linear-gradient(135deg, #e67e00, #ff9933);
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(255, 140, 0, 0.6);
+}
+.back-btn-container {
+  opacity: 0;
+  animation: fadeInButton 0.8s ease forwards 0.3s;
+}
+
+@keyframes fadeInButton {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 
 
@@ -217,8 +229,10 @@
     </div>
   </section>
 
- <a href="more_categories.html" class="back-btn">← Back to Gallery</a>
-  </div>
+ <div class="back-btn-container">
+  <a href="morecategories.html" class="back-link">← Back to Categories</a>
+</div>
+
 
 
   <footer>
