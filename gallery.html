@@ -124,6 +124,36 @@ header h1 {
       background-color: #ff8c00;
       color: white;
     }
+    <section id="category-buttons">
+  <button data-category="all" class="active">All</button>
+  <button data-category="temples">Temples</button>
+  <button data-category="nature">Nature</button>
+  <button data-category="food">Food</button>
+
+  <!-- New "Show More" Button -->
+  <a href="morecategories.html" class="show-more-link">Show More →</a>
+</section>
+
+<style>
+  /* Styling for the Show More button (inline with other buttons) */
+  .show-more-link {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    background-color: #ff8c00;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .show-more-link:hover {
+    background-color: #e67e00;
+    transform: scale(1.05);
+  }
+</style>
+
 
     /* ---------- GALLERY GRID ---------- */
     #gallery-grid {
