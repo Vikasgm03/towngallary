@@ -98,22 +98,24 @@
     }
 
     /* Show More button (inline with categories) */
-    .show-more-link {
-      display: inline-block;
-      margin-left: 10px;
-      padding: 0.6rem 1.2rem;
-      border-radius: 20px;
-      background-color: #ff8c00;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+   .show-more-link {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  background-color: #ddd; /* same as other buttons by default */
+  color: #333; /* dark text to match the theme */
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
 
-    .show-more-link:hover {
-      background-color: #e67e00;
-      transform: scale(1.05);
-    }
+.show-more-link:hover {
+  background-color: #ff8c00; /* turns orange only when hovered */
+  color: white;
+  transform: scale(1.05);
+}
+
 
     /* ---------- GALLERY GRID ---------- */
     #gallery-grid {
