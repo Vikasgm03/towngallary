@@ -16,144 +16,36 @@
       color: #333;
     }
 
-  header {
-  background: linear-gradient(135deg, #fff5e6, #ffe0b2, #ffb347);
-  color: #333;
-  text-align: center;
-  padding: 1.5rem 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid #ff8c00;
-}
+ header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
 
-header {
-            /* A subtle gradient from light cream to pure white */
-            background: linear-gradient(110deg, var(--theme-bg-light), var(--theme-white), var(--theme-bg-light));
-            color: var(--theme-text-dark);
-            text-align: center;
-            padding: 2rem 1rem 3.5rem 1rem; /* NEW: Added more bottom padding for the clip-path */
-            
-            /* A soft, subtle shadow for a "floating" effect */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            
-            /* REMOVED: border-bottom: 1px solid #dee2e6; */
-            
-            position: relative; /* z-index to sit on top */
-            z-index: 10;
-            overflow: hidden;
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
 
-            /* --- NEW: Dynamic Slanted Shape --- */
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 6px 12px;
+      border-radius: 5px;
+      background-color: #666;  /* Button color */
+      transition: background 0.3s;
+    }
 
-            /* --- NEW: Gradient Animation --- */
-            background-size: 200% 200%;
-            animation: moveGradient 15s ease infinite;
-        }
-        
-        @keyframes moveGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    nav a:hover {
+      background-color: #999; /* Hover color */
+    }
 
+    nav a.active {
+      background-color: #ff8c00; /* Active page color */
+    }
 
-        /* Header Title - Strong Orange */
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--theme-accent-dark); /* Rich orange text */
-            letter-spacing: 1px;
-            font-weight: 700;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-            
-            /* Re-using your animation */
-            opacity: 0;
-            transform: translateY(-10px);
-            animation: fadeInHeader 0.8s ease-out 0.2s forwards;
-            margin: 0 0 1rem 0;
-        }
-
-        /* Kept your original animation */
-        @keyframes fadeInHeader {
-            0% { opacity: 0; transform: translateY(-15px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Navigation Links - Dynamic Wipe Effect --- */
-        nav {
-            text-align: center;
-            margin-top: 12px;
-        }
-        
-        /* SVG icon style */
-        .nav-icon {
-            width: 1em;
-            height: 1em;
-            stroke-width: 2.5;
-        }
-
-        nav a {
-            color: var(--theme-text-dark); /* Dark text */
-            text-decoration: none;
-            margin: 0 8px;
-            padding: 8px 18px;
-            border-radius: 50px; /* Pill shape */
-            
-            background: transparent;
-            border: 1px solid transparent;
-            
-            position: relative; /* Needed for the wipe effect */
-            overflow: hidden;   /* Hides the wipe */
-            z-index: 1;         /* Keeps text on top */
-            
-            transition: all 0.4s ease; /* Slower transition for a smoother feel */
-            font-weight: 500;
-            
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* The "Wipe" pseudo-element */
-        nav a::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--theme-accent); /* The vibrant orange */
-            border-radius: 50px;
-            
-            /* Start scaled to 0 */
-            transform: scaleX(0);
-            transform-origin: left;
-            
-            /* A fast, "snappy" transition */
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            
-            z-index: -1; /* Sits behind the text */
-        }
-
-        /* --- NEW: Enhanced Hover + Active Effects --- */
-        nav a:hover {
-            color: var(--theme-white); /* Changes text to white */
-            
-            /* NEW: Soft orange glow */
-            box-shadow: 0 0 15px 5px rgba(249, 115, 22, 0.3);
-            transform: translateY(-2px); /* Slight lift */
-        }
-
-        nav a:hover::after {
-            transform: scaleX(1); /* The wipe animation happens */
-            transform-origin: left;
-        }
-
-        nav a.active {
-            background: var(--theme-accent); /* Solid orange */
-            color: var(--theme-white); /* White text */
-            border-color: var(--theme-accent);
-            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
-            transform: translateY(-2px);
-        }
 
     section {
       padding: 2rem;
@@ -328,6 +220,7 @@ header {
       }
     });
   </script>
+
 
 
 
