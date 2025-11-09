@@ -21,32 +21,30 @@
       text-align: center;
       padding: 1rem;
     }
-    
+
     header h1 {
-  font-size: 2rem;
-  color: #ffffff; /* white text */
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-shadow: 0 0 5px #00ffff33; /* subtle glow */
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: smoothFadeIn 0.8s ease-out forwards;
-}
+      font-size: 2rem;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 5px #00ffff33;
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: smoothFadeIn 0.8s ease-out forwards;
+    }
 
-/* Simple fade + slight slide */
-@keyframes smoothFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px);
-    text-shadow: 0 0 0 #00ffff00;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    text-shadow: 0 0 8px #00ffff55;
-  }
-}
-
+    @keyframes smoothFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-15px);
+        text-shadow: 0 0 0 #00ffff00;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        text-shadow: 0 0 8px #00ffff55;
+      }
+    }
 
     nav {
       text-align: center;
@@ -59,48 +57,22 @@
       margin: 0 10px;
       padding: 6px 12px;
       border-radius: 5px;
-      background-color: #666; /* Button color */
+      background-color: #666;
       transition: background 0.3s;
     }
 
     nav a:hover {
-      background-color: #999; /* Hover color */
+      background-color: #999;
     }
 
     nav a.active {
-      background-color: #ff8c00; /* Orange active */
+      background-color: #ff8c00;
     }
 
     section {
       padding: 2rem;
       text-align: center;
     }
-
- 
-header h1 {
-  font-size: 2rem;
-  color: #ffffff; /* white text */
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-shadow: 0 0 5px #00ffff33; /* subtle glow */
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: smoothFadeIn 0.8s ease-out forwards;
-}
-
-/* Simple fade + slight slide */
-@keyframes smoothFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px);
-    text-shadow: 0 0 0 #00ffff00;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    text-shadow: 0 0 8px #00ffff55;
-  }
-}
 
     /* ---------- CATEGORY BUTTONS ---------- */
     #category-buttons {
@@ -124,36 +96,24 @@ header h1 {
       background-color: #ff8c00;
       color: white;
     }
-    <section id="category-buttons">
-  <button data-category="all" class="active">All</button>
-  <button data-category="temples">Temples</button>
-  <button data-category="nature">Nature</button>
-  <button data-category="food">Food</button>
 
-  <!-- New "Show More" Button -->
-  <a href="morecategories.html" class="show-more-link">Show More →</a>
-</section>
+    /* Show More button (inline with categories) */
+    .show-more-link {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      background-color: #ff8c00;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
 
-<style>
-  /* Styling for the Show More button (inline with other buttons) */
-  .show-more-link {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 0.6rem 1.2rem;
-    border-radius: 20px;
-    background-color: #ff8c00;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-  }
-
-  .show-more-link:hover {
-    background-color: #e67e00;
-    transform: scale(1.05);
-  }
-</style>
-
+    .show-more-link:hover {
+      background-color: #e67e00;
+      transform: scale(1.05);
+    }
 
     /* ---------- GALLERY GRID ---------- */
     #gallery-grid {
@@ -195,12 +155,22 @@ header h1 {
       color: white;
       margin-top: 2rem;
     }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Namma Shravanabelagola Gallery</h1>
+    <h1>📸 Namma Shravanabelagola Gallery</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="gallery.html" class="active">Gallery</a>
@@ -213,15 +183,17 @@ header h1 {
     <p>Browse through the scenic locations, temples, and local culture of our town.</p>
   </section>
 
+  <!-- CATEGORY BUTTONS -->
   <section id="category-buttons">
     <button data-category="all" class="active">All</button>
     <button data-category="temples">Temples</button>
     <button data-category="nature">Nature</button>
     <button data-category="food">Food</button>
+    <a href="morecategories.html" class="show-more-link">Show More →</a>
   </section>
 
+  <!-- GALLERY GRID -->
   <section id="gallery-grid">
-    <!-- Replace images with your own -->
     <div class="card" data-category="temples">
       <img src="vindhyagiri.jpeg" alt="Vindhyagiri Temple">
       <h3>Vindhyagiri Temple</h3>
@@ -244,39 +216,10 @@ header h1 {
 
     <div class="card" data-category="nature">
       <a href="details.html">
-      <img src="Farmhouse.jpg" alt="Farm House">
-      <h3>Farm House</h3>
+        <img src="Farmhouse.jpg" alt="Farm House">
       </a>
+      <h3>Farm House</h3>
     </div>
-<section id="gallery-grid">
-  <!-- Visible Categories -->
-  <div class="card" data-category="temples">
-    <img src="vindhyagiri.jpeg" alt="Vindhyagiri Temple">
-    <h3>Vindhyagiri Temple</h3>
-  </div>
-
-  <div class="card" data-category="nature">
-    <img src="lake.jpeg" alt="Peaceful Lake">
-    <h3>Peaceful Lake</h3>
-  </div>
-
-  <div class="card" data-category="food">
-    <img src="raghu.jpeg" alt="Local Food">
-    <h3>Authentic Jain Cuisine</h3>
-  </div>
-
-  <div class="card" data-category="temples">
-    <img src="chandhragiri.jpeg" alt="Chandragiri Temple">
-    <h3>Chandragiri Temple</h3>
-  </div>
-
-  <div class="card" data-category="nature">
-    <a href="details.html"><img src="Farmhouse.jpg" alt="Farm House"></a>
-    <h3>Farm House</h3>
-  </div>
-
- 
-
   </section>
 
   <footer>
