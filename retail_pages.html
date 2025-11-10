@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Raghu | Namma Shravanabelagola</title>
+
+  <style>
+    /* ---------- GLOBAL THEME ---------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    body.fade-in {
+      opacity: 1;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: linear-gradient(120deg, #ffffff, #ffecd2, #ffb347);
+      color: #333;
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #ff8c00;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: smoothFadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes smoothFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-15px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---------- NAVIGATION ---------- */
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 6px 12px;
+      border-radius: 5px;
+      background-color: #eee;
+      border: 1px solid #ffb347;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #ff8c00;
+      color: white;
+    }
+
+    nav a.active {
+      background-color: #ff8c00;
+      color: white;
+    }
+
+    /* ---------- CONTENT SECTION ---------- */
+    .details-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .details-container img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
+
+    .details-container h2 {
+      color: #ff8c00;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .details-container p {
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ---------- LOCATION BOX ---------- */
+    .location-box {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .location-box h3 {
+      color: #ff8c00;
+      margin-bottom: 0.5rem;
+    }
+
+    .map-link {
+      display: inline-block;
+      background-color: #ff8c00;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .map-link:hover {
+      background-color: #e67e00;
+    }
+
+    /* ---------- OWNER / ABOUT ---------- */
+    .author-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 2rem;
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .author-box img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff8c00;
+    }
+
+    .author-content h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .author-content p {
+      margin-top: 5px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .author-box {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ---------- BACK BUTTON ---------- */
+    .back-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      background: #333;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #555;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🏪 Namma Shravanabelagola</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="morecategories.html">Categories</a>
+      <a href="stores.html" class="active">Retail Shops</a>
+      <a href="aboutus.html">About</a>
+    </nav>
+  </header>
+
+  <div class="details-container">
+    <img src="images/hotel_raghu.jpg" alt="Hotel Raghu">
+    <h2>Hotel Raghu — Shravanabelagola</h2>
+    <p>
+      Hotel Raghu is a well-known restaurant in Shravanabelagola serving authentic South Indian cuisine.  
+      It’s one of the most popular food spots for locals and visitors alike, known for its fresh meals and traditional taste.
+    </p>
+
+    <div class="location-box">
+      <h3>📍 Location</h3>
+      <p>Near Jain Mutt Circle, Shravanabelagola, Karnataka</p>
+      <a href="https://maps.app.goo.gl/AuSvzTXh8oOZHwSXA" class="map-link" target="_blank">Open in Google Maps</a>
+    </div>
+
+    <div class="author-box">
+      <img src="images/owner.jpg" alt="Owner">
+      <div class="author-content">
+        <h3>About the Owner</h3>
+        <p>
+          Mr. Raghu, the owner of Hotel Raghu, has been serving quality vegetarian food for over two decades.  
+          His restaurant is a landmark for anyone visiting Shravanabelagola.
+        </p>
+      </div>
+    </div>
+
+    <a href="stores.html" class="back-btn">← Back to Retail Shops</a>
+  </div>
+
+  <footer>
+    <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
+  </footer>
+
+  <script>
+    // Smooth fade-in transition
+    document.body.classList.add('fade-in');
+  </script>
+</body>
+</html>
