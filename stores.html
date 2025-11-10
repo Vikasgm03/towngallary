@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stores | Namma Shravanabelagola</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #fffaf0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ffffff, #ffecd2, #ffb347);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color: #ff8c00;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 10px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: #fff;
+      transition: 0.3s;
+      border: 1px solid #ffb347;
+    }
+
+    nav a:hover {
+      background: #ff8c00;
+      color: white;
+    }
+
+    section {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* ====== STORE GRID ====== */
+    .store-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 1rem;
+    }
+
+    .store-card {
+      background: white;
+      width: 260px;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .store-card:hover {
+      transform: scale(1.05);
+    }
+
+    .store-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .store-card h3 {
+      margin: 10px;
+      color: #ff8c00;
+    }
+
+    .store-card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin: 0 10px 10px;
+    }
+
+    .view-btn {
+      display: inline-block;
+      background: #ff8c00;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .view-btn:hover {
+      background: #e67e00;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🛍️ Local Stores</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="morecategories.html">Categories</a>
+      <a href="stores.html" class="active">Stores</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Explore Local Stores Around Shravanabelagola</h2>
+    <p>Find shops, bakeries, hotels, and more — click to see full details.</p>
+
+    <div class="store-grid">
+      <!-- Example Store Cards -->
+      <div class="store-card">
+        <img src="images/hotel_raghu.jpg" alt="Hotel Raghu">
+        <h3>Hotel Raghu</h3>
+        <p>Popular South Indian restaurant with authentic taste.</p>
+        <a href="store-details.html?id=1" class="view-btn">View Details</a>
+      </div>
+
+      <div class="store-card">
+        <img src="images/sri_bakery.jpg" alt="Sri Bakery">
+        <h3>Sri Bakery</h3>
+        <p>Delicious buns, puffs, and sweets served fresh daily.</p>
+        <a href="store-details.html?id=2" class="view-btn">View Details</a>
+      </div>
+
+      <div class="store-card">
+        <img src="images/sm_store.jpg" alt="SM Department Store">
+        <h3>SM Department Store</h3>
+        <p>Everything you need under one roof — groceries & essentials.</p>
+        <a href="store-details.html?id=3" class="view-btn">View Details</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
