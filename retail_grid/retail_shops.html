@@ -102,13 +102,40 @@
     }
 
     /* ---------- BACK BUTTON ---------- */
-    .back-btn-container {
-      display: flex;
-      justify-content: center;
-      margin: 3rem 0 2rem 0;
-      opacity: 0;
-      animation: fadeInButton 0.8s ease forwards 0.3s;
-    }
+.back-btn-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 1.5rem 0;
+  opacity: 0;
+  animation: fadeInButton 0.8s ease forwards 0.3s;
+}
+
+.back-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff8c00, #ffb347);
+  color: white;
+  padding: 0.5rem 1.2rem;   /* smaller padding */
+  border-radius: 6px;       /* smaller roundness */
+  text-decoration: none;
+  font-size: 0.9rem;        /* slightly smaller text */
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: 0 3px 8px rgba(255, 140, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #ffb347, #ff8c00);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(255, 140, 0, 0.5);
+}
+
+/* Keep your animation */
+@keyframes fadeInButton {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
     .back-link {
       display: inline-block;
@@ -134,14 +161,29 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---------- FOOTER ---------- */
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #f0f0f0;
-      color: #555;
-      margin-top: 2rem;
-    }
+    /* ---------- PAGE STRUCTURE ---------- */
+html, body {
+  height: 100%;              /* Full height page */
+  margin: 0;
+  display: flex;
+  flex-direction: column;    /* Stack header → content → footer vertically */
+}
+
+/* Main content area grows to fill space */
+main, section {
+  flex: 1;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  color: #555;
+  margin-top: auto;          /* Pushes footer to bottom */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); /* optional soft top shadow */
+}
+
 
     @media (max-width: 768px) {
       .shop-card {
