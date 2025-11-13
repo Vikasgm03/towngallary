@@ -235,7 +235,8 @@
       </div>
     </div>
 
-    <a href="../../gallery.html" class="back-btn">← Back to Gallery</a>
+    <a href="#" class="back-btn" id="dynamicBack">← Go Back</a>
+
   </div>
 
   <footer>
@@ -246,5 +247,25 @@
     // Fade-in transition effect
     document.body.classList.add('fade-in');
   </script>
+
+  <script>
+  const backButton = document.getElementById('dynamicBack');
+
+  backButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Check where the user came from
+    if (document.referrer.includes('retail_shops.html')) {
+      window.location.href = '../../retail_grid/retail_shops.html';
+    } 
+    else if (document.referrer.includes('more_categories.html')) {
+      window.location.href = '../../more_categories.html';
+    } 
+    else {
+      window.location.href = '../../gallery.html'; // fallback if opened directly
+    }
+  });
+</script>
+
 </body>
 </html>
