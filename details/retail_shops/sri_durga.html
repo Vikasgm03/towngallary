@@ -248,24 +248,23 @@
     document.body.classList.add('fade-in');
   </script>
 
-  <script>
+<script>
   const backButton = document.getElementById('dynamicBack');
 
   backButton.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // Check where the user came from
-    if (document.referrer.includes('retail_shops.html')) {
-      window.location.href = '../../retail_grid/retail_shops.html';
-    } 
-    else if (document.referrer.includes('more_categories.html')) {
-      window.location.href = '../../more_categories.html';
+    // ✅ Try to go back to the previous page if available
+    if (document.referrer && document.referrer !== window.location.href) {
+      window.location.href = document.referrer;
     } 
     else {
-      window.location.href = '../../gallery.html'; // fallback if opened directly
+      // ✅ Fallback: if no referrer (opened directly), go home
+      window.location.href = "../../index.html";
     }
   });
 </script>
+
 
 </body>
 </html>
