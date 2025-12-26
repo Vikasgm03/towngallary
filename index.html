@@ -188,6 +188,76 @@
     height: 300px;
   }
 }
+
+ /* Alter */
+
+  /* ---------- PREVIEW SECTION ---------- */
+.preview-section {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+}
+
+.preview-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* LEFT IMAGE */
+.preview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* RIGHT CONTENT */
+.preview-content h2 {
+  font-size: 2rem;
+  color: #ff8c00;
+  margin-bottom: 1rem;
+}
+
+.preview-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* BUTTON */
+.preview-btn {
+  display: inline-block;
+  background-color: #ff8c00;
+  color: white;
+  padding: 0.7rem 1.6rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.preview-btn:hover {
+  background-color: #e67e00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 140, 0, 0.4);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .preview-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .preview-image img {
+    max-width: 100%;
+  }
+}
+
+
 </style>
 
 
@@ -203,6 +273,30 @@
       celebrating the grandeur and purity of Jain tradition amidst the tranquil surroundings of nature and history.
     </p>
   </section>
+<section class="preview-section">
+  <div class="preview-container">
+
+    <!-- LEFT : IMAGE PREVIEW -->
+    <div class="preview-image">
+      <img src="images/explorica/retail_shops/durga.jpg" alt="Local Shops">
+    </div>
+
+    <!-- RIGHT : DETAILS -->
+    <div class="preview-content">
+      <h2>Local Retail & Grocery Shops</h2>
+      <p>
+        Discover trusted grocery stores, provision shops, bakeries, and daily-need outlets
+        that serve the people of Shravanabelagola. From fresh essentials to household needs,
+        explore shops that keep the town running every day.
+      </p>
+
+      <a href="more_categories.html" class="preview-btn">
+        Explore Shops →
+      </a>
+    </div>
+
+  </div>
+</section>
 
   <footer>
     <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
@@ -220,6 +314,7 @@
       }
     });
   </script>
+
 
 
 
