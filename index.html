@@ -84,12 +84,19 @@ body {
     display: block;
   }
 
-  .nav-menu {
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    margin-top: 1rem;
-  }
+.nav-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.nav-menu.show {
+  max-height: 300px; /* enough for all links */
+}
 
   .nav-menu.show {
     display: flex;
@@ -285,6 +292,7 @@ footer {
 
 </body>
 </html>
+
 
 
 
