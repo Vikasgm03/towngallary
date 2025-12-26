@@ -275,9 +275,17 @@ footer {
     nav.classList.toggle('show');
   });
 </script>
+<script>
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.preview-section').forEach(sec => {
+      sec.classList.add('visible');
+    });
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
