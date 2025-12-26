@@ -2,102 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Your Shop | Namma Shravanabelagola</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      background: #f7f7f7;
       margin: 0;
-      background-color: #f7f7f7;
+      padding: 0;
       color: #333;
     }
 
     header {
-      background-color: #f0f0f0;
+      background: #f0f0f0;
       text-align: center;
-      padding: 1rem;
+      padding: 1.2rem;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    nav a {
-      text-decoration: none;
-      margin: 0 8px;
-      padding: 6px 12px;
-      border-radius: 5px;
-      background-color: #e0e0e0;
-      color: #333;
-      transition: 0.3s;
+    header h1 {
+      color: #ff8c00;
+      margin: 0;
     }
 
-    nav a:hover {
-      background-color: #ff8c00;
-      color: white;
-    }
-
-    nav a.active {
-      background-color: #ff8c00;
-      color: white;
-    }
-
-    /* ---------- FORM ---------- */
-    .add-shop-section {
-      max-width: 700px;
-      margin: 4rem auto;
+    .form-container {
+      max-width: 800px;
+      margin: 2.5rem auto;
       background: white;
-      padding: 2.5rem;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-container h2 {
+      color: #ff8c00;
+      margin-bottom: 1.5rem;
       text-align: center;
     }
 
-    .add-shop-section h2 {
-      color: #ff8c00;
-      margin-bottom: 0.5rem;
+    .form-group {
+      margin-bottom: 1.2rem;
     }
 
-    .add-shop-section p {
-      color: #666;
-      margin-bottom: 2rem;
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
     }
 
-    input, textarea {
+    input, textarea, select {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 8px;
+      padding: 10px;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      font-family: inherit;
+      font-size: 0.95rem;
     }
 
     textarea {
-      min-height: 90px;
+      resize: vertical;
+    }
+
+    input[type="file"] {
+      padding: 6px;
     }
 
     .submit-btn {
+      display: block;
       width: 100%;
-      background-color: #25D366;
+      margin-top: 2rem;
+      background: #ff8c00;
       color: white;
-      padding: 14px;
       border: none;
-      border-radius: 30px;
+      padding: 0.9rem;
       font-size: 1rem;
-      font-weight: 600;
+      border-radius: 30px;
       cursor: pointer;
       transition: 0.3s;
     }
 
     .submit-btn:hover {
-      background-color: #1ebe5d;
+      background: #e67e00;
       transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(255,140,0,0.4);
     }
 
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: #f0f0f0;
-      color: #555;
+      background: #f0f0f0;
       margin-top: 3rem;
+      color: #555;
     }
   </style>
 </head>
@@ -105,61 +100,98 @@
 <body>
 
 <header>
-  <h1>Add Your Shop</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="aboutus.html">About Us</a>
-    <a href="add_shop.html" class="active">Add Shop</a>
-  </nav>
+  <h1>➕ Add Your Shop</h1>
 </header>
 
-<section class="add-shop-section">
-  <h2>📸 Submit Your Shop</h2>
-  <p>Your details will be reviewed and added to the town gallery.</p>
+<div class="form-container">
+  <h2>Shop Details</h2>
 
   <form id="shopForm">
-    <input type="text" id="shopName" placeholder="Shop Name" required>
-    <textarea id="shopDetails" placeholder="Shop Description" required></textarea>
 
-    <input type="text" id="category" placeholder="Category (Retail / Bakery / Hotel)" required>
-    <input type="text" id="location" placeholder="Shop Location" required>
+    <!-- SHOP DETAILS -->
+    <div class="form-group">
+      <label>Shop Name *</label>
+      <input type="text" id="shopName" required>
+    </div>
 
-    <input type="text" id="ownerName" placeholder="Owner Name" required>
-    <textarea id="ownerDetails" placeholder="Owner Details" required></textarea>
+    <div class="form-group">
+      <label>Shop Category *</label>
+      <select id="shopCategory" required>
+        <option value="">Select category</option>
+        <option>Retail / Grocery</option>
+        <option>Restaurant / Cafe</option>
+        <option>Bakery</option>
+        <option>Electricals</option>
+        <option>Automobile</option>
+        <option>Other</option>
+      </select>
+    </div>
 
-    <button type="submit" class="submit-btn">
-      📲 Send Request via WhatsApp
-    </button>
+    <div class="form-group">
+      <label>Shop Description *</label>
+      <textarea id="shopDetails" rows="4" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>📸 Upload Shop Photo *</label>
+      <input type="file" accept="image/*" required>
+    </div>
+
+    <!-- OWNER DETAILS -->
+    <h2 style="margin-top:2.5rem;">Owner Details</h2>
+
+    <div class="form-group">
+      <label>Owner Name *</label>
+      <input type="text" id="ownerName" required>
+    </div>
+
+    <div class="form-group">
+      <label>Owner Description</label>
+      <textarea id="ownerDetails" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>📸 Upload Owner Photo</label>
+      <input type="file" accept="image/*">
+    </div>
+
+    <!-- SUBMIT -->
+    <button type="submit" class="submit-btn">📩 Send Request via WhatsApp</button>
+
   </form>
-</section>
+</div>
 
 <footer>
   <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
 </footer>
 
 <script>
-document.getElementById("shopForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+  document.getElementById("shopForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  const data = `
-🛍️ *New Shop Submission*
+    const shopName = document.getElementById("shopName").value;
+    const category = document.getElementById("shopCategory").value;
+    const shopDetails = document.getElementById("shopDetails").value;
+    const ownerName = document.getElementById("ownerName").value;
+    const ownerDetails = document.getElementById("ownerDetails").value;
 
-🏪 Shop Name: ${shopName.value}
-📂 Category: ${category.value}
-📍 Location: ${location.value}
+    const message = 
+`New Shop Submission 🚀
 
-📝 Shop Details:
-${shopDetails.value}
+🏪 Shop Name: ${shopName}
+📂 Category: ${category}
+📝 Shop Details: ${shopDetails}
 
-👤 Owner: ${ownerName.value}
-ℹ️ Owner Details:
-${ownerDetails.value}
-`;
+👤 Owner Name: ${ownerName}
+ℹ️ Owner Details: ${ownerDetails}
 
-  const phone = "91XXXXXXXXXX"; // ← replace with your WhatsApp number
-  window.open(`https://wa.me/${8073542692}?text=${encodeURIComponent(data)}`, "_blank");
-});
+📸 Photos will be shared separately`;
+
+    const phoneNumber = "91XXXXXXXXXX"; // 🔴 REPLACE with your WhatsApp number
+    const whatsappURL = `https://wa.me/${8073542692}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
 </script>
 
 </body>
