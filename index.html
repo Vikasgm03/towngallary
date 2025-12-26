@@ -256,6 +256,22 @@
     max-width: 100%;
   }
 }
+/* ---------- ALTERNATING LAYOUT ---------- */
+.preview-container.reverse {
+  flex-direction: row-reverse;
+}
+
+/* ---------- SCROLL ANIMATION ---------- */
+.preview-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.preview-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 </style>
@@ -282,19 +298,65 @@
     </div>
 
     <!-- RIGHT : DETAILS -->
-    <div class="preview-content">
-      <h2>Local Retail & Grocery Shops</h2>
-      <p>
-        Discover trusted grocery stores, provision shops, bakeries, and daily-need outlets
-        that serve the people of Shravanabelagola. From fresh essentials to household needs,
-        explore shops that keep the town running every day.
-      </p>
+    <section class="preview-section">
+  <div class="preview-container">
 
-      <a href="more_categories.html" class="preview-btn">
-        Explore Shops →
-      </a>
+    <div class="preview-image">
+      <img src="images/explorica/retail_shops/durga.jpg" alt="Retail Shops">
     </div>
 
+    <div class="preview-content">
+      <h2>Retail & Grocery Shops</h2>
+      <p>
+        Discover trusted grocery stores, provision shops, bakeries,
+        and daily-need outlets serving Shravanabelagola.
+      </p>
+      <a href="more_categories.html" class="preview-btn">Explore Shops →</a>
+    </div>
+
+  </div>
+</section>
+
+    
+<section class="preview-section">
+  <div class="preview-container reverse">
+
+    <div class="preview-image">
+      <img src="images/raghu.jpeg" alt="Restaurants">
+    </div>
+
+    <div class="preview-content">
+      <h2>Restaurants & Cafes</h2>
+      <p>
+        Explore popular restaurants, cafés, bakeries, and local food
+        spots loved by pilgrims and locals alike.
+      </p>
+      <a href="restaurants.html" class="preview-btn">Explore Food →</a>
+    </div>
+
+  </div>
+</section>
+
+  <section class="preview-section">
+  <div class="preview-container">
+
+    <div class="preview-image">
+      <img src="vindhyagiri.jpeg" alt="Heritage">
+    </div>
+
+    <div class="preview-content">
+      <h2>Temples & Heritage</h2>
+      <p>
+        Walk through centuries of Jain heritage, ancient temples,
+        sacred hills, and timeless spiritual landmarks.
+      </p>
+      <a href="gallery.html" class="preview-btn">Explore Heritage →</a>
+    </div>
+
+  </div>
+</section>
+  
+    
   </div>
 </section>
 
@@ -314,6 +376,20 @@
       }
     });
   </script>
+<script>
+  const previews = document.querySelectorAll('.preview-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  previews.forEach(section => observer.observe(section));
+</script>
+
 
 
 
