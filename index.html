@@ -268,18 +268,18 @@ footer {
 </footer>
 
 <script>
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
-},{threshold:0.2});
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('navMenu');
 
-document.querySelectorAll('.preview-section')
-.forEach(sec=>observer.observe(sec));
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
 </script>
+>
 
 </body>
 </html>
+
 
 
 
