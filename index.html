@@ -364,18 +364,6 @@
     <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
   </footer>
 
-  <script>
-    // Fade-in effect for heritage section when it comes into view
-    window.addEventListener('scroll', () => {
-      const heritage = document.querySelector('.heritage-section');
-      const sectionTop = heritage.getBoundingClientRect().top;
-      const trigger = window.innerHeight * 0.8;
-
-      if (sectionTop < trigger) {
-        heritage.classList.add('visible');
-      }
-    });
-  </script>
 <script>
   const previews = document.querySelectorAll('.preview-section');
 
@@ -389,6 +377,7 @@
 
   previews.forEach(section => observer.observe(section));
 </script>
+
 
 
 
