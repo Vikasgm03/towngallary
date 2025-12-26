@@ -1,87 +1,157 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Namma Shravanabelagola</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Namma Shravanabelagola</title>
 
-  <!-- Step 1: Paste your CSS here inside <style> -->
-  /* ---------- HEADER ---------- */
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f7f7f7;
+  color: #333;
+}
+
+/* ---------- HEADER ---------- */
 .site-header {
   background: #f0f0f0;
   padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .site-title {
   margin: 0;
   font-size: 1.8rem;
   color: #ff8c00;
-  letter-spacing: 1px;
 }
 
-/* ---------- NAV ---------- */
 .nav-menu {
   display: flex;
   justify-content: center;
   gap: 12px;
-  flex-wrap: wrap;          /* 🔥 IMPORTANT for mobile */
+  flex-wrap: wrap;
   margin-top: 12px;
 }
 
 .nav-menu a {
-  text-decoration: none;
   padding: 8px 16px;
   border-radius: 20px;
   background: #e0e0e0;
   color: #333;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-/* Hover */
-.nav-menu a:hover {
-  background: #ff8c00;
-  color: white;
-}
-
-/* Active page */
+.nav-menu a:hover,
 .nav-menu a.active {
   background: #ff8c00;
   color: white;
-  box-shadow: 0 0 8px rgba(255,140,0,0.4);
 }
 
-/* Add Shop special button */
-.nav-menu a.add-btn {
-  background: linear-gradient(135deg, #ff8c00, #ffb347);
+.nav-menu .add-btn {
+  background: linear-gradient(135deg,#ff8c00,#ffb347);
   color: white;
-  font-weight: 500;
 }
 
-.nav-menu a.add-btn:hover {
-  background: linear-gradient(135deg, #ffb347, #ff8c00);
+/* ---------- MAP SECTION ---------- */
+.map-section {
+  padding: 60px 20px;
+  background: linear-gradient(180deg,#000,#0f2027);
+  color: white;
+  text-align: center;
 }
 
-/* ---------- MOBILE OPTIMIZATION ---------- */
-@media (max-width: 600px) {
-  .site-title {
-    font-size: 1.4rem;
+.map-container {
+  max-width: 90%;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
+
+/* ---------- HERITAGE ---------- */
+.heritage-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: white;
+}
+
+/* ---------- PREVIEW SECTIONS ---------- */
+.preview-section {
+  padding: 4rem 2rem;
+  background: white;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.preview-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.preview-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.preview-container.reverse {
+  flex-direction: row-reverse;
+}
+
+.preview-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 15px;
+}
+
+.preview-content h2 {
+  color: #ff8c00;
+}
+
+.preview-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #ff8c00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .preview-container {
+    flex-direction: column;
+    text-align: center;
   }
-
-  .nav-menu a {
-    padding: 7px 14px;
-    font-size: 0.85rem;
-  }
 }
-
+</style>
+</head>
 
 <body>
-  <header class="site-header">
-  <h1 class="site-title">Namma Shravanabelagola</h1>
 
+<header class="site-header">
+  <h1 class="site-title">Namma Shravanabelagola</h1>
   <nav class="nav-menu">
     <a href="index.html" class="active">Home</a>
     <a href="gallery.html">Gallery</a>
@@ -90,328 +160,58 @@
   </nav>
 </header>
 
-
-
-  <section>
-    <h2>Welcome to Our Town Gallery</h2>
-    <p>Explore the beauty of Shravanabelagola — temples, hills, and local vibes!</p>
-
- 
-    
-    <section class="map-section">
-  <h3>Explore the beauty, culture, and life of our hometown ❤️</h3>
-  <p class="map-text">📍 Explore on Map</p>
-
+<section class="map-section">
+  <h2>Explore Our Town</h2>
   <div class="map-container">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.3726516676765!2d76.48866351430544!3d12.857819890936604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bafdb17e40b7d23%3A0x8a5a5b7e8d77c63f!2sShravanabelagola!5e0!3m2!1sen!2sin!4v1696589876543!5m2!1sen!2sin" 
-      allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." loading="lazy"></iframe>
   </div>
 </section>
 
-<style>
-/* Map Section Styling */
-.map-section {
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(180deg, #000000, #0f2027);
-  color: white;
-  position: relative;
-  overflow: hidden;
-  clip-path: ellipse(120% 90% at 50% 10%);
-  animation: fadeInSection 1.2s ease-in-out;
-}
+<section class="heritage-section">
+  <h2>Heritage of Shravanabelagola</h2>
+  <p>Ancient Jain heritage, sacred hills, and timeless spirituality.</p>
+</section>
 
-/* Title Animation */
-.map-section h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  opacity: 0;
-  animation: fadeInText 1s ease forwards;
-}
-
-/* Subtext */
-.map-text {
-  font-size: 1.1rem;
-  color: #00ffff;
-  opacity: 0.8;
-  margin-bottom: 25px;
-}
-
-/* Map Container Styling */
-.map-container {
-  max-width: 90%;
-  margin: 0 auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-  transform: scale(0.95);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.map-container:hover {
-  transform: scale(1);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-}
-
-/* Responsive iframe */
-.map-container iframe {
-  width: 100%;
-  height: 400px;
-  border: none;
-}
-
-/* Fade-in animations */
-@keyframes fadeInText {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInSection {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .map-section h3 {
-    font-size: 1.4rem;
-  }
-  .map-container iframe {
-    height: 300px;
-  }
-}
-
- /* Alter */
-
-  /* ---------- PREVIEW SECTION ---------- */
-.preview-section {
-  padding: 4rem 2rem;
-  background-color: #ffffff;
-}
-
-.preview-container {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-/* LEFT IMAGE */
-.preview-image img {
-  width: 100%;
-  max-width: 450px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-/* RIGHT CONTENT */
-.preview-content h2 {
-  font-size: 2rem;
-  color: #ff8c00;
-  margin-bottom: 1rem;
-}
-
-.preview-content p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-/* BUTTON */
-.preview-btn {
-  display: inline-block;
-  background-color: #ff8c00;
-  color: white;
-  padding: 0.7rem 1.6rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.preview-btn:hover {
-  background-color: #e67e00;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(255, 140, 0, 0.4);
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 768px) {
-  .preview-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .preview-image img {
-    max-width: 100%;
-  }
-}
-/* ---------- ALTERNATING LAYOUT ---------- */
-.preview-container.reverse {
-  flex-direction: row-reverse;
-}
-
-/* ---------- SCROLL ANIMATION ---------- */
-.preview-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.preview-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-</style>
-
-
-  
-  <section class="heritage-section" id="heritage">
-    <h2>Heritage of Shravanabelagola</h2>
-    <p>
-      Shravanabelagola stands as a timeless symbol of peace, spirituality, and Jain heritage.  
-      The 57-foot monolithic statue of Lord Bahubali, carved out of a single granite rock over a thousand years ago,  
-      represents selflessness and enlightenment. The twin hills — Vindhyagiri and Chandragiri — are dotted with ancient  
-      temples, inscriptions, and serene viewpoints that reflect centuries of devotion.  
-      Every 12 years, the Mahamastakabhisheka festival draws devotees from across the globe,  
-      celebrating the grandeur and purity of Jain tradition amidst the tranquil surroundings of nature and history.
-    </p>
-  </section>
-<section class="preview-section">
-  <!-- ================= PREVIEW: SHOPS ================= -->
 <section class="preview-section">
   <div class="preview-container">
-
     <div class="preview-image">
-      <img src="images/explorica/retail_shops/durga.jpg" alt="Retail Shops">
+      <img src="images/explorica/retail_shops/durga.jpg">
     </div>
-
     <div class="preview-content">
       <h2>Retail & Grocery Shops</h2>
-      <p>
-        Discover trusted grocery stores, bakeries, and daily-need shops
-        serving Shravanabelagola.
-      </p>
-      <a href="retail_grid/retail_shops.html" class="preview-btn">
-        Explore Shops →
-      </a>
+      <p>Discover trusted grocery & provision stores.</p>
+      <a href="retail_grid/retail_shops.html" class="preview-btn">Explore Shops →</a>
     </div>
-
   </div>
 </section>
 
-<!-- ================= PREVIEW: FOOD ================= -->
 <section class="preview-section">
   <div class="preview-container reverse">
-
     <div class="preview-image">
-      <img src="images/raghu_hotel.jpg" alt="Restaurants">
+      <img src="images/raghu_hotel.jpg">
     </div>
-
     <div class="preview-content">
       <h2>Restaurants & Cafes</h2>
-      <p>
-        Explore popular restaurants, cafés, bakeries, and local food
-        spots loved by pilgrims and locals alike.
-      </p>
-      <a href="restaurants.html" class="preview-btn">
-        Explore Food →
-      </a>
+      <p>Local food loved by pilgrims and locals.</p>
+      <a href="restaurants.html" class="preview-btn">Explore Food →</a>
     </div>
-
   </div>
 </section>
 
-<!-- ================= PREVIEW: HERITAGE ================= -->
-<section class="preview-section">
-  <div class="preview-container">
-
-    <div class="preview-image">
-      <img src="vindhyagiri.jpeg" alt="Heritage">
-    </div>
-
-    <div class="preview-content">
-      
-      <h2>Temples & Heritage</h2>
-      <p>
-        Walk through centuries of Jain heritage, sacred hills,
-        and timeless spiritual landmarks.
-      </p>
-      <a href="gallery.html" class="preview-btn">
-        Explore Heritage →
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-  </div>
-</section>
-  
-    
-  </div>
-</section>
-
-  <footer>
-    <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
-  </footer>
+<footer>
+  © 2025 Namma Shravanabelagola | Built by Vikas G M
+</footer>
 
 <script>
-  const previews = document.querySelectorAll('.preview-section');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.2});
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  previews.forEach(section => observer.observe(section));
+document.querySelectorAll('.preview-section')
+.forEach(sec=>observer.observe(sec));
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>
