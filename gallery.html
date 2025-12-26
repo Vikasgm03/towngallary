@@ -46,42 +46,76 @@
       }
     }
 
-    nav {
-      text-align: center;
-      margin-top: 10px;
-    }
+    /* ---------- HEADER ---------- */
+.site-header {
+  background: #f0f0f0;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      padding: 6px 12px;
-      border-radius: 5px;
-      background-color: #666;
-      transition: background 0.3s;
-    }
+.site-title {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ff8c00;
+  letter-spacing: 1px;
+}
 
-    nav a:hover {
-      background-color: #999;
-    }
+/* ---------- NAV ---------- */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;        /* 🔥 mobile fix */
+  margin-top: 12px;
+}
 
-    nav a.active {
-      background-color: #ff8c00;
-    }
+.nav-menu a {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #e0e0e0;
+  color: #333;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
 
-    section {
-      padding: 2rem;
-      text-align: center;
-    }
-        .add-nav-btn {
-      background-color: #666;
-      color: white !important;
-      font-weight: 500;
-    }
+/* Hover */
+.nav-menu a:hover {
+  background: #ff8c00;
+  color: white;
+}
 
-    .add-nav-btn:hover {
-      background-color: #e67e00;
-    }
+/* Active page */
+.nav-menu a.active {
+  background: #ff8c00;
+  color: white;
+  box-shadow: 0 0 8px rgba(255,140,0,0.4);
+}
+
+/* Add Shop special button */
+.nav-menu a.add-btn {
+  background: linear-gradient(135deg, #ff8c00, #ffb347);
+  color: white;
+  font-weight: 500;
+}
+
+.nav-menu a.add-btn:hover {
+  background: linear-gradient(135deg, #ffb347, #ff8c00);
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 1.4rem;
+  }
+
+  .nav-menu a {
+    padding: 7px 14px;
+    font-size: 0.85rem;
+  }
+}
+
 
 
     /* ---------- CATEGORY BUTTONS ---------- */
@@ -181,14 +215,17 @@
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="gallery.html" class="active">Gallery</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="add_button.html" class="add-nav-btn"> Add Shop</a>
-    </nav>
-  </header>
+  <header class="site-header">
+  <h1 class="site-title">Namma Shravanabelagola</h1>
+
+  <nav class="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="add_button.html" class="add-btn">+ Add Shop</a>
+  </nav>
+</header>
+
 
   <section>
     <h2>Explore the Beauty of Shravanabelagola</h2>
