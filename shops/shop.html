@@ -1,37 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Shop Details</title>
+  <meta charset="UTF-8">
+  <title>Shop Details | Namma Shravanabelagola</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ---------- GLOBAL ---------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: #f0f0f0;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #ff8c00;
+      font-size: 1.6rem;
+    }
+
+    /* ---------- MAIN CONTAINER ---------- */
+    .details-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* ---------- IMAGE ---------- */
+    .shop-image {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---------- TEXT ---------- */
+    h2 {
+      color: #ff8c00;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* ---------- OWNER BOX ---------- */
+    .owner-box {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: #fafafa;
+      border: 1px solid #ddd;
+    }
+
+    .owner-box img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff8c00;
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      background: #ff8c00;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e67e00;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #333;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s ease;
+    }
+
+    .scale-in.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 600px) {
+      .owner-box {
+        flex-direction: column;
+        text-align: center;
+      }
+      .shop-image {
+        height: 250px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="shopDetails"></div>
+<header>
+  <h1>Namma Shravanabelagola</h1>
+</header>
 
+<!-- ========= SHOP DETAILS ========= -->
+<div class="details-container fade-up" id="shopContainer">
+
+  <!-- SHOP IMAGE -->
+  <img
+    src="images/explorica/retail_shops/sri_ganapathi_bakery.jpg"
+    alt="Sri Ganapathi Bakery"
+    class="shop-image scale-in"
+    id="shopImage"
+  >
+
+  <!-- SHOP INFO -->
+  <h2>Sri Ganapathi Bakery</h2>
+  <p>
+    Sri Ganapathi Bakery is a popular local bakery in Shravanabelagola,
+    serving fresh breads, cakes, biscuits, and daily baked items.
+    Known for quality, taste, and friendly service.
+  </p>
+
+  <!-- OWNER INFO -->
+  <div class="owner-box scale-in" id="ownerBox">
+    <img src="images/explorica/retail_shops/sri_ganapathi_bakery_profile.jpg" alt="Owner">
+    <div>
+      <h3>Vignesh</h3>
+      <p>
+        Vignesh is the owner of Sri Ganapathi Bakery, committed to
+        providing fresh and affordable bakery items to the local community.
+      </p>
+    </div>
+  </div>
+
+  <!-- BACK BUTTON -->
+  <a href="#" class="btn" id="dynamicBack">← Go Back</a>
+</div>
+
+<footer>
+  © 2025 Namma Shravanabelagola | Built by Vikas G M
+</footer>
+
+<!-- ========= JAVASCRIPT ========= -->
 <script>
-const params = new URLSearchParams(window.location.search);
-const shopId = params.get('id');
+  // Trigger animations
+  window.addEventListener('load', () => {
+    document.getElementById('shopContainer').classList.add('show');
+    document.getElementById('shopImage').classList.add('show');
+    document.getElementById('ownerBox').classList.add('show');
+  });
 
-fetch('shops.json')
-  .then(res => res.json())
-  .then(shops => {
-    const shop = shops.find(s => s.id === shopId);
-    if (!shop) return;
-
-    document.getElementById('shopDetails').innerHTML = `
-      <h1>${shop.name}</h1>
-      <img src="${shop.image}" width="300">
-      <p>${shop.description}</p>
-
-      <h3>Owner</h3>
-      <img src="${shop.ownerImage}" width="100">
-      <p>${shop.owner}</p>
-
-      <p>📍 ${shop.location}</p>
-      <a href="${shop.map}" target="_blank">Open in Google Maps</a>
-
-      <br><br>
-      <button onclick="history.back()">← Go Back</button>
-    `;
+  // Dynamic back button
+  document.getElementById('dynamicBack').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (document.referrer) {
+      window.location.href = document.referrer;
+    } else {
+      window.location.href = "index.html";
+    }
   });
 </script>
 
