@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shop Details</title>
+</head>
+<body>
+
+<div id="shopDetails"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const shopId = params.get('id');
+
+fetch('shops.json')
+  .then(res => res.json())
+  .then(shops => {
+    const shop = shops.find(s => s.id === shopId);
+    if (!shop) return;
+
+    document.getElementById('shopDetails').innerHTML = `
+      <h1>${shop.name}</h1>
+      <img src="${shop.image}" width="300">
+      <p>${shop.description}</p>
+
+      <h3>Owner</h3>
+      <img src="${shop.ownerImage}" width="100">
+      <p>${shop.owner}</p>
+
+      <p>📍 ${shop.location}</p>
+      <a href="${shop.map}" target="_blank">Open in Google Maps</a>
+
+      <br><br>
+      <button onclick="history.back()">← Go Back</button>
+    `;
+  });
+</script>
+
+</body>
+</html>
