@@ -8,6 +8,10 @@
 <style>
 /* ---------- GLOBAL ---------- */
 body {
+  {
+  width: 100%;
+  overflow-x: hidden;
+}
   font-family: 'Poppins', sans-serif;
   margin: 0;
   background: #f7f7f7;
@@ -80,20 +84,24 @@ body {
 
 /* ---------- MOBILE ---------- */
 @media (max-width: 768px) {
+
   .preview-container {
-    flex-direction: column !important;
+    flex-direction: column;
     text-align: center;
   }
 
   .preview-image {
-    max-width: 70%;
+    width: 100%;
+    max-width: 100%;
   }
+
+  .preview-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
 }
 
-.preview-container,
-.preview-container.reverse {
-  align-items: stretch;
-}
 
 
 /* ---------- PREVIEW IMAGE (DESKTOP + MOBILE) ---------- */
@@ -185,15 +193,13 @@ body {
 
 .preview-container {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   gap: 40px;
-  align-items: center;
+  align-items: stretch;
+  padding: 0;              /* 🔥 prevent overflow */
 }
 
-.preview-container.reverse {
-  flex-direction: row-reverse;
-}
 
 .preview-image {
   width: 450px;
@@ -369,6 +375,7 @@ footer {
 
 </body>
 </html>
+
 
 
 
