@@ -169,7 +169,10 @@ body {
 .preview-image img {
   width: 100%;
   max-width: 450px;
+  height: 260px;          /* FIXED SIZE */
+  object-fit: cover;     /* AUTO CROP */
   border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .preview-content h2 {
@@ -293,6 +296,7 @@ footer {
 
 </body>
 </html>
+
 
 
 
