@@ -1,1 +1,25 @@
 
+[
+  {
+    "id": "durga",
+    "name": "Sri Durga Stores",
+    "category": "Retail & Grocery",
+    "image": "../images/explorica/retail_shops/durga.jpg",
+    "description": "Trusted provision and grocery store serving Shravanabelagola.",
+    "owner": "Hemanth",
+    "ownerImage": "../images/explorica/retail_shops/durga_profile.jpg",
+    "location": "Shravanabelagola Main Road",
+    "map": "https://maps.app.goo.gl/HS1E9DxTBfeyX8Fs6"
+  },
+  {
+    "id": "ganapathi",
+    "name": "Sri Ganapathi Bakery",
+    "category": "Bakery",
+    "image": "../images/explorica/retail_shops/sri_ganapathi_bakery.jpg",
+    "description": "Fresh bread, cakes, biscuits, and daily bakery needs.",
+    "owner": "Vignesh",
+    "ownerImage": "../images/explorica/retail_shops/sri_ganapathi_bakery_profile.jpg",
+    "location": "Sreekanta Nagara",
+    "map": "https://maps.app.goo.gl/HS1E9DxTBfeyX8Fs6"
+  }
+]
