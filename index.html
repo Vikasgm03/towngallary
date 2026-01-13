@@ -82,11 +82,25 @@ body {
 /* ---------- MOBILE ---------- */
 @media (max-width: 768px) {
 
-  /* Preview image crop on mobile */
+  .preview-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* 🔥 FORCE CROP ON MOBILE */
   .preview-image {
     width: 100%;
-    height: 220px;
+    height: 220px;     /* FIXED height */
+    overflow: hidden; /* REQUIRED */
   }
+
+  .preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* CROP */
+  }
+}
+
 
   /* Mobile navigation */
   .nav-menu {
@@ -328,6 +342,7 @@ footer {
 
 </body>
 </html>
+
 
 
 
