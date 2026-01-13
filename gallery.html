@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | Vihara - The City Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gallery | Vihara</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,24 +12,23 @@
     /* ---------- VARIABLES & RESET ---------- */
     :root {
       --primary: #ff8c00;
-      --primary-dark: #e67e00;
       --text-dark: #2c3e50;
-      --white: #ffffff;
-      --radius: 15px;
+      --bg-body: #f8f9fa;
+      --radius: 12px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
+      background-color: var(--bg-body);
       color: var(--text-dark);
       padding-bottom: 50px;
     }
 
-    /* ---------- HEADER (With Dynamic Logo) ---------- */
+    /* ---------- HEADER ---------- */
     .site-header {
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.98);
       backdrop-filter: blur(10px);
       padding: 0.8rem 5%;
       position: sticky;
@@ -41,145 +40,140 @@
       align-items: center;
     }
 
-    /* Dynamic Logo CSS */
     .logo-container {
-      width: 140px; height: 45px; position: relative; display: block;
+      width: 120px; height: 40px; position: relative; display: block;
     }
     .logo-img {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: contain; transition: opacity 1s ease-in-out;
+      object-fit: contain; transition: opacity 1s;
     }
     .logo-primary { animation: fadeOne 8s infinite; }
     .logo-secondary { animation: fadeTwo 8s infinite; }
-
+    
     @keyframes fadeOne { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0; } 100% { opacity: 1; } }
     @keyframes fadeTwo { 0%, 45% { opacity: 0; } 50%, 95% { opacity: 1; } 100% { opacity: 0; } }
 
+    /* Hamburger */
+    .menu-toggle { font-size: 1.5rem; cursor: pointer; color: var(--text-dark); display: none; }
+
     /* Nav */
-    .nav-menu { display: flex; gap: 15px; }
+    .nav-menu { display: flex; gap: 10px; }
     .nav-menu a {
       text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.9rem;
       padding: 8px 16px; border-radius: 50px; transition: 0.3s;
     }
     .nav-menu a:hover, .nav-menu a.active { background: var(--primary); color: white; }
     .nav-menu a.add-btn { background: var(--text-dark); color: white; }
-    
-    /* Hamburger */
-    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-dark); }
 
-    /* ---------- FILTERS ---------- */
-    .filter-section {
-      text-align: center;
-      padding: 2rem 1rem;
+    /* ---------- SCROLLABLE FILTERS (Mobile Friendly) ---------- */
+    .filter-wrapper {
+      width: 100%;
+      overflow-x: auto; /* Allow horizontal scroll */
+      white-space: nowrap; /* Keep buttons in one line */
+      padding: 1rem 5%;
+      background: var(--bg-body);
+      -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
     }
+
+    /* Hide scrollbar but keep functionality */
+    .filter-wrapper::-webkit-scrollbar { display: none; }
 
     .filter-btn {
       border: none;
-      background: #eee;
-      padding: 8px 20px;
-      margin: 5px;
+      background: white;
+      padding: 10px 24px;
+      margin-right: 10px;
       border-radius: 50px;
       cursor: pointer;
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       transition: 0.3s;
     }
 
-    .filter-btn.active, .filter-btn:hover {
+    .filter-btn.active {
       background: var(--primary);
       color: white;
-      transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
     }
 
-    /* ---------- GALLERY GRID ---------- */
+    /* ---------- MASONRY GRID ---------- */
     .gallery-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
-      columns: 4 250px; /* Masonry Layout Effect */
-      column-gap: 20px;
+      padding: 0 15px;
+      
+      /* Desktop: 4 columns */
+      column-count: 4;
+      column-gap: 15px;
     }
 
     .gallery-item {
-      break-inside: avoid; /* Prevents cutting images in half */
-      margin-bottom: 20px;
+      break-inside: avoid; /* Don't cut images */
+      margin-bottom: 15px;
       position: relative;
       border-radius: var(--radius);
       overflow: hidden;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
-    .gallery-item:hover { transform: scale(1.03); }
 
     .gallery-item img {
       width: 100%;
-      display: block;
       height: auto;
+      display: block;
     }
 
-    /* Overlay Text */
     .item-overlay {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      bottom: 0; left: 0; width: 100%;
       background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      padding: 20px 15px 15px;
+      padding: 30px 10px 10px;
       color: white;
-      opacity: 1; /* Always visible for mobile friendliness */
-      transition: 0.3s;
     }
+    .item-overlay h3 { font-size: 0.95rem; margin: 0; font-weight: 600; }
+    .item-overlay p { font-size: 0.75rem; opacity: 0.9; margin: 0; }
 
-    .item-overlay h3 { font-size: 1rem; margin: 0; font-weight: 600; }
-    .item-overlay p { font-size: 0.8rem; opacity: 0.8; margin: 2px 0 0; }
-
-    /* Hide class for filtering */
     .hide { display: none; }
 
-    /* ---------- LIGHTBOX (Full Screen View) ---------- */
+    /* ---------- LIGHTBOX ---------- */
     .lightbox {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
-      z-index: 2000;
-      display: none; /* Hidden by default */
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95); z-index: 2000;
+      display: none; justify-content: center; align-items: center;
     }
-
-    .lightbox.active { display: flex; animation: fadeIn 0.3s; }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    }
-
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 95%; max-height: 80vh; border-radius: 8px; }
     .close-lightbox {
-      position: absolute;
-      top: 20px; right: 30px;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
+      position: absolute; top: 20px; right: 20px;
+      color: white; font-size: 2.5rem; padding: 10px; cursor: pointer;
     }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    /* ---------- MOBILE ---------- */
+    /* ---------- MOBILE RESPONSIVE ---------- */
     @media (max-width: 768px) {
+      /* Mobile Menu */
+      .menu-toggle { display: block; }
+      
       .nav-menu {
         display: none; position: absolute; top: 100%; left: 0; width: 100%;
-        background: white; flex-direction: column; padding: 1rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        background: white; flex-direction: column; padding: 1.5rem; gap: 1rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 1px solid #eee;
       }
       .nav-menu.show { display: flex; }
-      .menu-toggle { display: block; }
-      .gallery-container { columns: 2 150px; } /* 2 columns on mobile */
+
+      /* Mobile Grid - FORCE 2 COLUMNS */
+      .gallery-container {
+        column-count: 2; /* Forces 2 columns like Pinterest */
+        column-gap: 10px;
+        padding: 0 10px;
+      }
+
+      .gallery-item { margin-bottom: 10px; border-radius: 10px; }
+      
+      .item-overlay { padding: 20px 8px 8px; }
+      .item-overlay h3 { font-size: 0.8rem; }
+      .item-overlay p { font-size: 0.65rem; }
     }
   </style>
 </head>
@@ -204,13 +198,13 @@
     </nav>
   </header>
 
-  <section class="filter-section">
-    <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+  <div class="filter-wrapper">
+    <button class="filter-btn active" onclick="filterGallery('all', this)">All Photos</button>
     <button class="filter-btn" onclick="filterGallery('temple', this)">Temples</button>
     <button class="filter-btn" onclick="filterGallery('nature', this)">Nature</button>
-    <button class="filter-btn" onclick="filterGallery('food', this)">Food</button>
+    <button class="filter-btn" onclick="filterGallery('food', this)">Local Food</button>
     <button class="filter-btn" onclick="filterGallery('shops', this)">Shops</button>
-  </section>
+  </div>
 
   <div class="gallery-container">
     
@@ -218,20 +212,20 @@
       <img src="images/vindhyagiri.jpeg" alt="Vindhyagiri">
       <div class="item-overlay">
         <h3>Vindhyagiri Hill</h3>
-        <p>The Sacred Steps</p>
+        <p>Temple View</p>
       </div>
     </div>
 
     <div class="gallery-item" data-category="nature" onclick="openLightbox(this)">
-      <img src="images/lake.jpeg" alt="Kalyani">
+      <img src="images/lake.jpeg" alt="Lake">
       <div class="item-overlay">
-        <h3>Bhandara Basadi</h3>
-        <p>Historic Pond</p>
+        <h3>Kalyani</h3>
+        <p>Holy Pond</p>
       </div>
     </div>
 
     <div class="gallery-item" data-category="food" onclick="openLightbox(this)">
-      <img src="images/raghu.jpeg" alt="Dosa">
+      <img src="images/raghu.jpeg" alt="Food">
       <div class="item-overlay">
         <h3>Masala Dosa</h3>
         <p>Raghu Hotel</p>
@@ -242,41 +236,39 @@
       <img src="images/explorica/retail_shops/durga.jpg" alt="Shop">
       <div class="item-overlay">
         <h3>Durga Stores</h3>
-        <p>Click to View Shop Details ↗</p>
+        <p>Open Shop ↗</p>
       </div>
     </div>
 
-    <div class="gallery-item" data-category="temple" onclick="openLightbox(this)">
+     <div class="gallery-item" data-category="temple" onclick="openLightbox(this)">
       <img src="images/chandhragiri.jpeg" alt="Chandragiri">
       <div class="item-overlay">
-        <h3>Chandragiri Hill</h3>
-        <p>Ancient Inscriptions</p>
+        <h3>Chandragiri</h3>
+        <p>Historic Site</p>
       </div>
     </div>
 
     </div>
 
-  <div class="lightbox" id="lightbox">
-    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" src="" alt="Full View">
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="Zoomed View">
   </div>
 
   <script>
-    // 1. Mobile Menu Toggle
+    // Toggle Menu
     function toggleMenu() {
       document.getElementById('navMenu').classList.toggle('show');
     }
 
-    // 2. Filter Logic
-    function filterGallery(category, btn) {
-      // Update Active Button
+    // Filter
+    function filterGallery(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      // Filter Images
+      
       const items = document.querySelectorAll('.gallery-item');
       items.forEach(item => {
-        if (category === 'all' || item.getAttribute('data-category') === category) {
+        if(cat === 'all' || item.getAttribute('data-category') === cat) {
           item.classList.remove('hide');
         } else {
           item.classList.add('hide');
@@ -284,26 +276,16 @@
       });
     }
 
-    // 3. Lightbox Logic
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    function openLightbox(element) {
-      // If it's a shop, we might want to redirect instead of opening image (handled in HTML onclick)
-      // But for normal images:
-      const imgSrc = element.querySelector('img').src;
-      lightboxImg.src = imgSrc;
-      lightbox.classList.add('active');
+    // Lightbox
+    function openLightbox(el) {
+      const src = el.querySelector('img').src;
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('active');
     }
-
+    
     function closeLightbox() {
-      lightbox.classList.remove('active');
+      document.getElementById('lightbox').classList.remove('active');
     }
-
-    // Close on clicking background
-    lightbox.addEventListener('click', (e) => {
-      if(e.target === lightbox) closeLightbox();
-    });
   </script>
 
 </body>
