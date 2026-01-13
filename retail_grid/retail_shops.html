@@ -172,23 +172,28 @@
       <p>Explore local grocery, provision, and general stores serving our town.</p>
     </section>
 
-    <section class="shop-grid">
-      <div class="shop-card">
-        <img src="../images/explorica/retail_shops/durga.jpg" alt="Sri Durga Stores">
-        <h3>Sri Durga Stores</h3>
-        <a href="../details/retail_shops/sri_durga.html" class="map-link">🛒 View Details</a>
-      </div>
-    </section>
+    <section class="shop-grid" id="shopGrid"></section>
 
+<script>
+fetch('../shops/shops.json')
+  .then(res => res.json())
+  .then(shops => {
+    const grid = document.getElementById('shopGrid');
 
-
-     <section class="shop-grid">
-      <div class="shop-card">
-        <img src="../images/explorica/retail_shops/sri_ram_stores.jpeg" alt="Sri Ram Stores">
-        <h3>Sri Ram Stores</h3>
-        <a href="../details/retail_shops/sri_ram_stores.html" class="map-link">🛒 View Details</a>
-      </div>
-    </section>
+    shops.forEach(shop => {
+      grid.innerHTML += `
+        <div class="shop-card">
+          <img src="${shop.image}" alt="${shop.name}">
+          <h3>${shop.name}</h3>
+          <p>${shop.description}</p>
+          <a href="../shops/shop.html?id=${shop.id}" class="map-link">
+            🛒 View Details
+          </a>
+        </div>
+      `;
+    });
+  });
+</script>
 
 
     <div class="back-btn-container">
