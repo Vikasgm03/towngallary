@@ -59,14 +59,59 @@ body {
   align-items: center;
 }
 
+/* ===== DYNAMIC LOGO CSS ===== */
 .site-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: var(--primary-dark);
-  font-weight: 700;
+  /* Set the width/height to match your logo size so it doesn't jump */
+  width: 160px; 
+  height: 50px;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
+}
+
+.logo-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.logo-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Keeps logo proportions perfect */
+  transition: opacity 1s ease-in-out; /* Smooth fade effect */
+}
+
+/* ANIMATION LOGIC */
+/* Primary Logo: Visible for first 4 seconds, then fades */
+.logo-primary {
+  animation: fadeOne 8s infinite;
+}
+
+/* Secondary Logo: Hidden first, then shows up */
+.logo-secondary {
+  animation: fadeTwo 8s infinite;
+}
+
+/* Keyframes to switch them */
+@keyframes fadeOne {
+  0%   { opacity: 1; }
+  45%  { opacity: 1; } /* Stay visible */
+  50%  { opacity: 0; } /* Fade out */
+  95%  { opacity: 0; } /* Stay hidden */
+  100% { opacity: 1; } /* Fade back in */
+}
+
+@keyframes fadeTwo {
+  0%   { opacity: 0; }
+  45%  { opacity: 0; } /* Stay hidden */
+  50%  { opacity: 1; } /* Fade in */
+  95%  { opacity: 1; } /* Stay visible */
+  100% { opacity: 0; } /* Fade out */
 }
 
 .nav-links a {
@@ -337,5 +382,6 @@ body {
 
 </body>
 </html>
+
 
 
