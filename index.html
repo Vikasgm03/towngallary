@@ -3,316 +3,333 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Namma Shravanabelagola</title>
+<title>Namma Shravanabelagola | The Divine City</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* ===== RESET & VARIABLES ===== */
+/* ===== VARIABLES ===== */
 :root {
-  --primary: #ff8c00;
-  --primary-hover: #e67e00;
-  --bg-light: #f7f7f7;
-  --text-dark: #333;
-  --white: #ffffff;
-  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --primary: #FF9933; /* Saffron */
+  --primary-dark: #D35400;
+  --accent: #2c3e50;
+  --glass: rgba(255, 255, 255, 0.95);
+  --shadow: 0 15px 35px rgba(0,0,0,0.1);
+  --curve-bg: #f8f9fa;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+/* ===== RESET ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: var(--bg-light);
-  color: var(--text-dark);
-  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* ===== SCROLLING TICKER ===== */
+.ticker-wrap {
+  background: var(--accent);
+  color: white;
+  font-size: 0.85rem;
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
+.ticker-move {
+  display: inline-block;
+  animation: ticker 15s linear infinite;
+  padding-left: 100%;
+}
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-/* ===== HEADER ===== */
+/* ===== GLASS HEADER ===== */
 .site-header {
-  background: var(--white);
-  padding: 1rem 5%;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
-}
-
-.header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 5%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
-.site-title {
+.site-logo {
+  font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin: 0;
-}
-
-/* ===== NAV ===== */
-.nav-menu {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  padding: 8px 18px;
-  border-radius: 50px;
-  background: #f0f0f0;
-  color: var(--text-dark);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-  background: var(--primary);
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
-.nav-menu a.add-btn {
-  background: var(--text-dark);
-  color: var(--white);
-}
-
-.nav-menu a.add-btn:hover {
-  background: var(--primary);
-}
-
-/* ===== MAP ===== */
-.map-section {
-  padding: 2rem 5%;
-}
-
-.map-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  /* Responsive Aspect Ratio Hack */
-  position: relative;
-  padding-bottom: 40%; /* 40% height of width */
-  height: 0;
-}
-
-.map-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-/* ===== HERITAGE ===== */
-.heritage-section {
-  padding: 4rem 5%;
-  text-align: center;
-  background: var(--white);
-}
-
-.heritage-section h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-dark);
-}
-
-/* ===== PREVIEW CARDS ===== */
-.preview-section {
-  padding: 4rem 5%;
-  background: var(--bg-light);
-}
-
-.preview-section:nth-child(even) {
-  background: var(--white);
-}
-
-.preview-container {
-  max-width: 1100px;
-  margin: 0 auto;
+  color: var(--primary-dark);
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 10px;
 }
 
-/* Alternating Layout: Reverse the order for specific sections */
-.preview-container.reverse {
-  flex-direction: row-reverse;
+.nav-links a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+.nav-links a:hover { color: var(--primary); }
+.add-btn {
+  background: var(--primary);
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 50px;
 }
 
-.preview-image {
-  flex: 1;
+/* ===== PARALLAX HERO ===== */
+.hero {
+  height: 80vh;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('images/hero_statue.jpg'); /* Replace with your image */
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* Fallback color */
+.hero { background-color: #444; }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+/* WAVE DIVIDER */
+.custom-shape-divider-bottom-1680000000 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.custom-shape-divider-bottom-1680000000 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+}
+.shape-fill { fill: #f4f4f4; }
+
+/* ===== FLOATING QUICK CARDS ===== */
+.quick-access-container {
+  max-width: 1000px;
+  margin: -60px auto 3rem auto; /* Negative margin pulls it up */
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.quick-card {
+  background: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+
+.quick-card:hover { transform: translateY(-10px); }
+
+.quick-card i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.quick-card h3 { font-size: 1.1rem; font-weight: 600; }
+
+/* ===== SECTION TITLES ===== */
+.section-header {
+  text-align: center;
+  margin: 3rem 0;
+}
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--accent);
+}
+.underline {
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+/* ===== FEATURED GRID (Masonry Vibe) ===== */
+.featured-section {
+  max-width: 1100px;
+  margin: 0 auto 5rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.feature-img {
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-
-.preview-image img {
+.feature-img img {
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: 0.5s;
 }
+.feature-img:hover img { transform: scale(1.05); }
 
-.preview-image:hover img {
-  transform: scale(1.05);
-}
+.feature-text { padding: 1rem; }
+.feature-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent); }
+.feature-text p { color: #666; margin-bottom: 1.5rem; line-height: 1.8; }
 
-.preview-content {
-  flex: 1;
-}
-
-.preview-content h2 {
-  color: var(--primary);
-  margin-top: 0;
-  font-size: 1.8rem;
-}
-
-.preview-btn {
+.btn-explore {
   display: inline-block;
-  margin-top: 1.5rem;
-  background: var(--primary);
-  color: var(--white);
   padding: 12px 30px;
+  background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+  color: white;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 500;
-  box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
-  transition: transform 0.2s;
+  box-shadow: 0 5px 15px rgba(255, 153, 51, 0.4);
+  transition: 0.3s;
 }
+.btn-explore:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(255, 153, 51, 0.6); }
 
-.preview-btn:hover {
-  background: var(--primary-hover);
-  transform: translateY(-3px);
+/* ===== MAP SECTION ===== */
+.map-full {
+  width: 100%;
+  height: 400px;
+  filter: grayscale(20%); /* Artistic touch */
+  transition: 0.5s;
 }
+.map-full:hover { filter: grayscale(0%); }
 
-/* ===== FOOTER ===== */
-footer {
-  background: #222;
-  color: #aaa;
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-}
-
-footer strong {
-  color: var(--white);
-}
-
-/* ===== MOBILE RESPONSIVE ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  
-  /* Stack Header Center */
-  .header-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  /* Map gets taller on mobile for better visibility */
-  .map-container {
-    padding-bottom: 75%; 
-  }
-
-  /* Stack Content Vertically */
-  .preview-container, 
-  .preview-container.reverse {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .preview-image {
-    width: 100%;
-  }
-  
-  .preview-image img {
-    height: 250px; /* Slightly smaller height on mobile */
-  }
-
-  .heritage-section h2 {
-    font-size: 1.5rem;
-  }
+  .hero h1 { font-size: 2.5rem; }
+  .quick-access-container { grid-template-columns: 1fr 1fr; }
+  .featured-section { grid-template-columns: 1fr; text-align: center; }
+  .feature-text { order: 2; }
+  .nav-links { display: none; } /* Hide menu links on mobile for simplicity */
 }
 </style>
 </head>
-
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
-    <h1 class="site-title">Namma Shravanabelagola</h1>
-    <nav class="nav-menu">
-      <a href="index.html" class="active">Home</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="add_button.html" class="add-btn">+ Add Shop</a>
-    </nav>
+<div class="ticker-wrap">
+  <div class="ticker-move">
+    🔔 <strong>Daily Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next KSRTC Bus to Bangalore: 2:00 PM | Weather: 28°C Sunny 🔔
   </div>
+</div>
+
+<header class="site-header">
+  <div class="site-logo">
+    <i class="fas fa-om"></i> Namma SB
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="aboutus.html">Heritage</a>
+    <a href="add_button.html" class="add-btn">+ Add Shop</a>
+  </nav>
 </header>
 
-<section class="map-section">
-  <div class="map-container">
-    
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31113.88673756855!2d76.4746658!3d12.8576426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba53f19114757c9%3A0xc3e1373517205423!2sShravanabelagola%2C%20Karnataka%20573135!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-      allowfullscreen="" 
-      loading="lazy">
-    </iframe>
+<section class="hero">
+  <h1>Shravanabelagola</h1>
+  <p>Where History, Spirituality, and Community meet.</p>
+  
+  <div class="custom-shape-divider-bottom-1680000000">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
   </div>
 </section>
 
-<section class="heritage-section">
-  <h2>Heritage of Shravanabelagola</h2>
-  <p>Ancient Jain heritage, sacred hills, and timeless spirituality in the heart of Karnataka.</p>
-</section>
+<div class="quick-access-container">
+  <a href="#map" class="quick-card">
+    <i class="fas fa-map-marked-alt"></i>
+    <h3>City Map</h3>
+  </a>
+  <a href="retail_grid/retail_shops.html" class="quick-card">
+    <i class="fas fa-store"></i>
+    <h3>Shops</h3>
+  </a>
+  <a href="restaurants.html" class="quick-card">
+    <i class="fas fa-utensils"></i>
+    <h3>Food</h3>
+  </a>
+  <a href="#" class="quick-card">
+    <i class="fas fa-gopuram"></i>
+    <h3>Temples</h3>
+  </a>
+</div>
 
-<section class="preview-section">
-  <div class="preview-container">
-    <div class="preview-image">
-      <img src="images/explorica/retail_shops/durga.jpg" alt="Retail Shop in Shravanabelagola">
-    </div>
-    <div class="preview-content">
-      <h2>Retail & Grocery Shops</h2>
-      <p>Discover trusted grocery stores, provision shops, and local markets for your daily needs.</p>
-      <a href="retail_grid/retail_shops.html" class="preview-btn">Explore Shops →</a>
-    </div>
+<div class="section-header">
+  <h2>Experience the Local Life</h2>
+  <div class="underline"></div>
+</div>
+
+<section class="featured-section">
+  <div class="feature-text">
+    <h3>Local Markets & Shops</h3>
+    <p>Support local businesses! From the fresh flowers near the bus stand to the provision stores on the main road, find everything you need in our digital directory.</p>
+    <a href="retail_grid/retail_shops.html" class="btn-explore">Browse Shops</a>
+  </div>
+  <div class="feature-img">
+    <img src="images/explorica/retail_shops/durga.jpg" alt="Shops">
   </div>
 </section>
 
-<section class="preview-section">
-  <div class="preview-container reverse">
-    <div class="preview-image">
-      <img src="images/raghu_hotel.jpg" alt="Restaurant in Shravanabelagola">
-    </div>
-    <div class="preview-content">
-      <h2>Restaurants & Cafes</h2>
-      <p>Taste the authentic local cuisine. From quick bites to family dining, find the best spots here.</p>
-      <a href="restaurants.html" class="preview-btn">Explore Food →</a>
-    </div>
+<section class="featured-section">
+  <div class="feature-img">
+    <img src="images/raghu_hotel.jpg" alt="Food">
+  </div>
+  <div class="feature-text">
+    <h3>Authentic Tastes</h3>
+    <p>Craving a crispy Masala Dosa or a traditional Jain thali? Explore the best messes and restaurants hidden in the streets of Shravanabelagola.</p>
+    <a href="restaurants.html" class="btn-explore">Find Food</a>
   </div>
 </section>
 
-<footer>
-  <p>© 2025 <strong>Namma Shravanabelagola</strong> | Built by Vikas G M</p>
+<div class="section-header">
+  <h2>Navigate the Town</h2>
+  <div class="underline"></div>
+</div>
+<iframe class="map-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31135.667794716947!2d76.4746813426573!3d12.857647228229654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba53fbd268393e9%3A0x6b2ce360e2101689!2sShravanabelagola%2C%20Karnataka%20573135!5e0!3m2!1sen!2sin!4v1709825481234!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+
+<footer style="background: #222; color: white; padding: 3rem; text-align: center;">
+  <p style="opacity: 0.7;">© 2025 Namma Shravanabelagola</p>
 </footer>
 
 </body>
