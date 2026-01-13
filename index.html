@@ -292,10 +292,26 @@ footer {
       sec.classList.add('visible');
     });
   });
+
+
+  const previews = document.querySelectorAll('.preview-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  previews.forEach(section => observer.observe(section));
+
+
 </script>
 
 </body>
 </html>
+
 
 
 
