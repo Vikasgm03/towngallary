@@ -108,13 +108,13 @@ footer {
 </header>
 
 <div class="details-container">
-  <img id="shopImage" class="shop-image" src="" alt="Shop">
+  <img id="shopImage" class="shop-image" alt="Shop Image">
 
   <h2 id="shopName"></h2>
   <p id="shopDesc"></p>
 
   <div class="owner-box">
-    <img id="ownerImage" src="" alt="Owner">
+    <img id="ownerImage" alt="Owner">
     <div>
       <h3 id="ownerName"></h3>
       <p id="ownerDesc"></p>
@@ -129,45 +129,32 @@ footer {
 </footer>
 
 <script>
-/* ---------- SHOP DATA (TEMPORARY) ---------- */
-const shops = {
-  sri_durga: {
-    name: "Sri Durga Stores",
-    image: "../images/explorica/retail_shops/durga.jpg",
-    desc: "Trusted provision and grocery store serving Shravanabelagola residents.",
-    owner: "Hemanth",
-    ownerImage: "../images/explorica/retail_shops/durga_profile.jpg",
-    ownerDesc: "Hemanth is a dedicated local retailer known for quality service."
-  },
-
-  ganapathi_bakery: {
-    name: "Sri Ganapathi Bakery",
-    image: "../images/explorica/retail_shops/sri_ganapathi_bakery.jpg",
-    desc: "Popular bakery offering fresh bread, cakes and snacks daily.",
-    owner: "Vignesh",
-    ownerImage: "../images/explorica/retail_shops/sri_ganapathi_bakery_profile.jpg",
-    ownerDesc: "Vignesh manages the bakery with passion and consistency."
-  }
-};
-
-/* ---------- LOAD DATA ---------- */
+/* ---------- READ ID FROM URL ---------- */
 const params = new URLSearchParams(window.location.search);
-const shopKey = params.get("shop");
+const shopId = params.get('id');
 
-if (shopKey && shops[shopKey]) {
-  const s = shops[shopKey];
-  document.getElementById("shopName").textContent = s.name;
-  document.getElementById("shopImage").src = s.image;
-  document.getElementById("shopDesc").textContent = s.desc;
-  document.getElementById("ownerName").textContent = "About " + s.owner;
-  document.getElementById("ownerImage").src = s.ownerImage;
-  document.getElementById("ownerDesc").textContent = s.ownerDesc;
-} else {
-  document.getElementById("shopName").textContent = "Shop not found";
-}
+/* ---------- LOAD SHOP DATA ---------- */
+fetch('./shops.json')
+  .then(res => res.json())
+  .then(shops => {
+    const shop = shops.find(s => s.id === shopId);
+
+    if (!shop) {
+      document.querySelector('.details-container').innerHTML =
+        "<h2 style='text-align:center'>Shop not found</h2>";
+      return;
+    }
+
+    document.getElementById('shopName').innerText = shop.name;
+    document.getElementById('shopImage').src = shop.image;
+    document.getElementById('shopDesc').innerText = shop.description;
+    document.getElementById('ownerName').innerText = "About " + shop.owner;
+    document.getElementById('ownerImage').src = shop.ownerImage;
+    document.getElementById('ownerDesc').innerText = shop.ownerDescription;
+  });
 
 /* ---------- DYNAMIC BACK ---------- */
-document.getElementById("backBtn").onclick = () => {
+document.getElementById('backBtn').onclick = () => {
   if (document.referrer) history.back();
   else window.location.href = "../index.html";
 };
