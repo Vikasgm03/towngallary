@@ -1,198 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Add Your Shop | Namma Shravanabelagola</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Your Shop | Vihara</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* ---------- VARIABLES ---------- */
+    :root {
+      --primary: #ff8c00;
+      --text-dark: #2c3e50;
+      --bg-body: #f8f9fa;
+      --white: #ffffff;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-      color: #333;
+      background-color: var(--bg-body);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
+    /* ---------- HEADER ---------- */
     header {
-      background: #f0f0f0;
-      text-align: center;
-      padding: 1.2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.98);
+      padding: 1rem 5%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    header h1 {
-      color: #ff8c00;
-      margin: 0;
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .form-container {
-      max-width: 800px;
-      margin: 2.5rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .form-container h2 {
-      color: #ff8c00;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    label {
-      font-weight: 500;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 0.95rem;
-    }
-
-    textarea {
-      resize: vertical;
-    }
-
-    input[type="file"] {
-      padding: 6px;
-    }
-
-    .submit-btn {
-      display: block;
-      width: 100%;
-      margin-top: 2rem;
-      background: #ff8c00;
-      color: white;
-      border: none;
-      padding: 0.9rem;
-      font-size: 1rem;
-      border-radius: 30px;
-      cursor: pointer;
+    .close-btn {
+      text-decoration: none;
+      color: #666;
+      font-size: 1.5rem;
       transition: 0.3s;
     }
+    .close-btn:hover { color: var(--primary); transform: rotate(90deg); }
 
-    .submit-btn:hover {
-      background: #e67e00;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(255,140,0,0.4);
+    /* ---------- MAIN CONTENT ---------- */
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #ff8c00, #ffb347);
+      color: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+    }
+
+    .info-box h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
+    }
+
+    .info-box p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* ---------- FORM CONTAINER ---------- */
+    .form-wrapper {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+    }
+
+    /* Responsive Iframe */
+    iframe {
+      width: 100%;
+      height: 1400px; /* Adjust based on form length */
+      border: none;
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #f0f0f0;
-      margin-top: 3rem;
-      color: #555;
+      padding: 1.5rem;
+      color: #999;
+      font-size: 0.8rem;
+      background: #eee;
     }
+
+    /* Loading Animation for Iframe */
+    .loader {
+      text-align: center;
+      padding: 2rem;
+      color: var(--primary);
+    }
+
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>➕ Add Your Shop</h1>
-</header>
+  <header>
+    <div class="brand">
+      <i class="fas fa-plus-circle"></i> Add Shop
+    </div>
+    <a href="index.html" class="close-btn"><i class="fas fa-times"></i></a>
+  </header>
 
-<div class="form-container">
-  <h2>Shop Details</h2>
-
-  <form id="shopForm">
-
-    <!-- SHOP DETAILS -->
-    <div class="form-group">
-      <label>Shop Name *</label>
-      <input type="text" id="shopName" required>
+  <div class="container">
+    
+    <div class="info-box">
+      <h2>Grow Your Business</h2>
+      <p>Fill out the form below to list your shop on <strong>Vihara</strong> for free. Thousands of tourists are looking for you!</p>
     </div>
 
-    <div class="form-group">
-      <label>Shop Category *</label>
-      <select id="shopCategory" required>
-        <option value="">Select category</option>
-        <option>Retail / Grocery</option>
-        <option>Restaurant / Cafe</option>
-        <option>Bakery</option>
-        <option>Electricals</option>
-        <option>Automobile</option>
-        <option>Other</option>
-      </select>
-    </div>
+    <div class="form-wrapper">
+      <div id="loading" class="loader">
+        <i class="fas fa-spinner fa-spin"></i> Loading Form...
+      </div>
+      
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSd.../viewform?embedded=true" 
+        width="640" 
+        height="1285" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+        onload="document.getElementById('loading').style.display='none';"
+      >Loading…</iframe>
+      
+      </div>
 
-    <div class="form-group">
-      <label>Shop Description *</label>
-      <textarea id="shopDetails" rows="4" required></textarea>
-    </div>
+  </div>
 
-    <div class="form-group">
-      <label>📸 Upload Shop Photo *</label>
-      <input type="file" accept="image/*" required>
-    </div>
-
-    <!-- OWNER DETAILS -->
-    <h2 style="margin-top:2.5rem;">Owner Details</h2>
-
-    <div class="form-group">
-      <label>Owner Name *</label>
-      <input type="text" id="ownerName" required>
-    </div>
-
-    <div class="form-group">
-      <label>Owner Description</label>
-      <textarea id="ownerDetails" rows="3"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>📸 Upload Owner Photo</label>
-      <input type="file" accept="image/*">
-    </div>
-
-    <!-- SUBMIT -->
-    <button type="submit" class="submit-btn">📩 Send Request via WhatsApp</button>
-
-  </form>
-</div>
-
-<footer>
-  <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
-</footer>
-
-<script>
-  document.getElementById("shopForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const shopName = document.getElementById("shopName").value;
-    const category = document.getElementById("shopCategory").value;
-    const shopDetails = document.getElementById("shopDetails").value;
-    const ownerName = document.getElementById("ownerName").value;
-    const ownerDetails = document.getElementById("ownerDetails").value;
-
-    const message = 
-`New Shop Submission 🚀
-
-🏪 Shop Name: ${shopName}
-📂 Category: ${category}
-📝 Shop Details: ${shopDetails}
-
-👤 Owner Name: ${ownerName}
-ℹ️ Owner Details: ${ownerDetails}
-
-📸 Photos will be shared separately`;
-
-    const phoneNumber = "91XXXXXXXXXX"; // 🔴 REPLACE with your WhatsApp number
-    const whatsappURL = `https://wa.me/${+91 8073542692}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappURL, "_blank");
-  });
-</script>
+  <footer>
+    <p>© 2025 Vihara | Join the Community</p>
+  </footer>
 
 </body>
 </html>
