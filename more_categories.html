@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Explore Categories | Vihara</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
       --radius: 16px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -34,9 +34,9 @@
 
     /* ---------- HEADER ---------- */
     header {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
-      padding: 1rem 5%;
+      padding: 0.8rem 5%;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -48,12 +48,12 @@
 
     .brand {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--primary);
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .nav-link {
@@ -61,22 +61,27 @@
       color: var(--text-dark);
       font-weight: 500;
       font-size: 0.9rem;
+      padding: 8px 12px;
+      border-radius: 50px;
+      background: #eee;
       transition: 0.3s;
     }
-    .nav-link:hover { color: var(--primary); }
+    .nav-link:hover { background: var(--primary); color: white; }
 
     /* ---------- HERO / SEARCH ---------- */
     .hero-section {
       text-align: center;
-      padding: 3rem 1rem 2rem;
+      padding: 2rem 1rem 1.5rem;
     }
 
     .hero-section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
       color: var(--text-dark);
     }
+
+    .hero-section p { font-size: 0.9rem; color: #777; }
 
     .search-container {
       max-width: 500px;
@@ -86,15 +91,16 @@
 
     .search-input {
       width: 100%;
-      padding: 15px 20px 15px 50px;
+      padding: 12px 20px 12px 45px;
       border: 2px solid #eee;
       border-radius: 50px;
-      font-size: 1rem;
+      font-size: 16px; /* Prevents iOS Zoom */
       font-family: 'Poppins', sans-serif;
       outline: none;
       transition: 0.3s;
       background: white;
       box-shadow: var(--shadow);
+      -webkit-appearance: none;
     }
 
     .search-input:focus {
@@ -104,18 +110,19 @@
     
     .search-icon {
       position: absolute;
-      left: 20px;
+      left: 18px;
       top: 50%;
       transform: translateY(-50%);
       color: #aaa;
     }
 
-    /* ---------- GRID ---------- */
+    /* ---------- GRID LAYOUT (Responsive Fix) ---------- */
     .category-grid {
       max-width: 1100px;
-      margin: 1rem auto 4rem;
-      padding: 0 20px;
+      margin: 0 auto 4rem;
+      padding: 0 15px;
       display: grid;
+      /* Default Desktop: Auto fill based on size */
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 20px;
     }
@@ -128,22 +135,27 @@
       text-align: center;
       text-decoration: none;
       color: var(--text-dark);
-      box-shadow: var(--shadow);
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-      border: 1px solid transparent;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: transform 0.2s;
+      border: 1px solid #f0f0f0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 15px;
       position: relative;
-      overflow: hidden;
+    }
+
+    /* Touch Feedback for Mobile */
+    .category-card:active {
+      transform: scale(0.98);
+      background-color: #fafafa;
     }
 
     .category-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
       border-color: var(--primary-soft);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
     /* Icon Styling */
@@ -163,7 +175,6 @@
     .category-card:hover .icon-box {
       background: var(--primary);
       color: white;
-      transform: scale(1.1);
     }
 
     .category-card h3 {
@@ -172,30 +183,60 @@
       margin: 0;
     }
 
-    /* Fade In Animation */
+    /* Animation */
     .category-card {
       animation: fadeUp 0.6s ease forwards;
       opacity: 0;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Footer */
+    .hidden { display: none; }
+
     footer {
       margin-top: auto;
       text-align: center;
       padding: 2rem;
       color: #999;
-      font-size: 0.9rem;
-      background: #eee;
+      font-size: 0.8rem;
+      background: #f4f4f4;
     }
 
-    /* Hide items when filtered */
-    .hidden { display: none; }
+    /* ---------- MOBILE SPECIFIC TWEAKS ---------- */
+    @media (max-width: 600px) {
+      
+      /* Force 2 Columns on Mobile */
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 12px;
+      }
 
+      /* Compact Cards */
+      .category-card {
+        padding: 1.2rem 0.8rem;
+        gap: 10px;
+        border-radius: 12px;
+      }
+
+      /* Smaller Icons */
+      .icon-box {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+      }
+
+      .category-card h3 {
+        font-size: 0.9rem; /* Smaller text to fit on one line */
+      }
+
+      /* Adjust Hero */
+      .hero-section { padding-top: 1.5rem; }
+      .hero-section h2 { font-size: 1.5rem; }
+    }
   </style>
 </head>
 
@@ -205,16 +246,18 @@
     <div class="brand">
       <i class="fas fa-compass"></i> Vihara
     </div>
-    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html" class="nav-link">
+      <i class="fas fa-home"></i> Home
+    </a>
   </header>
 
   <section class="hero-section">
-    <h2>Explore Shravanabelagola</h2>
-    <p style="color: #666;">Find everything from temples to transport.</p>
+    <h2>Explore the City</h2>
+    <p>Find what you need in Shravanabelagola</p>
     
     <div class="search-container">
       <i class="fas fa-search search-icon"></i>
-      <input type="text" id="filterInput" class="search-input" placeholder="Find 'Gyms', 'Hotels', 'Food'...">
+      <input type="text" id="filterInput" class="search-input" placeholder="Search categories...">
     </div>
   </section>
 
@@ -222,27 +265,27 @@
 
     <a href="retail_grid/retail_shops.html" class="category-card" style="animation-delay: 0.05s">
       <div class="icon-box"><i class="fas fa-store"></i></div>
-      <h3>Retail Shops</h3>
+      <h3>Shops</h3>
     </a>
 
     <a href="hospitals_and_medicals_grid/hospitals_and_medicals.html" class="category-card" style="animation-delay: 0.1s">
       <div class="icon-box"><i class="fas fa-heart-pulse"></i></div>
-      <h3>Hospitals</h3>
+      <h3>Medical</h3>
     </a>
 
     <a href="automobile_and_electricals_grid/automobiles.html" class="category-card" style="animation-delay: 0.15s">
       <div class="icon-box"><i class="fas fa-wrench"></i></div>
-      <h3>Automobile</h3>
+      <h3>Auto</h3>
     </a>
 
     <a href="schools.html" class="category-card" style="animation-delay: 0.2s">
       <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
-      <h3>Schools</h3>
+      <h3>Education</h3>
     </a>
 
     <a href="restaurants.html" class="category-card" style="animation-delay: 0.25s">
       <div class="icon-box"><i class="fas fa-utensils"></i></div>
-      <h3>Restaurants</h3>
+      <h3>Food</h3>
     </a>
 
     <a href="bars.html" class="category-card" style="animation-delay: 0.3s">
@@ -257,12 +300,12 @@
 
     <a href="gyms.html" class="category-card" style="animation-delay: 0.4s">
       <div class="icon-box"><i class="fas fa-dumbbell"></i></div>
-      <h3>Gyms</h3>
+      <h3>Fitness</h3>
     </a>
 
     <a href="hotels.html" class="category-card" style="animation-delay: 0.45s">
       <div class="icon-box"><i class="fas fa-hotel"></i></div>
-      <h3>Hotels</h3>
+      <h3>Stay</h3>
     </a>
 
     <a href="services.html" class="category-card" style="animation-delay: 0.5s">
@@ -272,12 +315,12 @@
 
     <a href="transport.html" class="category-card" style="animation-delay: 0.55s">
       <div class="icon-box"><i class="fas fa-taxi"></i></div>
-      <h3>Transport</h3>
+      <h3>Travel</h3>
     </a>
 
     <a href="parks.html" class="category-card" style="animation-delay: 0.6s">
       <div class="icon-box"><i class="fas fa-tree"></i></div>
-      <h3>Parks</h3>
+      <h3>Nature</h3>
     </a>
 
     <a href="villages.html" class="category-card" style="animation-delay: 0.65s">
@@ -297,13 +340,12 @@
   </footer>
 
   <script>
-    // Simple Search Filter
+    // Search Filter
     const filterInput = document.getElementById('filterInput');
     const cards = document.querySelectorAll('.category-card');
 
     filterInput.addEventListener('keyup', (e) => {
       const text = e.target.value.toLowerCase();
-
       cards.forEach(card => {
         const title = card.querySelector('h3').textContent.toLowerCase();
         if(title.includes(text)) {
