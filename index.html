@@ -219,7 +219,8 @@ footer {
     </div>
 
     <!-- Navigation -->
-    <nav class="nav-menu">
+    <nav class="nav-menu" id="navMenu">
+
   <a href="index.html" class="active">Home</a>
   <a href="gallery.html">Gallery</a>
   <a href="aboutus.html">About Us</a>
@@ -287,11 +288,6 @@ footer {
   });
 </script>
 <script>
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.preview-section').forEach(sec => {
-      sec.classList.add('visible');
-    });
-  });
 
 
   const previews = document.querySelectorAll('.preview-section');
@@ -311,6 +307,7 @@ footer {
 
 </body>
 </html>
+
 
 
 
