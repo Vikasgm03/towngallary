@@ -84,23 +84,93 @@ body {
 /* Hamburger (Mobile Only) */
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
-/* ===== HERO ===== */
-.hero-image-box {
-  flex: 1;
-  height: 500px;
-  background-image: url('images/hero_statue.jpg');
-  background-size: cover;
-  background-position: center;
-  /* CHANGED: Clean rounded rectangle instead of blob */
-  border-radius: 20px; 
-  box-shadow: 20px 20px 0px rgba(255, 140, 0, 0.15); /* Stylish offset shadow */
-  margin-left: 2rem;
-  transition: transform 0.3s ease;
+/* ===== HERO SECTION (Split Screen - Arch Style) ===== */
+.hero {
+  min-height: 85vh; /* Takes up most of the screen height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%; /* Spacing on sides */
+  background: white;
+  color: #333;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-image-box:hover {
-  transform: translateY(-5px); /* Subtle lift effect */
+/* Left Side: Text Styling */
+.hero-text {
+  flex: 1;
+  text-align: left;
+  z-index: 2; /* Ensures text stays on top */
 }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem; /* Big, bold text */
+  color: var(--primary); /* Saffron Color */
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  max-width: 450px; /* Keeps text easy to read */
+}
+
+/* Right Side: The Image Box */
+.hero-image-box {
+  flex: 1;
+  height: 550px; /* Height of the image */
+  background-image: url('images/hero_statue.jpg'); /* YOUR IMAGE PATH HERE */
+  background-size: cover;
+  background-position: center;
+  
+  /* THE ARCH SHAPE (Temple Window Style) */
+  border-radius: 300px 300px 20px 20px; 
+  
+  /* Stylish Shadow */
+  box-shadow: 30px 30px 0px rgba(255, 140, 0, 0.1); 
+  
+  margin-left: 4rem;
+  transition: transform 0.5s ease;
+}
+
+/* Hover Effect: The image floats up slightly */
+.hero-image-box:hover {
+  transform: translateY(-10px);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse; /* Image on top, Text bottom */
+    text-align: center;
+    padding: 3rem 1.5rem;
+    height: auto; /* Let height grow naturally */
+  }
+  
+  .hero-text {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the button */
+  }
+  
+  .hero h1 { font-size: 2.5rem; }
+  
+  .hero-image-box {
+    width: 100%;
+    height: 350px;
+    margin-left: 0;
+    /* On mobile, make it a simpler rounded rectangle */
+    border-radius: 20px; 
+    box-shadow: 10px 10px 0px rgba(255, 140, 0, 0.1);
+  }
+}
+  
 /* Wave */
 .custom-shape-divider {
   position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
@@ -262,6 +332,10 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </section>
 
+  <div class="hero-image-box"></div>
+
+</section>
+
 <div class="quick-access-container">
   <a href="#map" class="quick-card">
     <i class="fas fa-map-marked-alt"></i>
@@ -327,6 +401,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
 
 
