@@ -169,7 +169,31 @@ body {
   gap: 2rem;
   align-items: center;
 }
+/* ===== BUTTON RESTORE ===== */
+.preview-btn, 
+.btn-explore {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #ff8c00; /* Vihara Orange */
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4); /* Glow effect */
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
 
+/* Hover Effect */
+.preview-btn:hover, 
+.btn-explore:hover {
+  background: #e67e00; /* Darker Orange */
+  transform: translateY(-3px); /* Moves up slightly */
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.6);
+  color: white;
+}
 /* ===== HOMEPAGE IMAGE FIX ===== */
 
 .feature-img {
@@ -353,5 +377,6 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
 
