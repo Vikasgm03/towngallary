@@ -86,44 +86,49 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  height: 85vh; /* Taller height for impact */
-  background-image: url('images/hero_statue.jpg');
-  background-position: center;
-  background-size: cover;
+  min-height: 80vh;
   display: flex;
-  align-items: flex-end; /* Positions text at the bottom */
-  justify-content: flex-start; /* Aligns text to the left */
-  padding: 0 5%;
-  position: relative;
-  text-align: left; 
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5%;
+  background: white; /* Uses a white background */
+  color: var(--text-dark);
 }
 
-/* The Dark Fade Overlay */
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; width: 100%; height: 60%;
-  background: linear-gradient(to top, #111 10%, transparent);
-}
-
-/* Text Styling */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 80px; 
-  color: white;
+.hero-text {
+  flex: 1;
+  text-align: left;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 0.5rem;
-  text-shadow: none; /* Removes shadow for a cleaner look */
+  font-size: 4rem;
+  color: var(--primary);
+  line-height: 1.1;
+  margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  max-width: 500px;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.hero-image-box {
+  flex: 1;
+  height: 500px;
+  background-image: url('images/hero_statue.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Creates an organic blob shape */
+  box-shadow: 0 20px 50px rgba(255, 140, 0, 0.2);
+  margin-left: 2rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .hero { flex-direction: column-reverse; text-align: center; }
+  .hero-image-box { width: 100%; height: 300px; margin: 0 0 2rem 0; }
+  .hero-text { text-align: center; }
 }
 
 /* Wave */
@@ -276,10 +281,12 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 </header>
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>Discover Vihara.</h1>
-    <p>Your ultimate digital guide to the heritage, food, and culture of Shravanabelagola.</p>
+  <div class="hero-text">
+    <h1>Explore <br> The Divine City</h1>
+    <p>Find shops, temples, and local secrets in Shravanabelagola.</p>
+    <a href="#map" class="btn-explore">Start Journey</a>
   </div>
+  <div class="hero-image-box"></div>
 </section>
 
 <div class="quick-access-container">
@@ -347,4 +354,5 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
