@@ -11,5 +11,29 @@
     "mapLink": "https://maps.google.com/?q=Shravanabelagola",
     "status": "Open Now",
     "rating": "4.8"
+  },
+  {
+    "id": "102",
+    "name": "Durga Provision Store",
+    "category": "General Store",
+    "image": "https://via.placeholder.com/800x400?text=Durga+Store", 
+    "description": "Best place for rice, ragi flour, and daily home needs. Wholesale prices available.",
+    "owner": "Ramesh Gowda",
+    "phone": "+919876543210",
+    "address": "Main Market Road, Near Bus Stand",
+    "timings": "8:00 AM - 9:30 PM",
+    "rating": "4.5"
+  },
+  {
+    "id": "103",
+    "name": "Raghu Hotel",
+    "category": "Restaurant",
+    "image": "https://via.placeholder.com/800x400?text=Raghu+Hotel",
+    "description": "Authentic Karnataka style vegetarian food. Famous for Masala Dosa.",
+    "owner": "Raghu N",
+    "phone": "+919876543211",
+    "address": "Near Vindhyagiri Entrance",
+    "timings": "7:00 AM - 10:00 PM",
+    "rating": "4.8"
   }
 ]
