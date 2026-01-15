@@ -85,47 +85,22 @@ body {
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
 /* ===== HERO ===== */
-.hero {
-  height: 80vh;
+.hero-image-box {
+  flex: 1;
+  height: 500px;
   background-image: url('images/hero_statue.jpg');
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  /* CHANGED: Clean rounded rectangle instead of blob */
+  border-radius: 20px; 
+  box-shadow: 20px 20px 0px rgba(255, 140, 0, 0.15); /* Stylish offset shadow */
+  margin-left: 2rem;
+  transition: transform 0.3s ease;
 }
 
-/* Dark Overlay for better contrast */
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: rgba(0,0,0,0.3);
+.hero-image-box:hover {
+  transform: translateY(-5px); /* Subtle lift effect */
 }
-
-/* The Glass Box */
-.hero-card {
-  position: relative;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.15); /* Transparent White */
-  backdrop-filter: blur(15px); /* Applies the blur effect */
-  padding: 3rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-align: center;
-  color: white;
-  max-width: 700px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.hero h1 { font-size: 3rem; margin-bottom: 10px; }
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .hero { flex-direction: column-reverse; text-align: center; }
-  .hero-image-box { width: 100%; height: 300px; margin: 0 0 2rem 0; }
-  .hero-text { text-align: center; }
-}
-
 /* Wave */
 .custom-shape-divider {
   position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
@@ -276,11 +251,15 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 </header>
 
 <section class="hero">
-  <div class="hero-card">
-    <h1>Namma Shravanabelagola</h1>
-    <p>Heritage. Culture. Community.</p>
-    <a href="#map" class="btn-explore" style="margin-top:20px; background:white; color:#333;">Explore Now</a>
+  
+  <div class="hero-text">
+    <h1>Explore <br> The Divine City</h1>
+    <p>Discover the best shops, authentic food, and hidden heritage spots in Namma Shravanabelagola.</p>
+    <a href="#map" class="btn-explore">Start Journey</a>
   </div>
+
+  <div class="hero-image-box"></div>
+
 </section>
 
 <div class="quick-access-container">
@@ -348,6 +327,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
 
 
