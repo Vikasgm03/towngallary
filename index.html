@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Vihara | Namma Shravanabelagola</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* ===== VARIABLES ===== */
+/* ===== VARIABLES & RESET ===== */
 :root {
   --primary: #FF9933; /* Saffron */
   --primary-dark: #D35400;
   --accent: #2c3e50;
   --glass: rgba(255, 255, 255, 0.98);
+  --bg-light: #f4f4f4;
 }
 
-/* ===== RESET ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f4f4f4;
+  background-color: var(--bg-light);
   color: #333;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevents side scrolling */
 }
 
 /* ===== TICKER ===== */
@@ -57,7 +57,7 @@ body {
   align-items: center;
 }
 
-/* Dynamic Logo */
+/* Logo Animation */
 .logo-container {
   width: 140px; height: 40px; position: relative; display: block;
 }
@@ -65,44 +65,30 @@ body {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   object-fit: contain;
 }
-/* Animation for logo */
-.logo-primary { animation: fadeOne 8s infinite; }
-.logo-secondary { animation: fadeTwo 8s infinite; }
+.logo-primary { animation: fadeOne 5s infinite; }
+.logo-secondary { animation: fadeTwo 5s infinite; }
 
 @keyframes fadeOne { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes fadeTwo { 0%, 45% { opacity: 0; } 50%, 95% { opacity: 1; } 100% { opacity: 0; } }
 
 /* Nav Links (Desktop) */
-.nav-links { display: flex; align-items: center; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
 .nav-links a {
-  text-decoration: none;
-  color: var(--accent);
-  font-weight: 600;
-  margin-left: 20px;
-  transition: 0.3s;
-  font-size: 0.95rem;
+  text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.95rem; transition: 0.3s;
 }
 .nav-links a:hover { color: var(--primary); }
 .add-btn {
-  background: var(--primary);
-  color: white !important;
-  padding: 8px 20px;
-  border-radius: 50px;
+  background: var(--primary); color: white !important; padding: 8px 20px; border-radius: 50px;
 }
 
-/* Hamburger Icon (Mobile) */
-.menu-toggle {
-  display: none; /* Hidden on desktop */
-  font-size: 1.5rem;
-  color: var(--accent);
-  cursor: pointer;
-}
+/* Hamburger (Mobile Only) */
+.menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
 /* ===== HERO ===== */
 .hero {
-  height: 75vh;
+  height: 70vh;
+  min-height: 400px;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('images/hero_statue.jpg');
-  background-attachment: fixed;
   background-position: center;
   background-size: cover;
   display: flex;
@@ -115,19 +101,17 @@ body {
   position: relative;
 }
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 10px;
   text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
-.hero p { font-size: 1.1rem; max-width: 600px; }
+.hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 2rem; }
 
-/* Wave Divider */
+/* Wave */
 .custom-shape-divider {
-    position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
+  position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
 }
-.custom-shape-divider svg { position: relative; display: block; width: calc(100% + 1.3px); height: 70px; }
-.shape-fill { fill: #f4f4f4; }
+.custom-shape-divider svg { position: relative; display: block; width: calc(100% + 1.3px); height: 60px; }
+.shape-fill { fill: var(--bg-light); }
 
 /* ===== QUICK CARDS ===== */
 .quick-access-container {
@@ -137,146 +121,66 @@ body {
   position: relative;
   z-index: 10;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 }
 
 .quick-card {
-  background: white;
-  padding: 1.2rem;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  text-decoration: none;
-  color: #333;
-  transition: transform 0.3s;
+  background: white; padding: 1.2rem; text-align: center; border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-decoration: none; color: #333; transition: transform 0.3s;
 }
 .quick-card:hover { transform: translateY(-5px); }
 .quick-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 8px; display: block; }
 .quick-card h3 { font-size: 0.9rem; font-weight: 600; margin: 0; }
 
-/* ===== SECTIONS ===== */
+/* ===== FEATURED SECTIONS ===== */
 .section-header { text-align: center; margin: 3rem 0; padding: 0 1rem; }
 .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 10px auto; }
 
-/* ===== NEW FEATURED SECTION DESIGN ===== */
 .featured-section {
   max-width: 1100px;
-  margin: 4rem auto; /* More breathing room */
+  margin: 4rem auto;
   padding: 3rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  
-  /* Card Design */
   background: #ffffff;
   border-radius: 25px;
-  /* A soft, premium shadow that makes it lift off the page */
   box-shadow: 0 20px 40px rgba(0,0,0,0.06);
   position: relative;
-  overflow: hidden; /* Needed for the accent strip */
+  overflow: hidden;
 }
 
-/* The Saffron Accent Strip */
+/* Saffron Accent Strip */
 .featured-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px; /* A subtle colored strip on the left */
-  height: 100%;
+  content: ''; position: absolute; top: 0; left: 0; width: 8px; height: 100%;
   background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
 }
 
-/* ----- Alternating Layout for Visual Balance ----- */
-/* Every second section gets the accent on the RIGHT side */
-.featured-section:nth-of-type(even)::before {
-    left: auto;
-    right: 0;
-}
+/* Alternate Layout (Desktop Only) */
+.featured-section:nth-of-type(even)::before { left: auto; right: 0; }
+.featured-section:nth-of-type(even) .feature-text { order: 2; }
 
-/* Every second section has the text on the right, image on left */
-.featured-section:nth-of-type(even) .feature-text {
-    order: 2;
-}
-
-/* Mobile Fix */
-@media (max-width: 768px) {
-  .featured-section {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 2rem 1.5rem;
-    gap: 2rem;
-  }
-  /* Reset order on mobile so text is always below image */
-  .featured-section:nth-of-type(even) .feature-text {
-      order: 0;
-  }
-}
-/* ===== BUTTON RESTORE ===== */
-.preview-btn, 
-.btn-explore {
-  display: inline-block;
-  margin-top: 1rem;
-  background: #ff8c00; /* Vihara Orange */
-  color: white;
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4); /* Glow effect */
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-/* Hover Effect */
-.preview-btn:hover, 
-.btn-explore:hover {
-  background: #e67e00; /* Darker Orange */
-  transform: translateY(-3px); /* Moves up slightly */
-  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.6);
-  color: white;
-}
- .preview-section {
-  background-color: #ffffff;
-  background-image: radial-gradient(#ff8c00 1px, transparent 1px);
-  background-size: 20px 20px; /* Distance between dots */
-  opacity: 0.95; /* Makes it subtle */
-  padding: 4rem 5%;
-}
-/* ===== HOMEPAGE IMAGE FIX ===== */
-
+/* Images */
 .feature-img {
-  width: 100%;
-  height: 280px;  /* 1. FORCE FIXED HEIGHT */
-  border-radius: 20px;
-  overflow: hidden;
+  width: 100%; height: 280px; border-radius: 20px; overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
 .feature-img img {
-  width: 100%;
-  height: 100%;       /* Fill the container */
-  object-fit: cover;  /* 2. CROP AUTOMATICALLY */
-  object-position: center;
-  transition: transform 0.5s;
-  display: block;
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  transition: transform 0.5s; display: block;
 }
+.feature-img:hover img { transform: scale(1.05); }
 
-/* Hover Zoom Effect */
-.feature-img:hover img {
-  transform: scale(1.05);
+/* Buttons */
+.btn-explore {
+  display: inline-block; margin-top: 1.5rem; background: var(--primary); color: white;
+  padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;
+  box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4); transition: 0.3s;
 }
-
-/* Mobile Tweak: Make it slightly smaller on phones */
-@media (max-width: 768px) {
-  .feature-img {
-    height: 220px;
-  }
-}
+.btn-explore:hover { background: var(--primary-dark); transform: translateY(-3px); }
 
 /* ===== MAP ===== */
 .map-full { width: 100%; height: 350px; border: 0; filter: grayscale(20%); }
@@ -284,44 +188,43 @@ body {
 /* ===== FOOTER ===== */
 footer { background: #222; color: #888; text-align: center; padding: 2rem; font-size: 0.9rem; }
 
-/* ===== MOBILE RESPONSIVE FIXES ===== */
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
   
-  /* 1. Show Hamburger */
+  /* 1. Header & Menu */
   .menu-toggle { display: block; }
-
-  /* 2. Hide Nav Links by default & Style Dropdown */
   .nav-links {
-    display: none; /* Hidden */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    flex-direction: column;
-    padding: 1rem 0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border-top: 1px solid #eee;
+    display: none; /* Hidden by default */
+    position: absolute; top: 100%; left: 0; width: 100%;
+    background: white; flex-direction: column; align-items: flex-start;
+    padding: 1.5rem; gap: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 1px solid #eee;
   }
-  
-  /* Class to show menu when clicked */
-  .nav-links.active { display: flex; }
+  .nav-links.active { display: flex; } /* Show when active */
+  .nav-links a { width: 100%; font-size: 1.1rem; margin: 0; }
+  .add-btn { text-align: center; width: 100%; }
 
-  .nav-links a {
-    margin: 10px 0;
-    font-size: 1.1rem;
-  }
+  /* 2. Quick Cards */
+  .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: -40px; }
 
-  /* 3. Adjust Cards for Mobile */
-  .quick-access-container {
-    grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
-    gap: 10px;
-  }
-
-  /* 4. Sections */
+  /* 3. Hero Text */
   .hero h1 { font-size: 2.2rem; }
-  .featured-section { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+
+  /* 4. Featured Sections (Fixing layout mess) */
+  .featured-section {
+    grid-template-columns: 1fr; /* 1 Column */
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    margin: 2rem 1rem; /* Smaller margins */
+  }
+
+  /* Force Image to Top on Mobile */
+  .feature-img { height: 220px; order: 1; }
   .feature-text { order: 2; }
+  
+  /* Reset alternating logic for mobile */
+  .featured-section:nth-of-type(even) .feature-text { order: 2; } 
 }
 </style>
 </head>
@@ -334,7 +237,6 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 </div>
 
 <header class="site-header">
-  
   <a href="index.html" class="logo-container">
     <img src="images/logo/logo_english.png" class="logo-img logo-primary" alt="Vihara">
     <img src="images/logo/logo_kannada.png" class="logo-img logo-secondary" alt="Icon">
@@ -348,10 +250,9 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
     <a href="index.html">Home</a>
     <a href="more_categories.html">Categories</a>
     <a href="gallery.html">Gallery</a>
-    <a href="aboutus.html">About</a>
+    <a href="aboutus.html">Heritage</a>
     <a href="add_button.html" class="add-btn">+ Add Shop</a>
   </nav>
-
 </header>
 
 <section class="hero">
@@ -359,7 +260,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
   <p>Where History, Spirituality, and Community meet.</p>
   
   <div class="custom-shape-divider">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
     </svg>
   </div>
@@ -415,7 +316,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
   <h2>Navigate</h2>
   <div class="underline"></div>
 </div>
-<iframe class="map-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31135.667794716947!2d76.4746813426573!3d12.857647228229654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba53fbd268393e9%3A0x6b2ce360e2101689!2sShravanabelagola%2C%20Karnataka%20573135!5e0!3m2!1sen!2sin!4v1709825481234!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+<iframe class="map-full" src="https://www.google.com/maps?q=Shravanabelagola+Karnataka&output=embed" allowfullscreen="" loading="lazy"></iframe>
 
 <footer>
   <p>© 2025 Vihara | Namma Shravanabelagola</p>
@@ -430,10 +331,3 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
-
-
-
-
-
-
-
