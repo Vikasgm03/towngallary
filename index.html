@@ -84,7 +84,7 @@ body {
 /* Hamburger (Mobile Only) */
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
-/* ===== HERO SECTION (Responsive & Floating) ===== */
+/* ===== HERO SECTION (Final Tweaks) ===== */
 .hero {
   min-height: 70vh;
   background: #ffffff;
@@ -152,7 +152,7 @@ body {
 }
 .btn-primary:hover { transform: translateY(-3px); background: var(--primary-dark); }
 
-/* --- RIGHT SIDE: DESKTOP CARDS --- */
+/* --- RIGHT SIDE: VISUALS --- */
 .hero-visuals {
   flex: 1;
   position: relative;
@@ -166,15 +166,14 @@ body {
   border-radius: 16px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   display: flex; align-items: center; gap: 15px;
-  text-decoration: none; color: #333;
+  color: #333;
   width: 240px;
   border: 1px solid #f0f0f0;
-  transition: transform 0.3s;
+  cursor: default; /* Shows regular arrow cursor */
   animation: float 6s ease-in-out infinite;
 }
 
-.float-card:hover { transform: scale(1.05) !important; border-color: var(--primary); z-index: 10; }
-
+/* Icons */
 .icon-box {
   width: 45px; height: 45px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
@@ -193,7 +192,7 @@ body {
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-/* ===== MOBILE TRANSFORMATION (The Magic Part) ===== */
+/* ===== MOBILE TRANSFORMATION ===== */
 @media (max-width: 900px) {
   .hero {
     min-height: auto;
@@ -203,54 +202,48 @@ body {
 
   .hero-container {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem; /* Gap between text and visuals container */
   }
 
-  /* Text Adjustments */
   .hero-text { margin: 0 auto; width: 100%; }
   .hero h1 { font-size: 2.5rem; }
   .btn-primary { width: 100%; justify-content: center; }
 
-  /* --- MOBILE VISUALS: FLOATING ROW --- */
+  /* --- MOBILE VISUALS --- */
   .hero-visuals {
     width: 100%;
-    height: auto; /* Remove fixed height */
+    height: auto;
     position: relative;
-    /* Create a horizontal row */
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 12px;
-    margin-top: 10px;
+    
+    /* SPACING FIX: This pushes the floating buttons down away from the main button */
+    margin-top: 2rem; 
   }
 
-  /* Transform Cards into Mini Pills */
   .float-card {
-    position: relative; /* Reset position */
+    position: relative;
     top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
-    width: auto; /* Auto width */
-    padding: 8px 16px; /* Smaller padding */
-    border-radius: 50px; /* Full round shape */
+    width: auto;
+    padding: 8px 16px;
+    border-radius: 50px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     flex-direction: row;
     gap: 8px;
     border: 1px solid #eee;
   }
 
-  /* Shrink Icons */
   .icon-box {
     width: 28px; height: 28px; 
     font-size: 0.9rem;
-    border-radius: 50%; /* Circle icon bg */
+    border-radius: 50%;
   }
 
-  /* Hide Description (Subtitle) */
   .card-info span { display: none; }
-  
-  /* Make Text Smaller */
   .card-info strong { font-size: 0.85rem; }
 
-  /* Keep Animation active but smaller movement */
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 }
   
@@ -417,29 +410,29 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
     <div class="hero-visuals">
       
-      <a href="retail_grid/retail_shops.html" class="float-card card-1">
+      <div class="float-card card-1">
         <div class="icon-box icon-shop"><i class="fas fa-store"></i></div>
         <div class="card-info">
           <strong>Shops</strong>
           <span>Verified Markets</span>
         </div>
-      </a>
+      </div>
 
-      <a href="restaurants.html" class="float-card card-2">
+      <div class="float-card card-2">
         <div class="icon-box icon-food"><i class="fas fa-utensils"></i></div>
         <div class="card-info">
           <strong>Food</strong>
           <span>Local Tastes</span>
         </div>
-      </a>
+      </div>
 
-      <a href="Temples.html" class="float-card card-3">
+      <div class="float-card card-3">
         <div class="icon-box icon-temple"><i class="fas fa-gopuram"></i></div>
         <div class="card-info">
           <strong>Temples</strong>
           <span>Darshan Times</span>
         </div>
-      </a>
+      </div>
 
     </div>
 
@@ -512,6 +505,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
 
 
