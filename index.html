@@ -84,209 +84,147 @@ body {
 /* Hamburger (Mobile Only) */
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
-/* ===== HERO SECTION (Polished & Mobile Fixed) ===== */
+/* ===== HERO SECTION (Responsive Fix) ===== */
 .hero {
-  /* Desktop: Compact height */
-  min-height: 60vh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 5%;
   background: #ffffff;
+  padding: 2rem 5%;
   position: relative;
-  overflow: hidden; /* Clips the background blobs */
-  gap: 3rem;
+  overflow: hidden;
 }
 
-/* --- BACKGROUND DESIGN (Fills the empty space) --- */
-.hero-bg-glow {
-  position: absolute;
-  top: -20%; left: -10%;
-  width: 50vw; height: 50vw;
-  background: radial-gradient(circle, rgba(255, 153, 51, 0.08) 0%, transparent 70%);
-  z-index: 0;
-  pointer-events: none;
+/* Container to hold everything */
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; /* Center vertically */
+  gap: 4rem; /* Space between text and image */
+  min-height: 60vh;
 }
 
-.hero-bg-dots {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background-image: radial-gradient(#ddd 1px, transparent 1px);
-  background-size: 30px 30px;
-  opacity: 0.5;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* --- LEFT SIDE: TEXT --- */
-.hero-text {
+/* --- 1. VISUAL SIDE (Image) --- */
+.hero-visual {
   flex: 1;
-  max-width: 500px;
   position: relative;
-  z-index: 2;
+  display: flex;
+  justify-content: center;
 }
 
-.pill-tag {
+.image-box {
+  width: 100%;
+  max-width: 450px;
+  height: 400px;
+  background-image: url('images/hero_statue.jpg');
+  background-size: cover;
+  background-position: center;
+  /* Desktop Shape: Arch */
+  border-radius: 200px 200px 20px 20px;
+  box-shadow: 20px 20px 0px rgba(255, 140, 0, 0.1); /* The Design Block */
+}
+
+.floating-tag {
+  position: absolute;
+  bottom: 30px; left: 0;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  font-weight: 600;
+  color: #333;
+  display: flex; align-items: center; gap: 8px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.floating-tag i { color: #27ae60; font-size: 1.2rem; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* --- 2. TEXT SIDE --- */
+.hero-content {
+  flex: 1;
+  max-width: 550px;
+}
+
+.pill {
   display: inline-block;
-  background: #fff3e0;
-  color: var(--primary);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  letter-spacing: 0.5px;
+  background: #fff3e0; color: var(--primary);
+  padding: 6px 12px; border-radius: 6px;
+  font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; margin-bottom: 15px;
 }
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 2.8rem;
-  color: var(--accent);
-  line-height: 1.15;
-  margin-bottom: 15px;
+  font-weight: 700; font-size: 3rem;
+  color: var(--accent); line-height: 1.1; margin-bottom: 15px;
 }
 
-.highlight {
-  color: var(--primary);
-  position: relative;
-  z-index: 1;
-}
-
-/* Yellow underline effect */
-.highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 5px; left: 0; width: 100%; height: 8px;
-  background: rgba(255, 200, 50, 0.3);
-  z-index: -1;
-  border-radius: 4px;
-}
+.highlight { color: var(--primary); }
 
 .hero p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 25px;
-  line-height: 1.5;
+  font-size: 1rem; color: #666; margin-bottom: 25px; line-height: 1.6;
 }
 
-.hero-buttons {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+.btn-row { display: flex; align-items: center; gap: 15px; }
 
 .btn-primary {
-  background: var(--primary);
-  color: white;
-  padding: 12px 28px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
+  background: var(--primary); color: white;
+  padding: 12px 30px; border-radius: 50px;
+  text-decoration: none; font-weight: 600;
   box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
   transition: transform 0.2s;
 }
+.btn-primary:hover { transform: translateY(-2px); }
 
-.btn-primary:hover { transform: translateY(-3px); }
+.btn-text { color: #555; text-decoration: none; font-weight: 500; }
 
-.btn-text {
-  color: #555;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-.btn-text:hover { color: var(--primary); text-decoration: underline; }
-
-/* --- RIGHT SIDE: IMAGE --- */
-.hero-image-wrapper {
-  flex: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  z-index: 2;
-  max-width: 450px;
-}
-
-.hero-image-box {
-  width: 100%;
-  height: 380px;
-  background-image: url('images/hero_statue.jpg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 150px 150px 20px 20px;
-  box-shadow: 20px 20px 0px rgba(255, 140, 0, 0.1); /* Solid shadow fills space */
-}
-
-/* Badge */
-.floating-badge {
-  position: absolute;
-  bottom: 40px; left: -30px;
-  background: white;
-  padding: 10px 18px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  animation: float 4s ease-in-out infinite;
-}
-
-.badge-icon {
-  width: 35px; height: 35px;
-  background: #e8f5e9; color: #27ae60;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-
-.badge-content strong { display: block; font-size: 0.9rem; line-height: 1; }
-.badge-content span { font-size: 0.75rem; color: #777; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* ===== MOBILE RESPONSIVE (THE FIX) ===== */
-@media (max-width: 768px) {
+/* ===== MOBILE FIX (The Important Part) ===== */
+@media (max-width: 900px) {
+  
   .hero {
-    flex-direction: column-reverse; /* Image Top, Text Bottom */
-    padding: 2rem 1.5rem; /* Tighter padding */
-    gap: 1.5rem;
+    padding: 1rem 1rem 3rem 1rem; /* Reduce padding */
+  }
+
+  .hero-container {
+    flex-direction: column-reverse; /* Stack: Image Top, Text Bottom */
+    gap: 1.5rem; /* Remove huge gap */
+    min-height: auto;
+  }
+
+  /* Image becomes a wide banner card */
+  .hero-visual {
+    width: 100%;
+  }
+
+  .image-box {
+    width: 100%;
+    height: 250px; /* Shorter height for mobile */
+    max-width: 100%;
+    /* Mobile Shape: Simple Rounded Card */
+    border-radius: 20px; 
+    /* Remove the offset shadow to save space */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+  }
+
+  /* Center the badge on mobile */
+  .floating-tag {
+    bottom: -15px; left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    animation: none; /* Stop moving on mobile */
+  }
+
+  /* Align text */
+  .hero-content {
     text-align: center;
+    margin-top: 10px;
   }
 
-  .hero-text {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .hero h1 { font-size: 2.2rem; }
   
-  .hero h1 { font-size: 2rem; }
-  .hero p { font-size: 0.95rem; margin-bottom: 20px; }
-  
-  /* Fix Image Size */
-  .hero-image-box {
-    height: 280px; /* Smaller height for phone */
-    width: 100%;
-    max-width: 320px; /* Don't get too wide */
-    border-radius: 20px; /* Simple round corners on mobile */
-    box-shadow: 10px 10px 0px rgba(255, 140, 0, 0.1);
+  .btn-row {
+    justify-content: center; /* Center buttons */
   }
-  
-  /* Badge Fix */
-  .floating-badge {
-    left: 50%; 
-    transform: translateX(-50%); /* Centered */
-    bottom: -15px; /* Overlaps bottom slightly */
-    width: auto;
-    white-space: nowrap;
-    animation: none; /* Disable float on mobile to save battery/performance */
-  }
-
-  /* Hide background glow on mobile to keep it clean */
-  .hero-bg-glow { display: none; }
 }
 /* Wave */
 .custom-shape-divider {
@@ -453,16 +391,28 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
     </div>
   </div>
 
-  <div class="hero-image-wrapper">
-    <div class="hero-image-box"></div>
+<section class="hero">
+  
+  <div class="hero-container">
     
-    <div class="floating-badge">
-      <div class="badge-icon"><i class="fas fa-check"></i></div>
-      <div class="badge-content">
-        <strong>50+ Verified</strong>
-        <span>Local Shops</span>
+    <div class="hero-visual">
+      <div class="image-box"></div>
+      <div class="floating-tag">
+        <i class="fas fa-check-circle"></i> 50+ Verified Shops
       </div>
     </div>
+
+    <div class="hero-content">
+      <span class="pill">Namma Shravanabelagola</span>
+      <h1>Explore the <br><span class="highlight">Divine City</span></h1>
+      <p>The smartest directory for authentic shops, food, and heritage spots.</p>
+      
+      <div class="btn-row">
+        <a href="#map" class="btn-primary">Start Exploring</a>
+        <a href="aboutus.html" class="btn-text">How it works?</a>
+      </div>
+    </div>
+
   </div>
 
 </section>
@@ -532,6 +482,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
 
 
