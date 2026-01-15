@@ -96,13 +96,17 @@
       overflow: hidden;
       box-shadow: 0 5px 25px rgba(0,0,0,0.05);
       border: 1px solid #eee;
+      /* Ensure container has height */
+      min-height: 500px;
     }
 
     /* Responsive Iframe */
     iframe {
       width: 100%;
-      height: 1400px; /* Adjust based on form length */
+      /* FIX: Use pixels instead of % */
+      height: 1500px; 
       border: none;
+      display: block; /* Removes weird spacing at bottom */
     }
 
     footer {
@@ -144,17 +148,17 @@
         <i class="fas fa-spinner fa-spin"></i> Loading Form...
       </div>
       
-    <iframe 
+      <iframe 
         src="https://docs.google.com/forms/d/e/1FAIpQLSebpxvs1dqdteRMOEWYvrmKUIrtnNDLw2U4gr-KM1runlCgYw/viewform?embedded=true" 
         width="100%" 
-        height="300%" 
+        height="1500" 
         frameborder="0" 
         marginheight="0" 
         marginwidth="0"
         onload="document.getElementById('loading').style.display='none';"
       >Loading…</iframe>
       
-      </div>
+    </div>
 
   </div>
 
