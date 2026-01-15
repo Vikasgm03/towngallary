@@ -32,20 +32,32 @@ body {
 }
 
 /* ===== HERO IMAGE ===== */
+/* Container for the image */
 .shop-hero {
   width: 100%;
-  height: 250px;
-  background-color: #ddd; /* Fallback */
-  background-size: cover;
-  background-position: center;
+  height: 300px; /* FIXED HEIGHT is crucial */
   position: relative;
+  background-color: #ddd; 
+  overflow: hidden; /* Ensures image doesn't spill out */
 }
 
+/* The actual image tag */
+.shop-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* THE MAGIC: Crops image automatically */
+  object-position: center; /* Focus on center */
+  display: block;
+}
+
+/* Shadow overlay (Gradient) */
 .shop-hero::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; width: 100%; height: 60px;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  bottom: 0; left: 0; 
+  width: 100%; height: 80px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  pointer-events: none;
 }
 
 /* ===== MAIN CARD ===== */
@@ -127,11 +139,13 @@ body {
 
 <div id="content">
   
-  <div class="shop-hero" id="heroImage">
-    <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; background: white; padding: 8px 15px; border-radius: 50px; text-decoration: none; color: #333; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-      ← Back
-    </a>
-  </div>
+  <div class="shop-hero" id="heroImageContainer">
+  <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; z-index: 10; background: white; padding: 8px 15px; border-radius: 50px; text-decoration: none; color: #333; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+    ← Back
+  </a>
+
+  <img id="heroImage" src="" alt="Shop Banner">
+</div>
 
   <div class="container">
     <div class="shop-card">
@@ -210,8 +224,11 @@ body {
       document.getElementById('shopAddress').innerText = shop.address || "Shravanabelagola Market Road";
       document.getElementById('shopTimings').innerText = shop.timings || "9:00 AM - 9:00 PM";
       
-      // Set Background Image
-      document.getElementById('heroImage').style.backgroundImage = `url('${shop.image}')`;
+     // Old way (Delete this):
+// document.getElementById('heroImage').style.backgroundImage = ...
+
+// New way (Use this):
+document.getElementById('heroImage').src = shop.image;
 
       // Set Buttons
       document.getElementById('btnCall').href = `tel:${shop.phone}`;
