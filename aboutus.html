@@ -1,290 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Namma Shravanabelagola</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>About Us | Vihara</title>
 
-  <!-- Step 1: Paste your CSS here inside <style> -->
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
-      color: #333;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-   /* ---------- HEADER ---------- */
+<style>
+/* ===== VARIABLES & RESET ===== */
+:root {
+  --primary: #FF9933; /* Saffron */
+  --primary-light: #fff3e0;
+  --text-dark: #2c3e50;
+  --text-grey: #666;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ===== HEADER (Same as Home) ===== */
 .site-header {
-  background: #f0f0f0;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+  padding: 0.8rem 5%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); font-weight: 700; text-decoration: none; }
+.back-home { color: var(--text-dark); text-decoration: none; font-weight: 500; }
+
+/* ===== HERO SECTION ===== */
+.about-hero {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  background: white;
 }
 
-.header-inner {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
+.pill {
+  display: inline-block; background: var(--primary-light); color: var(--primary);
+  padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+
+.about-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.about-hero p {
+  max-width: 600px; margin: 0 auto; color: var(--text-grey); font-size: 1.1rem;
+}
+
+/* ===== STORY GRID ===== */
+.story-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
-.site-title {
-  font-size: 1.6rem;
-  color: #ff8c00;
-  margin: 0;
-}
-
-/* ---------- NAV ---------- */
-.nav-menu {
-  display: flex;
-  gap: 12px;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  padding: 8px 16px;
+.story-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
   border-radius: 20px;
-  background: #e0e0e0;
-  color: #333;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
+  box-shadow: 20px 20px 0 var(--primary-light);
 }
 
-.nav-menu a:hover {
-  background: #ff8c00;
-  color: white;
+.story-content h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+.story-content p { margin-bottom: 1.5rem; color: var(--text-grey); }
+
+/* ===== STATS BAR ===== */
+.stats-container {
+  background: white;
+  padding: 3rem 1rem;
+  margin: 3rem 0;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.03);
 }
 
-.nav-menu a.active {
-  background: #ff8c00;
-  color: white;
-  box-shadow: 0 0 8px rgba(255,140,0,0.4);
+.stats-grid {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;
 }
 
-/* Add Shop button */
-.nav-menu a.add-btn {
-  background: linear-gradient(135deg, #ff8c00, #ffb347);
-  color: white;
-  font-weight: 500;
+.stat-item h3 { font-size: 2.5rem; color: var(--primary); margin-bottom: 5px; }
+.stat-item p { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ===== FOUNDER CARD ===== */
+.founder-section {
+  text-align: center; padding: 4rem 1rem;
 }
 
-/* ---------- HAMBURGER ---------- */
-.menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
+.founder-card {
+  background: white;
+  max-width: 600px; margin: 0 auto;
+  padding: 3rem; border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ---------- MOBILE ---------- */
+/* Saffron top border */
+.founder-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary);
+}
+
+.founder-img {
+  width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+  border: 4px solid var(--primary-light); margin-bottom: 1.5rem;
+}
+
+.founder-card h3 { font-size: 1.5rem; margin-bottom: 5px; }
+.founder-card span { display: block; color: var(--primary); font-weight: 600; margin-bottom: 1rem; }
+.founder-card p { font-size: 0.95rem; color: var(--text-grey); font-style: italic; }
+
+/* ===== CALL TO ACTION ===== */
+.cta-box {
+  background: var(--text-dark); color: white;
+  text-align: center; padding: 3rem 1rem; margin: 4rem 5%; border-radius: 20px;
+}
+.cta-box h2 { font-size: 1.8rem; margin-bottom: 10px; color: white; }
+.cta-box p { opacity: 0.8; margin-bottom: 2rem; }
+.btn-white {
+  background: white; color: var(--text-dark); padding: 12px 30px; border-radius: 50px;
+  text-decoration: none; font-weight: 600; transition: 0.3s;
+}
+.btn-white:hover { background: var(--primary); color: white; }
+
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-menu {
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    margin-top: 1rem;
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-
-  .nav-menu a {
-    text-align: center;
-  }
+  .story-section { grid-template-columns: 1fr; text-align: center; }
+  .story-img { height: 250px; box-shadow: none; margin-bottom: 1rem; }
+  .stats-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-hero h1 { font-size: 2.2rem; }
 }
-
-
-/* Simple fade + slight slide */
-@keyframes smoothFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px);
-    text-shadow: 0 0 0 #00ffff00;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    text-shadow: 0 0 8px #00ffff55;
-  }
-}
-
-
-
-    nav {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      padding: 6px 12px;
-      border-radius: 5px;
-      background-color: #666;  /* Button color */
-      transition: background 0.3s;
-    }
-
-    nav a:hover {
-      background-color: #999; /* Hover color */
-    }
-
-    nav a.active {
-      background-color: #ff8c00; /* Active page color */
-    }
-    .add-nav-btn {
-      background-color: #666;
-      color: white !important;
-      font-weight: 500;
-    }
-
-    .add-nav-btn:hover {
-      background-color: #e67e00;
-    }
-
-
-    /* ABOUT SECTION */
-    #about {
-      background-color: #fff;
-      padding: 3rem 1rem;
-      text-align: center;
-      color: #333;
-    }
-
-    #about h2 {
-      font-size: 2rem;
-      color: #222;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      max-width: 900px;
-      margin: 0 auto;
-      gap: 30px;
-    }
-
-    .about-container img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .about-text {
-      max-width: 500px;
-      text-align: left;
-    }
-
-    .about-text h3 {
-      font-size: 1.3rem;
-      color: #111;
-      margin-bottom: 0.8rem;
-    }
-
-    .about-text p {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .social-links {
-      margin-top: 1rem;
-    }
-
-    .social-links a {
-      text-decoration: none;
-      color: white;
-      background: #333;
-      padding: 8px 16px;
-      margin: 5px;
-      border-radius: 20px;
-      transition: background 0.3s;
-      display: inline-block;
-    }
-
-    .social-links a:hover {
-      background: #0084ff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #333;
-      color: white;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-    }
-  </style>
+</style>
 </head>
 <body>
- <header class="site-header">
-  <div class="header-inner">
-    <h1 class="site-title">Namma Shravanabelagola</h1>
 
-    <!-- Hamburger -->
-    <div class="menu-toggle" id="menuToggle">
-      ☰
+  <header class="site-header">
+    <a href="index.html" class="brand">Vihara</a>
+    <a href="index.html" class="back-home">Back to Home</a>
+  </header>
+
+  <section class="about-hero">
+    <span class="pill">Our Mission</span>
+    <h1>Digitizing The Divine City</h1>
+    <p>Vihara is a community-led initiative to connect tourists with the authentic local businesses of Shravanabelagola.</p>
+  </section>
+
+  <section class="story-section">
+    <div class="story-image-box">
+      <img src="vikas.jpeg" class="story-img" alt="Vihara Story">
     </div>
+    <div class="story-content">
+      <h2>Why we started Vihara</h2>
+      <p>Every year, lakhs of devotees visit Shravanabelagola, but they often struggle to find authentic local shops, clean messes, and hidden heritage spots because these businesses aren't online.</p>
+      <p><strong>Vihara bridges this gap.</strong> We provide a free digital platform for small shopkeepers to showcase their business, helping tourists discover the real essence of our town.</p>
+    </div>
+  </section>
 
-    <!-- Navigation -->
-    <nav class="nav-menu">
-  <a href="index.html">Home</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="aboutus.html" class="active">About Us</a>
-  <a href="add_button.html" class="add-btn">+ Add Shop</a>
-</nav>
-
+  <div class="stats-container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3>50+</h3>
+        <p>Verified Shops</p>
+      </div>
+      <div class="stat-item">
+        <h3>10k+</h3>
+        <p>Monthly Views</p>
+      </div>
+      <div class="stat-item">
+        <h3>100%</h3>
+        <p>Free for Locals</p>
+      </div>
+    </div>
   </div>
-</header>
 
-
-  <section id="about">
-    <h2>Vikas G M</h2>
-
-    <div class="about-container">
-      <!-- img src="vikas.jpeg" alt="Vikas G M" /-->
-      <div class="about-text">
-        <h3>👋 Howdy!,</h3>
-        <p>
-          I'm a passionate developer from <strong>Shravanabelagola</strong> 🇮🇳 — the land of culture, hills, and peace.
-          I created this project, <strong>"Namma Shravanabelagola"</strong>, to showcase the beauty of our hometown —
-          from scenic spots to local temples and the friendly faces that make it special.
-        </p>
-
-        <p>
-          My goal is to help everyone explore and appreciate the rich heritage of Shravanabelagola through this digital gallery.
-          Each photo and location here represents a story — of people, faith, and community.
-        </p>
-
-        <p>
-          Built with ❤️ using <strong>HTML, CSS, and JavaScript</strong> — this website is designed and developed entirely by me.
-        </p>
-
-        <div class="social-links">
-          <a href="mailto:vikasgm03@gmail.com">📧 Email</a>
-          <a href="https://github.com/Vikasgm03" target="_blank">💻 GitHub</a>
-          <a href="https://www.instagram.com/" target="_blank">📸 Instagram</a>
-        </div>
+  <section class="founder-section">
+    <div class="founder-card">
+      <img src="vikas.jpeg" class="founder-img" alt="Founder">
+      <h3>Vikas G M</h3>
+      <span>Founder & Lead Developer</span>
+      <p>"I believe technology shouldn't just be for big cities. Vihara is my attempt to bring the power of the internet to the hardworking merchants of my hometown."</p>
+      
+      <div style="margin-top: 20px;">
+        <a href="#" style="color:#333; margin:0 10px;"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="#" style="color:#333; margin:0 10px;"><i class="fab fa-github fa-lg"></i></a>
+        <a href="#" style="color:#333; margin:0 10px;"><i class="fas fa-envelope fa-lg"></i></a>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 Namma Shravanabelagola | Built by Vikas G M</p>
+  <div class="cta-box">
+    <h2>Own a Shop in Shravanabelagola?</h2>
+    <p>Join the digital revolution. Listing your business on Vihara is completely free.</p>
+    <a href="add_button.html" class="btn-white">List My Shop</a>
+  </div>
+
+  <footer style="text-align: center; padding: 2rem; color: #888; font-size: 0.9rem;">
+    <p>© 2025 Vihara | Made with ❤️ in Karnataka</p>
   </footer>
+
 </body>
 </html>
