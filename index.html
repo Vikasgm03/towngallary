@@ -247,6 +247,117 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
   .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
   .preview-img-box { width: 100%; height: 160px; }
   .preview-content { width: 100%; text-align: center; padding: 1.5rem; }
+
+  /* ===== PROFESSIONAL FOOTER ===== */
+.site-footer {
+  background-color: #111; /* Dark background */
+  color: #b0b0b0; /* Light grey text */
+  padding: 4rem 0 0 0;
+  font-size: 0.95rem;
+  margin-top: 4rem;
+  border-top: 4px solid var(--primary); /* Saffron Accent Line */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr; /* 4 Columns */
+  gap: 3rem;
+}
+
+/* Headings */
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer-col h4 {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Links List */
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 10px; }
+
+.footer-col ul li a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--primary);
+  padding-left: 5px; /* Slight movement on hover */
+}
+
+/* Social Icons */
+.social-links { margin-top: 1.5rem; display: flex; gap: 15px; }
+.social-links a {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  color: white; text-decoration: none;
+  transition: 0.3s;
+}
+.social-links a:hover { background: var(--primary); transform: translateY(-3px); }
+
+/* Newsletter Form */
+.newsletter-form {
+  display: flex;
+  margin-top: 15px;
+}
+.newsletter-form input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 50px 0 0 50px;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+.newsletter-form button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 0 50px 50px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.newsletter-form button:hover { background: var(--primary-dark); }
+
+/* Bottom Copyright */
+.footer-bottom {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.85rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr; /* 2 Columns on Tablet */
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* 1 Column on Phone */
+    text-align: center;
+  }
+  .social-links { justify-content: center; }
+  .footer-col ul li a:hover { padding-left: 0; } /* Disable move on mobile */
+}
 }
 </style>
 </head>
@@ -346,8 +457,58 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 </div>
 
 
-<footer>
-  <p>© 2025 Vihara | Namma Shravanabelagola</p>
+<footer class="site-footer">
+  
+  <div class="footer-container">
+    
+    <div class="footer-col">
+      <h3 class="footer-logo">Vihara</h3>
+      <p>Your digital gateway to the heritage, culture, and local commerce of Namma Shravanabelagola.</p>
+      
+      <div class="social-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">Our Story</a></li>
+        <li><a href="retail_grid/retail_shops.html">Local Shops</a></li>
+        <li><a href="restaurants.html">Food & Mess</a></li>
+        <li><a href="Temples.html">Temples</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="add_button.html">List Your Shop</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p>Get the latest temple timings and festival updates.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Vihara Project. Built with <i class="fas fa-heart" style="color:var(--primary)"></i> in Karnataka.</p>
+  </div>
+
 </footer>
 
 <script>
@@ -373,4 +534,5 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
