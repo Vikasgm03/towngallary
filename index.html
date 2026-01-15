@@ -85,51 +85,38 @@ body {
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
 .hero {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 5%;
-  background: white; /* Uses a white background */
-  color: var(--text-dark);
-}
-
-.hero-text {
-  flex: 1;
-  text-align: left;
-}
-
-.hero h1 {
-  font-size: 4rem;
-  color: var(--primary);
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.hero-image-box {
-  flex: 1;
-  height: 500px;
+  height: 80vh;
   background-image: url('images/hero_statue.jpg');
   background-size: cover;
   background-position: center;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Creates an organic blob shape */
-  box-shadow: 0 20px 50px rgba(255, 140, 0, 0.2);
-  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .hero { flex-direction: column-reverse; text-align: center; }
-  .hero-image-box { width: 100%; height: 300px; margin: 0 0 2rem 0; }
-  .hero-text { text-align: center; }
+/* Dark Overlay for better contrast */
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.3);
 }
-  
+
+/* The Glass Box */
+.hero-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15); /* Transparent White */
+  backdrop-filter: blur(15px); /* Applies the blur effect */
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  color: white;
+  max-width: 700px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }  
 /* Wave */
 .custom-shape-divider {
   position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
@@ -280,46 +267,10 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 </header>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1>Explore <br> The Divine City</h1>
-    <p>Find shops, temples, and local secrets in Shravanabelagola.</p>
-    <a href="#map" class="btn-explore">Start Journey</a>
-  </div>
-  <div class="hero-image-box"></div>
-</section>
-
-<div class="quick-access-container">
-  <a href="#map" class="quick-card">
-    <i class="fas fa-map-marked-alt"></i>
-    <h3>City Map</h3>
-  </a>
-  <a href="retail_grid/retail_shops.html" class="quick-card">
-    <i class="fas fa-store"></i>
-    <h3>Shops</h3>
-  </a>
-  <a href="restaurants.html" class="quick-card">
-    <i class="fas fa-utensils"></i>
-    <h3>Food</h3>
-  </a>
-  <a href="more_categories.html" class="quick-card">
-    <i class="fas fa-th-large"></i>
-    <h3>More</h3>
-  </a>
-</div>
-
-<div class="section-header">
-  <h2>Experience Local Life</h2>
-  <div class="underline"></div>
-</div>
-
-<section class="featured-section">
-  <div class="feature-text">
-    <h3>Local Markets</h3>
-    <p>Support local businesses! Find everything from fresh flowers to provision stores in our digital directory.</p>
-    <a href="retail_grid/retail_shops.html" class="btn-explore">Browse Shops</a>
-  </div>
-  <div class="feature-img">
-    <img src="images/explorica/retail_shops/durga.jpg" alt="Shops">
+  <div class="hero-card">
+    <h1>Namma Shravanabelagola</h1>
+    <p>Heritage. Culture. Community.</p>
+    <a href="#map" class="btn-explore" style="margin-top:20px; background:white; color:#333;">Explore Now</a>
   </div>
 </section>
 
@@ -353,6 +304,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
 
 
