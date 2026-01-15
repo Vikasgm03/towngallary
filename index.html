@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Vihara | Namma Shravanabelagola</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -15,132 +15,85 @@
   --primary-dark: #D35400;
   --accent: #2c3e50;
   --glass: rgba(255, 255, 255, 0.98);
-  --bg-light: #f4f4f4;
+  --bg-light: #f8f9fa;
+  --radius: 16px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-light);
   color: #333;
-  overflow-x: hidden; /* Prevents side scrolling */
+  overflow-x: hidden;
 }
 
 /* ===== TICKER ===== */
 .ticker-wrap {
-  background: var(--accent);
-  color: white;
-  font-size: 0.8rem;
-  padding: 8px 0;
-  overflow: hidden;
-  white-space: nowrap;
+  background: var(--accent); color: white; font-size: 0.8rem; padding: 8px 0; overflow: hidden; white-space: nowrap;
 }
-.ticker-move {
-  display: inline-block;
-  animation: ticker 15s linear infinite;
-  padding-left: 100%;
-}
+.ticker-move { display: inline-block; animation: ticker 20s linear infinite; padding-left: 100%; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
 /* ===== HEADER ===== */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--glass);
-  backdrop-filter: blur(10px);
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--glass); backdrop-filter: blur(10px);
   padding: 0.8rem 5%;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; justify-content: space-between; align-items: center;
 }
 
-/* Logo Animation */
-.logo-container {
-  width: 140px; height: 40px; position: relative; display: block;
-}
-.logo-img {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  object-fit: contain;
-}
+.logo-container { width: 140px; height: 40px; position: relative; }
+.logo-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; }
 .logo-primary { animation: fadeOne 5s infinite; }
 .logo-secondary { animation: fadeTwo 5s infinite; }
-
 @keyframes fadeOne { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes fadeTwo { 0%, 45% { opacity: 0; } 50%, 95% { opacity: 1; } 100% { opacity: 0; } }
 
-/* Nav Links (Desktop) */
 .nav-links { display: flex; align-items: center; gap: 20px; }
-.nav-links a {
-  text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.95rem; transition: 0.3s;
-}
+.nav-links a { text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
 .nav-links a:hover { color: var(--primary); }
-.add-btn {
-  background: var(--primary); color: white !important; padding: 8px 20px; border-radius: 50px;
-}
+.add-btn { background: var(--primary); color: white !important; padding: 8px 20px; border-radius: 50px; }
 
-/* Hamburger (Mobile Only) */
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
-/* ===== HERO SECTION (Final Tweaks) ===== */
+/* ===== HERO SECTION ===== */
 .hero {
   min-height: 70vh;
   background: #ffffff;
   padding: 2rem 5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
 }
 
 .hero-container {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
-  z-index: 1;
+  width: 100%; max-width: 1200px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 4rem; z-index: 1;
 }
 
-/* --- LEFT SIDE: TEXT --- */
-.hero-text {
-  flex: 1;
-  max-width: 550px;
-}
+/* Left Side: Text */
+.hero-text { flex: 1; max-width: 550px; }
 
 .pill {
-  display: inline-block;
-  background: #fff3e0;
-  color: var(--primary);
-  padding: 6px 14px;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 20px;
+  display: inline-block; background: #fff3e0; color: var(--primary);
+  padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; margin-bottom: 20px;
 }
 
 .hero h1 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 3.2rem;
-  color: var(--accent);
-  line-height: 1.15;
-  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 3.2rem;
+  color: var(--accent); line-height: 1.15; margin-bottom: 20px;
 }
 
 .highlight { color: var(--primary); position: relative; }
-
-.hero p {
-  font-size: 1.05rem;
-  color: #666;
-  margin-bottom: 30px;
-  line-height: 1.6;
+.highlight::after {
+  content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 8px;
+  background: rgba(255, 200, 50, 0.2); z-index: -1; border-radius: 4px;
 }
+
+.hero p { font-size: 1.05rem; color: #666; margin-bottom: 30px; line-height: 1.6; }
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
@@ -152,220 +105,148 @@ body {
 }
 .btn-primary:hover { transform: translateY(-3px); background: var(--primary-dark); }
 
-/* --- RIGHT SIDE: VISUALS --- */
-.hero-visuals {
-  flex: 1;
-  position: relative;
-  height: 400px;
-}
+/* Right Side: Floating Visuals */
+.hero-visuals { flex: 1; position: relative; height: 400px; }
 
 .float-card {
-  position: absolute;
-  background: white;
-  padding: 15px 20px;
-  border-radius: 16px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-  display: flex; align-items: center; gap: 15px;
-  color: #333;
-  width: 240px;
-  border: 1px solid #f0f0f0;
-  cursor: default; /* Shows regular arrow cursor */
-  animation: float 6s ease-in-out infinite;
+  position: absolute; background: white; padding: 12px 18px;
+  border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  display: flex; align-items: center; gap: 15px; color: #333;
+  width: 220px; border: 1px solid #f0f0f0;
+  cursor: default; animation: float 6s ease-in-out infinite;
 }
 
-/* Icons */
 .icon-box {
-  width: 45px; height: 45px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
 }
 .icon-shop { background: #e3f2fd; color: #1976d2; }
 .icon-food { background: #fff3e0; color: #f57c00; }
 .icon-temple { background: #f3e5f5; color: #7b1fa2; }
 
-.card-info strong { display: block; font-size: 1rem; }
-.card-info span { font-size: 0.8rem; color: #777; }
+.card-info strong { display: block; font-size: 0.95rem; }
+.card-info span { font-size: 0.75rem; color: #777; }
 
-/* Desktop Positions */
 .card-1 { top: 10%; right: 10%; animation-delay: 0s; }
 .card-2 { top: 40%; left: 10%; animation-delay: 2s; z-index: 2; }
 .card-3 { bottom: 10%; right: 5%; animation-delay: 4s; }
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-/* ===== MOBILE TRANSFORMATION ===== */
-@media (max-width: 900px) {
-  .hero {
-    min-height: auto;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-  }
-
-  .hero-container {
-    flex-direction: column;
-    gap: 1rem; /* Gap between text and visuals container */
-  }
-
-  .hero-text { margin: 0 auto; width: 100%; }
-  .hero h1 { font-size: 2.5rem; }
-  .btn-primary { width: 100%; justify-content: center; }
-
-  /* --- MOBILE VISUALS --- */
-  .hero-visuals {
-    width: 100%;
-    height: auto;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 12px;
-    
-    /* SPACING FIX: This pushes the floating buttons down away from the main button */
-    margin-top: 2rem; 
-  }
-
-  .float-card {
-    position: relative;
-    top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
-    width: auto;
-    padding: 8px 16px;
-    border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    flex-direction: row;
-    gap: 8px;
-    border: 1px solid #eee;
-  }
-
-  .icon-box {
-    width: 28px; height: 28px; 
-    font-size: 0.9rem;
-    border-radius: 50%;
-  }
-
-  .card-info span { display: none; }
-  .card-info strong { font-size: 0.85rem; }
-
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-}
-  
-/* Wave */
-.custom-shape-divider {
-  position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
-}
-.custom-shape-divider svg { position: relative; display: block; width: calc(100% + 1.3px); height: 60px; }
-.shape-fill { fill: var(--bg-light); }
-
-/* ===== QUICK CARDS ===== */
+/* ===== QUICK ACCESS BUTTONS ===== */
 .quick-access-container {
   max-width: 1000px;
-  margin: -50px auto 3rem auto;
-  padding: 0 15px;
-  position: relative;
-  z-index: 10;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  margin: -40px auto 3rem auto; /* Pull Up Overlap */
+  padding: 0 15px; position: relative; z-index: 10;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
 }
 
 .quick-card {
   background: white; padding: 1.2rem; text-align: center; border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-decoration: none; color: #333; transition: transform 0.3s;
 }
-.quick-card:hover { transform: translateY(-5px); }
-.quick-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 8px; display: block; }
+.quick-card:hover { transform: translateY(-5px); color: var(--primary); }
+.quick-card i { font-size: 1.6rem; color: var(--primary); margin-bottom: 8px; display: block; }
 .quick-card h3 { font-size: 0.9rem; font-weight: 600; margin: 0; }
 
-/* ===== FEATURED SECTIONS ===== */
-.section-header { text-align: center; margin: 3rem 0; padding: 0 1rem; }
-.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent); }
-.underline { width: 50px; height: 3px; background: var(--primary); margin: 10px auto; }
+/* ===== SECTION HEADER ===== */
+.section-header { text-align: center; margin: 3rem 0 2rem 0; padding: 0 1rem; }
+.section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent); }
+.underline { width: 50px; height: 3px; background: var(--primary); margin: 8px auto; }
 
-.featured-section {
-  max-width: 1100px;
-  margin: 4rem auto;
-  padding: 3rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  background: #ffffff;
-  border-radius: 25px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-  position: relative;
+/* ===== PREVIEW SECTION (Cleaner & Smaller) ===== */
+.preview-container {
+  max-width: 900px; /* Reduced width for compactness */
+  margin: 0 auto 4rem auto;
+  padding: 0 15px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+
+.preview-card {
+  background: white;
+  border-radius: var(--radius);
   overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  border: 1px solid #eee;
+  /* Start hidden for animation */
+  opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
 }
 
-/* Saffron Accent Strip */
-.featured-section::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 8px; height: 100%;
-  background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+/* When class 'visible' is added by JS, it slides up */
+.preview-card.visible { opacity: 1; transform: translateY(0); }
+
+.preview-img-box {
+  width: 40%; height: 200px; /* Smaller Height */
+}
+.preview-img-box img {
+  width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
+}
+.preview-card:hover .preview-img-box img { transform: scale(1.05); }
+
+.preview-content {
+  width: 60%; padding: 1.5rem;
 }
 
-/* Alternate Layout (Desktop Only) */
-.featured-section:nth-of-type(even)::before { left: auto; right: 0; }
-.featured-section:nth-of-type(even) .feature-text { order: 2; }
+.preview-content h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--accent); }
+.preview-content p { font-size: 0.9rem; color: #666; margin-bottom: 15px; line-height: 1.5; }
 
-/* Images */
-.feature-img {
-  width: 100%; height: 280px; border-radius: 20px; overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+.btn-small {
+  display: inline-block; background: var(--accent); color: white;
+  padding: 8px 20px; border-radius: 50px; text-decoration: none;
+  font-size: 0.85rem; font-weight: 500; transition: 0.3s;
 }
-.feature-img img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center;
-  transition: transform 0.5s; display: block;
-}
-.feature-img:hover img { transform: scale(1.05); }
+.btn-small:hover { background: var(--primary); }
 
-/* Buttons */
-.btn-explore {
-  display: inline-block; margin-top: 1.5rem; background: var(--primary); color: white;
-  padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;
-  box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4); transition: 0.3s;
-}
-.btn-explore:hover { background: var(--primary-dark); transform: translateY(-3px); }
+/* Alternate Layout: Image on Right */
+.preview-card:nth-child(even) { flex-direction: row-reverse; }
 
 /* ===== MAP ===== */
-.map-full { width: 100%; height: 350px; border: 0; filter: grayscale(20%); }
+.map-full { width: 100%; height: 300px; border: 0; filter: grayscale(20%); }
 
 /* ===== FOOTER ===== */
 footer { background: #222; color: #888; text-align: center; padding: 2rem; font-size: 0.9rem; }
 
 /* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   
-  /* 1. Header & Menu */
+  /* Header */
   .menu-toggle { display: block; }
   .nav-links {
-    display: none; /* Hidden by default */
-    position: absolute; top: 100%; left: 0; width: 100%;
+    display: none; position: absolute; top: 100%; left: 0; width: 100%;
     background: white; flex-direction: column; align-items: flex-start;
     padding: 1.5rem; gap: 1.5rem;
     box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 1px solid #eee;
   }
-  .nav-links.active { display: flex; } /* Show when active */
-  .nav-links a { width: 100%; font-size: 1.1rem; margin: 0; }
-  .add-btn { text-align: center; width: 100%; }
+  .nav-links.active { display: flex; }
+  .add-btn { width: 100%; text-align: center; }
 
-  /* 2. Quick Cards */
-  .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: -40px; }
-
-  /* 3. Hero Text */
-  .hero h1 { font-size: 2.2rem; }
-
-  /* 4. Featured Sections (Fixing layout mess) */
-  .featured-section {
-    grid-template-columns: 1fr; /* 1 Column */
-    text-align: center;
-    padding: 2rem 1.5rem;
-    gap: 1.5rem;
-    margin: 2rem 1rem; /* Smaller margins */
+  /* Hero Mobile */
+  .hero { padding: 2.5rem 1.5rem; text-align: center; }
+  .hero-container { flex-direction: column; gap: 1.5rem; }
+  
+  .hero-visuals {
+    width: 100%; height: auto;
+    display: flex; flex-direction: row; justify-content: center; gap: 10px; margin-top: 1rem;
   }
 
-  /* Force Image to Top on Mobile */
-  .feature-img { height: 220px; order: 1; }
-  .feature-text { order: 2; }
-  
-  /* Reset alternating logic for mobile */
-  .featured-section:nth-of-type(even) .feature-text { order: 2; } 
+  .float-card {
+    position: relative; top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
+    width: auto; padding: 8px 16px; border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid #eee;
+  }
+  .icon-box { width: 28px; height: 28px; font-size: 0.9rem; border-radius: 50%; }
+  .card-info span { display: none; }
+  .card-info strong { font-size: 0.85rem; }
+
+  /* Quick Access Mobile */
+  .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: 0; padding-top: 2rem; }
+
+  /* Preview Cards Mobile */
+  .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
+  .preview-img-box { width: 100%; height: 160px; }
+  .preview-content { width: 100%; text-align: center; padding: 1.5rem; }
 }
 </style>
 </head>
@@ -373,7 +254,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 <div class="ticker-wrap">
   <div class="ticker-move">
-    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: 2:00 PM | Weather: 28°C Sunny 🔔
+    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: 7:00 AM | Weather: 28°C Sunny 🔔
   </div>
 </div>
 
@@ -382,105 +263,117 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
     <img src="images/logo/logo_english.png" class="logo-img logo-primary" alt="Vihara">
     <img src="images/logo/logo_kannada.png" class="logo-img logo-secondary" alt="Icon">
   </a>
-
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-  </div>
-
+  <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
   <nav class="nav-links" id="mobileNav">
     <a href="index.html">Home</a>
     <a href="more_categories.html">Categories</a>
     <a href="gallery.html">Gallery</a>
-    <a href="aboutus.html">Heritage</a>
+    <a href="aboutus.html">About</a>
     <a href="add_button.html" class="add-btn">+ Add Shop</a>
   </nav>
 </header>
 
 <section class="hero">
-  
   <div class="hero-container">
-    
     <div class="hero-text">
-      <span class="pill">🚀 Namma Shravanabelagola</span>
+      <span class="pill"> Namma Shravanabelagola</span>
       <h1>Discover <br> <span class="highlight">The Divine City</span></h1>
       <p>The smartest directory for authentic shops, food, and heritage spots.</p>
-      
-      <a href="#map" class="btn-primary">Start Exploring <i class="fas fa-arrow-right"></i></a>
+      <a href="#preview-section" class="btn-primary">Start Exploring <i class="fas fa-arrow-down"></i></a>
     </div>
 
     <div class="hero-visuals">
-      
       <div class="float-card card-1">
         <div class="icon-box icon-shop"><i class="fas fa-store"></i></div>
-        <div class="card-info">
-          <strong>Shops</strong>
-          <span>Verified Markets</span>
-        </div>
+        <div class="card-info"><strong>Shops</strong><span>Verified</span></div>
       </div>
-
       <div class="float-card card-2">
         <div class="icon-box icon-food"><i class="fas fa-utensils"></i></div>
-        <div class="card-info">
-          <strong>Food</strong>
-          <span>Local Tastes</span>
-        </div>
+        <div class="card-info"><strong>Food</strong><span>Local</span></div>
       </div>
-
       <div class="float-card card-3">
         <div class="icon-box icon-temple"><i class="fas fa-gopuram"></i></div>
-        <div class="card-info">
-          <strong>Temples</strong>
-          <span>Darshan Times</span>
-        </div>
+        <div class="card-info"><strong>Temples</strong><span>Info</span></div>
       </div>
-
     </div>
-
-  </div>
-
-</section>
-<section class="featured-section">
-  <div class="feature-img">
-    <img src="images/raghu_hotel.jpg" alt="Food">
-  </div>
-  <div class="feature-text">
-    <h3>Authentic Tastes</h3>
-    <p>Craving a crispy Masala Dosa? Explore the best messes and restaurants hidden in the streets.</p>
-    <a href="restaurants.html" class="btn-explore">Find Food</a>
   </div>
 </section>
 
-<div class="section-header" id="map">
-  <h2>Navigate</h2>
+<div class="quick-access-container">
+  <a href="#map" class="quick-card">
+    <i class="fas fa-map-marked-alt"></i><h3>Map</h3>
+  </a>
+  <a href="retail_grid/retail_shops.html" class="quick-card">
+    <i class="fas fa-store"></i><h3>Shops</h3>
+  </a>
+  <a href="restaurants.html" class="quick-card">
+    <i class="fas fa-utensils"></i><h3>Food</h3>
+  </a>
+  <a href="more_categories.html" class="quick-card">
+    <i class="fas fa-th-large"></i><h3>More</h3>
+  </a>
+</div>
+
+<div class="section-header" id="preview-section">
+  <h2>Experience Local Life</h2>
   <div class="underline"></div>
 </div>
-<iframe class="map-full" src="https://www.google.com/maps?q=Shravanabelagola+Karnataka&output=embed" allowfullscreen="" loading="lazy"></iframe>
+
+<div class="preview-container">
+  
+  <div class="preview-card">
+    <div class="preview-img-box">
+      <img src="images/explorica/retail_shops/durga.jpg" alt="Shops">
+    </div>
+    <div class="preview-content">
+      <h3>Local Markets</h3>
+      <p>Support local businesses! Find everything from fresh flowers to provision stores in our digital directory.</p>
+      <a href="retail_grid/retail_shops.html" class="btn-small">Browse Shops</a>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-img-box">
+      <img src="images/raghu_hotel.jpg" alt="Food">
+    </div>
+    <div class="preview-content">
+      <h3>Authentic Tastes</h3>
+      <p>Craving a crispy Masala Dosa? Explore the best messes and restaurants hidden in the streets.</p>
+      <a href="restaurants.html" class="btn-small">Find Food</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="section-header" id="map">
+  <h2>Navigate</h2><div class="underline"></div>
+</div>
+<iframe class="map-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3896.676646736396!2d76.48486731481617!3d12.853663990933406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba53f6da6403061%3A0x62a5b6d7732432d6!2sShravanabelagola%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1679900000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
 
 <footer>
   <p>© 2025 Vihara | Namma Shravanabelagola</p>
 </footer>
 
 <script>
+  // 1. Mobile Menu
   function toggleMenu() {
-    const nav = document.getElementById('mobileNav');
-    nav.classList.toggle('active');
+    document.getElementById('mobileNav').classList.toggle('active');
   }
+
+  // 2. Scroll Animation Logic
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible'); // Trigger CSS transition
+      }
+    });
+  }, { threshold: 0.1 }); // Trigger when 10% visible
+
+  // Target the preview cards
+  document.querySelectorAll('.preview-card').forEach(card => {
+    observer.observe(card);
+  });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
