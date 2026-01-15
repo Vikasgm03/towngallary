@@ -73,7 +73,6 @@ body {
   gap: 4rem; z-index: 1;
 }
 
-/* Left Side: Text */
 .hero-text { flex: 1; max-width: 550px; }
 
 .pill {
@@ -105,7 +104,6 @@ body {
 }
 .btn-primary:hover { transform: translateY(-3px); background: var(--primary-dark); }
 
-/* Right Side: Floating Visuals */
 .hero-visuals { flex: 1; position: relative; height: 400px; }
 
 .float-card {
@@ -133,10 +131,10 @@ body {
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-/* ===== QUICK ACCESS BUTTONS ===== */
+/* ===== QUICK ACCESS ===== */
 .quick-access-container {
   max-width: 1000px;
-  margin: -40px auto 3rem auto; /* Pull Up Overlap */
+  margin: -40px auto 3rem auto;
   padding: 0 15px; position: relative; z-index: 10;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
 }
@@ -149,198 +147,93 @@ body {
 .quick-card i { font-size: 1.6rem; color: var(--primary); margin-bottom: 8px; display: block; }
 .quick-card h3 { font-size: 0.9rem; font-weight: 600; margin: 0; }
 
-/* ===== SECTION HEADER ===== */
+/* ===== SECTION HEADER & PREVIEWS ===== */
 .section-header { text-align: center; margin: 3rem 0 2rem 0; padding: 0 1rem; }
 .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 8px auto; }
 
-/* ===== PREVIEW SECTION (Cleaner & Smaller) ===== */
 .preview-container {
-  max-width: 900px; /* Reduced width for compactness */
-  margin: 0 auto 4rem auto;
-  padding: 0 15px;
+  max-width: 900px; margin: 0 auto 4rem auto; padding: 0 15px;
   display: flex; flex-direction: column; gap: 20px;
 }
 
 .preview-card {
-  background: white;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  display: flex;
-  align-items: center;
-  border: 1px solid #eee;
-  /* Start hidden for animation */
+  background: white; border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; align-items: center; border: 1px solid #eee;
   opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
 }
-
-/* When class 'visible' is added by JS, it slides up */
 .preview-card.visible { opacity: 1; transform: translateY(0); }
 
-.preview-img-box {
-  width: 40%; height: 200px; /* Smaller Height */
-}
-.preview-img-box img {
-  width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
-}
+.preview-img-box { width: 40%; height: 200px; }
+.preview-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
 .preview-card:hover .preview-img-box img { transform: scale(1.05); }
 
-.preview-content {
-  width: 60%; padding: 1.5rem;
-}
-
+.preview-content { width: 60%; padding: 1.5rem; }
 .preview-content h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--accent); }
 .preview-content p { font-size: 0.9rem; color: #666; margin-bottom: 15px; line-height: 1.5; }
 
 .btn-small {
-  display: inline-block; background: var(--accent); color: white;
-  padding: 8px 20px; border-radius: 50px; text-decoration: none;
-  font-size: 0.85rem; font-weight: 500; transition: 0.3s;
+  display: inline-block; background: var(--accent); color: white; padding: 8px 20px;
+  border-radius: 50px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;
 }
 .btn-small:hover { background: var(--primary); }
 
-/* Alternate Layout: Image on Right */
 .preview-card:nth-child(even) { flex-direction: row-reverse; }
 
-/* ===== MAP ===== */
-.map-full { width: 100%; height: 300px; border: 0; filter: grayscale(20%); }
-
-/* ===== FOOTER ===== */
-footer { background: #222; color: #888; text-align: center; padding: 2rem; font-size: 0.9rem; }
-
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 900px) {
-  
-  /* Header */
-  .menu-toggle { display: block; }
-  .nav-links {
-    display: none; position: absolute; top: 100%; left: 0; width: 100%;
-    background: white; flex-direction: column; align-items: flex-start;
-    padding: 1.5rem; gap: 1.5rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 1px solid #eee;
-  }
-  .nav-links.active { display: flex; }
-  .add-btn { width: 100%; text-align: center; }
-
-  /* Hero Mobile */
-  .hero { padding: 2.5rem 1.5rem; text-align: center; }
-  .hero-container { flex-direction: column; gap: 1.5rem; }
-  
-  .hero-visuals {
-    width: 100%; height: auto;
-    display: flex; flex-direction: row; justify-content: center; gap: 10px; margin-top: 1rem;
-  }
-
-  .float-card {
-    position: relative; top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
-    width: auto; padding: 8px 16px; border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid #eee;
-  }
-  .icon-box { width: 28px; height: 28px; font-size: 0.9rem; border-radius: 50%; }
-  .card-info span { display: none; }
-  .card-info strong { font-size: 0.85rem; }
-
-  /* Quick Access Mobile */
-  .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: 0; padding-top: 2rem; }
-
-  /* Preview Cards Mobile */
-  .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
-  .preview-img-box { width: 100%; height: 160px; }
-  .preview-content { width: 100%; text-align: center; padding: 1.5rem; }
-
-  /* ===== PREMIUM FOOTER STYLES ===== */
+/* ===== PREMIUM FOOTER CSS ===== */
 .premium-footer {
   position: relative;
-  background-color: #1a1a1a; /* Dark Grey */
+  background-color: #1a1a1a;
   color: #fff;
-  margin-top: 100px; /* Space for the floating card overlap */
+  margin-top: 100px; /* Space for CTA overlap */
 }
 
-/* 1. The Wave */
+/* 1. Wave */
 .footer-wave {
-  position: absolute;
-  top: -100px; /* Pulls wave up */
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  z-index: 1;
+  position: absolute; top: -100px; left: 0; width: 100%;
+  overflow: hidden; line-height: 0; z-index: 1;
 }
-.footer-wave svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 100px;
-}
-.footer-wave .shape-fill {
-  fill: #1a1a1a; /* Matches footer bg */
-}
+.footer-wave svg { position: relative; display: block; width: calc(100% + 1.3px); height: 100px; }
+.footer-wave .shape-fill { fill: #1a1a1a; }
 
 /* 2. Floating CTA Card */
 .footer-cta-wrapper {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  z-index: 10; /* Sits on top of wave */
-  top: -80px; /* PULLS CARD UP HALF WAY */
+  position: relative; max-width: 1000px; margin: 0 auto;
+  z-index: 10; top: -80px;
 }
-
 .footer-cta-card {
-  background: var(--primary); /* Saffron BG */
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 2.5rem 3rem;
-  border-radius: 20px;
+  padding: 2.5rem 3rem; border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
+  display: flex; justify-content: space-between; align-items: center; color: white;
 }
-
 .footer-cta-card h3 { margin: 0 0 5px 0; font-family: 'Playfair Display', serif; font-size: 1.8rem; }
 .footer-cta-card p { margin: 0; opacity: 0.9; }
 
 .btn-cta {
-  background: white;
-  color: var(--primary);
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: transform 0.3s;
+  background: white; color: var(--primary); padding: 12px 30px;
+  border-radius: 50px; text-decoration: none; font-weight: 700; transition: transform 0.3s;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
-.btn-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
+.btn-cta:hover { transform: translateY(-3px); }
 
-/* 3. Main Content */
+/* 3. Main Footer Content */
 .footer-content {
-  padding: 0 5% 2rem 5%;
-  position: relative;
-  z-index: 5;
-  margin-top: -40px; /* Adjust for card overlap */
+  padding: 0 5% 2rem 5%; position: relative; z-index: 5; margin-top: -40px;
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 3rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Brand Styling */
 .f-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  /* Gradient Text */
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;
   background: linear-gradient(to right, #fff, #ffcc80);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .brand-col p { color: #a0a0a0; line-height: 1.6; margin-bottom: 1.5rem; }
 
-/* Socials */
 .f-socials { display: flex; gap: 15px; }
 .f-socials a {
   width: 40px; height: 40px; background: rgba(255,255,255,0.1);
@@ -349,36 +242,49 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 }
 .f-socials a:hover { background: var(--primary); transform: translateY(-3px); }
 
-/* Links */
 .f-col h4 { font-size: 1.1rem; margin-bottom: 1.5rem; color: white; }
 .f-col ul { list-style: none; padding: 0; }
 .f-col ul li { margin-bottom: 12px; }
 .f-col ul li a { color: #a0a0a0; text-decoration: none; transition: 0.3s; }
 .f-col ul li a:hover { color: var(--primary); padding-left: 5px; }
 
-/* Input Group */
-.f-input-group {
-  display: flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px;
-}
-.f-input-group input {
-  flex: 1; background: transparent; border: none; padding: 10px 15px;
-  color: white; outline: none;
-}
-.f-input-group button {
-  width: 40px; height: 40px; border-radius: 50%; border: none;
-  background: var(--primary); color: white; cursor: pointer; transition: 0.3s;
-}
+.f-input-group { display: flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; }
+.f-input-group input { flex: 1; background: transparent; border: none; padding: 10px 15px; color: white; outline: none; }
+.f-input-group button { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--primary); color: white; cursor: pointer; transition: 0.3s; }
 .f-input-group button:hover { transform: scale(1.1); }
 .tiny-text { font-size: 0.8rem; color: #777; margin-top: 10px; }
 
-/* Copyright */
 .footer-copyright { text-align: center; padding-top: 2rem; color: #777; font-size: 0.9rem; }
 .footer-copyright i { color: var(--primary); animation: beat 1s infinite; }
-
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
+  /* Header & Nav */
+  .menu-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+  .nav-links.active { display: flex; }
+  .add-btn { width: 100%; text-align: center; }
+
+  /* Hero */
+  .hero { padding: 2.5rem 1.5rem; text-align: center; }
+  .hero-container { flex-direction: column; gap: 1.5rem; }
+  .hero-visuals { width: 100%; height: auto; display: flex; flex-direction: row; justify-content: center; gap: 10px; margin-top: 1rem; }
+  
+  .float-card { position: relative; top: auto !important; right: auto !important; width: auto; padding: 8px 16px; border-radius: 50px; }
+  .icon-box { width: 28px; height: 28px; font-size: 0.9rem; }
+  .card-info span { display: none; }
+  .card-info strong { font-size: 0.85rem; }
+
+  /* Quick Access */
+  .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: 0; padding-top: 2rem; }
+
+  /* Previews */
+  .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
+  .preview-img-box { width: 100%; height: 160px; }
+  .preview-content { width: 100%; text-align: center; }
+
+  /* Footer Mobile */
   .footer-cta-card { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
@@ -386,8 +292,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; text-align: center; }
   .f-socials { justify-content: center; }
-  .footer-cta-wrapper { padding: 0 1rem; } /* Prevent card touching edges */
-}
+  .footer-cta-wrapper { padding: 0 1rem; }
 }
 </style>
 </head>
@@ -417,7 +322,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 <section class="hero">
   <div class="hero-container">
     <div class="hero-text">
-      <span class="pill"> Namma Shravanabelagola</span>
+      <span class="pill">🚀 Namma Shravanabelagola</span>
       <h1>Discover <br> <span class="highlight">The Divine City</span></h1>
       <p>The smartest directory for authentic shops, food, and heritage spots.</p>
       <a href="#preview-section" class="btn-primary">Start Exploring <i class="fas fa-arrow-down"></i></a>
@@ -441,9 +346,9 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 </section>
 
 <div class="quick-access-container">
-  <a href="map.html" class="quick-card"> <i class="fas fa-map-marked-alt"></i>
-  <h3>City Map</h3>
-</a>
+  <a href="map.html" class="quick-card">
+    <i class="fas fa-map-marked-alt"></i><h3>City Map</h3>
+  </a>
   <a href="retail_grid/retail_shops.html" class="quick-card">
     <i class="fas fa-store"></i><h3>Shops</h3>
   </a>
@@ -461,7 +366,6 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 </div>
 
 <div class="preview-container">
-  
   <div class="preview-card">
     <div class="preview-img-box">
       <img src="images/explorica/retail_shops/durga.jpg" alt="Shops">
@@ -483,63 +387,90 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
       <a href="restaurants.html" class="btn-small">Find Food</a>
     </div>
   </div>
-
 </div>
 
-
- <div class="footer-col">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="aboutus.html">Our Story</a></li>
-        <li><a href="retail_grid/retail_shops.html">Local Shops</a></li>
-        <li><a href="restaurants.html">Food & Mess</a></li>
-        <li><a href="Temples.html">Temples</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="add_button.html">List Your Shop</a></li>
-        <li><a href="#">Help Center</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Stay Updated</h4>
-      <p>Get the latest temple timings and festival updates.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email">
-        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-      </form>
-    </div>
-
+<footer class="premium-footer">
+  
+  <div class="footer-wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
   </div>
 
-  <div class="footer-bottom">
-    <p>&copy; 2025 Vihara Project. Built with <i class="fas fa-heart" style="color:var(--primary)"></i> in Karnataka.</p>
+  <div class="footer-cta-wrapper">
+    <div class="footer-cta-card">
+      <div class="cta-text">
+        <h3>Own a business here?</h3>
+        <p>Join 50+ locals digitizing their shops today.</p>
+      </div>
+      <a href="add_button.html" class="btn-cta">List for Free</a>
+    </div>
   </div>
 
+  <div class="footer-content">
+    <div class="footer-grid">
+      
+      <div class="f-col brand-col">
+        <h2 class="f-logo">Vihara</h2>
+        <p>Connecting the divine heritage of Shravanabelagola with the digital future.</p>
+        <div class="f-socials">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="retail_grid/retail_shops.html">Shops</a></li>
+          <li><a href="restaurants.html">Food</a></li>
+          <li><a href="Temples.html">Temples</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="aboutus.html">Our Story</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Updates</h4>
+        <div class="f-input-group">
+          <input type="email" placeholder="Email address">
+          <button><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <p class="tiny-text">Get darshan timings & festival alerts.</p>
+      </div>
+
+    </div>
+
+    <div class="footer-copyright">
+      <p>&copy; 2025 Vihara. Made with <i class="fas fa-heart"></i> in Karnataka.</p>
+    </div>
+  </div>
 </footer>
+
 <script>
-  // 1. Mobile Menu
+  // Mobile Menu
   function toggleMenu() {
     document.getElementById('mobileNav').classList.toggle('active');
   }
 
-  // 2. Scroll Animation Logic
+  // Scroll Animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible'); // Trigger CSS transition
+        entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 }); // Trigger when 10% visible
+  }, { threshold: 0.1 });
 
-  // Target the preview cards
   document.querySelectorAll('.preview-card').forEach(card => {
     observer.observe(card);
   });
@@ -547,6 +478,3 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
-
-
-
