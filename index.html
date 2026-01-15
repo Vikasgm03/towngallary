@@ -84,146 +84,199 @@ body {
 /* Hamburger (Mobile Only) */
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
-/* ===== HERO SECTION (Responsive Fix) ===== */
+/* ===== HERO SECTION (Floating Buttons Structure) ===== */
 .hero {
+  min-height: 70vh; /* Comfortable height */
   background: #ffffff;
   padding: 2rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
 
-/* Container to hold everything */
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center; /* Center vertically */
-  gap: 4rem; /* Space between text and image */
-  min-height: 60vh;
-}
-
-/* --- 1. VISUAL SIDE (Image) --- */
-.hero-visual {
-  flex: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.image-box {
-  width: 100%;
-  max-width: 450px;
-  height: 400px;
-  background-image: url('images/hero_statue.jpg');
-  background-size: cover;
-  background-position: center;
-  /* Desktop Shape: Arch */
-  border-radius: 200px 200px 20px 20px;
-  box-shadow: 20px 20px 0px rgba(255, 140, 0, 0.1); /* The Design Block */
-}
-
-.floating-tag {
+/* Background Decoration (Optional) */
+.hero::before {
+  content: '';
   position: absolute;
-  bottom: 30px; left: 0;
-  background: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  font-weight: 600;
-  color: #333;
-  display: flex; align-items: center; gap: 8px;
-  animation: float 4s ease-in-out infinite;
+  top: -10%; right: -10%;
+  width: 50vw; height: 50vw;
+  background: radial-gradient(circle, rgba(255, 153, 51, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
 }
 
-.floating-tag i { color: #27ae60; font-size: 1.2rem; }
+.hero-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  z-index: 1;
+}
 
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-
-/* --- 2. TEXT SIDE --- */
-.hero-content {
+/* --- LEFT SIDE: TEXT --- */
+.hero-text {
   flex: 1;
   max-width: 550px;
 }
 
 .pill {
   display: inline-block;
-  background: #fff3e0; color: var(--primary);
-  padding: 6px 12px; border-radius: 6px;
-  font-size: 0.8rem; font-weight: 700;
-  text-transform: uppercase; margin-bottom: 15px;
+  background: #fff3e0;
+  color: var(--primary);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
 }
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-weight: 700; font-size: 3rem;
-  color: var(--accent); line-height: 1.1; margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 3.2rem;
+  color: var(--accent);
+  line-height: 1.15;
+  margin-bottom: 20px;
 }
 
-.highlight { color: var(--primary); }
+.highlight {
+  color: var(--primary);
+  position: relative;
+}
+.highlight::after {
+  content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 8px;
+  background: rgba(255, 200, 50, 0.2); z-index: -1; border-radius: 4px;
+}
 
 .hero p {
-  font-size: 1rem; color: #666; margin-bottom: 25px; line-height: 1.6;
+  font-size: 1.05rem;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
 
-.btn-row { display: flex; align-items: center; gap: 15px; }
-
+/* Main CTA Button */
 .btn-primary {
-  background: var(--primary); color: white;
-  padding: 12px 30px; border-radius: 50px;
-  text-decoration: none; font-weight: 600;
-  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--primary);
+  color: white;
+  padding: 14px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
   transition: transform 0.2s;
 }
-.btn-primary:hover { transform: translateY(-2px); }
+.btn-primary:hover {
+  transform: translateY(-3px);
+  background: var(--primary-dark);
+}
 
-.btn-text { color: #555; text-decoration: none; font-weight: 500; }
+/* --- RIGHT SIDE: FLOATING VISUALS --- */
+.hero-visuals {
+  flex: 1;
+  position: relative;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-/* ===== MOBILE FIX (The Important Part) ===== */
+/* The Floating Cards */
+.float-card {
+  position: absolute;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: #333;
+  width: 240px;
+  border: 1px solid #f0f0f0;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-card:hover {
+  transform: scale(1.05) !important; /* Override animation on hover */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  border-color: var(--primary);
+  z-index: 10;
+}
+
+/* Icons inside cards */
+.icon-box {
+  width: 45px; height: 45px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.icon-shop { background: #e3f2fd; color: #1976d2; }
+.icon-food { background: #fff3e0; color: #f57c00; }
+.icon-temple { background: #f3e5f5; color: #7b1fa2; }
+
+.card-info strong { display: block; font-size: 1rem; }
+.card-info span { font-size: 0.8rem; color: #777; }
+
+/* Positioning the cards to look like a cluster */
+.card-1 { top: 10%; right: 10%; animation-delay: 0s; }
+.card-2 { top: 40%; left: 10%; animation-delay: 2s; z-index: 2; }
+.card-3 { bottom: 10%; right: 5%; animation-delay: 4s; }
+
+/* Float Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== MOBILE STRUCTURE (Keep Elements Visible) ===== */
 @media (max-width: 900px) {
-  
   .hero {
-    padding: 1rem 1rem 3rem 1rem; /* Reduce padding */
+    min-height: auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
   }
 
   .hero-container {
-    flex-direction: column-reverse; /* Stack: Image Top, Text Bottom */
-    gap: 1.5rem; /* Remove huge gap */
-    min-height: auto;
+    flex-direction: column; /* Stack vertically */
+    gap: 3rem;
   }
 
-  /* Image becomes a wide banner card */
-  .hero-visual {
+  /* Text Adjustment */
+  .hero-text { margin: 0 auto; }
+  .hero h1 { font-size: 2.5rem; }
+  .btn-primary { width: 100%; justify-content: center; } /* Full width button */
+
+  /* Visuals Adjustment */
+  .hero-visuals {
     width: 100%;
+    height: auto; /* Remove fixed height */
+    position: relative;
+    /* Convert from absolute positioning to a Grid for mobile */
+    display: grid;
+    grid-template-columns: 1fr; /* 1 Column */
+    gap: 15px;
   }
 
-  .image-box {
-    width: 100%;
-    height: 250px; /* Shorter height for mobile */
-    max-width: 100%;
-    /* Mobile Shape: Simple Rounded Card */
-    border-radius: 20px; 
-    /* Remove the offset shadow to save space */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-  }
-
-  /* Center the badge on mobile */
-  .floating-tag {
-    bottom: -15px; left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    animation: none; /* Stop moving on mobile */
-  }
-
-  /* Align text */
-  .hero-content {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  .hero h1 { font-size: 2.2rem; }
-  
-  .btn-row {
-    justify-content: center; /* Center buttons */
+  /* Reset Card Positioning for Mobile Grid */
+  .float-card {
+    position: relative; /* Stop floating everywhere */
+    top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
+    width: 100%; /* Full width cards */
+    animation: none; /* Stop movement on phone */
   }
 }
 /* Wave */
@@ -377,40 +430,42 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 <section class="hero">
   
-  <div class="hero-bg-glow"></div>
-  <div class="hero-bg-dots"></div>
-
-  <div class="hero-text">
-    <div class="pill-tag">🚀 Namma Shravanabelagola</div>
-    <h1>Explore the <span class="highlight">Divine City</span></h1>
-    <p>The smartest directory for authentic shops, food, and heritage spots.</p>
-    
-    <div class="hero-buttons">
-      <a href="#map" class="btn-primary">Start Exploring</a>
-      <a href="aboutus.html" class="btn-text">How it works?</a>
-    </div>
-  </div>
-
-<section class="hero">
-  
   <div class="hero-container">
     
-    <div class="hero-visual">
-      <div class="image-box"></div>
-      <div class="floating-tag">
-        <i class="fas fa-check-circle"></i> 50+ Verified Shops
-      </div>
-    </div>
-
-    <div class="hero-content">
-      <span class="pill">Namma Shravanabelagola</span>
-      <h1>Explore the <br><span class="highlight">Divine City</span></h1>
+    <div class="hero-text">
+      <span class="pill">🚀 Namma Shravanabelagola</span>
+      <h1>Discover <br> <span class="highlight">The Divine City</span></h1>
       <p>The smartest directory for authentic shops, food, and heritage spots.</p>
       
-      <div class="btn-row">
-        <a href="#map" class="btn-primary">Start Exploring</a>
-        <a href="aboutus.html" class="btn-text">How it works?</a>
-      </div>
+      <a href="#map" class="btn-primary">Start Exploring <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="hero-visuals">
+      
+      <a href="retail_grid/retail_shops.html" class="float-card card-1">
+        <div class="icon-box icon-shop"><i class="fas fa-store"></i></div>
+        <div class="card-info">
+          <strong>Shops</strong>
+          <span>Verified Markets</span>
+        </div>
+      </a>
+
+      <a href="restaurants.html" class="float-card card-2">
+        <div class="icon-box icon-food"><i class="fas fa-utensils"></i></div>
+        <div class="card-info">
+          <strong>Food</strong>
+          <span>Local Tastes</span>
+        </div>
+      </a>
+
+      <a href="Temples.html" class="float-card card-3">
+        <div class="icon-box icon-temple"><i class="fas fa-gopuram"></i></div>
+        <div class="card-info">
+          <strong>Temples</strong>
+          <span>Darshan Times</span>
+        </div>
+      </a>
+
     </div>
 
   </div>
@@ -482,6 +537,7 @@ footer { background: #222; color: #888; text-align: center; padding: 2rem; font-
 
 </body>
 </html>
+
 
 
 
