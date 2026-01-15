@@ -28,7 +28,7 @@
     "id": "103",
     "name": "Raghu Hotel",
     "category": "Restaurant",
-    "image": "https://via.placeholder.com/800x400?text=Raghu+Hotel",
+    "image": "../images/raghu_hotel.jpg",
     "description": "Authentic Karnataka style vegetarian food. Famous for Masala Dosa.",
     "owner": "Raghu N",
     "phone": "+919876543211",
