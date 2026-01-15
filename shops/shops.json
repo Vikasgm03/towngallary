@@ -3,7 +3,7 @@
     "id": "101",
     "name": "Sri Durga Provision Store",
     "category": "Retail",
-    "image": "images/explorica/retail_shops/durga.jpg",
+    "image": "../images/explorica/retail_shops/durga.jpg",
     "description": "One of the oldest and most trusted provision stores in town. We sell wholesale rice, ragi, organic jaggery, and all pooja items required for Shravanabelagola temples.",
     "owner": "Ramesh Gowda",
     "ownerImage": "images/owners/ramesh.jpg",
