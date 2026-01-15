@@ -215,16 +215,19 @@
 
   <script>
     /* ---------- LOAD DATA LOGIC ---------- */
+    // ... inside <script>
+
     const params = new URLSearchParams(window.location.search);
     const shopId = params.get('id');
 
-    // Simulate database path (Adjust path as needed, e.g. ../shops.json)
-    fetch('../../shops.json') 
+    // 👇 THIS IS THE FIX: Remove the "../" dots
+    fetch('shops.json') 
       .then(res => {
         if (!res.ok) throw new Error("File not found");
         return res.json();
       })
       .then(shops => {
+        // ... rest of your code ...
         const shop = shops.find(s => s.id === shopId);
 
         if (!shop) {
