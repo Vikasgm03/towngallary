@@ -1,16 +1,16 @@
 [
   {
-    "id": "med1", 
+    "id": "med1",
     "name": "Sri Manjunatha Medicals",
     "owner": "Mr. Suresh Kumar",
     "image": "../../images/medical/med1.jpg",
-    "location": "Main Bazaar Street, Opp. Post Office",
+    "location": "Main Bazaar Street",
     "phone": "+919999999999",
-    "mapLink": "https://goo.gl/maps/example",
+    "mapLink": "https://www.google.com/maps/search/Sri+Manjunatha+Medicals+Shravanabelagola",
     "status": "Open Now",
     "statusColor": "#27ae60",
-    "description": "One of the oldest medical shops in town. We stock all general medicines, ayurvedic products, and baby care items. Home delivery available for seniors.",
-    "timings": "9:00 AM - 9:30 PM"
+    "timings": "9:00 AM - 10:00 PM",
+    "description": "Trusted pharmacy for over 20 years. We stock all general medicines, baby care products, and ayurvedic essentials."
   },
   {
     "id": "hosp1",
@@ -19,10 +19,10 @@
     "image": "../../images/medical/hospital.jpg",
     "location": "Near Bus Stand",
     "phone": "108",
-    "mapLink": "https://goo.gl/maps/example",
+    "mapLink": "https://www.google.com/maps/search/Government+Hospital+Shravanabelagola",
     "status": "Emergency 24/7",
     "statusColor": "#e74c3c",
-    "description": "Government-run facility providing 24/7 emergency care, maternity ward, and general OPD services. Free treatment for eligible locals.",
-    "timings": "24 Hours"
+    "timings": "24 Hours",
+    "description": "Government-run hospital providing emergency care, maternity ward, and general physician consultation."
   }
 ]
