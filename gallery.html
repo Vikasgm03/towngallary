@@ -3,125 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery | Vihara</title>
+<title>Vihara Gallery</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  :root { --primary: #FF9933; --dark: #333; --light: #f4f4f4; }
+  :root { --primary: #ff8c00; --dark: #333; --light: #f8f9fa; }
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
   body { background: var(--light); color: var(--dark); }
 
   /* HEADER */
-  .gallery-header { background: white; padding: 2rem 5%; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-  .brand { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; display: block; margin-bottom: 10px; }
-  .gallery-header h1 { font-size: 2.5rem; margin-bottom: 5px; }
-  .gallery-header p { color: #666; }
-  .home-btn { display: inline-block; margin-top: 10px; text-decoration: none; color: #555; font-size: 0.9rem; }
-
-  /* FILTER BUTTONS */
-  .filter-bar { display: flex; justify-content: center; gap: 10px; padding: 20px; flex-wrap: wrap; }
-  .filter-btn {
-    border: none; background: white; padding: 8px 20px; border-radius: 50px; cursor: pointer;
-    font-weight: 600; color: #555; transition: 0.3s; border: 1px solid #ddd;
+  .gallery-header { 
+    background: white; 
+    padding: 2rem 5%; 
+    text-align: center; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky; top: 0; z-index: 100;
   }
-  .filter-btn:hover, .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .brand { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; display: block; margin-bottom: 5px; }
+  .gallery-header h1 { font-size: 2rem; margin-bottom: 5px; }
+  .gallery-header p { color: #666; font-size: 0.9rem; }
+  .home-btn { display: inline-block; margin-top: 10px; text-decoration: none; color: #555; font-size: 0.85rem; border: 1px solid #ddd; padding: 5px 15px; border-radius: 20px; transition:0.3s;}
+  .home-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* FILTER BAR */
+  .filter-container { padding: 20px 10px; text-align: center; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  
+  .filter-btn {
+    border: none; background: white; padding: 8px 18px; border-radius: 50px; cursor: pointer;
+    font-weight: 600; color: #666; transition: 0.3s; border: 1px solid #eee; margin: 0 4px;
+    font-size: 0.9rem;
+  }
+  .filter-btn:hover, .filter-btn.active { 
+    background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 10px rgba(255, 140, 0, 0.3);
+  }
 
   /* MASONRY GRID */
   .gallery-grid {
-    column-count: 3; /* 3 Columns on Desktop */
+    column-count: 3; 
     column-gap: 15px;
     padding: 15px;
     max-width: 1200px;
     margin: 0 auto;
   }
   
+  /* RESPONSIVE COLUMNS */
+  @media (max-width: 900px) { .gallery-grid { column-count: 2; } }
+  @media (max-width: 600px) { .gallery-grid { column-count: 2; column-gap: 10px; padding: 10px; } }
+
   .gallery-item {
-    break-inside: avoid; /* Prevents cutting images */
+    break-inside: avoid; 
     margin-bottom: 15px;
     position: relative;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: zoom-in;
     transition: transform 0.3s;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   }
-  .gallery-item:hover { transform: scale(1.02); }
   
-  .gallery-img { width: 100%; height: auto; display: block; border-radius: 10px; }
+  /* Image Styling */
+  .gallery-img { width: 100%; height: auto; display: block; }
   
-  /* Simple Caption Overlay */
+  /* Hover Caption */
   .caption {
     position: absolute; bottom: 0; left: 0; width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    color: white; padding: 20px 10px 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white; padding: 30px 10px 10px;
     opacity: 0; transition: 0.3s;
+    font-size: 0.9rem; font-weight: 500;
   }
   .gallery-item:hover .caption { opacity: 1; }
 
-  /* LIGHTBOX (Full Screen) */
+  /* LIGHTBOX */
   .lightbox {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9); z-index: 1000;
+    background: rgba(0,0,0,0.95); z-index: 1000;
     display: none; justify-content: center; align-items: center;
     flex-direction: column;
+    animation: fadeIn 0.3s;
   }
-  .lightbox img { max-width: 90%; max-height: 80vh; border-radius: 5px; box-shadow: 0 0 20px rgba(255,255,255,0.1); }
-  .close-lightbox { position: absolute; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; }
-  .lightbox-caption { color: white; margin-top: 15px; font-size: 1.2rem; }
+  .lightbox img { max-width: 95%; max-height: 80vh; border-radius: 5px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+  .close-lightbox { position: absolute; top: 20px; right: 20px; color: white; font-size: 2.5rem; cursor: pointer; background: rgba(255,255,255,0.1); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
+  .lightbox-caption { color: #ccc; margin-top: 20px; font-size: 1.1rem; text-align: center; }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) { .gallery-grid { column-count: 2; } }
-  @media (max-width: 480px) { .gallery-grid { column-count: 1; } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .hidden { display: none; }
 </style>
 </head>
 <body>
 
   <div class="gallery-header">
     <a href="index.html" class="brand">Vihara</a>
-    <h1>Shravanabelagola in Frames</h1>
-    <p>Explore the heritage, nature, and life of our town.</p>
-    <a href="index.html" class="home-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <h1>Town Gallery</h1>
+    <a href="more_categories.html" class="home-btn"><i class="fas fa-th"></i> Categories</a>
   </div>
 
-  <div class="filter-bar">
+  <div class="filter-container">
     <button class="filter-btn active" onclick="filterGallery('all')">All</button>
     <button class="filter-btn" onclick="filterGallery('nature')">Nature</button>
-    <button class="filter-btn" onclick="filterGallery('temple')">Temples</button>
-    <button class="filter-btn" onclick="filterGallery('fest')">Festivals</button>
+    <button class="filter-btn" onclick="filterGallery('temple')">Divine</button>
+    <button class="filter-btn" onclick="filterGallery('food')">Taste</button>
+    <button class="filter-btn" onclick="filterGallery('stay')">Stays</button>
+    <button class="filter-btn" onclick="filterGallery('shop')">Shops</button>
   </div>
 
-  <div class="gallery-grid">
-    
-    <div class="gallery-item nature">
-      <img src="images/nature/hill.jpg" class="gallery-img" alt="Vindhyagiri Sunrise">
-      <div class="caption">Vindhyagiri Sunrise</div>
+  <div class="gallery-grid" id="galleryGrid">
     </div>
-
-    <div class="gallery-item temple">
-      <img src="images/temples/basadi.jpg" class="gallery-img" alt="Bhandara Basadi">
-      <div class="caption">Bhandara Basadi Carvings</div>
-    </div>
-
-    <div class="gallery-item fest">
-      <img src="images/gallery/fest1.jpg" class="gallery-img" alt="Mahamastakabhisheka">
-      <div class="caption">Grand Festival</div>
-    </div>
-
-    <div class="gallery-item nature">
-      <img src="images/nature/lake.jpg" class="gallery-img" alt="Janivara Lake">
-      <div class="caption">Serene Lake View</div>
-    </div>
-
-    <div class="gallery-item temple">
-      <img src="images/temples/gopuram.jpg" class="gallery-img" alt="Temple Entrance">
-      <div class="caption">Historic Entrance</div>
-    </div>
-
-     <div class="gallery-item fest">
-      <img src="images/gallery/fest2.jpg" class="gallery-img" alt="Procession">
-      <div class="caption">Town Procession</div>
-    </div>
-
-  </div>
 
   <div class="lightbox" id="lightbox">
     <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
@@ -130,48 +118,94 @@
   </div>
 
   <script>
-    // FILTER FUNCTION
-    function filterGallery(category) {
-      const items = document.querySelectorAll('.gallery-item');
-      const buttons = document.querySelectorAll('.filter-btn');
+    // --- MASTER IMAGE LIST ---
+    // This connects to the images you already used in your categories!
+    const images = [
+      // NATURE
+      { src: 'images/nature/hill.jpg', cat: 'nature', desc: 'Vindhyagiri Sunrise' },
+      { src: 'images/nature/lake.jpg', cat: 'nature', desc: 'Janivara Lake View' },
+      { src: 'images/nature/park.jpg', cat: 'nature', desc: 'Chandragiri Greenery' },
+      
+      // TEMPLES
+      { src: 'images/temples/basadi.jpg', cat: 'temple', desc: 'Ancient Basadi Carvings' },
+      { src: 'images/temples/temple.jpg', cat: 'temple', desc: 'Hoysala Architecture' },
+      { src: 'images/temples/gopuram.jpg', cat: 'temple', desc: 'Temple Entrance' },
 
-      // Active Button Style
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      // FOOD
+      { src: 'images/food/dosa.jpg', cat: 'food', desc: 'Crispy Masala Dosa' },
+      { src: 'images/food/thali.jpg', cat: 'food', desc: 'South Indian Thali' },
+      { src: 'images/bakeries/cake.jpg', cat: 'food', desc: 'Fresh Bakery Treats' },
 
-      items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
+      // STAYS
+      { src: 'images/stays/hotel.jpg', cat: 'stay', desc: 'Luxury Stay View' },
+      { src: 'images/stays/lodge.jpg', cat: 'stay', desc: 'Comfortable Lodging' },
+
+      // SHOPS / RETAIL
+      { src: 'images/textiles/saree.jpg', cat: 'shop', desc: 'Silk Sarees' }, 
+      { src: 'images/handicrafts/idol.jpg', cat: 'shop', desc: 'Stone Carvings' },
+      { src: 'images/automobiles/mechanic1.jpg', cat: 'shop', desc: 'Auto Services' }
+    ];
+
+    const grid = document.getElementById('galleryGrid');
+
+    // 1. LOAD IMAGES
+    function loadGallery(filter) {
+      grid.innerHTML = ''; // Clear grid
+
+      images.forEach(img => {
+        // Check filter
+        if (filter === 'all' || img.cat === filter) {
+          
+          // Create Element
+          const item = document.createElement('div');
+          item.className = `gallery-item ${img.cat}`;
+          item.innerHTML = `
+            <img src="${img.src}" class="gallery-img" loading="lazy" 
+                 onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
+            <div class="caption">${img.desc}</div>
+          `;
+          
+          // Add Click Event for Lightbox
+          item.onclick = () => openLightbox(img.src, img.desc);
+          
+          grid.appendChild(item);
         }
       });
     }
 
-    // LIGHTBOX FUNCTION
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCap = document.getElementById('lightbox-caption');
+    // 2. FILTER FUNCTION
+    function filterGallery(category) {
+      // Highlight Button
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Reload Grid
+      loadGallery(category);
+    }
 
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        const cap = item.querySelector('.caption').innerText;
-        
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-        lightboxCap.innerText = cap;
-      });
-    });
+    // 3. LIGHTBOX FUNCTIONS
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+
+    function openLightbox(src, desc) {
+      lightbox.style.display = 'flex';
+      lbImg.src = src;
+      lbCap.innerText = desc;
+    }
 
     function closeLightbox() {
       lightbox.style.display = 'none';
     }
     
-    // Close on clicking background
-    lightbox.addEventListener('click', (e) => {
+    // Close when clicking background
+    lightbox.onclick = (e) => {
       if(e.target === lightbox) closeLightbox();
-    });
+    }
+
+    // INITIAL LOAD
+    loadGallery('all');
+
   </script>
 
 </body>
