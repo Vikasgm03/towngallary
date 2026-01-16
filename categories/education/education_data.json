@@ -1,0 +1,41 @@
+[
+  {
+    "id": "sch1",
+    "name": "Bahubali Polytechnic",
+    "type": "Polytechnic College",
+    "image": "../../images/education/polytechnic.jpg",
+    "location": "Chandragiri Hill Road",
+    "phone": "+918176257222",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Admissions Open",
+    "statusColor": "#3f51b5",
+    "timings": "9:00 AM - 4:30 PM",
+    "description": "One of the premier technical institutes in the region. Offering diploma courses in Civil, Mechanical, CS, and E&C. Excellent lab facilities and placement support."
+  },
+  {
+    "id": "sch2",
+    "name": "Sri Jain Vidyalaya",
+    "type": "High School (State Board)",
+    "image": "../../images/education/school.jpg",
+    "location": "Near Main Temple",
+    "phone": "+919900112233",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Classes On",
+    "statusColor": "#27ae60",
+    "timings": "8:30 AM - 3:30 PM",
+    "description": "A heritage institution focusing on holistic development. Classes from Nursery to 10th Standard. Large playground and library available."
+  },
+  {
+    "id": "comp1",
+    "name": "TechSmart Computer Center",
+    "type": "Training Institute",
+    "image": "../../images/education/computer.jpg",
+    "location": "Market Road, 1st Floor",
+    "phone": "+919887766554",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Open Now",
+    "statusColor": "#e67e22",
+    "timings": "7:00 AM - 8:00 PM",
+    "description": "Learn C++, Java, Python, and Tally. Certification courses available for BCA and B.Com students. Weekend batches available."
+  }
+]
