@@ -1,38 +1,28 @@
 [
   {
+    "id": "med1", 
     "name": "Sri Manjunatha Medicals",
-    "image": "images/medical/med1.jpg",
-    "location": "Main Bazaar Street",
+    "owner": "Mr. Suresh Kumar",
+    "image": "../../images/medical/med1.jpg",
+    "location": "Main Bazaar Street, Opp. Post Office",
     "phone": "+919999999999",
-    "mapLink": "#",
+    "mapLink": "https://goo.gl/maps/example",
     "status": "Open Now",
-    "statusColor": "#27ae60"
+    "statusColor": "#27ae60",
+    "description": "One of the oldest medical shops in town. We stock all general medicines, ayurvedic products, and baby care items. Home delivery available for seniors.",
+    "timings": "9:00 AM - 9:30 PM"
   },
   {
+    "id": "hosp1",
     "name": "Govt. Community Hospital",
-    "image": "images/medical/hospital.jpg",
+    "owner": "Dr. Anjali (Chief)",
+    "image": "../../images/medical/hospital.jpg",
     "location": "Near Bus Stand",
     "phone": "108",
-    "mapLink": "#",
+    "mapLink": "https://goo.gl/maps/example",
     "status": "Emergency 24/7",
-    "statusColor": "#e74c3c"
-  },
-  {
-    "name": "Dr. Shetty's Clinic",
-    "image": "images/medical/clinic.jpg",
-    "location": "Behind Temple",
-    "phone": "+918888888888",
-    "mapLink": "#",
-    "status": "Closes 9 PM",
-    "statusColor": "#95a5a6"
-  },
-  {
-    "name": "Apollo Pharmacy",
-    "image": "images/medical/med2.jpg",
-    "location": "Vindhyagiri Road",
-    "phone": "+917777777777",
-    "mapLink": "#",
-    "status": "Open Now",
-    "statusColor": "#27ae60"
+    "statusColor": "#e74c3c",
+    "description": "Government-run facility providing 24/7 emergency care, maternity ward, and general OPD services. Free treatment for eligible locals.",
+    "timings": "24 Hours"
   }
 ]
