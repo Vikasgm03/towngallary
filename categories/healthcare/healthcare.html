@@ -19,7 +19,6 @@
   /* HERO */
   .category-hero { background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); text-align: center; padding: 3rem 1rem; }
   .category-hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--accent); }
-  .category-hero p { color: #666; max-width: 500px; margin: 0 auto; }
 
   /* CONTAINER */
   .shop-container { max-width: 1000px; margin: 2rem auto; padding: 0 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -28,7 +27,6 @@
   .shop-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid #eee; position: relative; }
   .shop-card:hover { transform: translateY(-5px); }
   
-  /* Link Wrapper for Image */
   .img-link { display: block; width: 100%; height: 180px; overflow: hidden; }
   .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
   .img-link:hover .card-img { transform: scale(1.05); }
@@ -69,12 +67,9 @@
       try {
         container.innerHTML = '<p style="text-align:center; width:100%; color:#666; margin-top:20px;">Loading healthcare services...</p>';
 
-        // Fetch JSON from the SAME folder
         const response = await fetch('healthcare_data.json');
         
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error("File not found");
 
         const shops = await response.json();
         container.innerHTML = '';
@@ -84,19 +79,19 @@
             <div class="shop-card">
               <span class="status-badge" style="background:${shop.statusColor}">${shop.status}</span>
               
-              <a href="shop_detail.html?id=${shop.id}" class="img-link">
+              <a href="healthcare_details.html?id=${shop.id}" class="img-link">
                 <img src="${shop.image}" class="card-img" alt="${shop.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
               </a>
 
               <div class="card-info">
-                <a href="shop_detail.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
+                <a href="healthcare_details.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
                     <h3>${shop.name}</h3>
                 </a>
                 <p><i class="fas fa-map-marker-alt"></i> ${shop.location}</p>
                 
                 <div class="btn-row">
                   <a href="tel:${shop.phone}" class="btn-action btn-call"><i class="fas fa-phone"></i> Call</a>
-                  <a href="shop_detail.html?id=${shop.id}" class="btn-action btn-map">Details</a>
+                  <a href="healthcare_details.html?id=${shop.id}" class="btn-action btn-map">Details</a>
                 </div>
               </div>
             </div>
@@ -106,12 +101,7 @@
 
       } catch (error) {
         console.error('Error:', error);
-        container.innerHTML = `
-            <div style="text-align:center; width:100%; padding:20px; color:#e74c3c;">
-                <i class="fas fa-exclamation-circle" style="font-size:2rem; margin-bottom:10px;"></i>
-                <p>Failed to load data.</p>
-                <small>Please ensure 'healthcare_data.json' is in the same folder.</small>
-            </div>`;
+        container.innerHTML = `<p style="text-align:center; color:red;">Failed to load data. Use Live Server.</p>`;
       }
     }
 
