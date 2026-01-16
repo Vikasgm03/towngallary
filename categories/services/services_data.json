@@ -1,0 +1,47 @@
+[
+  {
+    "id": "serv1",
+    "name": "Ramesh Plumbing Works",
+    "type": "Plumber",
+    "image": "../../images/services/plumber.jpg",
+    "location": "Near Water Tank, 2nd Cross",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Available",
+    "statusColor": "#27ae60",
+    "timings": "8:00 AM - 8:00 PM",
+    "charge": "₹200 Visiting Charge",
+    "experience": "12 Years Experience",
+    "description": "Expert in fixing leaking taps, motor installation, and pipe fitting. Emergency services available for water tank overflow issues."
+  },
+  {
+    "id": "serv2",
+    "name": "PowerFix Electricals",
+    "type": "Electrician",
+    "image": "../../images/services/electrician.jpg",
+    "location": "Market Road",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "On Call",
+    "statusColor": "#2980b9",
+    "timings": "9:00 AM - 9:00 PM",
+    "charge": "₹250 Inspection Fee",
+    "experience": "8 Years Experience",
+    "description": "We handle house wiring, fan installation, and inverter repair. Certified technicians for safe and quick repairs."
+  },
+  {
+    "id": "serv3",
+    "name": "Wooden Art & Decor",
+    "type": "Carpenter",
+    "image": "../../images/services/carpenter.jpg",
+    "location": "Old Town Street",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Busy",
+    "statusColor": "#e67e22",
+    "timings": "10:00 AM - 6:00 PM",
+    "charge": "Quote on Inspection",
+    "experience": "20 Years Experience",
+    "description": "Specialist in door repair, cupboard making, and custom furniture. We also do polishing and painting work for old furniture."
+  }
+]
