@@ -78,22 +78,28 @@
         container.innerHTML = '';
 
         shops.forEach(shop => {
-          const cardHTML = `
-            <div class="shop-card">
-              <span class="status-badge" style="background:${shop.statusColor}">${shop.status}</span>
-              <img src="${shop.image}" class="card-img" alt="${shop.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=Image+Not+Found'">
-              <div class="card-info">
-                <h3>${shop.name}</h3>
-                <p><i class="fas fa-map-marker-alt"></i> ${shop.location}</p>
-                <div class="btn-row">
-                  <a href="tel:${shop.phone}" class="btn-action btn-call"><i class="fas fa-phone"></i> Call</a>
-                  <a href="${shop.mapLink}" class="btn-action btn-map"><i class="fas fa-location-arrow"></i> Navigate</a>
-                </div>
-              </div>
-            </div>
-          `;
-          container.innerHTML += cardHTML;
-        });
+          // Inside your loop in healthcare.html
+const cardHTML = `
+  <div class="shop-card">
+    <span class="status-badge" style="background:${shop.statusColor}">${shop.status}</span>
+    
+    <a href="shop_detail.html?id=${shop.id}" class="img-link">
+      <img src="${shop.image}" class="card-img" alt="${shop.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
+    </a>
+
+    <div class="card-info">
+      <a href="shop_detail.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
+          <h3>${shop.name}</h3>
+      </a>
+      <p><i class="fas fa-map-marker-alt"></i> ${shop.location}</p>
+      
+      <div class="btn-row">
+        <a href="tel:${shop.phone}" class="btn-action btn-call"><i class="fas fa-phone"></i> Call</a>
+        <a href="healthcare_details.html?id=${shop.id}" class="btn-action btn-map">Details</a>
+      </div>
+    </div>
+  </div>
+`;
 
       } catch (error) {
         console.error('Error:', error);
