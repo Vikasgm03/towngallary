@@ -1,0 +1,44 @@
+[
+  {
+    "id": "bar1",
+    "name": "Skydeck Lounge",
+    "type": "Rooftop Bar",
+    "image": "../../images/bar/rooftop.jpg",
+    "location": "Vindhyagiri View Road, 4th Floor",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Open Now",
+    "statusColor": "#27ae60",
+    "timings": "11:00 AM - 11:30 PM",
+    "ambiance": "Chill Music • View",
+    "description": "The only rooftop bar in town offering a stunning view of the hills. Famous for our signature cocktails and spicy starters. Great for couples and evenings."
+  },
+  {
+    "id": "bar2",
+    "name": "The Pitcher House",
+    "type": "Sports Pub",
+    "image": "../../images/bar/pub.jpg",
+    "location": "Near Bus Stand Circle",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Happy Hour",
+    "statusColor": "#f1c40f",
+    "timings": "10:00 AM - 11:00 PM",
+    "ambiance": "Live Sports • Loud",
+    "description": "Best place to watch cricket matches with friends. We serve chilled draft beer and authentic local non-veg appetizers. Happy Hour: 4 PM - 7 PM."
+  },
+  {
+    "id": "bar3",
+    "name": "Hillside Retreat",
+    "type": "Family Bar & Dine",
+    "image": "../../images/bar/lounge.jpg",
+    "location": "Garden Road, Outskirts",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Busy",
+    "statusColor": "#e74c3c",
+    "timings": "11:00 AM - 10:30 PM",
+    "ambiance": "Quiet • Garden Seating",
+    "description": "A peaceful garden restaurant serving premium liquor and excellent dinner options. Separate family section available."
+  }
+]
