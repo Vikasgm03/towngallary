@@ -1,0 +1,47 @@
+[
+  {
+    "id": "gym1",
+    "name": "Iron Pumpers Gym",
+    "type": "Unisex Gym",
+    "image": "../../images/fitness/gym.jpg",
+    "location": "Main Road, Above SBI Bank",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Open Now",
+    "statusColor": "#27ae60",
+    "timings": "5:30 AM - 9:30 PM",
+    "price": "₹1000 / month",
+    "features": "Cardio • Weights • Steam",
+    "description": "The biggest gym in town with imported equipment. We have separate timings for ladies and certified personal trainers available for weight loss programs."
+  },
+  {
+    "id": "yoga1",
+    "name": "Shanthi Yoga Center",
+    "type": "Yoga & Meditation",
+    "image": "../../images/fitness/yoga.jpg",
+    "location": "Near Jain Math",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Morning Batch",
+    "statusColor": "#e67e22",
+    "timings": "6:00 AM - 7:30 PM",
+    "price": "₹500 / month",
+    "features": "Power Yoga • Meditation",
+    "description": "Learn traditional Hatha Yoga and Meditation in a peaceful environment. Special weekend batches for working professionals and seniors."
+  },
+  {
+    "id": "sport1",
+    "name": "Vihara Sports Club",
+    "type": "Badminton & Swimming",
+    "image": "../../images/fitness/sports.jpg",
+    "location": "Stadium Road",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Booking Open",
+    "statusColor": "#3498db",
+    "timings": "5:00 AM - 10:00 PM",
+    "price": "₹200 / hour",
+    "features": "Wooden Court • Pool",
+    "description": "Indoor wooden badminton courts and a 25m swimming pool. Rackets and shoes available for rent. Monthly membership also available."
+  }
+]
