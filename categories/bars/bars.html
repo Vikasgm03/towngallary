@@ -69,7 +69,7 @@
     async function loadBarData() {
       const container = document.getElementById('barList');
       try {
-        const response = await fetch('bar_data.json');
+        const response = await fetch('bars_data.json');
         if (!response.ok) throw new Error("File not found");
         const shops = await response.json();
         
@@ -79,18 +79,18 @@
           const cardHTML = `
             <div class="shop-card">
               <span class="status-badge" style="background:${shop.statusColor}">${shop.status}</span>
-              <a href="bar_details.html?id=${shop.id}" class="img-link">
+              <a href="bars_details.html?id=${shop.id}" class="img-link">
                 <img src="${shop.image}" class="card-img" alt="${shop.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
               </a>
               <div class="card-info">
                 <span class="type-tag">${shop.type}</span>
-                <a href="bar_details.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
+                <a href="bars_details.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
                     <h3>${shop.name}</h3>
                 </a>
                 <p><i class="fas fa-map-marker-alt"></i> ${shop.location}</p>
                 <div class="btn-row">
                   <a href="tel:${shop.phone}" class="btn-action btn-call"><i class="fas fa-phone"></i> Call</a>
-                  <a href="bar_details.html?id=${shop.id}" class="btn-action btn-map">Info</a>
+                  <a href="bars_details.html?id=${shop.id}" class="btn-action btn-map">Info</a>
                 </div>
               </div>
             </div>
