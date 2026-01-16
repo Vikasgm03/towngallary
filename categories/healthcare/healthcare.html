@@ -27,11 +27,17 @@
   /* CARD STYLING */
   .shop-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid #eee; position: relative; }
   .shop-card:hover { transform: translateY(-5px); }
-  .card-img { width: 100%; height: 180px; object-fit: cover; }
-  .status-badge { position: absolute; top: 15px; left: 15px; background: #27ae60; color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+  
+  /* Link Wrapper for Image */
+  .img-link { display: block; width: 100%; height: 180px; overflow: hidden; }
+  .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+  .img-link:hover .card-img { transform: scale(1.05); }
+
+  .status-badge { position: absolute; top: 15px; left: 15px; background: #27ae60; color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; pointer-events: none; }
   .card-info { padding: 1.5rem; }
   .card-info h3 { margin-bottom: 5px; color: var(--accent); }
   .card-info p { font-size: 0.9rem; color: #777; margin-bottom: 15px; }
+  
   .btn-row { display: flex; gap: 10px; }
   .btn-action { flex: 1; padding: 10px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
   .btn-call { background: #e3f2fd; color: #1976d2; }
@@ -42,8 +48,8 @@
 <body>
 
   <header class="site-header">
-    <a href="index.html" class="brand">Vihara</a>
-    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back Home</a>
+    <a href="../../index.html" class="brand">Vihara</a>
+    <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back Home</a>
   </header>
 
   <section class="category-hero">
@@ -61,45 +67,42 @@
       const container = document.getElementById('healthcareList');
       
       try {
-        // Show loading state
         container.innerHTML = '<p style="text-align:center; width:100%; color:#666; margin-top:20px;">Loading healthcare services...</p>';
 
-        // UPDATED: Fetching the correct filename
+        // Fetch JSON from the SAME folder
         const response = await fetch('healthcare_data.json');
         
-        // Check if file exists
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const shops = await response.json();
-        
-        // Clear loading message
         container.innerHTML = '';
 
         shops.forEach(shop => {
-          // Inside your loop in healthcare.html
-const cardHTML = `
-  <div class="shop-card">
-    <span class="status-badge" style="background:${shop.statusColor}">${shop.status}</span>
-    
-    <a href="shop_detail.html?id=${shop.id}" class="img-link">
-      <img src="${shop.image}" class="card-img" alt="${shop.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
-    </a>
+          const cardHTML = `
+            <div class="shop-card">
+              <span class="status-badge" style="background:${shop.statusColor}">${shop.status}</span>
+              
+              <a href="shop_detail.html?id=${shop.id}" class="img-link">
+                <img src="${shop.image}" class="card-img" alt="${shop.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
+              </a>
 
-    <div class="card-info">
-      <a href="shop_detail.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
-          <h3>${shop.name}</h3>
-      </a>
-      <p><i class="fas fa-map-marker-alt"></i> ${shop.location}</p>
-      
-      <div class="btn-row">
-        <a href="tel:${shop.phone}" class="btn-action btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="healthcare_details.html?id=${shop.id}" class="btn-action btn-map">Details</a>
-      </div>
-    </div>
-  </div>
-`;
+              <div class="card-info">
+                <a href="shop_detail.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
+                    <h3>${shop.name}</h3>
+                </a>
+                <p><i class="fas fa-map-marker-alt"></i> ${shop.location}</p>
+                
+                <div class="btn-row">
+                  <a href="tel:${shop.phone}" class="btn-action btn-call"><i class="fas fa-phone"></i> Call</a>
+                  <a href="shop_detail.html?id=${shop.id}" class="btn-action btn-map">Details</a>
+                </div>
+              </div>
+            </div>
+          `;
+          container.innerHTML += cardHTML;
+        });
 
       } catch (error) {
         console.error('Error:', error);
@@ -107,7 +110,7 @@ const cardHTML = `
             <div style="text-align:center; width:100%; padding:20px; color:#e74c3c;">
                 <i class="fas fa-exclamation-circle" style="font-size:2rem; margin-bottom:10px;"></i>
                 <p>Failed to load data.</p>
-                <small>Please ensure 'healthcare_data.json' is in the main folder.</small>
+                <small>Please ensure 'healthcare_data.json' is in the same folder.</small>
             </div>`;
       }
     }
