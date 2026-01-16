@@ -1,291 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Gallery | Vihara</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | Vihara</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root { --primary: #FF9933; --dark: #333; --light: #f4f4f4; }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+  body { background: var(--light); color: var(--dark); }
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  /* HEADER */
+  .gallery-header { background: white; padding: 2rem 5%; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .brand { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; display: block; margin-bottom: 10px; }
+  .gallery-header h1 { font-size: 2.5rem; margin-bottom: 5px; }
+  .gallery-header p { color: #666; }
+  .home-btn { display: inline-block; margin-top: 10px; text-decoration: none; color: #555; font-size: 0.9rem; }
 
-  <style>
-    /* ---------- VARIABLES & RESET ---------- */
-    :root {
-      --primary: #ff8c00;
-      --text-dark: #2c3e50;
-      --bg-body: #f8f9fa;
-      --radius: 12px;
-    }
+  /* FILTER BUTTONS */
+  .filter-bar { display: flex; justify-content: center; gap: 10px; padding: 20px; flex-wrap: wrap; }
+  .filter-btn {
+    border: none; background: white; padding: 8px 20px; border-radius: 50px; cursor: pointer;
+    font-weight: 600; color: #555; transition: 0.3s; border: 1px solid #ddd;
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  /* MASONRY GRID */
+  .gallery-grid {
+    column-count: 3; /* 3 Columns on Desktop */
+    column-gap: 15px;
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .gallery-item {
+    break-inside: avoid; /* Prevents cutting images */
+    margin-bottom: 15px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: zoom-in;
+    transition: transform 0.3s;
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+  
+  .gallery-img { width: 100%; height: auto; display: block; border-radius: 10px; }
+  
+  /* Simple Caption Overlay */
+  .caption {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white; padding: 20px 10px 10px;
+    opacity: 0; transition: 0.3s;
+  }
+  .gallery-item:hover .caption { opacity: 1; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-body);
-      color: var(--text-dark);
-      padding-bottom: 50px;
-    }
+  /* LIGHTBOX (Full Screen) */
+  .lightbox {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 1000;
+    display: none; justify-content: center; align-items: center;
+    flex-direction: column;
+  }
+  .lightbox img { max-width: 90%; max-height: 80vh; border-radius: 5px; box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+  .close-lightbox { position: absolute; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; }
+  .lightbox-caption { color: white; margin-top: 15px; font-size: 1.2rem; }
 
-    /* ---------- HEADER ---------- */
-    .site-header {
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(10px);
-      padding: 0.8rem 5%;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-container {
-      width: 120px; height: 40px; position: relative; display: block;
-    }
-    .logo-img {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: contain; transition: opacity 1s;
-    }
-    .logo-primary { animation: fadeOne 8s infinite; }
-    .logo-secondary { animation: fadeTwo 8s infinite; }
-    
-    @keyframes fadeOne { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0; } 100% { opacity: 1; } }
-    @keyframes fadeTwo { 0%, 45% { opacity: 0; } 50%, 95% { opacity: 1; } 100% { opacity: 0; } }
-
-    /* Hamburger */
-    .menu-toggle { font-size: 1.5rem; cursor: pointer; color: var(--text-dark); display: none; }
-
-    /* Nav */
-    .nav-menu { display: flex; gap: 10px; }
-    .nav-menu a {
-      text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.9rem;
-      padding: 8px 16px; border-radius: 50px; transition: 0.3s;
-    }
-    .nav-menu a:hover, .nav-menu a.active { background: var(--primary); color: white; }
-    .nav-menu a.add-btn { background: var(--text-dark); color: white; }
-
-    /* ---------- SCROLLABLE FILTERS (Mobile Friendly) ---------- */
-    .filter-wrapper {
-      width: 100%;
-      overflow-x: auto; /* Allow horizontal scroll */
-      white-space: nowrap; /* Keep buttons in one line */
-      padding: 1rem 5%;
-      background: var(--bg-body);
-      -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
-    }
-
-    /* Hide scrollbar but keep functionality */
-    .filter-wrapper::-webkit-scrollbar { display: none; }
-
-    .filter-btn {
-      border: none;
-      background: white;
-      padding: 10px 24px;
-      margin-right: 10px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-      font-size: 0.9rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: 0.3s;
-    }
-
-    .filter-btn.active {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
-    }
-
-    /* ---------- MASONRY GRID ---------- */
-    .gallery-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 15px;
-      
-      /* Desktop: 4 columns */
-      column-count: 4;
-      column-gap: 15px;
-    }
-
-    .gallery-item {
-      break-inside: avoid; /* Don't cut images */
-      margin-bottom: 15px;
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .item-overlay {
-      position: absolute;
-      bottom: 0; left: 0; width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      padding: 30px 10px 10px;
-      color: white;
-    }
-    .item-overlay h3 { font-size: 0.95rem; margin: 0; font-weight: 600; }
-    .item-overlay p { font-size: 0.75rem; opacity: 0.9; margin: 0; }
-
-    .hide { display: none; }
-
-    /* ---------- LIGHTBOX ---------- */
-    .lightbox {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.95); z-index: 2000;
-      display: none; justify-content: center; align-items: center;
-    }
-    .lightbox.active { display: flex; }
-    .lightbox img { max-width: 95%; max-height: 80vh; border-radius: 8px; }
-    .close-lightbox {
-      position: absolute; top: 20px; right: 20px;
-      color: white; font-size: 2.5rem; padding: 10px; cursor: pointer;
-    }
-
-    /* ---------- MOBILE RESPONSIVE ---------- */
-    @media (max-width: 768px) {
-      /* Mobile Menu */
-      .menu-toggle { display: block; }
-      
-      .nav-menu {
-        display: none; position: absolute; top: 100%; left: 0; width: 100%;
-        background: white; flex-direction: column; padding: 1.5rem; gap: 1rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 1px solid #eee;
-      }
-      .nav-menu.show { display: flex; }
-
-      /* Mobile Grid - FORCE 2 COLUMNS */
-      .gallery-container {
-        column-count: 2; /* Forces 2 columns like Pinterest */
-        column-gap: 10px;
-        padding: 0 10px;
-      }
-
-      .gallery-item { margin-bottom: 10px; border-radius: 10px; }
-      
-      .item-overlay { padding: 20px 8px 8px; }
-      .item-overlay h3 { font-size: 0.8rem; }
-      .item-overlay p { font-size: 0.65rem; }
-    }
-  </style>
+  /* RESPONSIVE */
+  @media (max-width: 768px) { .gallery-grid { column-count: 2; } }
+  @media (max-width: 480px) { .gallery-grid { column-count: 1; } }
+</style>
 </head>
-
 <body>
 
-  <header class="site-header">
-    <a href="index.html" class="logo-container">
-      <img src="images/logo1.png" alt="Vihara" class="logo-img logo-primary">
-      <img src="images/logo2.png" alt="Icon" class="logo-img logo-secondary">
-    </a>
-
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-
-    <nav class="nav-menu" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="gallery.html" class="active">Gallery</a>
-      <a href="aboutus.html">Heritage</a>
-      <a href="add_button.html" class="add-btn">+ Add Shop</a>
-    </nav>
-  </header>
-
-  <div class="filter-wrapper">
-    <button class="filter-btn active" onclick="filterGallery('all', this)">All Photos</button>
-    <button class="filter-btn" onclick="filterGallery('temple', this)">Temples</button>
-    <button class="filter-btn" onclick="filterGallery('nature', this)">Nature</button>
-    <button class="filter-btn" onclick="filterGallery('food', this)">Local Food</button>
-    <button class="filter-btn" onclick="filterGallery('shops', this)">Shops</button>
+  <div class="gallery-header">
+    <a href="index.html" class="brand">Vihara</a>
+    <h1>Shravanabelagola in Frames</h1>
+    <p>Explore the heritage, nature, and life of our town.</p>
+    <a href="index.html" class="home-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
   </div>
 
-  <div class="gallery-container">
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+    <button class="filter-btn" onclick="filterGallery('nature')">Nature</button>
+    <button class="filter-btn" onclick="filterGallery('temple')">Temples</button>
+    <button class="filter-btn" onclick="filterGallery('fest')">Festivals</button>
+  </div>
+
+  <div class="gallery-grid">
     
-    <div class="gallery-item" data-category="temple" onclick="openLightbox(this)">
-      <img src="images/vindhyagiri.jpeg" alt="Vindhyagiri">
-      <div class="item-overlay">
-        <h3>Vindhyagiri Hill</h3>
-        <p>Temple View</p>
-      </div>
+    <div class="gallery-item nature">
+      <img src="images/nature/hill.jpg" class="gallery-img" alt="Vindhyagiri Sunrise">
+      <div class="caption">Vindhyagiri Sunrise</div>
     </div>
 
-    <div class="gallery-item" data-category="nature" onclick="openLightbox(this)">
-      <img src="images/lake.jpeg" alt="Lake">
-      <div class="item-overlay">
-        <h3>Kalyani</h3>
-        <p>Holy Pond</p>
-      </div>
+    <div class="gallery-item temple">
+      <img src="images/temples/basadi.jpg" class="gallery-img" alt="Bhandara Basadi">
+      <div class="caption">Bhandara Basadi Carvings</div>
     </div>
 
-    <div class="gallery-item" data-category="food" onclick="openLightbox(this)">
-      <img src="images/raghu.jpeg" alt="Food">
-      <div class="item-overlay">
-        <h3>Masala Dosa</h3>
-        <p>Raghu Hotel</p>
-      </div>
+    <div class="gallery-item fest">
+      <img src="images/gallery/fest1.jpg" class="gallery-img" alt="Mahamastakabhisheka">
+      <div class="caption">Grand Festival</div>
     </div>
 
-    <div class="gallery-item" data-category="shops" onclick="window.location.href='details/retail_shops/sri_durga.html'">
-      <img src="images/explorica/retail_shops/durga.jpg" alt="Shop">
-      <div class="item-overlay">
-        <h3>Durga Stores</h3>
-        <p>Open Shop ↗</p>
-      </div>
+    <div class="gallery-item nature">
+      <img src="images/nature/lake.jpg" class="gallery-img" alt="Janivara Lake">
+      <div class="caption">Serene Lake View</div>
     </div>
 
-     <div class="gallery-item" data-category="temple" onclick="openLightbox(this)">
-      <img src="images/chandhragiri.jpeg" alt="Chandragiri">
-      <div class="item-overlay">
-        <h3>Chandragiri</h3>
-        <p>Historic Site</p>
-      </div>
+    <div class="gallery-item temple">
+      <img src="images/temples/gopuram.jpg" class="gallery-img" alt="Temple Entrance">
+      <div class="caption">Historic Entrance</div>
     </div>
 
+     <div class="gallery-item fest">
+      <img src="images/gallery/fest2.jpg" class="gallery-img" alt="Procession">
+      <div class="caption">Town Procession</div>
     </div>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightbox-img" src="" alt="Zoomed View">
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
   </div>
 
   <script>
-    // Toggle Menu
-    function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('show');
-    }
-
-    // Filter
-    function filterGallery(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      
+    // FILTER FUNCTION
+    function filterGallery(category) {
       const items = document.querySelectorAll('.gallery-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      // Active Button Style
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
       items.forEach(item => {
-        if(cat === 'all' || item.getAttribute('data-category') === cat) {
-          item.classList.remove('hide');
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'block';
         } else {
-          item.classList.add('hide');
+          item.style.display = 'none';
         }
       });
     }
 
-    // Lightbox
-    function openLightbox(el) {
-      const src = el.querySelector('img').src;
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').classList.add('active');
+    // LIGHTBOX FUNCTION
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCap = document.getElementById('lightbox-caption');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const cap = item.querySelector('.caption').innerText;
+        
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxCap.innerText = cap;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
     }
     
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
-    }
+    // Close on clicking background
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) closeLightbox();
+    });
   </script>
 
 </body>
