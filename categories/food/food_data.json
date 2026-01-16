@@ -1,0 +1,47 @@
+[
+  {
+    "id": "rest1",
+    "name": "Raghu Hotel",
+    "cuisine": "South Indian • Pure Veg",
+    "diet": "Pure Veg",
+    "image": "../../images/food/dosa.jpg",
+    "location": "Car Street, Near Temple",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Open Now",
+    "statusColor": "#27ae60",
+    "timings": "7:00 AM - 9:30 PM",
+    "price": "₹",
+    "description": "Famous for our crispy Masala Dosa and filter coffee. A traditional mess serving authentic home-style food since 1995. Must try: Open Butter Masala Dosa."
+  },
+  {
+    "id": "rest2",
+    "name": "Hotel Shreyas",
+    "cuisine": "North Indian • Thali",
+    "diet": "Pure Veg",
+    "image": "../../images/food/thali.jpg",
+    "location": "Main Road, Opp. Bus Stand",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Lunch Time",
+    "statusColor": "#e67e22",
+    "timings": "11:00 AM - 10:30 PM",
+    "price": "₹₹",
+    "description": "Air-conditioned family restaurant. We serve unlimited North Indian and South Indian Thalis. Great place for large groups and families."
+  },
+  {
+    "id": "bakery1",
+    "name": "Iyengar Bakery",
+    "cuisine": "Bakery • Sweets",
+    "diet": "Pure Veg",
+    "image": "../../images/food/bakery.jpg",
+    "location": "Market Circle",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Fresh Stock",
+    "statusColor": "#d35400",
+    "timings": "9:00 AM - 9:00 PM",
+    "price": "₹",
+    "description": "Freshly baked puffs, bread, and cakes available daily. Don't miss our signature Honey Cake and Dilpasand."
+  }
+]
