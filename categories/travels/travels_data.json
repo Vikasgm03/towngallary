@@ -1,0 +1,47 @@
+[
+  {
+    "id": "trav1",
+    "name": "Shri Manjunatha Travels",
+    "type": "Taxi Service",
+    "image": "../../images/travels/taxi.jpg",
+    "location": "Near Bus Stand Circle",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Available",
+    "statusColor": "#27ae60",
+    "timings": "24 Hours",
+    "fleet": "Innova Crysta, Etios, Swift Dzire",
+    "packages": "Airport Drop • Outstation",
+    "description": "Reliable taxi service for local sightseeing and outstation trips. We specialize in Shravanabelagola to Bangalore airport drops. Clean cars and experienced drivers."
+  },
+  {
+    "id": "trav2",
+    "name": "Vihara Bus Tours",
+    "type": "Bus Operator",
+    "image": "../../images/travels/bus.jpg",
+    "location": "Main Road, Opp. Post Office",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Booking Open",
+    "statusColor": "#f39c12",
+    "timings": "6:00 AM - 10:00 PM",
+    "fleet": "Luxury AC Sleeper, Semi-Sleeper",
+    "packages": "Daily Trips to Mysore & Coorg",
+    "description": "Daily luxury bus services to major cities including Bangalore, Mysore, and Mangalore. Online booking available. Comfortable sleeper coaches for night travel."
+  },
+  {
+    "id": "trav3",
+    "name": "Jain Yatra Services",
+    "type": "Tour Agency",
+    "image": "../../images/travels/tempo.jpg",
+    "location": "Temple Road",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Package Tours",
+    "statusColor": "#2980b9",
+    "timings": "9:00 AM - 8:00 PM",
+    "fleet": "12 Seater Tempo Traveller",
+    "packages": "Belur-Halebidu-Shravanabelagola",
+    "description": "Specialists in pilgrimage tours. We organize complete 1-day and 2-day packages covering all nearby Jain temples and heritage sites with guide support."
+  }
+]
