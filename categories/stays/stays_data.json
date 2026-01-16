@@ -1,0 +1,47 @@
+[
+  {
+    "id": "hotel1",
+    "name": "Hotel Mayura",
+    "type": "Luxury Hotel",
+    "image": "../../images/stays/hotel.jpg",
+    "location": "Near Main Temple Entrance",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Rooms Available",
+    "statusColor": "#27ae60",
+    "price": "₹2500 / night",
+    "amenities": "AC • WiFi • Restaurant • Parking",
+    "checkin": "Check-in: 12:00 PM",
+    "description": "The finest hotel in Shravanabelagola offering a view of the Gomateshwara statue. We provide spacious AC rooms, 24/7 room service, and an attached pure veg restaurant."
+  },
+  {
+    "id": "lodge1",
+    "name": "Sri Manjunatha Residency",
+    "type": "Budget Lodge",
+    "image": "../../images/stays/lodge.jpg",
+    "location": "Bus Stand Road",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Filling Fast",
+    "statusColor": "#f39c12",
+    "price": "₹800 / night",
+    "amenities": "Non-AC • Hot Water • TV",
+    "checkin": "24 Hours Check-in",
+    "description": "Clean and affordable rooms for pilgrims and backpackers. Located just 2 minutes from the bus stand. Hot water available from 6 AM to 10 AM."
+  },
+  {
+    "id": "guest1",
+    "name": "Yatri Nivas",
+    "type": "Guest House",
+    "image": "../../images/stays/room.jpg",
+    "location": "Behind Jain Math",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Booked",
+    "statusColor": "#c0392b",
+    "price": "₹1200 / night",
+    "amenities": "Double Bed • Garden • Quiet",
+    "checkin": "Check-in: 10:00 AM",
+    "description": "A peaceful guest house run by the temple trust. Ideal for families looking for a quiet stay. Large garden area and meditation hall available."
+  }
+]
