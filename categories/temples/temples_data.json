@@ -1,0 +1,44 @@
+[
+  {
+    "id": "temp1",
+    "name": "Bhandara Basadi",
+    "deity": "24 Tirthankaras",
+    "image": "../../images/temples/basadi.jpg",
+    "location": "Near Main Entrance",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Open",
+    "statusColor": "#27ae60",
+    "timings": "6:00 AM - 6:00 PM",
+    "pooja": "Daily 8:00 AM",
+    "description": "One of the largest Basadis in town, dedicated to the 24 Tirthankaras. It is known for its intricate carvings and peaceful meditation hall."
+  },
+  {
+    "id": "temp2",
+    "name": "Akkana Basadi",
+    "deity": "Lord Parshvanatha",
+    "image": "../../images/temples/temple.jpg",
+    "location": "Chandragiri Hill",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Heritage Site",
+    "statusColor": "#e65100",
+    "timings": "6:30 AM - 5:30 PM",
+    "pooja": "Special Pooja on Sundays",
+    "description": "A beautiful 12th-century temple built in the Hoysala style of architecture. The soapstone carvings here are a masterpiece of ancient craftsmanship."
+  },
+  {
+    "id": "temp3",
+    "name": "Kouge Brahmadeva Pillar",
+    "deity": "Kshetrapala",
+    "image": "../../images/temples/gopuram.jpg",
+    "location": "Vindhyagiri Hill Entrance",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "Open 24/7",
+    "statusColor": "#fbc02d",
+    "timings": "Open All Day",
+    "pooja": "Morning 6:00 AM",
+    "description": "A historic pillar standing tall at the entrance of the hill. Devotees offer prayers here before starting their climb to the main statue."
+  }
+]
