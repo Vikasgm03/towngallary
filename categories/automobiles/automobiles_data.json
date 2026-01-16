@@ -1,0 +1,41 @@
+[
+  {
+    "id": "auto1",
+    "name": "Shiva Auto Works",
+    "speciality": "Two-Wheeler Specialist",
+    "image": "../../images/automobiles/mechanic1.jpg",
+    "location": "Near Jain Math, Main Road",
+    "phone": "+919876543210",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
+    "status": "Open Now",
+    "statusColor": "#27ae60",
+    "timings": "8:00 AM - 8:30 PM",
+    "description": "Expert mechanic for all types of bikes and scooters. We handle engine work, water wash, and oil changes. Puncture service available."
+  },
+  {
+    "id": "rent1",
+    "name": "Vihara Bike Rentals",
+    "speciality": "Scooter & Bike Rental",
+    "image": "../../images/automobiles/rental.jpg",
+    "location": "Bus Stand Circle",
+    "phone": "+919988776655",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
+    "status": "Available",
+    "statusColor": "#2980b9",
+    "timings": "6:00 AM - 10:00 PM",
+    "description": "Rent scooters and bikes to explore Shravanabelagola. hourly and daily rates available. Helmets provided."
+  },
+  {
+    "id": "stand1",
+    "name": "Main Auto Stand",
+    "speciality": "24/7 Transport",
+    "image": "../../images/automobiles/auto_rickshaw.jpg",
+    "location": "Main Temple Entrance",
+    "phone": "+919123456789",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
+    "status": "24/7 Service",
+    "statusColor": "#e67e22",
+    "timings": "24 Hours",
+    "description": "Official Auto Rickshaw stand. Fixed rates for drop to Railway Station and sightseeing around the hills."
+  }
+]
