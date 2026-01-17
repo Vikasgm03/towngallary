@@ -258,6 +258,20 @@ body {
 .footer-copyright i { color: var(--primary); animation: beat 1s infinite; }
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
+/* --- CONTACT LIST STYLES --- */
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  color: #a0a0a0;
+  margin-bottom: 18px;
+  text-decoration: none;
+  transition: 0.3s;
+  line-height: 1.6;
+}
+.contact-row i { color: var(--primary); font-size: 1.1rem; margin-top: 4px; }
+.contact-row:hover { color: var(--primary); }
+
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
   /* Header & Nav */
@@ -276,7 +290,7 @@ body {
     position: relative; 
     top: auto !important; 
     right: auto !important; 
-    left: auto !important; /* This fixes the alignment */
+    left: auto !important; /* Critical Fix */
     bottom: auto !important;
     width: auto; 
     padding: 8px 16px; 
@@ -306,37 +320,12 @@ body {
   .f-socials { justify-content: center; }
   .footer-cta-wrapper { padding: 0 1rem; }
   
+  /* Contact Row Center Alignment */
+  .contact-row { justify-content: center; text-align: left; }
+  
   /* Adjust spacing */
   .f-col h4 { margin-bottom: 1rem; color: var(--primary); }
   .brand-col p { font-size: 0.9rem; }
-
-  /* --- CONTACT LIST STYLES --- */
-.contact-row {
-  display: flex;
-  align-items: flex-start; /* Aligns icon with top of text */
-  gap: 15px;
-  color: #a0a0a0;
-  margin-bottom: 18px;
-  text-decoration: none;
-  transition: 0.3s;
-  line-height: 1.6;
-}
-
-.contact-row i { 
-  color: var(--primary); 
-  font-size: 1.1rem; 
-  margin-top: 4px; /* Slight adjustment for alignment */
-}
-
-.contact-row:hover { color: var(--primary); }
-
-/* --- MOBILE CENTER FIX --- */
-@media (max-width: 600px) {
-  .contact-row {
-    justify-content: center; /* Moves the whole group to the middle */
-    text-align: left; /* Keeps the address text lines neat */
-  }
-}
 }
 </style>
 </head>
@@ -465,37 +454,33 @@ body {
         </ul>
       </div>
 
- <div class="f-col">
-  <h4>Reach Us</h4>
-  <ul style="list-style: none; padding: 0;">
-    
-    <li>
-      <div class="contact-row">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>
-          Vihara Office, 2nd Floor,<br>
-          Opp. KSRTC Bus Stand,<br>
-          Shravanabelagola - 573135
-        </span>
+      <div class="f-col">
+        <h4>Reach Us</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li>
+            <div class="contact-row">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>
+                Vihara Office, 2nd Floor,<br>
+                Opp. KSRTC Bus Stand,<br>
+                Shravanabelagola - 573135
+              </span>
+            </div>
+          </li>
+          <li>
+            <a href="tel:+919876543210" class="contact-row">
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 98765 43210</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hello@vihara.com" class="contact-row">
+              <i class="fas fa-envelope"></i>
+              <span>hello@vihara.com</span>
+            </a>
+          </li>
+        </ul>
       </div>
-    </li>
-
-    <li>
-      <a href="tel:+919876543210" class="contact-row">
-        <i class="fas fa-phone-alt"></i>
-        <span>+91 98765 43210</span>
-      </a>
-    </li>
-
-    <li>
-      <a href="mailto:hello@vihara.com" class="contact-row">
-        <i class="fas fa-envelope"></i>
-        <span>hello@vihara.com</span>
-      </a>
-    </li>
-
-  </ul>
-</div>
 
     </div>
 
@@ -506,88 +491,64 @@ body {
 </footer>
 
 <script>
-  // Mobile Menu
+  // 1. Mobile Menu Logic
   function toggleMenu() {
     document.getElementById('mobileNav').classList.toggle('active');
   }
 
-  // Scroll Animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.preview-card').forEach(card => {
-    observer.observe(card);
-  });
-
-  <script>
-  function updateNextBus() {
-    // 1. Define the Schedule (24-hour format)
-    // Example: 6.5 means 6:30 AM, 14.0 means 2:00 PM
-    const busSchedule = [
-      6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 
-      11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 
-      16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 20.5, 21.0
-    ];
-
-    // 2. Get Current Time
-    const now = new Date();
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
+  // 2. Wait for Page to Load (Handles Bus Time & Animations)
+  document.addEventListener("DOMContentLoaded", function() {
     
-    // Convert current time to a comparable decimal (e.g., 10:30 = 10.5)
-    const currentTimeDecimal = currentHour + (currentMinute / 60);
+    // --- Scroll Animation ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
 
-    // 3. Find the Next Bus
-    let nextBus = busSchedule.find(time => time > currentTimeDecimal);
+    document.querySelectorAll('.preview-card').forEach(card => {
+      observer.observe(card);
+    });
 
-    // If no bus is left today (e.g., it's 10 PM), show the first bus of tomorrow
-    if (!nextBus) {
-      nextBus = busSchedule[0]; 
+    // --- Next Bus Logic ---
+    function updateNextBus() {
+      const busTimeElement = document.getElementById('bus-time');
+      if (!busTimeElement) return;
+
+      const busSchedule = [
+        6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 
+        11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 
+        16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 20.5, 21.0
+      ];
+
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMinute = now.getMinutes();
+      const currentTimeDecimal = currentHour + (currentMinute / 60);
+
+      let nextBus = busSchedule.find(time => time > currentTimeDecimal);
+
+      if (!nextBus) nextBus = busSchedule[0]; // Next day
+
+      busTimeElement.innerText = formatTime(nextBus);
     }
 
-    // 4. Format the Time (Decimal to AM/PM string)
-    const busText = formatTime(nextBus);
-    
-    // 5. Update the HTML
-    document.getElementById('bus-time').innerText = busText;
-  }
+    function formatTime(decimalTime) {
+      const hours24 = Math.floor(decimalTime);
+      const minutes = (decimalTime - hours24) * 60;
+      const suffix = hours24 >= 12 ? "PM" : "AM";
+      let hours12 = hours24 % 12;
+      if (hours12 === 0) hours12 = 12; 
+      const minutesStr = minutes === 0 ? "00" : minutes;
+      return `${hours12}:${minutesStr} ${suffix}`;
+    }
 
-  // Helper Function to make time look pretty (e.g., 14.5 -> "2:30 PM")
-  function formatTime(decimalTime) {
-    const hours24 = Math.floor(decimalTime);
-    const minutes = (decimalTime - hours24) * 60;
-    
-    const suffix = hours24 >= 12 ? "PM" : "AM";
-    let hours12 = hours24 % 12;
-    if (hours12 === 0) hours12 = 12; // Handle midnight/noon
-    
-    // Add leading zero to minutes if needed (e.g., 0 becomes 00)
-    const minutesStr = minutes === 0 ? "00" : minutes;
-
-    return `${hours12}:${minutesStr} ${suffix}`;
-  }
-
-  // Run immediately
-  updateNextBus();
-  
-  // Update every minute (so it doesn't get stale if user leaves tab open)
-  setInterval(updateNextBus, 60000);
-</script>
+    updateNextBus();
+    setInterval(updateNextBus, 60000); // Check every minute
+  });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
