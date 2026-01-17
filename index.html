@@ -344,7 +344,7 @@ body {
 
 <div class="ticker-wrap">
   <div class="ticker-move">
-    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: 7:00 AM | <strong>Vindhyagiri Steps: 650 (Doli Service Available)</strong> 🔔
+    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | Vindhyagiri Steps: 650 (Doli Available) 🔔
   </div>
 </div>
 
@@ -523,10 +523,66 @@ body {
   document.querySelectorAll('.preview-card').forEach(card => {
     observer.observe(card);
   });
+
+  <script>
+  function updateNextBus() {
+    // 1. Define the Schedule (24-hour format)
+    // Example: 6.5 means 6:30 AM, 14.0 means 2:00 PM
+    const busSchedule = [
+      6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 
+      11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 
+      16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 20.5, 21.0
+    ];
+
+    // 2. Get Current Time
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    
+    // Convert current time to a comparable decimal (e.g., 10:30 = 10.5)
+    const currentTimeDecimal = currentHour + (currentMinute / 60);
+
+    // 3. Find the Next Bus
+    let nextBus = busSchedule.find(time => time > currentTimeDecimal);
+
+    // If no bus is left today (e.g., it's 10 PM), show the first bus of tomorrow
+    if (!nextBus) {
+      nextBus = busSchedule[0]; 
+    }
+
+    // 4. Format the Time (Decimal to AM/PM string)
+    const busText = formatTime(nextBus);
+    
+    // 5. Update the HTML
+    document.getElementById('bus-time').innerText = busText;
+  }
+
+  // Helper Function to make time look pretty (e.g., 14.5 -> "2:30 PM")
+  function formatTime(decimalTime) {
+    const hours24 = Math.floor(decimalTime);
+    const minutes = (decimalTime - hours24) * 60;
+    
+    const suffix = hours24 >= 12 ? "PM" : "AM";
+    let hours12 = hours24 % 12;
+    if (hours12 === 0) hours12 = 12; // Handle midnight/noon
+    
+    // Add leading zero to minutes if needed (e.g., 0 becomes 00)
+    const minutesStr = minutes === 0 ? "00" : minutes;
+
+    return `${hours12}:${minutesStr} ${suffix}`;
+  }
+
+  // Run immediately
+  updateNextBus();
+  
+  // Update every minute (so it doesn't get stale if user leaves tab open)
+  setInterval(updateNextBus, 60000);
+</script>
 </script>
 
 </body>
 </html>
+
 
 
 
