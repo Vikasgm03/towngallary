@@ -180,20 +180,98 @@ body {
 
 .preview-card:nth-child(even) { flex-direction: row-reverse; }
 
+/* ===== PREMIUM FOOTER CSS ===== */
+.premium-footer {
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  margin-top: 100px; /* Space for CTA overlap */
+}
+
+/* 1. Wave */
+.footer-wave {
+  position: absolute; top: -100px; left: 0; width: 100%;
+  overflow: hidden; line-height: 0; z-index: 1;
+}
+.footer-wave svg { position: relative; display: block; width: calc(100% + 1.3px); height: 100px; }
+.footer-wave .shape-fill { fill: #1a1a1a; }
+
+/* 2. Floating CTA Card */
+.footer-cta-wrapper {
+  position: relative; max-width: 1000px; margin: 0 auto;
+  z-index: 10; top: -80px;
+}
+.footer-cta-card {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 2.5rem 3rem; border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  display: flex; justify-content: space-between; align-items: center; color: white;
+}
+.footer-cta-card h3 { margin: 0 0 5px 0; font-family: 'Playfair Display', serif; font-size: 1.8rem; }
+.footer-cta-card p { margin: 0; opacity: 0.9; }
+
+.btn-cta {
+  background: white; color: var(--primary); padding: 12px 30px;
+  border-radius: 50px; text-decoration: none; font-weight: 700; transition: transform 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.btn-cta:hover { transform: translateY(-3px); }
+
+/* 3. Main Footer Content */
+.footer-content {
+  padding: 0 5% 2rem 5%; position: relative; z-index: 5; margin-top: -40px;
+}
+
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.f-logo {
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, #ffcc80);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.brand-col p { color: #a0a0a0; line-height: 1.6; margin-bottom: 1.5rem; }
+
+.f-socials { display: flex; gap: 15px; }
+.f-socials a {
+  width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: white; transition: 0.3s;
+}
+.f-socials a:hover { background: var(--primary); transform: translateY(-3px); }
+
+.f-col h4 { font-size: 1.1rem; margin-bottom: 1.5rem; color: white; }
+.f-col ul { list-style: none; padding: 0; }
+.f-col ul li { margin-bottom: 12px; }
+.f-col ul li a { color: #a0a0a0; text-decoration: none; transition: 0.3s; }
+.f-col ul li a:hover { color: var(--primary); padding-left: 5px; }
+
+.f-input-group { display: flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; }
+.f-input-group input { flex: 1; background: transparent; border: none; padding: 10px 15px; color: white; outline: none; }
+.f-input-group button { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--primary); color: white; cursor: pointer; transition: 0.3s; }
+.f-input-group button:hover { transform: scale(1.1); }
+.tiny-text { font-size: 0.8rem; color: #777; margin-top: 10px; }
+
+.footer-copyright { text-align: center; padding-top: 2rem; color: #777; font-size: 0.9rem; }
+.footer-copyright i { color: var(--primary); animation: beat 1s infinite; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
-  /* --- Nav & Header --- */
+  /* Header & Nav */
   .menu-toggle { display: block; }
   .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
   .nav-links.active { display: flex; }
   .add-btn { width: 100%; text-align: center; }
 
-  /* --- Hero --- */
+  /* Hero */
   .hero { padding: 2.5rem 1.5rem; text-align: center; }
   .hero-container { flex-direction: column; gap: 1.5rem; }
   .hero-visuals { width: 100%; height: auto; display: flex; flex-direction: row; justify-content: center; gap: 10px; margin-top: 1rem; }
   
-  /* --- Fixed Floating Buttons (Shops/Food) --- */
+  /* FIXED FLOAT CARD ALIGNMENT */
   .float-card { 
     position: relative; 
     top: auto !important; 
@@ -209,24 +287,22 @@ body {
   .card-info span { display: none; }
   .card-info strong { font-size: 0.85rem; }
 
-  /* --- Quick Access --- */
+  /* Quick Access */
   .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: 0; padding-top: 2rem; }
 
-  /* --- Previews --- */
+  /* Previews */
   .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
   .preview-img-box { width: 100%; height: 160px; }
   .preview-content { width: 100%; text-align: center; }
 
-  /* --- Tablet Footer --- */
+  /* Tablet Footer */
   .footer-cta-card { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; text-align: left; }
 }
 
 @media (max-width: 600px) {
-  /* --- Mobile Footer (1 Column) --- */
-  /* This prevents the messy look on small phones */
+  /* Mobile Footer (1 Column) */
   .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-  
   .f-socials { justify-content: center; }
   .footer-cta-wrapper { padding: 0 1rem; }
   
@@ -330,8 +406,6 @@ body {
 </div>
 
 <footer class="premium-footer">
-
-
   <div class="footer-content">
     <div class="footer-grid">
       
@@ -403,10 +477,3 @@ body {
 
 </body>
 </html>
-
-
-
-
-
-
-
