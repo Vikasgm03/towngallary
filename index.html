@@ -327,6 +327,99 @@ body {
   .f-col h4 { margin-bottom: 1rem; color: var(--primary); }
   .brand-col p { font-size: 0.9rem; }
 }
+  /* === FLOATING ANNOUNCEMENT STYLES === */
+.announcement-wrapper {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* The Bell Button */
+.btn-bell {
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s;
+  animation: pulse-bell 2s infinite; /* Grabs attention */
+}
+
+.btn-bell:hover { transform: scale(1.1); }
+
+/* The Red Dot */
+.notification-dot {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+/* The Notice Board Popup */
+.notice-board {
+  background: white;
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin-bottom: 15px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  
+  /* Animation State: Hidden */
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none; 
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: absolute;
+  bottom: 70px; /* sits above button */
+  right: 0;
+}
+
+/* Animation State: Visible */
+.notice-board.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.notice-header {
+  background: var(--primary);
+  color: white;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-notice { font-size: 1.5rem; cursor: pointer; line-height: 1; }
+
+.notice-content { padding: 15px; font-size: 0.9rem; }
+
+.update-item { margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
+.update-item:last-child { border: none; margin: 0; padding: 0; }
+
+.tag-alert { background: #ffebee; color: #d32f2f; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
+.tag-info { background: #e3f2fd; color: #1976d2; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
+
+/* Animation Keyframes */
+@keyframes pulse-bell {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 153, 51, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0); }
+}
 </style>
 </head>
 <body>
@@ -420,6 +513,30 @@ body {
       <a href="restaurants.html" class="btn-small">Find Food</a>
     </div>
   </div>
+  
+</div>
+  <div class="announcement-wrapper">
+  
+  <div class="notice-board" id="cityNotice">
+    <div class="notice-header">
+      <h4>📢 City Updates</h4>
+      <span class="close-notice" onclick="toggleNotice()">&times;</span>
+    </div>
+    <div class="notice-content">
+      <div class="update-item">
+        <span class="tag-alert">New</span>
+        <p><strong>Mahamastakabhisheka Prep:</strong> Main road near Vindhyagiri will be closed for maintenance tomorrow (10 AM - 2 PM).</p>
+      </div>
+      <div class="update-item">
+        <span class="tag-info">Info</span>
+        <p><strong>Weekend Rush:</strong> Heavy crowd expected this Sunday. Plan darshan early!</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-bell" onclick="toggleNotice()">
+    <i class="fas fa-bell"></i>
+    <span class="notification-dot"></span> </button>
 </div>
 
 <footer class="premium-footer">
@@ -548,8 +665,38 @@ body {
     updateNextBus();
     setInterval(updateNextBus, 60000); // Check every minute
   });
+
+  <div class="announcement-wrapper">
+  
+  <div class="notice-board" id="cityNotice">
+    <div class="notice-header">
+      <h4>📢 City Updates</h4>
+      <span class="close-notice" onclick="toggleNotice()">&times;</span>
+    </div>
+    <div class="notice-content">
+      <div class="update-item">
+        <span class="tag-alert">New</span>
+        <p><strong>Mahamastakabhisheka Prep:</strong> Main road near Vindhyagiri will be closed for maintenance tomorrow (10 AM - 2 PM).</p>
+      </div>
+      <div class="update-item">
+        <span class="tag-info">Info</span>
+        <p><strong>Weekend Rush:</strong> Heavy crowd expected this Sunday. Plan darshan early!</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-bell" onclick="toggleNotice()">
+    <i class="fas fa-bell"></i>
+    <span class="notification-dot"></span> </button>
+</div>
+  // Toggle Announcement Board
+function toggleNotice() {
+  const board = document.getElementById('cityNotice');
+  board.classList.toggle('active');
+}
 </script>
 
 </body>
 </html>
+
 
