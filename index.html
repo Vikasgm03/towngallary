@@ -183,23 +183,23 @@ body {
 /* ===== PREMIUM FOOTER CSS ===== */
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
-  /* Header & Nav */
+  /* --- Nav & Header --- */
   .menu-toggle { display: block; }
   .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
   .nav-links.active { display: flex; }
   .add-btn { width: 100%; text-align: center; }
 
-  /* Hero */
+  /* --- Hero --- */
   .hero { padding: 2.5rem 1.5rem; text-align: center; }
   .hero-container { flex-direction: column; gap: 1.5rem; }
   .hero-visuals { width: 100%; height: auto; display: flex; flex-direction: row; justify-content: center; gap: 10px; margin-top: 1rem; }
   
-  /* FIXED FLOAT CARD ALIGNMENT */
+  /* --- Fixed Floating Buttons (Shops/Food) --- */
   .float-card { 
     position: relative; 
     top: auto !important; 
     right: auto !important; 
-    left: auto !important; 
+    left: auto !important; /* Critical Fix */
     bottom: auto !important;
     width: auto; 
     padding: 8px 16px; 
@@ -210,52 +210,28 @@ body {
   .card-info span { display: none; }
   .card-info strong { font-size: 0.85rem; }
 
-  /* Quick Access */
+  /* --- Quick Access --- */
   .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: 0; padding-top: 2rem; }
 
-  /* Previews */
+  /* --- Previews --- */
   .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
   .preview-img-box { width: 100%; height: 160px; }
   .preview-content { width: 100%; text-align: center; }
 
-  /* Footer Mobile Styles */
-  .footer-cta-card { 
-    flex-direction: column; 
-    text-align: center; 
-    gap: 20px; 
-    padding: 2rem; 
-  }
-  
-  /* Make footer grid 2 columns on tablets/large phones */
-  .footer-grid { 
-    grid-template-columns: 1fr 1fr; 
-    gap: 2rem; 
-    text-align: left;
-  }
+  /* --- Tablet Footer (2 Columns) --- */
+  .footer-cta-card { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; text-align: left; }
 }
 
 @media (max-width: 600px) {
-  /* Make footer grid 1 column on small phones */
-  .footer-grid { 
-    grid-template-columns: 1fr; 
-    text-align: center; 
-    gap: 2.5rem;
-  }
+  /* --- Mobile Footer (1 Column) --- */
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+  .f-socials { justify-content: center; }
+  .footer-cta-wrapper { padding: 0 1rem; }
   
-  /* Center social icons on small phones */
-  .f-socials { 
-    justify-content: center; 
-  }
-  
-  /* Fix padding for CTA wrapper */
-  .footer-cta-wrapper { 
-    padding: 0 1rem; 
-  }
-  
-  /* Adjust margins for cleaner look */
-  .f-col h4 {
-    margin-bottom: 1rem;
-  }
+  /* Adjust spacing for mobile readability */
+  .f-col h4 { margin-bottom: 1rem; color: var(--primary); }
+  .brand-col p { font-size: 0.9rem; }
 }
 </style>
 </head>
@@ -426,6 +402,7 @@ body {
 
 </body>
 </html>
+
 
 
 
