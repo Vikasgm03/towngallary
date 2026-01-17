@@ -180,44 +180,74 @@ body {
 
 .preview-card:nth-child(even) { flex-direction: row-reverse; }
 
+/* ===== FLOATING ANNOUNCEMENT STYLES ===== */
+.announcement-wrapper {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.btn-bell {
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s;
+  animation: pulse-bell 2s infinite; 
+}
+.btn-bell:hover { transform: scale(1.1); }
+
+.notification-dot {
+  position: absolute; top: 15px; right: 18px; width: 12px; height: 12px;
+  background: red; border: 2px solid white; border-radius: 50%;
+}
+
+.notice-board {
+  background: white; width: 300px; border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 15px;
+  overflow: hidden; border: 1px solid #eee;
+  opacity: 0; transform: translateY(20px); pointer-events: none; 
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: absolute; bottom: 70px; right: 0;
+}
+
+.notice-board.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+.notice-header {
+  background: var(--primary); color: white; padding: 12px 15px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.close-notice { font-size: 1.5rem; cursor: pointer; line-height: 1; }
+.notice-content { padding: 15px; font-size: 0.9rem; }
+.update-item { margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
+.update-item:last-child { border: none; margin: 0; padding: 0; }
+.tag-alert { background: #ffebee; color: #d32f2f; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
+.tag-info { background: #e3f2fd; color: #1976d2; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
+
+@keyframes pulse-bell {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 153, 51, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0); }
+}
+
 /* ===== PREMIUM FOOTER CSS ===== */
 .premium-footer {
   position: relative;
   background-color: #1a1a1a;
   color: #fff;
-  margin-top: 100px; /* Space for CTA overlap */
+  margin-top: 100px;
 }
 
-/* 1. Wave */
-.footer-wave {
-  position: absolute; top: -100px; left: 0; width: 100%;
-  overflow: hidden; line-height: 0; z-index: 1;
-}
-.footer-wave svg { position: relative; display: block; width: calc(100% + 1.3px); height: 100px; }
-.footer-wave .shape-fill { fill: #1a1a1a; }
-
-/* 2. Floating CTA Card */
-.footer-cta-wrapper {
-  position: relative; max-width: 1000px; margin: 0 auto;
-  z-index: 10; top: -80px;
-}
-.footer-cta-card {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 2.5rem 3rem; border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  display: flex; justify-content: space-between; align-items: center; color: white;
-}
-.footer-cta-card h3 { margin: 0 0 5px 0; font-family: 'Playfair Display', serif; font-size: 1.8rem; }
-.footer-cta-card p { margin: 0; opacity: 0.9; }
-
-.btn-cta {
-  background: white; color: var(--primary); padding: 12px 30px;
-  border-radius: 50px; text-decoration: none; font-weight: 700; transition: transform 0.3s;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-.btn-cta:hover { transform: translateY(-3px); }
-
-/* 3. Main Footer Content */
 .footer-content {
   padding: 0 5% 2rem 5%; position: relative; z-index: 5; margin-top: -40px;
 }
@@ -248,26 +278,15 @@ body {
 .f-col ul li a { color: #a0a0a0; text-decoration: none; transition: 0.3s; }
 .f-col ul li a:hover { color: var(--primary); padding-left: 5px; }
 
-.f-input-group { display: flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; }
-.f-input-group input { flex: 1; background: transparent; border: none; padding: 10px 15px; color: white; outline: none; }
-.f-input-group button { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--primary); color: white; cursor: pointer; transition: 0.3s; }
-.f-input-group button:hover { transform: scale(1.1); }
-.tiny-text { font-size: 0.8rem; color: #777; margin-top: 10px; }
-
 .footer-copyright { text-align: center; padding-top: 2rem; color: #777; font-size: 0.9rem; }
 .footer-copyright i { color: var(--primary); animation: beat 1s infinite; }
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
 /* --- CONTACT LIST STYLES --- */
 .contact-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  color: #a0a0a0;
-  margin-bottom: 18px;
-  text-decoration: none;
-  transition: 0.3s;
-  line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 15px;
+  color: #a0a0a0; margin-bottom: 18px; text-decoration: none;
+  transition: 0.3s; line-height: 1.6;
 }
 .contact-row i { color: var(--primary); font-size: 1.1rem; margin-top: 4px; }
 .contact-row:hover { color: var(--primary); }
@@ -290,7 +309,7 @@ body {
     position: relative; 
     top: auto !important; 
     right: auto !important; 
-    left: auto !important; /* Critical Fix */
+    left: auto !important;
     bottom: auto !important;
     width: auto; 
     padding: 8px 16px; 
@@ -327,106 +346,13 @@ body {
   .f-col h4 { margin-bottom: 1rem; color: var(--primary); }
   .brand-col p { font-size: 0.9rem; }
 }
-  /* === FLOATING ANNOUNCEMENT STYLES === */
-.announcement-wrapper {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-/* The Bell Button */
-.btn-bell {
-  width: 60px;
-  height: 60px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4);
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.3s;
-  animation: pulse-bell 2s infinite; /* Grabs attention */
-}
-
-.btn-bell:hover { transform: scale(1.1); }
-
-/* The Red Dot */
-.notification-dot {
-  position: absolute;
-  top: 15px;
-  right: 18px;
-  width: 12px;
-  height: 12px;
-  background: red;
-  border: 2px solid white;
-  border-radius: 50%;
-}
-
-/* The Notice Board Popup */
-.notice-board {
-  background: white;
-  width: 300px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  margin-bottom: 15px;
-  overflow: hidden;
-  border: 1px solid #eee;
-  
-  /* Animation State: Hidden */
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none; 
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  position: absolute;
-  bottom: 70px; /* sits above button */
-  right: 0;
-}
-
-/* Animation State: Visible */
-.notice-board.active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.notice-header {
-  background: var(--primary);
-  color: white;
-  padding: 12px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.close-notice { font-size: 1.5rem; cursor: pointer; line-height: 1; }
-
-.notice-content { padding: 15px; font-size: 0.9rem; }
-
-.update-item { margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
-.update-item:last-child { border: none; margin: 0; padding: 0; }
-
-.tag-alert { background: #ffebee; color: #d32f2f; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
-.tag-info { background: #e3f2fd; color: #1976d2; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
-
-/* Animation Keyframes */
-@keyframes pulse-bell {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 153, 51, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0); }
-}
 </style>
 </head>
 <body>
 
 <div class="ticker-wrap">
   <div class="ticker-move">
-    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Channarayapatna: <strong id="bus-time">Checking...</strong> | Vindhyagiri Steps: 650 (Doli Available) 🔔
+    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | Vindhyagiri Steps: 650 (Doli Available) 🔔
   </div>
 </div>
 
@@ -513,9 +439,9 @@ body {
       <a href="restaurants.html" class="btn-small">Find Food</a>
     </div>
   </div>
-  
 </div>
-  <div class="announcement-wrapper">
+
+<div class="announcement-wrapper">
   
   <div class="notice-board" id="cityNotice">
     <div class="notice-header">
@@ -536,7 +462,8 @@ body {
 
   <button class="btn-bell" onclick="toggleNotice()">
     <i class="fas fa-bell"></i>
-    <span class="notification-dot"></span> </button>
+    <span class="notification-dot"></span> 
+  </button>
 </div>
 
 <footer class="premium-footer">
@@ -613,7 +540,13 @@ body {
     document.getElementById('mobileNav').classList.toggle('active');
   }
 
-  // 2. Wait for Page to Load (Handles Bus Time & Animations)
+  // 2. Toggle Announcement Board
+  function toggleNotice() {
+    const board = document.getElementById('cityNotice');
+    board.classList.toggle('active');
+  }
+
+  // 3. Main Page Logic (Scroll Animations & Bus Time)
   document.addEventListener("DOMContentLoaded", function() {
     
     // --- Scroll Animation ---
@@ -665,38 +598,7 @@ body {
     updateNextBus();
     setInterval(updateNextBus, 60000); // Check every minute
   });
-
-  <div class="announcement-wrapper">
-  
-  <div class="notice-board" id="cityNotice">
-    <div class="notice-header">
-      <h4>📢 City Updates</h4>
-      <span class="close-notice" onclick="toggleNotice()">&times;</span>
-    </div>
-    <div class="notice-content">
-      <div class="update-item">
-        <span class="tag-alert">New</span>
-        <p><strong>Mahamastakabhisheka Prep:</strong> Main road near Vindhyagiri will be closed for maintenance tomorrow (10 AM - 2 PM).</p>
-      </div>
-      <div class="update-item">
-        <span class="tag-info">Info</span>
-        <p><strong>Weekend Rush:</strong> Heavy crowd expected this Sunday. Plan darshan early!</p>
-      </div>
-    </div>
-  </div>
-
-  <button class="btn-bell" onclick="toggleNotice()">
-    <i class="fas fa-bell"></i>
-    <span class="notification-dot"></span> </button>
-</div>
-  // Toggle Announcement Board
-function toggleNotice() {
-  const board = document.getElementById('cityNotice');
-  board.classList.toggle('active');
-}
 </script>
 
 </body>
 </html>
-
-
