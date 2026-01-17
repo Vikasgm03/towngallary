@@ -309,6 +309,34 @@ body {
   /* Adjust spacing */
   .f-col h4 { margin-bottom: 1rem; color: var(--primary); }
   .brand-col p { font-size: 0.9rem; }
+
+  /* --- CONTACT LIST STYLES --- */
+.contact-row {
+  display: flex;
+  align-items: flex-start; /* Aligns icon with top of text */
+  gap: 15px;
+  color: #a0a0a0;
+  margin-bottom: 18px;
+  text-decoration: none;
+  transition: 0.3s;
+  line-height: 1.6;
+}
+
+.contact-row i { 
+  color: var(--primary); 
+  font-size: 1.1rem; 
+  margin-top: 4px; /* Slight adjustment for alignment */
+}
+
+.contact-row:hover { color: var(--primary); }
+
+/* --- MOBILE CENTER FIX --- */
+@media (max-width: 600px) {
+  .contact-row {
+    justify-content: center; /* Moves the whole group to the middle */
+    text-align: left; /* Keeps the address text lines neat */
+  }
+}
 }
 </style>
 </head>
@@ -497,6 +525,7 @@ body {
 
 </body>
 </html>
+
 
 
 
