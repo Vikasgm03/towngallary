@@ -26,26 +26,46 @@
   /* CONTAINER */
   .shop-container { max-width: 1000px; margin: 2rem auto; padding: 0 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 
-  /* CARD */
+  /* CARD STYLES */
   .shop-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid #eee; position: relative; }
   .shop-card:hover { transform: translateY(-5px); }
   
-  .img-link { display: block; width: 100%; height: 180px; overflow: hidden; }
-  .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-  .img-link:hover .card-img { transform: scale(1.05); }
+  /* Image Area */
+  .card-header { position: relative; height: 180px; overflow: hidden; }
+  .card-header img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+  .shop-card:hover .card-header img { transform: scale(1.05); }
 
-  .status-badge { position: absolute; top: 15px; left: 15px; color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; pointer-events: none; }
+  /* Delivery Badge */
+  .delivery-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: #25D366; color: white;
+    padding: 4px 10px; border-radius: 4px;
+    font-size: 0.7rem; font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  /* Status Badge */
+  .status-badge {
+    background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;
+    padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 0.6rem; letter-spacing: 0.5px;
+  }
+
+  /* Buttons */
+  .card-actions { display: flex; gap: 10px; margin-top: 15px; }
   
-  .card-info { padding: 1.5rem; }
-  .type-tag { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; margin-bottom: 5px; display: block;}
-  .card-info h3 { margin-bottom: 5px; color: #3e2723; }
-  .card-info p { font-size: 0.9rem; color: #777; margin-bottom: 15px; }
-  
-  .btn-row { display: flex; gap: 10px; }
-  .btn-action { flex: 1; padding: 10px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-  .btn-call { background: var(--primary); color: white; }
-  .btn-map { background: #d7ccc8; color: #3e2723; }
-  .btn-action:hover { opacity: 0.8; }
+  .btn-menu {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    border: 1px solid var(--primary); color: var(--primary); background: white; transition: 0.3s;
+  }
+  .btn-menu:hover { background: #efebe9; }
+
+  .btn-delivery {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    background-color: #25D366; color: white; border: 1px solid #1ebc57; transition: 0.3s;
+  }
+  .btn-delivery:hover { background-color: #1ebc57; }
 </style>
 </head>
 <body>
@@ -69,55 +89,55 @@
     async function loadBakeryData() {
       const container = document.getElementById('bakeryList');
       try {
-        const response = await fetch('bakeries_data.json');
+        // Ensure this file exists in the same folder
+        const response = await fetch('bakeries_data.json'); 
         if (!response.ok) throw new Error("File not found");
         const shops = await response.json();
         
         container.innerHTML = '';
 
         shops.forEach(shop => {
+          // DYNAMIC DATA INSERTION
           const cardHTML = `
             <div class="shop-card">
-  <div class="card-header">
-    <img src="images/raghu_hotel.jpg" alt="Raghu Hotel">
-    <span class="delivery-badge">
-      <i class="fas fa-motorcycle"></i> Vihara Delivery
-    </span>
-  </div>
-  
-  <div class="card-body" style="padding: 15px;">
-    
-    <div style="display:flex; justify-content:space-between; align-items:start;">
-      <div>
-        <h3>Raghu Hotel</h3>
-        <p style="color:#666; font-size:0.85rem; margin-top:5px;">Masala Dosa, Coffee, South Indian Meals</p>
-      </div>
-      <span class="status-badge open" style="font-size:0.6rem;">OPEN</span>
-    </div>
+              <div class="card-header">
+                <img src="${shop.image}" alt="${shop.name}">
+                <span class="delivery-badge">
+                  <i class="fas fa-motorcycle"></i> Vihara Delivery
+                </span>
+              </div>
+              
+              <div class="card-body" style="padding: 15px;">
+                
+                <div style="display:flex; justify-content:space-between; align-items:start;">
+                  <div>
+                    <h3>${shop.name}</h3> <p style="color:#666; font-size:0.85rem; margin-top:5px;">${shop.description}</p> </div>
+                  <span class="status-badge">OPEN</span>
+                </div>
 
-    <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+                <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
 
-    <div class="card-actions">
-      
-      <a href="images/raghu_hotel.jpg" target="_blank" class="btn-menu">
-        <i class="fas fa-book-open"></i> Menu
-      </a>
+                <div class="card-actions">
+                  
+                  <a href="${shop.menu_image || '#'}" target="_blank" class="btn-menu">
+                    <i class="fas fa-book-open"></i> Menu
+                  </a>
 
-      <a href="https://wa.me/919483882133?text=Hi%20Vihara,%20I%20checked%20the%20menu%20for%20*Raghu%20Hotel*.%20I%20want%20to%20order:" 
-         class="btn-delivery" target="_blank">
-        <i class="fab fa-whatsapp"></i> Order
-      </a>
+                  <a href="https://wa.me/919483882133?text=Hi%20Vihara,%20I%20want%20to%20order%20from%20*${encodeURIComponent(shop.name)}*" 
+                     class="btn-delivery" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order
+                  </a>
 
-    </div>
+                </div>
 
-  </div>
-</div>
+              </div>
+            </div>
           `;
           container.innerHTML += cardHTML;
         });
       } catch (error) {
         console.error(error);
-        container.innerHTML = `<p style="text-align:center; color:red;">Failed to load data.</p>`;
+        container.innerHTML = `<p style="text-align:center; color:red;">Failed to load data. Please check JSON file.</p>`;
       }
     }
     loadBakeryData();
