@@ -5,14 +5,12 @@
     "type": "Traditional Bakery",
     "image": "../../images/bakeries/bread.jpg",
     "location": "Temple Road, Main Circle",
-    "phone": "+919876543210",
-    "mapLink": "https://www.google.com/maps/search/?api=1&query=Sri+Manjunatha+Medicals+Shravanabelagola",
     "status": "Fresh Stock",
     "statusColor": "#27ae60",
     "timings": "7:00 AM - 9:30 PM",
     "bestseller": "Honey Cake & Khara Bun",
-    "menu_image": "images/raghu_hotel.jpg"
-    "description": "The aroma of fresh bread hits you from the street. Famous for our wood-fired oven puffs and traditional rusks. All items are pure veg."
+    "description": "The aroma of fresh bread hits you from the street. Famous for our wood-fired oven puffs.",
+    "menu_image": "../../images/menus/iyengar_menu.jpg"
   },
   {
     "id": "bake2",
@@ -20,13 +18,12 @@
     "type": "Cake Shop",
     "image": "../../images/bakeries/cake.jpg",
     "location": "Near College Stop",
-    "phone": "+919988776655",
-    "mapLink": "https://www.google.com/maps/search/?api=1&query=Government+Hospital+Shravanabelagola",
     "status": "Open Now",
     "statusColor": "#e91e63",
     "timings": "10:00 AM - 10:00 PM",
     "bestseller": "Black Forest & Pastries",
-    "description": "Modern cake shop specializing in birthday cakes, cupcakes, and donuts. We take custom orders for parties and weddings."
+    "description": "Modern cake shop specializing in birthday cakes, cupcakes, and donuts.",
+    "menu_image": "../../images/menus/cream_menu.jpg"
   },
   {
     "id": "bake3",
@@ -34,12 +31,11 @@
     "type": "Sweets & Snacks",
     "image": "../../images/bakeries/sweets.jpg",
     "location": "Bus Stand Entrance",
-    "phone": "+919123456789",
-    "mapLink": "https://www.google.com/maps/search/?api=1&query=Clinic+Shravanabelagola",
     "status": "Busy",
     "statusColor": "#f39c12",
     "timings": "8:00 AM - 9:00 PM",
     "bestseller": "Mysore Pak & Mixture",
-    "description": "Authentic local sweets made with pure ghee. Great place to buy souvenirs and snack packets for your travel."
+    "description": "Authentic local sweets made with pure ghee. Great place to buy souvenirs.",
+    "menu_image": "../../images/raghu_hotel.jpg"
   }
 ]
