@@ -78,22 +78,40 @@
         shops.forEach(shop => {
           const cardHTML = `
             <div class="shop-card">
-              <span class="status-badge" style="background:${shop.statusColor}">${shop.status}</span>
-              <a href="bakeries_details.html?id=${shop.id}" class="img-link">
-                <img src="${shop.image}" class="card-img" alt="${shop.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
-              </a>
-              <div class="card-info">
-                <span class="type-tag">${shop.type}</span>
-                <a href="bakeries_details.html?id=${shop.id}" style="text-decoration:none; color:inherit;">
-                    <h3>${shop.name}</h3>
-                </a>
-                <p><i class="fas fa-map-marker-alt"></i> ${shop.location}</p>
-                <div class="btn-row">
-                  <a href="tel:${shop.phone}" class="btn-action btn-call"><i class="fas fa-phone"></i> Call</a>
-                  <a href="bakeries_details.html?id=${shop.id}" class="btn-action btn-map">Menu</a>
-                </div>
-              </div>
-            </div>
+  <div class="card-header">
+    <img src="images/raghu_hotel.jpg" alt="Raghu Hotel">
+    <span class="delivery-badge">
+      <i class="fas fa-motorcycle"></i> Vihara Delivery
+    </span>
+  </div>
+  
+  <div class="card-body" style="padding: 15px;">
+    
+    <div style="display:flex; justify-content:space-between; align-items:start;">
+      <div>
+        <h3>Raghu Hotel</h3>
+        <p style="color:#666; font-size:0.85rem; margin-top:5px;">Masala Dosa, Coffee, South Indian Meals</p>
+      </div>
+      <span class="status-badge open" style="font-size:0.6rem;">OPEN</span>
+    </div>
+
+    <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+
+    <div class="card-actions">
+      
+      <a href="images/raghu_hotel.jpg" target="_blank" class="btn-menu">
+        <i class="fas fa-book-open"></i> Menu
+      </a>
+
+      <a href="https://wa.me/919483882133?text=Hi%20Vihara,%20I%20checked%20the%20menu%20for%20*Raghu%20Hotel*.%20I%20want%20to%20order:" 
+         class="btn-delivery" target="_blank">
+        <i class="fab fa-whatsapp"></i> Order
+      </a>
+
+    </div>
+
+  </div>
+</div>
           `;
           container.innerHTML += cardHTML;
         });
