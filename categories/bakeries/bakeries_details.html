@@ -36,6 +36,20 @@
 
   .description { color: #666; line-height: 1.6; margin-top: 20px; font-size: 0.95rem; }
 
+  /* --- NEW: ACTION BUTTONS ROW (Call & Map) --- */
+  .action-row { display: flex; gap: 15px; margin-top: 25px; }
+  
+  .btn-action {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px; border-radius: 12px; font-weight: 600; text-decoration: none; font-size: 0.9rem;
+    transition: 0.3s;
+  }
+  
+  .btn-call { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+  .btn-nav { background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; }
+  
+  .btn-action:hover { filter: brightness(0.95); transform: translateY(-2px); }
+
   /* MENU SECTION */
   .menu-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
   .menu-section h2 { font-size: 1.2rem; margin-bottom: 15px; color: #3e2723; display: flex; align-items: center; gap: 10px; }
@@ -75,6 +89,15 @@
       <div class="tag"><i class="fas fa-star"></i> <span id="shopBest">...</span></div>
       <div class="tag"><i class="fas fa-map-marker-alt"></i> <span id="shopLoc">...</span></div>
     </div>
+
+    <div class="action-row">
+      <a href="#" id="btnCall" class="btn-action btn-call">
+        <i class="fas fa-phone-alt"></i> Call Now
+      </a>
+      <a href="#" id="btnNav" target="_blank" class="btn-action btn-nav">
+        <i class="fas fa-location-arrow"></i> Navigate
+      </a>
+    </div>
     
     <p id="shopDesc" class="description">...</p>
 
@@ -82,7 +105,7 @@
       <h2><i class="fas fa-book-open"></i> Full Menu Card</h2>
       <img id="menuImg" class="menu-img" src="" alt="Menu Card" onerror="this.style.display='none'; document.getElementById('noMenuMsg').style.display='block';">
       <p id="noMenuMsg" style="display:none; color:#888; text-align:center; padding:20px; background:#f9f9f9; border-radius:10px;">
-        Menu image not available yet. Please ask for options on WhatsApp.
+        Menu image not available.
       </p>
     </div>
   </div>
@@ -99,10 +122,7 @@
       const params = new URLSearchParams(window.location.search);
       const shopId = params.get('id');
 
-      if (!shopId) {
-        document.getElementById('shopName').innerText = "Shop not found";
-        return;
-      }
+      if (!shopId) return;
 
       try {
         // 2. Fetch Data
@@ -113,7 +133,7 @@
         const shop = shops.find(s => s.id === shopId);
 
         if (shop) {
-          // Fill Data
+          // Fill Text Data
           document.getElementById('shopName').innerText = shop.name;
           document.getElementById('shopImg').src = shop.image;
           document.getElementById('shopTime').innerText = shop.timings;
@@ -121,13 +141,21 @@
           document.getElementById('shopLoc').innerText = shop.location;
           document.getElementById('shopDesc').innerText = shop.description;
           
-          // SET MENU IMAGE (Use shop image if menu missing)
+          // --- NEW: SET ACTION BUTTONS ---
+          // Phone
+          document.getElementById('btnCall').href = `tel:${shop.phone}`;
+          
+          // Map (If map_link is missing in JSON, create a Google Search link)
+          const mapUrl = shop.map_link ? shop.map_link : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shop.name + " Shravanabelagola")}`;
+          document.getElementById('btnNav').href = mapUrl;
+
+          // Set Menu Image
           const menuSource = shop.menu_image ? shop.menu_image : "";
           document.getElementById('menuImg').src = menuSource;
 
-          // SET WHATSAPP LINK (Vihara Founder Number)
+          // Set WhatsApp Order Link
           const founderNumber = "919483882133"; 
-          const msg = `Hi Vihara, I am viewing the menu of *${shop.name}*. I would like to order:`;
+          const msg = `Hi Vihara, I am viewing *${shop.name}*. I want to order:`;
           document.getElementById('waLink').href = `https://wa.me/${founderNumber}?text=${encodeURIComponent(msg)}`;
         } 
       } catch (error) {
