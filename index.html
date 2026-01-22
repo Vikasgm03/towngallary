@@ -31,7 +31,7 @@ body {
 /* ===== TICKER ===== */
 .ticker-wrap {
   background: var(--accent); color: white; font-size: 0.8rem; padding: 8px 0; overflow: hidden; white-space: nowrap;
-  position: relative; z-index: 1001; /* Ensure it's visible */
+  position: relative; z-index: 1001;
 }
 .ticker-move { display: inline-block; animation: ticker 25s linear infinite; padding-left: 100%; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
@@ -209,7 +209,7 @@ body {
 .status-badge.closed { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
 .time-text { color: #555; font-weight: 500; display: flex; align-items: center; gap: 5px; }
 
-/* ===== FLOATING ANNOUNCEMENT (FIXED) ===== */
+/* ===== FLOATING ANNOUNCEMENT ===== */
 .announcement-wrapper {
   position: fixed; bottom: 25px; right: 25px; z-index: 2000;
   display: flex; flex-direction: column; align-items: flex-end;
