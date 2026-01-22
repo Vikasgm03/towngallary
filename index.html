@@ -31,6 +31,7 @@ body {
 /* ===== TICKER ===== */
 .ticker-wrap {
   background: var(--accent); color: white; font-size: 0.8rem; padding: 8px 0; overflow: hidden; white-space: nowrap;
+  position: relative; z-index: 1001; /* Ensure it's visible */
 }
 .ticker-move { display: inline-block; animation: ticker 25s linear infinite; padding-left: 100%; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
@@ -142,7 +143,7 @@ body {
 }
 .icon-shop { background: #e3f2fd; color: #1976d2; }
 .icon-food { background: #fff3e0; color: #f57c00; }
-.icon-auto { background: #fff8e1; color: #ffca28; } /* Yellow for Auto */
+.icon-auto { background: #fff8e1; color: #ffca28; }
 
 .card-info strong { display: block; font-size: 0.95rem; }
 .card-info span { font-size: 0.75rem; color: #777; }
@@ -208,7 +209,7 @@ body {
 .status-badge.closed { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
 .time-text { color: #555; font-weight: 500; display: flex; align-items: center; gap: 5px; }
 
-/* ===== FLOATING ANNOUNCEMENT ===== */
+/* ===== FLOATING ANNOUNCEMENT (FIXED) ===== */
 .announcement-wrapper {
   position: fixed; bottom: 25px; right: 25px; z-index: 2000;
   display: flex; flex-direction: column; align-items: flex-end;
@@ -307,29 +308,29 @@ body {
 </head>
 <body>
 
+<div class="ticker-wrap">
+  <div class="ticker-move">
+    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | Vindhyagiri Steps: 650 (Doli Available) 🔔
+  </div>
+</div>
+
 <div class="announcement-wrapper">
-  
   <div class="notice-board" id="cityNotice">
     <div class="notice-header">
       <h4>⚡ Offers & Updates</h4>
       <span class="close-notice" onclick="toggleNotice()">&times;</span>
     </div>
-    
     <div class="notice-content">
-      
       <div class="update-item">
         <span class="tag-alert" style="background:#fff3e0; color:#ef6c00;">Offer</span>
         <p><strong>Free Delivery!</strong> Use code <strong style="color:#2c3e50;">VIHARA20</strong> on your first food order today.</p>
       </div>
-
       <div class="update-item">
         <span class="tag-info">New</span>
         <p><strong>Raghu Hotel is Live 🥘</strong> Order crispy Masala Dosa directly to your room!</p>
       </div>
-
     </div>
   </div>
-
   <button class="btn-bell" onclick="toggleNotice()">
     <i class="fas fa-bell"></i>
     <span class="notification-dot"></span> 
@@ -439,29 +440,6 @@ body {
     </div>
   </div>
 
-</div>
-
-<div class="announcement-wrapper">
-  <div class="notice-board" id="cityNotice">
-    <div class="notice-header">
-      <h4>📢 City Updates</h4>
-      <span class="close-notice" onclick="toggleNotice()">&times;</span>
-    </div>
-    <div class="notice-content">
-      <div class="update-item">
-        <span class="tag-alert">New</span>
-        <p><strong>Mahamastakabhisheka Prep:</strong> Main road near Vindhyagiri will be closed for maintenance tomorrow (10 AM - 2 PM).</p>
-      </div>
-      <div class="update-item">
-        <span class="tag-info">Info</span>
-        <p><strong>Weekend Rush:</strong> Heavy crowd expected this Sunday. Plan darshan early!</p>
-      </div>
-    </div>
-  </div>
-  <button class="btn-bell" onclick="toggleNotice()">
-    <i class="fas fa-bell"></i>
-    <span class="notification-dot"></span> 
-  </button>
 </div>
 
 <footer class="premium-footer">
@@ -627,5 +605,3 @@ body {
 
 </body>
 </html>
-
-
