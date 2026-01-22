@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Vihara | The Shravanabelagola Super App</title>
+<title>Vihara | Namma Shravanabelagola</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,37 +11,37 @@
 <style>
 /* ===== VARIABLES & RESET ===== */
 :root {
-  --primary: #FF9933; /* Saffron */
-  --primary-dark: #D35400;
-  --accent: #2c3e50;
-  --glass: rgba(255, 255, 255, 0.98);
-  --bg-light: #f8f9fa;
-  --radius: 16px;
+  --primary: #FF9933; /* Saffron */
+  --primary-dark: #D35400;
+  --accent: #2c3e50;
+  --glass: rgba(255, 255, 255, 0.98);
+  --bg-light: #f8f9fa;
+  --radius: 16px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-light);
-  color: #333;
-  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  color: #333;
+  overflow-x: hidden;
 }
 
 /* ===== TICKER ===== */
 .ticker-wrap {
-  background: var(--accent); color: white; font-size: 0.8rem; padding: 8px 0; overflow: hidden; white-space: nowrap;
+  background: var(--accent); color: white; font-size: 0.8rem; padding: 8px 0; overflow: hidden; white-space: nowrap;
 }
 .ticker-move { display: inline-block; animation: ticker 20s linear infinite; padding-left: 100%; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
 /* ===== HEADER ===== */
 .site-header {
-  position: sticky; top: 0; z-index: 1000;
-  background: var(--glass); backdrop-filter: blur(10px);
-  padding: 0.8rem 5%;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--glass); backdrop-filter: blur(10px);
+  padding: 0.8rem 5%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  display: flex; justify-content: space-between; align-items: center;
 }
 
 .logo-container { width: 140px; height: 40px; position: relative; }
@@ -54,90 +54,98 @@ body {
 .nav-links { display: flex; align-items: center; gap: 20px; }
 .nav-links a { text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
 .nav-links a:hover { color: var(--primary); }
-.partner-btn { background: var(--accent); color: white !important; padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; }
+.add-btn { background: var(--primary); color: white !important; padding: 8px 20px; border-radius: 50px; }
 
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
-/* ===== BUSINESS HERO SECTION (REDESIGNED) ===== */
+/* ===== HERO SECTION ===== */
 .hero {
-  background: white;
-  padding: 3rem 5% 4rem 5%;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  min-height: 70vh;
+  background: #ffffff;
+  padding: 2rem 5%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
 }
 
-/* Subtle Background Pattern */
-.hero::before {
-  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background-image: radial-gradient(#f3e5f5 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; z-index: 0;
+.hero-container {
+  width: 100%; max-width: 1200px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 4rem; z-index: 1;
 }
 
-.hero-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+.hero-text { flex: 1; max-width: 550px; }
+
+.pill {
+  display: inline-block; background: #fff3e0; color: var(--primary);
+  padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; margin-bottom: 20px;
+}
 
 .hero h1 {
-  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2.5rem;
-  color: var(--accent); line-height: 1.2; margin-bottom: 10px;
-}
-.highlight { color: var(--primary); }
-.hero p { color: #666; font-size: 1rem; margin-bottom: 30px; }
-
-/* --- SEARCH BAR --- */
-.search-box-wrapper {
-  background: white;
-  border: 2px solid #eee;
-  border-radius: 50px;
-  padding: 5px 5px 5px 20px;
-  display: flex; align-items: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  margin-bottom: 40px;
-  transition: 0.3s;
-}
-.search-box-wrapper:focus-within { border-color: var(--primary); box-shadow: 0 10px 30px rgba(255, 153, 51, 0.15); }
-.search-icon { color: #999; margin-right: 10px; }
-.search-input { border: none; outline: none; flex: 1; font-size: 1rem; color: #333; }
-.search-btn {
-  background: var(--primary); color: white; border: none;
-  width: 45px; height: 45px; border-radius: 50%;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: 0.3s;
-}
-.search-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
-
-/* --- SERVICE GRID (APP ICONS) --- */
-.service-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; justify-content: center;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 3.2rem;
+  color: var(--accent); line-height: 1.15; margin-bottom: 20px;
 }
 
-.service-item {
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  text-decoration: none; color: var(--accent); transition: 0.3s;
+.highlight { color: var(--primary); position: relative; }
+.highlight::after {
+  content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 8px;
+  background: rgba(255, 200, 50, 0.2); z-index: -1; border-radius: 4px;
 }
 
-.icon-circle {
-  width: 65px; height: 65px; background: white; border-radius: 18px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  border: 1px solid #f0f0f0; transition: 0.3s;
+.hero p { font-size: 1.05rem; color: #666; margin-bottom: 30px; line-height: 1.6; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--primary); color: white;
+  padding: 14px 35px; border-radius: 50px;
+  text-decoration: none; font-weight: 600; font-size: 1rem;
+  box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+  transition: transform 0.2s;
+}
+.btn-primary:hover { transform: translateY(-3px); background: var(--primary-dark); }
+
+.hero-visuals { flex: 1; position: relative; height: 400px; }
+
+.float-card {
+  position: absolute; background: white; padding: 12px 18px;
+  border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  display: flex; align-items: center; gap: 15px; color: #333;
+  width: 220px; border: 1px solid #f0f0f0;
+  cursor: default; animation: float 6s ease-in-out infinite;
 }
 
-/* Specific Icon Colors */
-.icon-food { color: #ff5722; background: #fbe9e7; }
-.icon-shop { color: #2196f3; background: #e3f2fd; }
-.icon-auto { color: #ffc107; background: #fff8e1; }
-.icon-room { color: #9c27b0; background: #f3e5f5; }
-
-.service-item:hover .icon-circle { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.service-item span { font-size: 0.85rem; font-weight: 600; }
-
-/* --- TRUST STRIP --- */
-.promise-strip {
-  display: flex; justify-content: space-around;
-  padding: 15px; background: white; margin-top: 0;
-  border-top: 1px solid #eee; border-bottom: 1px solid #eee;
+.icon-box {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
 }
-.promise-item { font-size: 0.8rem; color: #555; display: flex; align-items: center; gap: 5px; }
-.promise-item i { color: #27ae60; }
+.icon-shop { background: #e3f2fd; color: #1976d2; }
+.icon-food { background: #fff3e0; color: #f57c00; }
+.icon-temple { background: #f3e5f5; color: #7b1fa2; }
+
+.card-info strong { display: block; font-size: 0.95rem; }
+.card-info span { font-size: 0.75rem; color: #777; }
+
+.card-1 { top: 10%; right: 10%; animation-delay: 0s; }
+.card-2 { top: 40%; left: 10%; animation-delay: 2s; z-index: 2; }
+.card-3 { bottom: 10%; right: 5%; animation-delay: 4s; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* ===== QUICK ACCESS ===== */
+.quick-access-container {
+  max-width: 1000px;
+  margin: -40px auto 3rem auto;
+  padding: 0 15px; position: relative; z-index: 10;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
+}
+
+.quick-card {
+  background: white; padding: 1.2rem; text-align: center; border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-decoration: none; color: #333; transition: transform 0.3s;
+}
+.quick-card:hover { transform: translateY(-5px); color: var(--primary); }
+.quick-card i { font-size: 1.6rem; color: var(--primary); margin-bottom: 8px; display: block; }
+.quick-card h3 { font-size: 0.9rem; font-weight: 600; margin: 0; }
 
 /* ===== SECTION HEADER & PREVIEWS ===== */
 .section-header { text-align: center; margin: 3rem 0 2rem 0; padding: 0 1rem; }
@@ -145,14 +153,14 @@ body {
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 8px auto; }
 
 .preview-container {
-  max-width: 900px; margin: 0 auto 4rem auto; padding: 0 15px;
-  display: flex; flex-direction: column; gap: 20px;
+  max-width: 900px; margin: 0 auto 4rem auto; padding: 0 15px;
+  display: flex; flex-direction: column; gap: 20px;
 }
 
 .preview-card {
-  background: white; border-radius: var(--radius); overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; align-items: center; border: 1px solid #eee;
-  opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
+  background: white; border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; align-items: center; border: 1px solid #eee;
+  opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
 }
 .preview-card.visible { opacity: 1; transform: translateY(0); }
 
@@ -165,339 +173,431 @@ body {
 .preview-content p { font-size: 0.9rem; color: #666; margin-bottom: 15px; line-height: 1.5; }
 
 .btn-small {
-  display: inline-block; background: var(--accent); color: white; padding: 8px 20px;
-  border-radius: 50px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;
+  display: inline-block; background: var(--accent); color: white; padding: 8px 20px;
+  border-radius: 50px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;
 }
 .btn-small:hover { background: var(--primary); }
 
 .preview-card:nth-child(even) { flex-direction: row-reverse; }
 
-/* ===== BUSINESS STATUS BADGE (New) ===== */
-.time-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
-.status-badge { padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; }
-.status-badge.open { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
-.status-badge.closed { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
-.time-text { color: #555; font-weight: 500; display: flex; align-items: center; gap: 5px; }
-
 /* ===== FLOATING ANNOUNCEMENT STYLES ===== */
 .announcement-wrapper {
-  position: fixed; bottom: 25px; right: 25px; z-index: 2000;
-  display: flex; flex-direction: column; align-items: flex-end;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
+
 .btn-bell {
-  width: 60px; height: 60px; background: var(--primary); color: white;
-  border: none; border-radius: 50%; font-size: 1.5rem;
-  box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4); cursor: pointer;
-  position: relative; transition: transform 0.3s; animation: pulse-bell 2s infinite; 
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s;
+  animation: pulse-bell 2s infinite; 
 }
 .btn-bell:hover { transform: scale(1.1); }
-.notification-dot { position: absolute; top: 15px; right: 18px; width: 12px; height: 12px; background: red; border: 2px solid white; border-radius: 50%; }
+
+.notification-dot {
+  position: absolute; top: 15px; right: 18px; width: 12px; height: 12px;
+  background: red; border: 2px solid white; border-radius: 50%;
+}
 
 .notice-board {
-  background: white; width: 300px; border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 15px;
-  overflow: hidden; border: 1px solid #eee;
-  opacity: 0; transform: translateY(20px); pointer-events: none; 
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  position: absolute; bottom: 70px; right: 0;
+  background: white; width: 300px; border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 15px;
+  overflow: hidden; border: 1px solid #eee;
+  opacity: 0; transform: translateY(20px); pointer-events: none; 
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: absolute; bottom: 70px; right: 0;
 }
+
 .notice-board.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
-.notice-header { background: var(--primary); color: white; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; }
+.notice-header {
+  background: var(--primary); color: white; padding: 12px 15px;
+  display: flex; justify-content: space-between; align-items: center;
+}
 .close-notice { font-size: 1.5rem; cursor: pointer; line-height: 1; }
 .notice-content { padding: 15px; font-size: 0.9rem; }
 .update-item { margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
 .update-item:last-child { border: none; margin: 0; padding: 0; }
 .tag-alert { background: #ffebee; color: #d32f2f; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
 .tag-info { background: #e3f2fd; color: #1976d2; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
-@keyframes pulse-bell { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 153, 51, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0); } }
+
+@keyframes pulse-bell {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 153, 51, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0); }
+}
 
 /* ===== PREMIUM FOOTER CSS ===== */
-.premium-footer { position: relative; background-color: #1a1a1a; color: #fff; margin-top: 100px; }
-.footer-content { padding: 0 5% 2rem 5%; position: relative; z-index: 5; margin-top: -40px; }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.f-logo { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(to right, #fff, #ffcc80); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.premium-footer {
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  margin-top: 100px;
+}
+
+.footer-content {
+  padding: 0 5% 2rem 5%; position: relative; z-index: 5; margin-top: -40px;
+}
+
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.f-logo {
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, #ffcc80);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
 .brand-col p { color: #a0a0a0; line-height: 1.6; margin-bottom: 1.5rem; }
+
 .f-socials { display: flex; gap: 15px; }
-.f-socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
+.f-socials a {
+  width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: white; transition: 0.3s;
+}
 .f-socials a:hover { background: var(--primary); transform: translateY(-3px); }
+
 .f-col h4 { font-size: 1.1rem; margin-bottom: 1.5rem; color: white; }
 .f-col ul { list-style: none; padding: 0; }
 .f-col ul li { margin-bottom: 12px; }
 .f-col ul li a { color: #a0a0a0; text-decoration: none; transition: 0.3s; }
 .f-col ul li a:hover { color: var(--primary); padding-left: 5px; }
+
 .footer-copyright { text-align: center; padding-top: 2rem; color: #777; font-size: 0.9rem; }
 .footer-copyright i { color: var(--primary); animation: beat 1s infinite; }
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-.contact-row { display: flex; align-items: flex-start; gap: 15px; color: #a0a0a0; margin-bottom: 18px; text-decoration: none; transition: 0.3s; line-height: 1.6; }
+
+/* --- CONTACT LIST STYLES --- */
+.contact-row {
+  display: flex; align-items: flex-start; gap: 15px;
+  color: #a0a0a0; margin-bottom: 18px; text-decoration: none;
+  transition: 0.3s; line-height: 1.6;
+}
 .contact-row i { color: var(--primary); font-size: 1.1rem; margin-top: 4px; }
 .contact-row:hover { color: var(--primary); }
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
-  .menu-toggle { display: block; }
-  .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-  .nav-links.active { display: flex; }
-  .partner-btn { width: 100%; text-align: center; }
+  /* Header & Nav */
+  .menu-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+  .nav-links.active { display: flex; }
+  .add-btn { width: 100%; text-align: center; }
 
-  /* Hero & Service Grid */
-  .hero { padding: 2rem 5%; text-align: left; }
-  .service-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; overflow-x: auto; padding-bottom: 10px; }
-  .icon-circle { width: 55px; height: 55px; font-size: 1.2rem; }
-  .service-item span { font-size: 0.75rem; text-align: center; }
-  .promise-strip { display: none; }
+  /* Hero */
+  .hero { padding: 2.5rem 1.5rem; text-align: center; }
+  .hero-container { flex-direction: column; gap: 1.5rem; }
+  .hero-visuals { width: 100%; height: auto; display: flex; flex-direction: row; justify-content: center; gap: 10px; margin-top: 1rem; }
+  
+  /* FIXED FLOAT CARD ALIGNMENT */
+  .float-card { 
+    position: relative; 
+    top: auto !important; 
+    right: auto !important; 
+    left: auto !important;
+    bottom: auto !important;
+    width: auto; 
+    padding: 8px 16px; 
+    border-radius: 50px; 
+  }
+  
+  .icon-box { width: 28px; height: 28px; font-size: 0.9rem; }
+  .card-info span { display: none; }
+  .card-info strong { font-size: 0.85rem; }
 
-  /* Previews */
-  .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
-  .preview-img-box { width: 100%; height: 160px; }
-  .preview-content { width: 100%; text-align: center; }
-  .time-row { justify-content: center; }
+  /* Quick Access */
+  .quick-access-container { grid-template-columns: 1fr 1fr; margin-top: 0; padding-top: 2rem; }
 
-  /* Footer */
-  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-  .f-socials { justify-content: center; }
-  .contact-row { justify-content: center; text-align: left; }
+  /* Previews */
+  .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
+  .preview-img-box { width: 100%; height: 160px; }
+  .preview-content { width: 100%; text-align: center; }
+
+  /* Tablet Footer */
+  .footer-cta-card { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; text-align: left; }
+}
+
+@media (max-width: 600px) {
+  /* Mobile Footer (1 Column) */
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+  .f-socials { justify-content: center; }
+  .footer-cta-wrapper { padding: 0 1rem; }
+  
+  /* Contact Row Center Alignment */
+  .contact-row { justify-content: center; text-align: left; }
+  
+  /* Adjust spacing */
+  .f-col h4 { margin-bottom: 1rem; color: var(--primary); }
+  .brand-col p { font-size: 0.9rem; }
 }
 </style>
 </head>
 <body>
 
 <div class="ticker-wrap">
-  <div class="ticker-move">
-    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | <strong>Delivery Available 🛵</strong> 🔔
-  </div>
+  <div class="ticker-move">
+    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | Vindhyagiri Steps: 650 (Doli Available) 🔔
+  </div>
 </div>
 
 <header class="site-header">
-  <a href="index.html" class="logo-container">
-    <img src="images/logo/logo_english.png" class="logo-img logo-primary" alt="Vihara">
-    <img src="images/logo/logo_kannada.png" class="logo-img logo-secondary" alt="Icon">
-  </a>
-  <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-  <nav class="nav-links" id="mobileNav">
-    <a href="bakeries.html">Order Food</a>
-    <a href="retail_grid/retail_shops.html">Shops</a>
-    <a href="#" class="partner-btn">Partner with Us</a>
-  </nav>
+  <a href="index.html" class="logo-container">
+    <img src="images/logo/logo_english.png" class="logo-img logo-primary" alt="Vihara">
+    <img src="images/logo/logo_kannada.png" class="logo-img logo-secondary" alt="Icon">
+  </a>
+  <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+  <nav class="nav-links" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="more_categories.html">Categories</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="aboutus.html">About</a>
+    <a href="add_button.html" class="add-btn">+ Add Shop</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <div class="hero-content">
-    
-    <h1>One App for <br><span class="highlight">Food, Travel & Stay</span></h1>
-    <p>Shravanabelagola's Local Digital Guide</p>
+  <div class="hero-container">
+    <div class="hero-text">
+      <span class="pill">Namma Shravanabelagola</span>
+      <h1>Discover <br> <span class="highlight">The Divine City</span></h1>
+      <p>The smartest directory for authentic shops, food, and heritage spots.</p>
+      <a href="#preview-section" class="btn-primary">Start Exploring <i class="fas fa-arrow-down"></i></a>
+    </div>
 
-    <div class="search-box-wrapper">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" class="search-input" placeholder="Search for dosa, auto, or rooms...">
-      <button class="search-btn"><i class="fas fa-arrow-right"></i></button>
-    </div>
-
-    <div class="service-grid">
-      
-      <a href="bakeries.html" class="service-item">
-        <div class="icon-circle icon-food"><i class="fas fa-hamburger"></i></div>
-        <span>Delivery</span>
-      </a>
-
-      <a href="retail_grid/retail_shops.html" class="service-item">
-        <div class="icon-circle icon-shop"><i class="fas fa-store"></i></div>
-        <span>Shops</span>
-      </a>
-
-      <a href="#" class="service-item" onclick="alert('Auto Booking coming next week!')">
-        <div class="icon-circle icon-auto"><i class="fas fa-taxi"></i></div>
-        <span>Auto</span>
-      </a>
-
-      <a href="#" class="service-item" onclick="alert('Room Booking coming soon!')">
-        <div class="icon-circle icon-room"><i class="fas fa-bed"></i></div>
-        <span>Rooms</span>
-      </a>
-
-    </div>
-
-  </div>
+    <div class="hero-visuals">
+      <div class="float-card card-1">
+        <div class="icon-box icon-shop"><i class="fas fa-store"></i></div>
+        <div class="card-info"><strong>Shops</strong><span>Verified</span></div>
+      </div>
+      <div class="float-card card-2">
+        <div class="icon-box icon-food"><i class="fas fa-utensils"></i></div>
+        <div class="card-info"><strong>Food</strong><span>Local</span></div>
+      </div>
+      <div class="float-card card-3">
+        <div class="icon-box icon-temple"><i class="fas fa-gopuram"></i></div>
+        <div class="card-info"><strong>Temples</strong><span>Info</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="promise-strip">
-  <div class="promise-item"><i class="fas fa-check-circle"></i> Verified Shops</div>
-  <div class="promise-item"><i class="fas fa-clock"></i> Fast Delivery</div>
-  <div class="promise-item"><i class="fas fa-heart"></i> Local Startup</div>
+<div class="quick-access-container">
+  <a href="map.html" class="quick-card">
+    <i class="fas fa-map-marked-alt"></i><h3>City Map</h3>
+  </a>
+  <a href="retail_grid/retail_shops.html" class="quick-card">
+    <i class="fas fa-store"></i><h3>Shops</h3>
+  </a>
+  <a href="categories/food/food.html" class="quick-card">
+    <i class="fas fa-utensils"></i><h3>Food</h3>
+  </a>
+  <a href="more_categories.html" class="quick-card">
+    <i class="fas fa-th-large"></i><h3>More</h3>
+  </a>
 </div>
 
 <div class="section-header" id="preview-section">
-  <h2>Experience Local Life</h2>
-  <div class="underline"></div>
+  <h2>Experience Local Life</h2>
+  <div class="underline"></div>
 </div>
 
 <div class="preview-container">
-  <div class="preview-card">
-    <div class="preview-img-box">
-      <img src="images/explorica/retail_shops/durga.jpg" alt="Shops">
-    </div>
-    <div class="preview-content">
-      <h3>Local Markets</h3>
-      <div class="time-row">
-        <span class="status-badge open" id="status-shops">Open Now</span>
-        <span class="time-text"><i class="far fa-clock"></i> 9:00 AM - 9:00 PM</span>
-      </div>
-      <p>Support local businesses! Find everything from fresh flowers to provision stores.</p>
-      <a href="retail_grid/retail_shops.html" class="btn-small">Browse Shops</a>
-    </div>
-  </div>
+  <div class="preview-card">
+    <div class="preview-img-box">
+      <img src="images/explorica/retail_shops/durga.jpg" alt="Shops">
+    </div>
+    <div class="preview-content">
+      <h3>Local Markets</h3>
+      <p>Support local businesses! Find everything from fresh flowers to provision stores in our digital directory.</p>
+      <a href="retail_grid/retail_shops.html" class="btn-small">Browse Shops</a>
+    </div>
+  </div>
 
-  <div class="preview-card">
-    <div class="preview-img-box">
-      <img src="images/raghu_hotel.jpg" alt="Food">
-    </div>
-    <div class="preview-content">
-      <h3>Authentic Tastes</h3>
-      <div class="time-row">
-        <span class="status-badge open" id="status-food">Open Now</span>
-        <span class="time-text"><i class="far fa-clock"></i> 7:00 AM - 10:30 PM</span>
-      </div>
-      <p>Craving a crispy Masala Dosa? Order directly to your room.</p>
-      <a href="bakeries.html" class="btn-small">Order Food</a>
-    </div>
-  </div>
+  <div class="preview-card">
+    <div class="preview-img-box">
+      <img src="images/raghu_hotel.jpg" alt="Food">
+    </div>
+    <div class="preview-content">
+      <h3>Authentic Tastes</h3>
+      <p>Craving a crispy Masala Dosa? Explore the best messes and restaurants hidden in the streets.</p>
+      <a href="restaurants.html" class="btn-small">Find Food</a>
+    </div>
+  </div>
 </div>
 
 <div class="announcement-wrapper">
-  <div class="notice-board" id="cityNotice">
-    <div class="notice-header">
-      <h4>📢 City Updates</h4>
-      <span class="close-notice" onclick="toggleNotice()">&times;</span>
-    </div>
-    <div class="notice-content">
-      <div class="update-item">
-        <span class="tag-alert">New</span>
-        <p><strong>Mahamastakabhisheka Prep:</strong> Main road closed tomorrow (10 AM - 2 PM).</p>
-      </div>
-      <div class="update-item">
-        <span class="tag-info">Info</span>
-        <p><strong>Weekend Rush:</strong> Heavy crowd expected this Sunday. Plan darshan early!</p>
-      </div>
-    </div>
-  </div>
-  <button class="btn-bell" onclick="toggleNotice()">
-    <i class="fas fa-bell"></i>
-    <span class="notification-dot"></span> 
-  </button>
+  
+  <div class="notice-board" id="cityNotice">
+    <div class="notice-header">
+      <h4>📢 City Updates</h4>
+      <span class="close-notice" onclick="toggleNotice()">&times;</span>
+    </div>
+    <div class="notice-content">
+      <div class="update-item">
+        <span class="tag-alert">New</span>
+        <p><strong>Mahamastakabhisheka Prep:</strong> Main road near Vindhyagiri will be closed for maintenance tomorrow (10 AM - 2 PM).</p>
+      </div>
+      <div class="update-item">
+        <span class="tag-info">Info</span>
+        <p><strong>Weekend Rush:</strong> Heavy crowd expected this Sunday. Plan darshan early!</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-bell" onclick="toggleNotice()">
+    <i class="fas fa-bell"></i>
+    <span class="notification-dot"></span> 
+  </button>
 </div>
 
 <footer class="premium-footer">
-  <div class="footer-content">
-    <div class="footer-grid">
-      <div class="f-col brand-col">
-        <h2 class="f-logo">Vihara</h2>
-        <p>Connecting the divine heritage of Shravanabelagola with the digital future.</p>
-        <div class="f-socials">
-          <a href="https://www.instagram.com/v.__i__c__k__.y/"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/vikas-gm-viewprofile/"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      <div class="f-col">
-        <h4>Discover</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="retail_grid/retail_shops.html">Shops</a></li>
-          <li><a href="bakeries.html">Order Food</a></li>
-        </ul>
-      </div>
-      <div class="f-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="aboutus.html">Our Story</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Privacy</a></li>
-        </ul>
-      </div>
-      <div class="f-col">
-        <h4>Reach Us</h4>
-        <ul style="list-style: none; padding: 0;">
-          <li><div class="contact-row"><i class="fas fa-map-marker-alt"></i><span>Vihara Office, 2nd Floor,<br>Opp. KSRTC Bus Stand</span></div></li>
-          <li><a href="tel:+919876543210" class="contact-row"><i class="fas fa-phone-alt"></i><span>+91 98765 43210</span></a></li>
-          <li><a href="mailto:hello@vihara.com" class="contact-row"><i class="fas fa-envelope"></i><span>hello@vihara.com</span></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <p>&copy; 2025 Vihara. Made with <i class="fas fa-heart"></i> in Karnataka.</p>
-    </div>
-  </div>
+  <div class="footer-content">
+    <div class="footer-grid">
+      
+      <div class="f-col brand-col">
+        <h2 class="f-logo">Vihara</h2>
+        <p>Connecting the divine heritage of Shravanabelagola with the digital future.</p>
+        <div class="f-socials">
+          <a href="https://www.instagram.com/v.__i__c__k__.y/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/vikas-gm-viewprofile/"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="retail_grid/retail_shops.html">Shops</a></li>
+          <li><a href="categories/food/food.html">Food</a></li>
+          <li><a href="categories/temples/temples.html">Temples</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="aboutus.html">Our Story</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Reach Us</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li>
+            <div class="contact-row">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>
+                Vihara Office, 2nd Floor,<br>
+                Opp. KSRTC Bus Stand,<br>
+                Shravanabelagola - 573135
+              </span>
+            </div>
+          </li>
+          <li>
+            <a href="tel:+919876543210" class="contact-row">
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 98765 43210</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hello@vihara.com" class="contact-row">
+              <i class="fas fa-envelope"></i>
+              <span>hello@vihara.com</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-copyright">
+      <p>&copy; 2025 Vihara. Made with <i class="fas fa-heart"></i> in Karnataka.</p>
+    </div>
+  </div>
 </footer>
 
 <script>
-  // 1. Mobile Menu Logic
-  function toggleMenu() {
-    document.getElementById('mobileNav').classList.toggle('active');
-  }
+  // 1. Mobile Menu Logic
+  function toggleMenu() {
+    document.getElementById('mobileNav').classList.toggle('active');
+  }
 
-  // 2. Toggle Announcement Board
-  function toggleNotice() {
-    const board = document.getElementById('cityNotice');
-    board.classList.toggle('active');
-  }
+  // 2. Toggle Announcement Board
+  function toggleNotice() {
+    const board = document.getElementById('cityNotice');
+    board.classList.toggle('active');
+  }
 
-  // 3. Main Page Logic (Scroll Animations & Bus Time & Business Status)
-  document.addEventListener("DOMContentLoaded", function() {
-    
-    // --- Scroll Animation ---
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.preview-card').forEach(card => { observer.observe(card); });
+  // 3. Main Page Logic (Scroll Animations & Bus Time)
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    // --- Scroll Animation ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
 
-    // --- Next Bus Logic ---
-    function updateNextBus() {
-      const busTimeElement = document.getElementById('bus-time');
-      if (!busTimeElement) return;
-      const busSchedule = [6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 20.5, 21.0];
-      const now = new Date();
-      const currentHour = now.getHours();
-      const currentMinute = now.getMinutes();
-      const currentTimeDecimal = currentHour + (currentMinute / 60);
-      let nextBus = busSchedule.find(time => time > currentTimeDecimal);
-      if (!nextBus) nextBus = busSchedule[0]; 
+    document.querySelectorAll('.preview-card').forEach(card => {
+      observer.observe(card);
+    });
 
-      const hours24 = Math.floor(nextBus);
-      const minutes = (nextBus - hours24) * 60;
-      const suffix = hours24 >= 12 ? "PM" : "AM";
-      let hours12 = hours24 % 12;
-      if (hours12 === 0) hours12 = 12; 
-      const minutesStr = minutes === 0 ? "00" : minutes;
-      busTimeElement.innerText = `${hours12}:${minutesStr} ${suffix}`;
-    }
-    updateNextBus();
-    setInterval(updateNextBus, 60000);
+    // --- Next Bus Logic ---
+    function updateNextBus() {
+      const busTimeElement = document.getElementById('bus-time');
+      if (!busTimeElement) return;
 
-    // --- Business Status Logic ---
-    function updateBusinessStatus() {
-      const currentHour = new Date().getHours();
-      // Logic for SHOPS (9 AM - 9 PM)
-      const shopBadge = document.getElementById('status-shops');
-      if (shopBadge) {
-        if (currentHour >= 9 && currentHour < 21) {
-          shopBadge.className = 'status-badge open'; shopBadge.innerText = 'Open Now';
-        } else {
-          shopBadge.className = 'status-badge closed'; shopBadge.innerText = 'Closed';
-        }
-      }
-      // Logic for FOOD (7 AM - 10 PM)
-      const foodBadge = document.getElementById('status-food');
-      if (foodBadge) {
-        if (currentHour >= 7 && currentHour < 22) {
-          foodBadge.className = 'status-badge open'; foodBadge.innerText = 'Open Now';
-        } else {
-          foodBadge.className = 'status-badge closed'; foodBadge.innerText = 'Closed';
-        }
-      }
-    }
-    updateBusinessStatus();
-  });
+      const busSchedule = [
+        6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 
+        11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 
+        16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 20.5, 21.0
+      ];
+
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMinute = now.getMinutes();
+      const currentTimeDecimal = currentHour + (currentMinute / 60);
+
+      let nextBus = busSchedule.find(time => time > currentTimeDecimal);
+
+      if (!nextBus) nextBus = busSchedule[0]; // Next day
+
+      busTimeElement.innerText = formatTime(nextBus);
+    }
+
+    function formatTime(decimalTime) {
+      const hours24 = Math.floor(decimalTime);
+      const minutes = (decimalTime - hours24) * 60;
+      const suffix = hours24 >= 12 ? "PM" : "AM";
+      let hours12 = hours24 % 12;
+      if (hours12 === 0) hours12 = 12; 
+      const minutesStr = minutes === 0 ? "00" : minutes;
+      return `${hours12}:${minutesStr} ${suffix}`;
+    }
+
+    updateNextBus();
+    setInterval(updateNextBus, 60000); // Check every minute
+  });
 </script>
 
 </body>
