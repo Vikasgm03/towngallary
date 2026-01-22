@@ -307,10 +307,33 @@ body {
 </head>
 <body>
 
-<div class="ticker-wrap">
-  <div class="ticker-move">
-    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | <strong>Delivery Available 🛵</strong> 🔔
+<div class="announcement-wrapper">
+  
+  <div class="notice-board" id="cityNotice">
+    <div class="notice-header">
+      <h4>⚡ Offers & Updates</h4>
+      <span class="close-notice" onclick="toggleNotice()">&times;</span>
+    </div>
+    
+    <div class="notice-content">
+      
+      <div class="update-item">
+        <span class="tag-alert" style="background:#fff3e0; color:#ef6c00;">Offer</span>
+        <p><strong>Free Delivery!</strong> Use code <strong style="color:#2c3e50;">VIHARA20</strong> on your first food order today.</p>
+      </div>
+
+      <div class="update-item">
+        <span class="tag-info">New</span>
+        <p><strong>Raghu Hotel is Live 🥘</strong> Order crispy Masala Dosa directly to your room!</p>
+      </div>
+
+    </div>
   </div>
+
+  <button class="btn-bell" onclick="toggleNotice()">
+    <i class="fas fa-bell"></i>
+    <span class="notification-dot"></span> 
+  </button>
 </div>
 
 <header class="site-header">
@@ -604,4 +627,5 @@ body {
 
 </body>
 </html>
+
 
