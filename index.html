@@ -356,14 +356,16 @@ body {
       <p>The smartest directory for authentic shops, food, and heritage spots.</p>
       
       <div class="search-hero-box">
-  <input type="text" id="searchInput" class="search-input" 
-         placeholder="Try 'Masala Dosa', 'Auto', or 'Temples'..." 
-         onkeypress="handleEnter(event)">
-  
-  <button class="search-btn" onclick="performSearch()">
-    <i class="fas fa-search"></i>
-  </button>
-</div>
+        <input type="text" id="searchInput" class="search-input" 
+             placeholder="Try 'Masala Dosa', 'Auto', or 'Temples'..." 
+             onkeypress="handleEnter(event)">
+        
+        <button class="search-btn" onclick="performSearch()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+    </div>
 
     <div class="hero-visuals">
       <a href="retail_grid/retail_shops.html" class="float-card card-1">
@@ -564,13 +566,13 @@ body {
     updateBusinessStatus();
     setInterval(updateBusinessStatus, 60000);
   });
-</script>
-// ==========================================
+
+  // ==========================================
   //  VIHARA SMART SEARCH ENGINE
   // ==========================================
   
   function performSearch() {
-    // 1. Get the user's text and make it lowercase (so 'Dosa' matches 'dosa')
+    // 1. Get the user's text and make it lowercase
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
 
     if (!query) {
@@ -579,7 +581,6 @@ body {
     }
 
     // 2. The "Brain" - Define Keywords and Destinations
-    // You can add more lines here as you build more pages!
     const pages = [
       { 
         url: "bakeries.html", 
@@ -605,21 +606,17 @@ body {
 
     // 3. The Logic - Find the best match
     let found = false;
-
-    // Check every page in our list
     for (let page of pages) {
-      // Check every keyword for that page
       for (let word of page.keywords) {
-        // If the user's query contains the keyword (e.g. "I want dosa" contains "dosa")
         if (query.includes(word)) {
-          window.location.href = page.url; // Redirect immediately
+          window.location.href = page.url; 
           found = true;
-          return; // Stop looking
+          return; 
         }
       }
     }
 
-    // 4. Fallback - If we don't know the answer
+    // 4. Fallback
     if (!found) {
       alert("Sorry, we couldn't find that. Try searching for 'Food' or 'Shops'.");
     }
@@ -631,6 +628,7 @@ body {
       performSearch();
     }
   }
+</script>
+
 </body>
 </html>
-
