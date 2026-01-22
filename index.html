@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Vihara | Namma Shravanabelagola</title>
+<title>Vihara | Homepage </title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -94,7 +94,7 @@ body {
 
 .hero p { font-size: 1.05rem; color: #666; margin-bottom: 30px; line-height: 1.6; }
 
-/* --- NEW HERO SEARCH BAR STYLES --- */
+/* --- HERO SEARCH BAR STYLES --- */
 .search-hero-box {
   display: flex;
   background: white;
@@ -111,31 +111,17 @@ body {
 }
 
 .search-input {
-  border: none;
-  outline: none;
-  padding: 0 20px;
-  font-size: 1rem;
-  flex: 1;
-  color: #555;
-  background: transparent;
+  border: none; outline: none; padding: 0 20px;
+  font-size: 1rem; flex: 1; color: #555; background: transparent;
 }
 
 .search-btn {
-  background: var(--primary);
-  color: white;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: 0.3s;
+  background: var(--primary); color: white;
+  width: 48px; height: 48px; border-radius: 50%; border: none; cursor: pointer;
+  font-size: 1.1rem; transition: 0.3s;
   display: flex; align-items: center; justify-content: center;
 }
-.search-btn:hover {
-  background: var(--primary-dark);
-  transform: rotate(-10deg);
-}
+.search-btn:hover { background: var(--primary-dark); transform: rotate(-10deg); }
 
 /* Float Card Styles */
 .hero-visuals { flex: 1; position: relative; height: 400px; }
@@ -145,10 +131,8 @@ body {
   border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   display: flex; align-items: center; gap: 15px; color: #333;
   width: 220px; border: 1px solid #f0f0f0;
-  cursor: pointer; 
-  animation: float 6s ease-in-out infinite;
-  text-decoration: none;
-  transition: transform 0.3s;
+  cursor: pointer; animation: float 6s ease-in-out infinite;
+  text-decoration: none; transition: transform 0.3s;
 }
 .float-card:hover { transform: scale(1.05); border-color: var(--primary); }
 
@@ -158,7 +142,7 @@ body {
 }
 .icon-shop { background: #e3f2fd; color: #1976d2; }
 .icon-food { background: #fff3e0; color: #f57c00; }
-.icon-temple { background: #f3e5f5; color: #7b1fa2; }
+.icon-auto { background: #fff8e1; color: #ffca28; } /* Yellow for Auto */
 
 .card-info strong { display: block; font-size: 0.95rem; }
 .card-info span { font-size: 0.75rem; color: #777; }
@@ -171,8 +155,7 @@ body {
 
 /* ===== QUICK ACCESS ===== */
 .quick-access-container {
-  max-width: 1000px;
-  margin: -40px auto 3rem auto;
+  max-width: 1000px; margin: -40px auto 3rem auto;
   padding: 0 15px; position: relative; z-index: 10;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
 }
@@ -238,10 +221,7 @@ body {
 }
 .btn-bell:hover { transform: scale(1.1); }
 
-.notification-dot {
-  position: absolute; top: 15px; right: 18px; width: 12px; height: 12px;
-  background: red; border: 2px solid white; border-radius: 50%;
-}
+.notification-dot { position: absolute; top: 15px; right: 18px; width: 12px; height: 12px; background: red; border: 2px solid white; border-radius: 50%; }
 
 .notice-board {
   background: white; width: 300px; border-radius: 12px;
@@ -329,7 +309,7 @@ body {
 
 <div class="ticker-wrap">
   <div class="ticker-move">
-    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | Vindhyagiri Steps: 650 (Doli Available) 🔔
+    🔔 <strong>Updates:</strong> Temple Darshan: 6:30 AM - 6:00 PM | Next Bus to Bangalore: <strong id="bus-time">Checking...</strong> | <strong>Delivery Available 🛵</strong> 🔔
   </div>
 </div>
 
@@ -342,8 +322,6 @@ body {
   <nav class="nav-links" id="mobileNav">
     <a href="index.html">Home</a>
     <a href="more_categories.html">Categories</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="aboutus.html">About</a>
     <a href="add_button.html" class="add-btn">+ Add Shop</a>
   </nav>
 </header>
@@ -352,12 +330,12 @@ body {
   <div class="hero-container">
     <div class="hero-text">
       <span class="pill">Namma Shravanabelagola</span>
-      <h1>Discover <br> <span class="highlight">The Divine City</span></h1>
-      <p>The smartest directory for authentic shops, food, and heritage spots.</p>
+      <h1>One App for <br> <span class="highlight">Food & Travel</span></h1>
+      <p>Order food, find verified shops, and explore the city instantly.</p>
       
       <div class="search-hero-box">
         <input type="text" id="searchInput" class="search-input" 
-             placeholder="Try 'Masala Dosa', 'Auto', or 'Temples'..." 
+             placeholder="Try 'Masala Dosa', 'Gifts', or 'Auto'..." 
              onkeypress="handleEnter(event)">
         
         <button class="search-btn" onclick="performSearch()">
@@ -372,13 +350,15 @@ body {
         <div class="icon-box icon-shop"><i class="fas fa-store"></i></div>
         <div class="card-info"><strong>Shops</strong><span>Verified</span></div>
       </a>
+      
       <a href="bakeries.html" class="float-card card-2">
         <div class="icon-box icon-food"><i class="fas fa-utensils"></i></div>
         <div class="card-info"><strong>Food</strong><span>Order Now</span></div>
       </a>
-      <a href="categories/temples/temples.html" class="float-card card-3">
-        <div class="icon-box icon-temple"><i class="fas fa-gopuram"></i></div>
-        <div class="card-info"><strong>Temples</strong><span>Info</span></div>
+      
+      <a href="#" class="float-card card-3" onclick="alert('Auto booking coming soon!')">
+        <div class="icon-box icon-auto"><i class="fas fa-taxi"></i></div>
+        <div class="card-info"><strong>Auto</strong><span>Book Now</span></div>
       </a>
     </div>
   </div>
@@ -572,7 +552,6 @@ body {
   // ==========================================
   
   function performSearch() {
-    // 1. Get the user's text and make it lowercase
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
 
     if (!query) {
@@ -580,7 +559,7 @@ body {
       return;
     }
 
-    // 2. The "Brain" - Define Keywords and Destinations
+    // Define Keywords (Removed Temple)
     const pages = [
       { 
         url: "bakeries.html", 
@@ -591,12 +570,8 @@ body {
         keywords: ["shop", "gift", "buy", "clothes", "market", "store", "souvenir", "shopping"] 
       },
       { 
-        url: "categories/temples/temples.html", 
-        keywords: ["temple", "god", "darshan", "gommateshwara", "bahubali", "vindhyagiri", "pooja"] 
-      },
-      { 
         url: "map.html", 
-        keywords: ["map", "direction", "location", "way", "route", "bus"] 
+        keywords: ["map", "direction", "location", "way", "route", "bus", "auto", "travel", "cab"] 
       },
       {
         url: "aboutus.html",
@@ -604,7 +579,6 @@ body {
       }
     ];
 
-    // 3. The Logic - Find the best match
     let found = false;
     for (let page of pages) {
       for (let word of page.keywords) {
@@ -616,13 +590,11 @@ body {
       }
     }
 
-    // 4. Fallback
     if (!found) {
       alert("Sorry, we couldn't find that. Try searching for 'Food' or 'Shops'.");
     }
   }
 
-  // Helper: Allow pressing "Enter" key to search
   function handleEnter(event) {
     if (event.key === "Enter") {
       performSearch();
