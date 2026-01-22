@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Vihara | The Shravanabelagola Super App</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -32,7 +32,7 @@ body {
 .ticker-wrap {
   background: var(--accent); color: white; font-size: 0.8rem; padding: 8px 0; overflow: hidden; white-space: nowrap;
 }
-.ticker-move { display: inline-block; animation: ticker 20s linear infinite; padding-left: 100%; }
+.ticker-move { display: inline-block; animation: ticker 25s linear infinite; padding-left: 100%; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
 /* ===== HEADER ===== */
@@ -58,7 +58,7 @@ body {
 
 .menu-toggle { display: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; }
 
-/* ===== BUSINESS HERO SECTION (REDESIGNED) ===== */
+/* ===== BUSINESS HERO SECTION ===== */
 .hero {
   background: white;
   padding: 3rem 5% 4rem 5%;
@@ -130,6 +130,14 @@ body {
 .service-item:hover .icon-circle { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 .service-item span { font-size: 0.85rem; font-weight: 600; }
 
+/* View All Link */
+.view-all-link {
+  display: inline-block; margin-top: 25px;
+  text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500;
+  border-bottom: 1px solid #ccc; padding-bottom: 2px; transition: 0.3s;
+}
+.view-all-link:hover { color: var(--primary); border-color: var(--primary); }
+
 /* --- TRUST STRIP --- */
 .promise-strip {
   display: flex; justify-content: space-around;
@@ -172,14 +180,14 @@ body {
 
 .preview-card:nth-child(even) { flex-direction: row-reverse; }
 
-/* ===== BUSINESS STATUS BADGE (New) ===== */
+/* ===== BUSINESS STATUS BADGE ===== */
 .time-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
 .status-badge { padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; }
 .status-badge.open { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
 .status-badge.closed { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
 .time-text { color: #555; font-weight: 500; display: flex; align-items: center; gap: 5px; }
 
-/* ===== FLOATING ANNOUNCEMENT STYLES ===== */
+/* ===== FLOATING ANNOUNCEMENT ===== */
 .announcement-wrapper {
   position: fixed; bottom: 25px; right: 25px; z-index: 2000;
   display: flex; flex-direction: column; align-items: flex-end;
@@ -246,6 +254,7 @@ body {
   .icon-circle { width: 55px; height: 55px; font-size: 1.2rem; }
   .service-item span { font-size: 0.75rem; text-align: center; }
   .promise-strip { display: none; }
+  .view-all-link { display: block; text-align: center; margin-top: 20px; }
 
   /* Previews */
   .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
@@ -275,7 +284,8 @@ body {
   </a>
   <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
   <nav class="nav-links" id="mobileNav">
-    <a href="bakeries.html">Order Food</a>
+    <a href="index.html">Home</a>
+    <a href="more_categories.html">Categories</a> <a href="bakeries.html">Order Food</a>
     <a href="retail_grid/retail_shops.html">Shops</a>
     <a href="#" class="partner-btn">Partner with Us</a>
   </nav>
@@ -316,6 +326,10 @@ body {
       </a>
 
     </div>
+
+    <a href="more_categories.html" class="view-all-link">
+      View all services <i class="fas fa-arrow-right" style="font-size: 0.8rem; margin-left: 5px;"></i>
+    </a>
 
   </div>
 </section>
