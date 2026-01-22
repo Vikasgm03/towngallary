@@ -32,7 +32,7 @@ body {
 .ticker-wrap {
   background: var(--accent); color: white; font-size: 0.8rem; padding: 8px 0; overflow: hidden; white-space: nowrap;
 }
-.ticker-move { display: inline-block; animation: ticker 20s linear infinite; padding-left: 100%; }
+.ticker-move { display: inline-block; animation: ticker 25s linear infinite; padding-left: 100%; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
 /* ===== HEADER ===== */
@@ -106,13 +106,18 @@ body {
 
 .hero-visuals { flex: 1; position: relative; height: 400px; }
 
+/* Clickable Floating Cards for Business */
 .float-card {
   position: absolute; background: white; padding: 12px 18px;
   border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   display: flex; align-items: center; gap: 15px; color: #333;
   width: 220px; border: 1px solid #f0f0f0;
-  cursor: default; animation: float 6s ease-in-out infinite;
+  cursor: pointer; /* Changed to pointer */
+  animation: float 6s ease-in-out infinite;
+  text-decoration: none; /* For links */
+  transition: transform 0.3s;
 }
+.float-card:hover { transform: scale(1.05); border-color: var(--primary); }
 
 .icon-box {
   width: 40px; height: 40px; border-radius: 12px;
@@ -180,37 +185,26 @@ body {
 
 .preview-card:nth-child(even) { flex-direction: row-reverse; }
 
-/* ===== FLOATING ANNOUNCEMENT STYLES ===== */
-.announcement-wrapper {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
+/* ===== BUSINESS STATUS BADGE (New) ===== */
+.time-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
+.status-badge { padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; }
+.status-badge.open { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+.status-badge.closed { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+.time-text { color: #555; font-weight: 500; display: flex; align-items: center; gap: 5px; }
 
+/* ===== FLOATING ANNOUNCEMENT ===== */
+.announcement-wrapper {
+  position: fixed; bottom: 25px; right: 25px; z-index: 2000;
+  display: flex; flex-direction: column; align-items: flex-end;
+}
 .btn-bell {
-  width: 60px;
-  height: 60px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4);
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.3s;
-  animation: pulse-bell 2s infinite; 
+  width: 60px; height: 60px; background: var(--primary); color: white;
+  border: none; border-radius: 50%; font-size: 1.5rem;
+  box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4); cursor: pointer;
+  position: relative; transition: transform 0.3s; animation: pulse-bell 2s infinite; 
 }
 .btn-bell:hover { transform: scale(1.1); }
-
-.notification-dot {
-  position: absolute; top: 15px; right: 18px; width: 12px; height: 12px;
-  background: red; border: 2px solid white; border-radius: 50%;
-}
+.notification-dot { position: absolute; top: 15px; right: 18px; width: 12px; height: 12px; background: red; border: 2px solid white; border-radius: 50%; }
 
 .notice-board {
   background: white; width: 300px; border-radius: 12px;
@@ -220,80 +214,40 @@ body {
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   position: absolute; bottom: 70px; right: 0;
 }
-
 .notice-board.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
-.notice-header {
-  background: var(--primary); color: white; padding: 12px 15px;
-  display: flex; justify-content: space-between; align-items: center;
-}
+.notice-header { background: var(--primary); color: white; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; }
 .close-notice { font-size: 1.5rem; cursor: pointer; line-height: 1; }
 .notice-content { padding: 15px; font-size: 0.9rem; }
 .update-item { margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
 .update-item:last-child { border: none; margin: 0; padding: 0; }
 .tag-alert { background: #ffebee; color: #d32f2f; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
 .tag-info { background: #e3f2fd; color: #1976d2; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
-
-@keyframes pulse-bell {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 153, 51, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0); }
-}
+@keyframes pulse-bell { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 153, 51, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 153, 51, 0); } }
 
 /* ===== PREMIUM FOOTER CSS ===== */
-.premium-footer {
-  position: relative;
-  background-color: #1a1a1a;
-  color: #fff;
-  margin-top: 100px;
-}
-
-.footer-content {
-  padding: 0 5% 2rem 5%; position: relative; z-index: 5; margin-top: -40px;
-}
-
-.footer-grid {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.f-logo {
-  font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;
-  background: linear-gradient(to right, #fff, #ffcc80);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
+.premium-footer { position: relative; background-color: #1a1a1a; color: #fff; margin-top: 100px; }
+.footer-content { padding: 0 5% 2rem 5%; position: relative; z-index: 5; margin-top: -40px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.f-logo { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(to right, #fff, #ffcc80); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .brand-col p { color: #a0a0a0; line-height: 1.6; margin-bottom: 1.5rem; }
-
 .f-socials { display: flex; gap: 15px; }
-.f-socials a {
-  width: 40px; height: 40px; background: rgba(255,255,255,0.1);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: white; transition: 0.3s;
-}
+.f-socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
 .f-socials a:hover { background: var(--primary); transform: translateY(-3px); }
-
 .f-col h4 { font-size: 1.1rem; margin-bottom: 1.5rem; color: white; }
 .f-col ul { list-style: none; padding: 0; }
 .f-col ul li { margin-bottom: 12px; }
 .f-col ul li a { color: #a0a0a0; text-decoration: none; transition: 0.3s; }
 .f-col ul li a:hover { color: var(--primary); padding-left: 5px; }
-
 .footer-copyright { text-align: center; padding-top: 2rem; color: #777; font-size: 0.9rem; }
 .footer-copyright i { color: var(--primary); animation: beat 1s infinite; }
 @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-
-/* --- CONTACT LIST STYLES --- */
-.contact-row {
-  display: flex; align-items: flex-start; gap: 15px;
-  color: #a0a0a0; margin-bottom: 18px; text-decoration: none;
-  transition: 0.3s; line-height: 1.6;
-}
+.contact-row { display: flex; align-items: flex-start; gap: 15px; color: #a0a0a0; margin-bottom: 18px; text-decoration: none; transition: 0.3s; line-height: 1.6; }
 .contact-row i { color: var(--primary); font-size: 1.1rem; margin-top: 4px; }
 .contact-row:hover { color: var(--primary); }
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
-  /* Header & Nav */
   .menu-toggle { display: block; }
   .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
   .nav-links.active { display: flex; }
@@ -306,16 +260,9 @@ body {
   
   /* FIXED FLOAT CARD ALIGNMENT */
   .float-card { 
-    position: relative; 
-    top: auto !important; 
-    right: auto !important; 
-    left: auto !important;
-    bottom: auto !important;
-    width: auto; 
-    padding: 8px 16px; 
-    border-radius: 50px; 
+    position: relative; top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
+    width: auto; padding: 8px 16px; border-radius: 50px; 
   }
-  
   .icon-box { width: 28px; height: 28px; font-size: 0.9rem; }
   .card-info span { display: none; }
   .card-info strong { font-size: 0.85rem; }
@@ -327,6 +274,7 @@ body {
   .preview-card, .preview-card:nth-child(even) { flex-direction: column; }
   .preview-img-box { width: 100%; height: 160px; }
   .preview-content { width: 100%; text-align: center; }
+  .time-row { justify-content: center; } /* Center Badge on Mobile */
 
   /* Tablet Footer */
   .footer-cta-card { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
@@ -334,15 +282,10 @@ body {
 }
 
 @media (max-width: 600px) {
-  /* Mobile Footer (1 Column) */
   .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
   .f-socials { justify-content: center; }
   .footer-cta-wrapper { padding: 0 1rem; }
-  
-  /* Contact Row Center Alignment */
   .contact-row { justify-content: center; text-align: left; }
-  
-  /* Adjust spacing */
   .f-col h4 { margin-bottom: 1rem; color: var(--primary); }
   .brand-col p { font-size: 0.9rem; }
 }
@@ -381,18 +324,18 @@ body {
     </div>
 
     <div class="hero-visuals">
-      <div class="float-card card-1">
+      <a href="retail_grid/retail_shops.html" class="float-card card-1">
         <div class="icon-box icon-shop"><i class="fas fa-store"></i></div>
         <div class="card-info"><strong>Shops</strong><span>Verified</span></div>
-      </div>
-      <div class="float-card card-2">
+      </a>
+      <a href="bakeries.html" class="float-card card-2">
         <div class="icon-box icon-food"><i class="fas fa-utensils"></i></div>
-        <div class="card-info"><strong>Food</strong><span>Local</span></div>
-      </div>
-      <div class="float-card card-3">
+        <div class="card-info"><strong>Food</strong><span>Order Now</span></div>
+      </a>
+      <a href="categories/temples/temples.html" class="float-card card-3">
         <div class="icon-box icon-temple"><i class="fas fa-gopuram"></i></div>
         <div class="card-info"><strong>Temples</strong><span>Info</span></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -404,8 +347,8 @@ body {
   <a href="retail_grid/retail_shops.html" class="quick-card">
     <i class="fas fa-store"></i><h3>Shops</h3>
   </a>
-  <a href="categories/food/food.html" class="quick-card">
-    <i class="fas fa-utensils"></i><h3>Food</h3>
+  <a href="bakeries.html" class="quick-card">
+    <i class="fas fa-utensils"></i><h3>Order Food</h3>
   </a>
   <a href="more_categories.html" class="quick-card">
     <i class="fas fa-th-large"></i><h3>More</h3>
@@ -418,12 +361,17 @@ body {
 </div>
 
 <div class="preview-container">
+  
   <div class="preview-card">
     <div class="preview-img-box">
       <img src="images/explorica/retail_shops/durga.jpg" alt="Shops">
     </div>
     <div class="preview-content">
       <h3>Local Markets</h3>
+      <div class="time-row">
+        <span class="status-badge open" id="status-shops">Open Now</span>
+        <span class="time-text"><i class="far fa-clock"></i> 9:00 AM - 9:00 PM</span>
+      </div>
       <p>Support local businesses! Find everything from fresh flowers to provision stores in our digital directory.</p>
       <a href="retail_grid/retail_shops.html" class="btn-small">Browse Shops</a>
     </div>
@@ -435,10 +383,15 @@ body {
     </div>
     <div class="preview-content">
       <h3>Authentic Tastes</h3>
-      <p>Craving a crispy Masala Dosa? Explore the best messes and restaurants hidden in the streets.</p>
-      <a href="restaurants.html" class="btn-small">Find Food</a>
+      <div class="time-row">
+        <span class="status-badge open" id="status-food">Open Now</span>
+        <span class="time-text"><i class="far fa-clock"></i> 7:00 AM - 10:30 PM</span>
+      </div>
+      <p>Craving a crispy Masala Dosa? Order directly to your room or visit the best messes.</p>
+      <a href="bakeries.html" class="btn-small">Order Food</a>
     </div>
   </div>
+
 </div>
 
 <div class="announcement-wrapper">
@@ -484,8 +437,7 @@ body {
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="retail_grid/retail_shops.html">Shops</a></li>
-          <li><a href="categories/food/food.html">Food</a></li>
-          <li><a href="categories/temples/temples.html">Temples</a></li>
+          <li><a href="bakeries.html">Order Food</a></li>
         </ul>
       </div>
 
@@ -546,7 +498,7 @@ body {
     board.classList.toggle('active');
   }
 
-  // 3. Main Page Logic (Scroll Animations & Bus Time)
+  // 3. Main Page Logic (Scroll Animations & Bus Time & Business Status)
   document.addEventListener("DOMContentLoaded", function() {
     
     // --- Scroll Animation ---
@@ -579,24 +531,50 @@ body {
       const currentTimeDecimal = currentHour + (currentMinute / 60);
 
       let nextBus = busSchedule.find(time => time > currentTimeDecimal);
+      if (!nextBus) nextBus = busSchedule[0]; 
 
-      if (!nextBus) nextBus = busSchedule[0]; // Next day
-
-      busTimeElement.innerText = formatTime(nextBus);
-    }
-
-    function formatTime(decimalTime) {
-      const hours24 = Math.floor(decimalTime);
-      const minutes = (decimalTime - hours24) * 60;
+      const hours24 = Math.floor(nextBus);
+      const minutes = (nextBus - hours24) * 60;
       const suffix = hours24 >= 12 ? "PM" : "AM";
       let hours12 = hours24 % 12;
       if (hours12 === 0) hours12 = 12; 
       const minutesStr = minutes === 0 ? "00" : minutes;
-      return `${hours12}:${minutesStr} ${suffix}`;
+      busTimeElement.innerText = `${hours12}:${minutesStr} ${suffix}`;
     }
-
     updateNextBus();
-    setInterval(updateNextBus, 60000); // Check every minute
+    setInterval(updateNextBus, 60000);
+
+    // --- Business Status Logic (NEW) ---
+    function updateBusinessStatus() {
+      const currentHour = new Date().getHours();
+      
+      // Logic for SHOPS (9 AM - 9 PM)
+      const shopBadge = document.getElementById('status-shops');
+      if (shopBadge) {
+        if (currentHour >= 9 && currentHour < 21) {
+          shopBadge.className = 'status-badge open';
+          shopBadge.innerText = 'Open Now';
+        } else {
+          shopBadge.className = 'status-badge closed';
+          shopBadge.innerText = 'Closed';
+        }
+      }
+
+      // Logic for FOOD (7 AM - 10 PM)
+      const foodBadge = document.getElementById('status-food');
+      if (foodBadge) {
+        if (currentHour >= 7 && currentHour < 22) {
+          foodBadge.className = 'status-badge open';
+          foodBadge.innerText = 'Open Now';
+        } else {
+          foodBadge.className = 'status-badge closed';
+          foodBadge.innerText = 'Closed';
+        }
+      }
+    }
+    updateBusinessStatus();
+    // Re-check status every minute
+    setInterval(updateBusinessStatus, 60000);
   });
 </script>
 
