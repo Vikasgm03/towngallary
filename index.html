@@ -356,11 +356,14 @@ body {
       <p>The smartest directory for authentic shops, food, and heritage spots.</p>
       
       <div class="search-hero-box">
-        <input type="text" class="search-input" placeholder="Search for food, shops, or temples...">
-        <button class="search-btn"><i class="fas fa-search"></i></button>
-      </div>
-
-    </div>
+  <input type="text" id="searchInput" class="search-input" 
+         placeholder="Try 'Masala Dosa', 'Auto', or 'Temples'..." 
+         onkeypress="handleEnter(event)">
+  
+  <button class="search-btn" onclick="performSearch()">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
 
     <div class="hero-visuals">
       <a href="retail_grid/retail_shops.html" class="float-card card-1">
@@ -562,6 +565,72 @@ body {
     setInterval(updateBusinessStatus, 60000);
   });
 </script>
+// ==========================================
+  //  VIHARA SMART SEARCH ENGINE
+  // ==========================================
+  
+  function performSearch() {
+    // 1. Get the user's text and make it lowercase (so 'Dosa' matches 'dosa')
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
 
+    if (!query) {
+      alert("Please type something to search!");
+      return;
+    }
+
+    // 2. The "Brain" - Define Keywords and Destinations
+    // You can add more lines here as you build more pages!
+    const pages = [
+      { 
+        url: "bakeries.html", 
+        keywords: ["food", "dosa", "idli", "coffee", "breakfast", "dinner", "hotel", "eat", "hungry", "bakery", "cake", "sweet"] 
+      },
+      { 
+        url: "retail_grid/retail_shops.html", 
+        keywords: ["shop", "gift", "buy", "clothes", "market", "store", "souvenir", "shopping"] 
+      },
+      { 
+        url: "categories/temples/temples.html", 
+        keywords: ["temple", "god", "darshan", "gommateshwara", "bahubali", "vindhyagiri", "pooja"] 
+      },
+      { 
+        url: "map.html", 
+        keywords: ["map", "direction", "location", "way", "route", "bus"] 
+      },
+      {
+        url: "aboutus.html",
+        keywords: ["about", "contact", "phone", "help", "vihara", "founder"]
+      }
+    ];
+
+    // 3. The Logic - Find the best match
+    let found = false;
+
+    // Check every page in our list
+    for (let page of pages) {
+      // Check every keyword for that page
+      for (let word of page.keywords) {
+        // If the user's query contains the keyword (e.g. "I want dosa" contains "dosa")
+        if (query.includes(word)) {
+          window.location.href = page.url; // Redirect immediately
+          found = true;
+          return; // Stop looking
+        }
+      }
+    }
+
+    // 4. Fallback - If we don't know the answer
+    if (!found) {
+      alert("Sorry, we couldn't find that. Try searching for 'Food' or 'Shops'.");
+    }
+  }
+
+  // Helper: Allow pressing "Enter" key to search
+  function handleEnter(event) {
+    if (event.key === "Enter") {
+      performSearch();
+    }
+  }
 </body>
 </html>
+
