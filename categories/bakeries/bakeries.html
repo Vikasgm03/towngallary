@@ -82,87 +82,64 @@
   </section>
 
   <div class="shop-container" id="bakeryList">
-    <p style="text-align:center; width:100%; color:#888;">Loading fresh items...</p>
-  </div>
+  <p style="text-align:center; width:100%; color:#888;">Loading fresh items...</p>
+</div>
 
-  <script>
-    async function loadBakeryData() {
-      const container = document.getElementById('bakeryList');
+<script>
+  async function loadBakeryData() {
+    const container = document.getElementById('bakeryList');
+    
+    try {
+      // FETCH DATA FROM JSON FILE
+      const response = await fetch('bakeries_data.json');
       
-      // FOUNDER'S WHATSAPP NUMBER (For Vihara Delivery)
-      // Replace this with your own WhatsApp number!
-      const founderNumber = "919483882133"; 
+      if (!response.ok) throw new Error("Could not load JSON file");
+      const shops = await response.json();
+      
+      container.innerHTML = ''; // Clear loading text
 
-      try {
-        const response = await fetch('bakeries_data.json');
-        if (!response.ok) throw new Error("File not found");
-        const shops = await response.json();
-        
-        container.innerHTML = '';
+      shops.forEach(shop => {
+        // LINK TO DETAIL PAGE with ID
+        const detailUrl = `bakery_details.html?id=${shop.id}`;
 
-        shops.forEach(shop => {
-          
-          // Use shop image for menu if menu_image is missing
-          const menuLink = shop.menu_image ? shop.menu_image : shop.image;
-
-          const cardHTML = `
-            <div class="shop-card">
+        const cardHTML = `
+          <div class="shop-card">
+            <a href="${detailUrl}" style="text-decoration:none; color:inherit;">
               <div class="card-header">
-                <img src="${shop.image}" alt="${shop.name}">
-                <span class="delivery-badge">
-                  <i class="fas fa-motorcycle"></i> Vihara Delivery
-                </span>
+                <img src="${shop.image}" alt="${shop.name}" onerror="this.src='../../images/default_bakery.jpg'">
+                <span class="delivery-badge"><i class="fas fa-motorcycle"></i> Vihara Delivery</span>
               </div>
               
               <div class="card-body" style="padding: 15px;">
-                
                 <div style="display:flex; justify-content:space-between; align-items:start;">
                   <div>
                     <h3 style="margin:0;">${shop.name}</h3>
-                    <span style="font-size:0.75rem; color:#888; display:block; margin-top:2px;">
-                      <i class="fas fa-star" style="color:gold;"></i> ${shop.bestseller}
-                    </span>
+                    <span style="font-size:0.75rem; color:#888;">${shop.type}</span>
                   </div>
                   <span class="status-badge" style="background:${shop.statusColor}20; color:${shop.statusColor}; border:1px solid ${shop.statusColor};">
                     ${shop.status}
                   </span>
                 </div>
-
-                <p style="color:#666; font-size:0.85rem; margin-top:10px; line-height:1.5;">
-                  ${shop.description}
-                </p>
+                <p style="color:#666; font-size:0.85rem; margin-top:10px;">${shop.description}</p>
                 
-                <div style="font-size:0.8rem; color:#555; margin-top:5px;">
-                  <i class="far fa-clock"></i> ${shop.timings}
-                </div>
-
-                <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
-
-                <div class="card-actions">
-                  
-                  <a href="${menuLink}" target="_blank" class="btn-menu">
-                    <i class="fas fa-book-open"></i> Menu
-                  </a>
-
-                  <a href="https://wa.me/${919483882133}?text=Hi%20Vihara,%20I%20checked%20the%20menu%20for%20*${encodeURIComponent(shop.name)}*.%20I%20want%20to%20order:" 
-                     class="btn-delivery" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Order
-                  </a>
-
-                </div>
-
+                <button style="width:100%; margin-top:15px; background:var(--primary); color:white; border:none; padding:10px; border-radius:8px; cursor:pointer;">
+                  View Menu & Order
+                </button>
               </div>
-            </div>
-          `;
-          container.innerHTML += cardHTML;
-        });
-      } catch (error) {
-        console.error(error);
-        container.innerHTML = `<p style="text-align:center; color:red;">Failed to load bakery data.</p>`;
-      }
-    }
-    loadBakeryData();
-</script>
+            </a>
+          </div>
+        `;
+        container.innerHTML += cardHTML;
+      });
 
-</body>
-</html>
+    } catch (error) {
+      console.error(error);
+      container.innerHTML = `<p style="text-align:center; color:red;">
+        Error loading data.<br>
+        <small>If viewing locally, use VS Code Live Server.</small>
+      </p>`;
+    }
+  }
+
+  loadBakeryData();
+</script>
