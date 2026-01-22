@@ -9,7 +9,7 @@
     "statusColor": "#27ae60",
     "timings": "7:00 AM - 9:30 PM",
     "bestseller": "Honey Cake & Khara Bun",
-    "description": "The aroma of fresh bread hits you from the street. Famous for our wood-fired oven puffs.",
+    "description": "The aroma of fresh bread hits you from the street. Famous for our wood-fired oven puffs and traditional rusks.",
     "menu_image": "../../images/menus/iyengar_menu.jpg"
   },
   {
@@ -22,7 +22,7 @@
     "statusColor": "#e91e63",
     "timings": "10:00 AM - 10:00 PM",
     "bestseller": "Black Forest & Pastries",
-    "description": "Modern cake shop specializing in birthday cakes, cupcakes, and donuts.",
+    "description": "Modern cake shop specializing in birthday cakes, cupcakes, and donuts. We take custom orders.",
     "menu_image": "../../images/menus/cream_menu.jpg"
   },
   {
@@ -35,7 +35,7 @@
     "statusColor": "#f39c12",
     "timings": "8:00 AM - 9:00 PM",
     "bestseller": "Mysore Pak & Mixture",
-    "description": "Authentic local sweets made with pure ghee. Great place to buy souvenirs.",
+    "description": "Authentic local sweets made with pure ghee. Great place to buy souvenirs and snack packets.",
     "menu_image": "../../images/menus/lakshmi_menu.jpg"
   }
 ]
