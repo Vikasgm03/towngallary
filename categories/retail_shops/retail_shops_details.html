@@ -12,6 +12,7 @@
     /* VARIABLES */
     :root {
       --primary: #FF9933;
+      --whatsapp: #25D366; /* Official WhatsApp Green */
       --text-dark: #2c3e50;
       --text-light: #666;
       --bg-body: #f8f9fa;
@@ -62,14 +63,27 @@
     .prod-price { color: var(--primary); font-weight: 700; font-size: 0.95rem; }
 
     /* ACTION BUTTONS */
-    .action-bar { display: flex; gap: 10px; margin-top: 20px; }
-    .btn { flex: 1; padding: 12px; border-radius: 50px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; }
+    .actions-wrapper { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
     
-    .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3); }
-    .btn-primary:hover { background: #e68a00; transform: translateY(-2px); }
+    .action-row { display: flex; gap: 10px; }
     
-    .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: white; }
-    .btn-outline:hover { background: #fff5e6; }
+    .btn { 
+      flex: 1; padding: 12px; border-radius: 50px; text-align: center; 
+      text-decoration: none; font-weight: 600; font-size: 0.95rem; 
+      display: flex; align-items: center; justify-content: center; gap: 8px; 
+      transition: 0.3s; cursor: pointer; border: none; outline: none;
+    }
+    
+    /* WhatsApp Button Style */
+    .btn-whatsapp { 
+      background: var(--whatsapp); color: white; width: 100%; 
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover { background: #1ebc57; transform: translateY(-2px); }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-outline { border: 2px solid #eee; color: var(--text-dark); background: white; }
+    .btn-outline:hover { background: #f0f0f0; }
 
     /* LOADER */
     #loader { text-align: center; padding: 50px; font-size: 1.2rem; }
@@ -100,19 +114,25 @@
         <div class="meta-row">
           <div class="meta-item"><i class="fas fa-clock"></i> <span id="shopTiming">--:--</span></div>
           <div class="meta-item"><i class="fas fa-map-marker-alt"></i> <span id="shopLocation">Location</span></div>
-          <div class="meta-item"><i class="fas fa-phone-alt"></i> <span id="shopPhone">--</span></div>
         </div>
 
         <p id="shopDesc" class="description">...</p>
 
-        <div class="action-bar">
-          <a href="#" id="btnCall" class="btn btn-outline">
-            <i class="fas fa-phone"></i> Call
+        <div class="actions-wrapper">
+          <a href="#" id="btnWhatsapp" target="_blank" class="btn btn-whatsapp">
+            <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Order on WhatsApp
           </a>
-          <a href="#" id="btnNavigate" target="_blank" class="btn btn-primary">
-            <i class="fas fa-directions"></i> Navigate
-          </a>
+
+          <div class="action-row">
+            <a href="#" id="btnCall" class="btn btn-outline">
+              <i class="fas fa-phone"></i> Call
+            </a>
+            <a href="#" id="btnNavigate" target="_blank" class="btn btn-primary">
+              <i class="fas fa-directions"></i> Map
+            </a>
+          </div>
         </div>
+
       </div>
 
       <div class="info-card">
@@ -147,32 +167,42 @@
       document.getElementById('shopRating').textContent = shop.rating;
       document.getElementById('shopDesc').textContent = shop.description;
       document.getElementById('shopLocation').textContent = shop.location || "Shravanabelagola";
-      document.getElementById('shopPhone').textContent = shop.phone || "Not Available";
       document.getElementById('shopImg').src = shop.image;
       
       const t1 = convertTo12Hour(shop.openTime);
       const t2 = convertTo12Hour(shop.closeTime);
       document.getElementById('shopTiming').textContent = `${t1} - ${t2}`;
 
-      // --- 1. Call Button Logic (Fixed) ---
+      // --- PHONE & WHATSAPP LOGIC ---
       const callBtn = document.getElementById('btnCall');
+      const waBtn = document.getElementById('btnWhatsapp');
+
       if(shop.phone) {
-        // Keeps only digits and the '+' sign
-        const cleanPhone = shop.phone.replace(/[^0-9+]/g, ''); 
-        callBtn.href = `tel:${cleanPhone}`;
-        callBtn.style.opacity = "1";
+        // 1. Clean number (remove spaces, dashes)
+        const cleanPhone = shop.phone.replace(/[^0-9]/g, ''); 
+        // Note: If your JSON numbers don't have country code, you might need to add "91" manually:
+        // const finalPhone = "91" + cleanPhone.replace(/^0+/, ''); 
+
+        // 2. Set Call Link
+        callBtn.href = `tel:+${cleanPhone}`;
+        
+        // 3. Set WhatsApp Link
+        // Pre-filled message
+        const text = encodeURIComponent(`Hello ${shop.name}, I would like to inquire about your products.`);
+        waBtn.href = `https://wa.me/${cleanPhone}?text=${text}`;
+
       } else {
-        callBtn.style.opacity = "0.5";
-        callBtn.style.pointerEvents = "none";
-        callBtn.innerHTML = "<i class='fas fa-phone-slash'></i> No Phone";
+        // Disable buttons if no phone
+        callBtn.style.opacity = "0.5"; callBtn.style.pointerEvents = "none";
+        waBtn.style.opacity = "0.5"; waBtn.style.pointerEvents = "none";
+        waBtn.innerHTML = "WhatsApp Unavailable";
       }
 
-      // --- 2. Navigate Button Logic ---
+      // --- MAP LOGIC ---
       const navBtn = document.getElementById('btnNavigate');
       if (shop.mapUrl) {
         navBtn.href = shop.mapUrl;
       } else {
-        // Fallback: Google Maps Search
         const query = encodeURIComponent(`${shop.name} ${shop.location || "Shravanabelagola"}`);
         navBtn.href = `https://www.google.com/maps/search/?api=1&query=${query}`;
       }
