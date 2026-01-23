@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Mahaveer General Store",
-    "image": "https://images.unsplash.com/photo-1604719312566-b7cb33746955?auto=format&fit=crop&q=80&w=800",
+    "name": "Nethravathi General Store",
+    "image": "images/explorica/retail_shops/nethravathi_stores.jpg",
     "rating": 4.5,
     "openTime": "08:00",
-    "closeTime": "21:00",
-    "description": "Your one-stop shop for daily essentials, groceries, and packaged food items. Located near the main temple entrance.",
-    "location": "Main Road, Shravanabelagola",
-    "phone": "+91 98765 43210",
+    "closeTime": "20:00",
+    "description": "Your one-stop shop for daily essentials, groceries, and packaged food items. ",
+    "location": "Sreekantanagara Main Road, Shravanabelagola",
+    "phone": "+91 9481667035",
     "products": [
       { "name": "Organic Rice (1kg)", "price": "₹60" },
       { "name": "Local Spices Pack", "price": "₹120" },
