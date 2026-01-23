@@ -17,18 +17,18 @@
   },
   {
     "id": 2,
-    "name": "Vihara Gift Center",
-    "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&q=80&w=800",
+    "name": "Sri Veerabhadreshwara Traders",
+    "image": "../../images/explorica/retail_shops/nethravathi_stores.jpg",
     "rating": 4.8,
-    "openTime": "09:30",
-    "closeTime": "20:30",
+    "openTime": "08:00",
+    "closeTime": "20:00",
     "description": "Exclusive collection of souvenirs...",
-    "location": "Market Street, Shop No. 12",
-    "phone": "+91 99887 76655",
-    "mapUrl": "https://goo.gl/maps/exampleLink2",
+    "location": "B M Road,Shravanabelagola",
+    "phone": "+91 8746855415",
+    "mapUrl": "https://maps.app.goo.gl/p24etqghPVehD8ek7",
     "products": [
-      { "name": "Sandalwood Statue", "price": "₹450" },
-      { "name": "Keychains", "price": "₹50" }
+      { "name": "Organic Rice (1kg)", "price": "₹60" },
+      { "name": "Local Spices Pack", "price": "₹120" }
     ]
   },
   {
