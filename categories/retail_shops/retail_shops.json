@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "Sri Manjunatha Provisions",
+    "category": "General Store",
+    "image": "../../images/explorica/retail_shops/durga.jpg",
+    "rating": 4.5,
+    "openTime": "08:00",
+    "closeTime": "21:00",
+    "phone": "919876543210",
+    "description": "One-stop shop for daily needs, mineral water, snacks, puja items, and emergency toiletries. Located near the main bus stand.",
+    "address": "Main Road, Opp. KSRTC Stand, Shravanabelagola",
+    "products": ["Mineral Water", "Snacks & Biscuits", "Puja Items", "Milk & Curd", "Toothpaste/Soap"]
+  },
+  {
+    "id": 2,
+    "name": "Bahubali Gift Center",
+    "category": "Gifts & Souvenirs",
+    "image": "../../images/explorica/retail_shops/gift.jpg",
+    "rating": 4.2,
+    "openTime": "09:00",
+    "closeTime": "20:30",
+    "phone": "919876543210",
+    "description": "Take home a piece of history. We sell authentic stone carvings, wooden toys, keychains, and religious books.",
+    "address": "Temple Road, Near Vindhyagiri Entrance",
+    "products": ["Stone Idols", "Keychains", "Handicrafts", "Religious Books", "Photos"]
+  },
+  {
+    "id": 3,
+    "name": "Mahaveer Silk House",
+    "category": "Clothing",
+    "image": "../../images/explorica/retail_shops/silk.jpg",
+    "rating": 4.8,
+    "openTime": "10:00",
+    "closeTime": "21:00",
+    "phone": "919876543210",
+    "description": "Famous for pure Mysore Silk Sarees, white cotton dhotis for pooja, and traditional dress materials.",
+    "address": "Market Street, Shravanabelagola",
+    "products": ["Mysore Silk Sarees", "Cotton Dhotis", "Dress Material", "Shawls"]
+  }
+]
