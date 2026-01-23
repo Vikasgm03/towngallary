@@ -95,21 +95,31 @@
       document.getElementById('shopDesc').textContent = shop.description;
       document.getElementById('shopImg').src = shop.image;
 
-      // WhatsApp Logic
+     // --- WHATSAPP ORDER LOGIC (LINKED TO YOU) ---
       const waBtn = document.getElementById('btnWhatsapp');
       const callBtn = document.getElementById('btnCall');
       
+      // 1. YOUR PHONE NUMBER (Format: CountryCode + Number)
+      // Example: "919988776655" (Do not use + or spaces)
+      const myDeliveryNumber = "919483882133"; 
+
+      // 2. Construct the Message
+      // This tells YOU which shop the customer is looking at
+      const msg = encodeURIComponent(`Hi, I want to place an order from *${shop.name}*. Please assist me.`);
+      
+      // 3. Set the WhatsApp Link to YOUR number
+      waBtn.href = `https://wa.me/${919483882133}?text=${msg}`;
+      
+      // --- CALL BUTTON LOGIC (REMAINS LINKED TO SHOP) ---
+      // This allows the user to call the shop for inquiries, 
+      // but the ORDER goes to you.
       if(shop.phone) {
         const cleanPhone = shop.phone.replace(/[^0-9]/g, '');
-        // Note: Add '91' prefix if your JSON numbers don't have country code
-        // const finalPhone = "91" + cleanPhone.replace(/^0+/, ''); 
-
-        const msg = encodeURIComponent(`Hi ${shop.name}, I want to order.`);
-        waBtn.href = `https://wa.me/${cleanPhone}?text=${msg}`;
         callBtn.href = `tel:+${cleanPhone}`;
+        callBtn.style.opacity = "1";
       } else {
-        waBtn.style.opacity = "0.5"; waBtn.style.pointerEvents = "none";
-        callBtn.style.opacity = "0.5"; callBtn.style.pointerEvents = "none";
+        callBtn.style.opacity = "0.5"; 
+        callBtn.style.pointerEvents = "none";
       }
 
       // Map Logic
