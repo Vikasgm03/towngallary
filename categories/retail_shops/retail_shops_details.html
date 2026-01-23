@@ -9,13 +9,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* VARIABLES (Same as Listing Page) */
+    /* VARIABLES */
     :root {
       --primary: #FF9933;
       --text-dark: #2c3e50;
       --text-light: #666;
       --bg-body: #f8f9fa;
-      --card-bg: #ffffff;
       --radius: 20px;
     }
 
@@ -35,35 +34,19 @@
     .header-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--primary); }
 
     /* HERO IMAGE */
-    .hero-container {
-      width: 100%;
-      height: 250px;
-      position: relative;
-    }
+    .hero-container { width: 100%; height: 250px; position: relative; background: #ddd; }
     .hero-img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-overlay {
-      position: absolute; bottom: 0; left: 0; width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-      height: 100px;
-    }
+    .hero-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); height: 100px; }
 
-    /* MAIN CONTENT */
+    /* CONTENT */
     .container { max-width: 800px; margin: -40px auto 0; position: relative; padding: 0 20px; }
     
-    .info-card {
-      background: white; border-radius: var(--radius);
-      padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
+    .info-card { background: white; border-radius: var(--radius); padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 20px; }
 
     .shop-title-row { display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px; }
-    h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; line-height: 1.2; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; line-height: 1.2; margin: 0; }
     
-    .rating-badge {
-      background: #2e7d32; color: white; padding: 4px 10px;
-      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-      white-space: nowrap;
-    }
+    .rating-badge { background: #2e7d32; color: white; padding: 4px 10px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
 
     .meta-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-light); }
     .meta-item { display: flex; align-items: center; gap: 6px; }
@@ -71,31 +54,25 @@
 
     .description { line-height: 1.6; color: var(--text-light); margin-bottom: 20px; border-top: 1px solid #eee; padding-top: 15px; }
 
-    /* PRODUCTS LIST */
+    /* PRODUCTS */
     .section-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; color: var(--text-dark); }
-    
     .product-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-    
-    .product-card {
-      background: #f9f9f9; border-radius: 12px; padding: 15px;
-      text-align: center; border: 1px solid #eee;
-    }
+    .product-card { background: #f9f9f9; border-radius: 12px; padding: 15px; text-align: center; border: 1px solid #eee; }
     .prod-name { font-size: 0.9rem; font-weight: 500; margin-bottom: 5px; }
     .prod-price { color: var(--primary); font-weight: 700; font-size: 0.95rem; }
 
     /* ACTION BUTTONS */
-    .action-bar {
-      display: flex; gap: 10px; margin-top: 20px;
-    }
-    .btn {
-      flex: 1; padding: 12px; border-radius: 50px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.9rem;
-    }
+    .action-bar { display: flex; gap: 10px; margin-top: 20px; }
+    .btn { flex: 1; padding: 12px; border-radius: 50px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; }
+    
     .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3); }
-    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+    .btn-primary:hover { background: #e68a00; transform: translateY(-2px); }
+    
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: white; }
+    .btn-outline:hover { background: #fff5e6; }
 
-    /* LOADING/ERROR */
+    /* LOADER */
     #loader { text-align: center; padding: 50px; font-size: 1.2rem; }
-    .error-msg { text-align: center; padding: 50px; color: #c62828; }
   </style>
 </head>
 <body>
@@ -106,9 +83,10 @@
   </header>
 
   <div id="loader"><i class="fas fa-spinner fa-spin"></i> Loading details...</div>
+  
   <div id="content" style="display: none;">
     <div class="hero-container">
-      <img id="shopImg" src="" class="hero-img" alt="Shop Image">
+      <img id="shopImg" src="" class="hero-img" alt="Shop Image" onerror="this.src='https://via.placeholder.com/800x400?text=No+Image'">
       <div class="hero-overlay"></div>
     </div>
 
@@ -120,68 +98,84 @@
         </div>
 
         <div class="meta-row">
-          <div class="meta-item"><i class="fas fa-clock"></i> <span id="shopTiming">00:00 - 00:00</span></div>
+          <div class="meta-item"><i class="fas fa-clock"></i> <span id="shopTiming">--:--</span></div>
           <div class="meta-item"><i class="fas fa-map-marker-alt"></i> <span id="shopLocation">Location</span></div>
-          <div class="meta-item"><i class="fas fa-phone-alt"></i> <span id="shopPhone">Phone</span></div>
+          <div class="meta-item"><i class="fas fa-phone-alt"></i> <span id="shopPhone">--</span></div>
         </div>
 
-        <p id="shopDesc" class="description">Description goes here...</p>
+        <p id="shopDesc" class="description">...</p>
 
         <div class="action-bar">
-          <a href="#" class="btn btn-outline"><i class="fas fa-phone"></i> Call</a>
-          <a href="#" class="btn btn-primary"><i class="fas fa-directions"></i> Navigate</a>
+          <a href="#" id="btnCall" class="btn btn-outline">
+            <i class="fas fa-phone"></i> Call
+          </a>
+          <a href="#" id="btnNavigate" target="_blank" class="btn btn-primary">
+            <i class="fas fa-directions"></i> Navigate
+          </a>
         </div>
       </div>
 
       <div class="info-card">
         <h3 class="section-title">Popular Items</h3>
-        <div class="product-list" id="productsContainer">
-          </div>
+        <div class="product-list" id="productsContainer"></div>
       </div>
     </div>
   </div>
 
   <script>
-    // 1. Get ID from URL
     const urlParams = new URLSearchParams(window.location.search);
     const shopId = parseInt(urlParams.get('id'));
 
-    // 2. Fetch Data
     fetch('retail_shops.json')
       .then(res => res.json())
       .then(shops => {
         const shop = shops.find(s => s.id === shopId);
-        
-        if (shop) {
-          renderDetails(shop);
-        } else {
-          document.body.innerHTML = "<div class='error-msg'><h3>Shop not found</h3><a href='javascript:history.back()'>Go Back</a></div>";
-        }
+        if (shop) renderDetails(shop);
+        else document.body.innerHTML = "<h3 style='text-align:center; margin-top:50px;'>Shop not found</h3>";
       })
       .catch(err => {
         console.error(err);
-        document.body.innerHTML = "<div class='error-msg'>Error loading data.</div>";
+        document.body.innerHTML = "<h3 style='text-align:center; margin-top:50px;'>Error loading data</h3>";
       });
 
-    // 3. Render Function
     function renderDetails(shop) {
       document.getElementById('loader').style.display = 'none';
       document.getElementById('content').style.display = 'block';
 
-      // Text Fields
+      // Basic Info
       document.getElementById('shopName').textContent = shop.name;
       document.getElementById('shopRating').textContent = shop.rating;
       document.getElementById('shopDesc').textContent = shop.description;
       document.getElementById('shopLocation').textContent = shop.location || "Shravanabelagola";
       document.getElementById('shopPhone').textContent = shop.phone || "Not Available";
-      
-      // Images
       document.getElementById('shopImg').src = shop.image;
       
-      // Timing formatting
       const t1 = convertTo12Hour(shop.openTime);
       const t2 = convertTo12Hour(shop.closeTime);
       document.getElementById('shopTiming').textContent = `${t1} - ${t2}`;
+
+      // --- 1. Call Button Logic (Fixed) ---
+      const callBtn = document.getElementById('btnCall');
+      if(shop.phone) {
+        // Keeps only digits and the '+' sign
+        const cleanPhone = shop.phone.replace(/[^0-9+]/g, ''); 
+        callBtn.href = `tel:${cleanPhone}`;
+        callBtn.style.opacity = "1";
+      } else {
+        callBtn.style.opacity = "0.5";
+        callBtn.style.pointerEvents = "none";
+        callBtn.innerHTML = "<i class='fas fa-phone-slash'></i> No Phone";
+      }
+
+      // --- 2. Navigate Button Logic ---
+      const navBtn = document.getElementById('btnNavigate');
+      if (shop.mapUrl) {
+        navBtn.href = shop.mapUrl;
+      } else {
+        // Fallback: Google Maps Search
+        const query = encodeURIComponent(`${shop.name} ${shop.location || "Shravanabelagola"}`);
+        navBtn.href = `https://www.google.com/maps/search/?api=1&query=${query}`;
+      }
 
       // Products
       const prodContainer = document.getElementById('productsContainer');
@@ -191,15 +185,13 @@
             <div class="product-card">
               <div class="prod-name">${prod.name}</div>
               <div class="prod-price">${prod.price}</div>
-            </div>
-          `;
+            </div>`;
         });
       } else {
         prodContainer.innerHTML = "<p style='color:#888; grid-column:1/-1;'>No products listed.</p>";
       }
     }
 
-    // Helper: Time Format
     function convertTo12Hour(time) {
       if (!time) return "";
       let [hours, minutes] = time.split(':');
