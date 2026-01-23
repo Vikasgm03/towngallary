@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail Shop Details | Vihara</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root { --primary: #FF9933; --dark: #1a1a1a; --bg: #f4f6f8; }
+  body { margin: 0; padding-bottom: 90px; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); }
+
+  /* HERO IMAGE */
+  .hero-img { width: 100%; height: 250px; object-fit: cover; }
+  
+  /* CONTAINER */
+  .container { padding: 20px; background: white; border-radius: 20px 20px 0 0; margin-top: -20px; position: relative; }
+
+  /* HEADER INFO */
+  .badges { display: flex; gap: 10px; margin-bottom: 10px; }
+  .badge { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: 600; }
+  .b-cat { background: #e3f2fd; color: #1565c0; }
+  .b-rate { background: #e8f5e9; color: #2e7d32; }
+
+  h1 { margin: 0 0 5px 0; font-size: 1.4rem; }
+  .address { color: #666; font-size: 0.9rem; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+
+  /* STATUS */
+  .status-box { padding: 10px; background: #fff8e1; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; display: flex; justify-content: space-between; }
+  .open { color: #2e7d32; font-weight: 700; }
+  .closed { color: #c62828; font-weight: 700; }
+
+  /* PRODUCT LIST */
+  .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+  .product-list { list-style: none; padding: 0; }
+  .product-item { padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 10px; }
+  .product-item i { color: var(--primary); }
+
+  /* BOTTOM ACTION BAR */
+  .action-bar {
+    position: fixed; bottom: 0; left: 0; width: 100%; background: white;
+    padding: 15px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    display: flex; gap: 10px; z-index: 100;
+  }
+  .btn {
+    flex: 1; padding: 12px; border-radius: 50px; border: none;
+    font-weight: 600; cursor: pointer; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-call { background: #f5f5f5; color: var(--dark); }
+  .btn-wa { background: #25D366; color: white; }
+
+  /* BACK BUTTON */
+  .back-float {
+    position: absolute; top: 15px; left: 15px; background: white;
+    width: 40px; height: 40px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-decoration: none; color: var(--dark);
+  }
+</style>
+</head>
+<body>
+
+  <a href="retail_shops.html" class="back-float"><i class="fas fa-arrow-left"></i></a>
+  
+  <img id="d-img" class="hero-img" src="" alt="Shop">
+
+  <div class="container">
+    <div class="badges">
+      <span id="d-cat" class="badge b-cat">Category</span>
+      <span id="d-rate" class="badge b-rate">4.5 <i class="fas fa-star"></i></span>
+    </div>
+
+    <h1 id="d-name">Loading...</h1>
+    <div class="address"><i class="fas fa-map-marker-alt"></i> <span id="d-addr">...</span></div>
+
+    <div class="status-box">
+      <span><i class="far fa-clock"></i> Hours: <span id="d-hours">...</span></span>
+      <span id="d-status" class="closed">Checking...</span>
+    </div>
+
+    <p id="d-desc" style="line-height: 1.6; color: #555; font-size: 0.95rem;"></p>
+
+    <div class="section-title">Available Items</div>
+    <ul class="product-list" id="d-products">
+      </ul>
+  </div>
+
+  <div class="action-bar">
+    <a id="btn-call" href="#" class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+    <a id="btn-wa" href="#" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+  </div>
+
+<script>
+  // 1. Get ID from URL (e.g. shop_details.html?id=1)
+  const urlParams = new URLSearchParams(window.location.search);
+  const shopId = parseInt(urlParams.get('id'));
+
+  // 2. Fetch Data
+  fetch('shops_data.json')
+    .then(response => response.json())
+    .then(shops => {
+      const shop = shops.find(s => s.id === shopId);
+      
+      if(shop) {
+        // Populate Data
+        document.getElementById('d-img').src = shop.image;
+        document.getElementById('d-name').innerText = shop.name;
+        document.getElementById('d-cat').innerText = shop.category;
+        document.getElementById('d-rate').innerHTML = `${shop.rating} <i class="fas fa-star"></i>`;
+        document.getElementById('d-addr').innerText = shop.address;
+        document.getElementById('d-hours').innerText = `${convertTo12Hour(shop.openTime)} - ${convertTo12Hour(shop.closeTime)}`;
+        document.getElementById('d-desc').innerText = shop.description;
+
+        // Populate Products
+        const prodList = document.getElementById('d-products');
+        shop.products.forEach(item => {
+          prodList.innerHTML += `<li class="product-item"><i class="fas fa-check-circle"></i> ${item}</li>`;
+        });
+
+        // Setup Buttons
+        document.getElementById('btn-call').href = `tel:${shop.phone}`;
+        const waMsg = `Hi, I saw ${shop.name} on Vihara app. I want to order...`;
+        document.getElementById('btn-wa').href = `https://wa.me/919483882133?text=${encodeURIComponent(waMsg)}`; // Admin Number
+
+        // Check Status
+        checkOpenStatus(shop.openTime, shop.closeTime);
+      }
+    });
+
+  // Helper: Time Format
+  function convertTo12Hour(time) {
+    let [hours, minutes] = time.split(':');
+    let suffix = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12;
+    return `${hours}:${minutes} ${suffix}`;
+  }
+
+  // Helper: Open/Close Logic
+  function checkOpenStatus(open, close) {
+    const now = new Date();
+    const current = now.getHours() + (now.getMinutes()/60);
+    
+    const openVal = parseInt(open.split(':')[0]) + (parseInt(open.split(':')[1])/60);
+    const closeVal = parseInt(close.split(':')[0]) + (parseInt(close.split(':')[1])/60);
+
+    const statusEl = document.getElementById('d-status');
+    if(current >= openVal && current < closeVal) {
+      statusEl.innerText = "Open Now";
+      statusEl.className = "open";
+    } else {
+      statusEl.innerText = "Closed";
+      statusEl.className = "closed";
+    }
+  }
+</script>
+</body>
+</html>
