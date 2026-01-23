@@ -1,41 +1,53 @@
 [
   {
     "id": 1,
-    "name": "Sri Manjunatha Provisions",
-    "category": "General Store",
-    "image": "../../images/explorica/retail_shops/durga.jpg",
+    "name": "Mahaveer General Store",
+    "image": "https://images.unsplash.com/photo-1604719312566-b7cb33746955?auto=format&fit=crop&q=80&w=800",
     "rating": 4.5,
     "openTime": "08:00",
     "closeTime": "21:00",
-    "phone": "919876543210",
-    "description": "One-stop shop for daily needs, mineral water, snacks, puja items, and emergency toiletries. Located near the main bus stand.",
-    "address": "Main Road, Opp. KSRTC Stand, Shravanabelagola",
-    "products": ["Mineral Water", "Snacks & Biscuits", "Puja Items", "Milk & Curd", "Toothpaste/Soap"]
+    "description": "Your one-stop shop for daily essentials, groceries, and packaged food items. Located near the main temple entrance.",
+    "location": "Main Road, Shravanabelagola",
+    "phone": "+91 98765 43210",
+    "products": [
+      { "name": "Organic Rice (1kg)", "price": "₹60" },
+      { "name": "Local Spices Pack", "price": "₹120" },
+      { "name": "Coconut Oil", "price": "₹150" },
+      { "name": "Incense Sticks", "price": "₹40" }
+    ]
   },
   {
     "id": 2,
-    "name": "Bahubali Gift Center",
-    "category": "Gifts & Souvenirs",
-    "image": "../../images/explorica/retail_shops/gift.jpg",
-    "rating": 4.2,
-    "openTime": "09:00",
+    "name": "Vihara Gift Center",
+    "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&q=80&w=800",
+    "rating": 4.8,
+    "openTime": "09:30",
     "closeTime": "20:30",
-    "phone": "919876543210",
-    "description": "Take home a piece of history. We sell authentic stone carvings, wooden toys, keychains, and religious books.",
-    "address": "Temple Road, Near Vindhyagiri Entrance",
-    "products": ["Stone Idols", "Keychains", "Handicrafts", "Religious Books", "Photos"]
+    "description": "Exclusive collection of souvenirs, wooden handicrafts, and traditional artifacts. Perfect for taking memories home.",
+    "location": "Market Street, Shop No. 12",
+    "phone": "+91 99887 76655",
+    "products": [
+      { "name": "Sandalwood Statue", "price": "₹450" },
+      { "name": "Keychains", "price": "₹50" },
+      { "name": "Handmade Bag", "price": "₹250" },
+      { "name": "Postcards Set", "price": "₹100" }
+    ]
   },
   {
     "id": 3,
-    "name": "Mahaveer Silk House",
-    "category": "Clothing",
-    "image": "../../images/explorica/retail_shops/silk.jpg",
-    "rating": 4.8,
+    "name": "Fashion Hub Textiles",
+    "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
+    "rating": 4.2,
     "openTime": "10:00",
-    "closeTime": "21:00",
-    "phone": "919876543210",
-    "description": "Famous for pure Mysore Silk Sarees, white cotton dhotis for pooja, and traditional dress materials.",
-    "address": "Market Street, Shravanabelagola",
-    "products": ["Mysore Silk Sarees", "Cotton Dhotis", "Dress Material", "Shawls"]
+    "closeTime": "21:30",
+    "description": "Trendy clothes for men, women, and children. We also sell traditional silk sarees and dhotis suitable for temple visits.",
+    "location": "Near Bus Stand",
+    "phone": "+91 88776 65544",
+    "products": [
+      { "name": "Cotton Kurta", "price": "₹550" },
+      { "name": "Silk Saree", "price": "₹1200" },
+      { "name": "Kids T-Shirt", "price": "₹200" },
+      { "name": "White Dhoti", "price": "₹350" }
+    ]
   }
 ]
