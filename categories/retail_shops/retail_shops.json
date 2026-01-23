@@ -6,14 +6,13 @@
     "rating": 4.5,
     "openTime": "08:00",
     "closeTime": "20:00",
-    "description": "Your one-stop shop for daily essentials, groceries, and packaged food items. ",
-    "location": "Sreekantanagara Main Road, Shravanabelagola",
+    "description": "Your one-stop shop for daily essentials...",
+    "location": "Main Road, Shravanabelagola",
     "phone": "+91 9481667035",
+    "mapUrl": "https://maps.app.goo.gl/hPjqeRfY28ctKVCZ6", 
     "products": [
       { "name": "Organic Rice (1kg)", "price": "₹60" },
-      { "name": "Local Spices Pack", "price": "₹120" },
-      { "name": "Coconut Oil", "price": "₹150" },
-      { "name": "Incense Sticks", "price": "₹40" }
+      { "name": "Local Spices Pack", "price": "₹120" }
     ]
   },
   {
@@ -23,14 +22,13 @@
     "rating": 4.8,
     "openTime": "09:30",
     "closeTime": "20:30",
-    "description": "Exclusive collection of souvenirs, wooden handicrafts, and traditional artifacts. Perfect for taking memories home.",
+    "description": "Exclusive collection of souvenirs...",
     "location": "Market Street, Shop No. 12",
     "phone": "+91 99887 76655",
+    "mapUrl": "https://goo.gl/maps/exampleLink2",
     "products": [
       { "name": "Sandalwood Statue", "price": "₹450" },
-      { "name": "Keychains", "price": "₹50" },
-      { "name": "Handmade Bag", "price": "₹250" },
-      { "name": "Postcards Set", "price": "₹100" }
+      { "name": "Keychains", "price": "₹50" }
     ]
   },
   {
@@ -40,14 +38,13 @@
     "rating": 4.2,
     "openTime": "10:00",
     "closeTime": "21:30",
-    "description": "Trendy clothes for men, women, and children. We also sell traditional silk sarees and dhotis suitable for temple visits.",
+    "description": "Trendy clothes for men, women...",
     "location": "Near Bus Stand",
     "phone": "+91 88776 65544",
+    "mapUrl": "https://goo.gl/maps/exampleLink3",
     "products": [
       { "name": "Cotton Kurta", "price": "₹550" },
-      { "name": "Silk Saree", "price": "₹1200" },
-      { "name": "Kids T-Shirt", "price": "₹200" },
-      { "name": "White Dhoti", "price": "₹350" }
+      { "name": "Silk Saree", "price": "₹1200" }
     ]
   }
 ]
