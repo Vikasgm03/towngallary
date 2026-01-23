@@ -1,0 +1,78 @@
+<div class="shop-list" id="shopContainer">
+  <p style="text-align:center; margin-top:20px;">Loading shops...</p>
+</div>
+
+<script>
+  // 1. Fetch JSON Data
+  fetch('shops_data.json')
+    .then(response => response.json())
+    .then(data => {
+      renderShops(data);
+    })
+    .catch(err => console.error('Error loading shops:', err));
+
+  function renderShops(shops) {
+    const container = document.getElementById('shopContainer');
+    container.innerHTML = ''; // Clear loading text
+
+    const now = new Date();
+    const currentVal = now.getHours() + (now.getMinutes() / 60);
+
+    shops.forEach(shop => {
+      // Calculate Open/Close
+      const openVal = parseInt(shop.openTime.split(':')[0]) + (parseInt(shop.openTime.split(':')[1])/60);
+      const closeVal = parseInt(shop.closeTime.split(':')[0]) + (parseInt(shop.closeTime.split(':')[1])/60);
+      
+      let isOpen = (currentVal >= openVal && currentVal < closeVal);
+      let statusHtml = isOpen 
+        ? `<span class="status-open">Open Now</span>` 
+        : `<span class="status-closed">Closed</span>`;
+
+      // Generate HTML Card
+      // Notice the href points to shop_details.html?id=...
+      const card = `
+        <a href="shop_details.html?id=${shop.id}" class="shop-card" style="text-decoration:none; color:inherit;">
+          <img src="${shop.image}" class="shop-img" alt="${shop.name}">
+          <div class="shop-details">
+            <div>
+              <div class="shop-header">
+                <div class="shop-name">${shop.name}</div>
+                <div class="rating-badge">${shop.rating} <i class="fas fa-star"></i></div>
+              </div>
+              <div class="status-row">
+                ${statusHtml}
+                <span class="time-info">• ${convertTo12Hour(shop.openTime)} - ${convertTo12Hour(shop.closeTime)}</span>
+              </div>
+              <p class="shop-desc">${shop.description}</p>
+            </div>
+            <div class="action-row">
+              <span class="btn btn-call" style="background:#f0f0f0;">View Details</span>
+            </div>
+          </div>
+        </a>
+      `;
+      container.innerHTML += card;
+    });
+  }
+
+  // 12 Hour Format Helper
+  function convertTo12Hour(time) {
+    let [hours, minutes] = time.split(':');
+    let suffix = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12;
+    return `${hours}:${minutes} ${suffix}`;
+  }
+
+  // Search Logic (Works with JSON data now rendered in DOM)
+  document.getElementById('shopSearch').addEventListener('keyup', function(e) {
+    const term = e.target.value.toLowerCase();
+    document.querySelectorAll('.shop-card').forEach(card => {
+      const name = card.querySelector('.shop-name').textContent.toLowerCase();
+      if(name.includes(term)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script>
