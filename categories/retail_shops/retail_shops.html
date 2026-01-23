@@ -1,15 +1,132 @@
-<div class="shop-list" id="shopContainer">
-  <p style="text-align:center; margin-top:20px;">Loading shops...</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Shops & Markets | Vihara</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  /* ===== VARIABLES & RESET ===== */
+  :root {
+    --primary: #FF9933;
+    --dark: #1a1a1a;
+    --gray: #666;
+    --light-bg: #f4f6f8;
+    --white: #ffffff;
+    --success: #2e7d32;
+    --danger: #c62828;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+  body { background-color: var(--light-bg); color: var(--dark); padding-bottom: 80px; }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: var(--white); padding: 1rem 5%; 
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .page-title { font-size: 1.1rem; font-weight: 700; color: var(--dark); }
+  .back-btn { text-decoration: none; color: var(--dark); font-size: 1.2rem; }
+
+  /* ===== SEARCH BAR ===== */
+  .search-wrapper { padding: 1rem 5%; background: var(--white); margin-bottom: 1rem; }
+  .search-box {
+    width: 100%; padding: 12px 15px 12px 40px;
+    border: 1px solid #eee; border-radius: 8px;
+    background: #f9f9f9; outline: none; font-size: 0.95rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: 12px center;
+  }
+
+  /* ===== SHOP LIST ===== */
+  .shop-list { max-width: 800px; margin: 0 auto; padding: 0 15px; }
+
+  /* SHOP CARD */
+  .shop-card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 15px; margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #eee; display: flex; gap: 15px;
+    transition: transform 0.2s; text-decoration: none; color: inherit;
+  }
+  .shop-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+
+  /* Image */
+  .shop-img {
+    width: 100px; height: 100px; border-radius: 8px;
+    object-fit: cover; background: #eee; flex-shrink: 0;
+  }
+
+  /* Content */
+  .shop-details { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  
+  .shop-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px; }
+  .shop-name { font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.3; }
+  
+  .rating-badge {
+    background: #2e7d32; color: white; padding: 2px 6px;
+    border-radius: 4px; font-size: 0.75rem; font-weight: 600;
+    display: flex; align-items: center; gap: 3px;
+  }
+  .rating-badge i { font-size: 0.6rem; }
+
+  .shop-desc { font-size: 0.8rem; color: var(--gray); margin-bottom: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* Status & Time */
+  .status-row { display: flex; align-items: center; gap: 10px; font-size: 0.75rem; margin-bottom: 12px; }
+  .status-open { color: var(--success); font-weight: 700; background: #e8f5e9; padding: 2px 6px; border-radius: 4px; }
+  .status-closed { color: var(--danger); font-weight: 700; background: #ffebee; padding: 2px 6px; border-radius: 4px; }
+  .time-info { color: #888; }
+
+  /* Actions */
+  .action-row { display: flex; gap: 10px; margin-top: auto; }
+  
+  .btn-view {
+    padding: 6px 12px; border-radius: 50px; background: #f0f0f0;
+    font-size: 0.75rem; font-weight: 600; text-align: center;
+    color: var(--dark); display: inline-block;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .shop-card { flex-direction: column; }
+    .shop-img { width: 100%; height: 140px; }
+    .shop-desc { -webkit-line-clamp: 3; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <div class="page-title">Retail Shops</div>
+    <div style="width: 24px;"></div> </header>
+
+  <div class="search-wrapper">
+    <input type="text" id="shopSearch" class="search-box" placeholder="Search for gifts, clothes, general stores...">
+  </div>
+
+  <div class="shop-list" id="shopContainer">
+    <p style="text-align:center; margin-top:20px; color:#888;">Loading shops...</p>
+  </div>
 
 <script>
   // 1. Fetch JSON Data
-  fetch('shops_data.json')
+  fetch('retail_shops.json')
     .then(response => response.json())
     .then(data => {
       renderShops(data);
     })
-    .catch(err => console.error('Error loading shops:', err));
+    .catch(err => {
+      console.error('Error loading shops:', err);
+      document.getElementById('shopContainer').innerHTML = "<p style='text-align:center; margin-top:20px;'>Failed to load shops.</p>";
+    });
 
   function renderShops(shops) {
     const container = document.getElementById('shopContainer');
@@ -19,7 +136,7 @@
     const currentVal = now.getHours() + (now.getMinutes() / 60);
 
     shops.forEach(shop => {
-      // Calculate Open/Close
+      // Calculate Open/Close Logic
       const openVal = parseInt(shop.openTime.split(':')[0]) + (parseInt(shop.openTime.split(':')[1])/60);
       const closeVal = parseInt(shop.closeTime.split(':')[0]) + (parseInt(shop.closeTime.split(':')[1])/60);
       
@@ -28,10 +145,9 @@
         ? `<span class="status-open">Open Now</span>` 
         : `<span class="status-closed">Closed</span>`;
 
-      // Generate HTML Card
-      // Notice the href points to shop_details.html?id=...
+      // Generate HTML Card (Links to shop_details.html)
       const card = `
-        <a href="shop_details.html?id=${shop.id}" class="shop-card" style="text-decoration:none; color:inherit;">
+        <a href="retail_shops_details.html?id=${shop.id}" class="shop-card">
           <img src="${shop.image}" class="shop-img" alt="${shop.name}">
           <div class="shop-details">
             <div>
@@ -46,7 +162,7 @@
               <p class="shop-desc">${shop.description}</p>
             </div>
             <div class="action-row">
-              <span class="btn btn-call" style="background:#f0f0f0;">View Details</span>
+              <span class="btn-view">View Products & Order <i class="fas fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -55,20 +171,22 @@
     });
   }
 
-  // 12 Hour Format Helper
+  // Helper: Convert 24hr to 12hr format
   function convertTo12Hour(time) {
+    if (!time) return "";
     let [hours, minutes] = time.split(':');
     let suffix = hours >= 12 ? "PM" : "AM";
     hours = hours % 12 || 12;
     return `${hours}:${minutes} ${suffix}`;
   }
 
-  // Search Logic (Works with JSON data now rendered in DOM)
+  // Search Logic (Filters loaded cards)
   document.getElementById('shopSearch').addEventListener('keyup', function(e) {
     const term = e.target.value.toLowerCase();
     document.querySelectorAll('.shop-card').forEach(card => {
       const name = card.querySelector('.shop-name').textContent.toLowerCase();
-      if(name.includes(term)) {
+      const desc = card.querySelector('.shop-desc').textContent.toLowerCase();
+      if(name.includes(term) || desc.includes(term)) {
         card.style.display = 'flex';
       } else {
         card.style.display = 'none';
@@ -76,3 +194,6 @@
     });
   });
 </script>
+
+</body>
+</html>
