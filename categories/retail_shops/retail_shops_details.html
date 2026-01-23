@@ -1,158 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retail Shop Details | Vihara</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-  :root { --primary: #FF9933; --dark: #1a1a1a; --bg: #f4f6f8; }
-  body { margin: 0; padding-bottom: 90px; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); }
-
-  /* HERO IMAGE */
-  .hero-img { width: 100%; height: 250px; object-fit: cover; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Shop Details | Vihara</title>
   
-  /* CONTAINER */
-  .container { padding: 20px; background: white; border-radius: 20px 20px 0 0; margin-top: -20px; position: relative; }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  /* HEADER INFO */
-  .badges { display: flex; gap: 10px; margin-bottom: 10px; }
-  .badge { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: 600; }
-  .b-cat { background: #e3f2fd; color: #1565c0; }
-  .b-rate { background: #e8f5e9; color: #2e7d32; }
+  <style>
+    /* VARIABLES (Same as Listing Page) */
+    :root {
+      --primary: #FF9933;
+      --text-dark: #2c3e50;
+      --text-light: #666;
+      --bg-body: #f8f9fa;
+      --card-bg: #ffffff;
+      --radius: 20px;
+    }
 
-  h1 { margin: 0 0 5px 0; font-size: 1.4rem; }
-  .address { color: #666; font-size: 0.9rem; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg-body); color: var(--text-dark); padding-bottom: 40px;}
 
-  /* STATUS */
-  .status-box { padding: 10px; background: #fff8e1; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; display: flex; justify-content: space-between; }
-  .open { color: #2e7d32; font-weight: 700; }
-  .closed { color: #c62828; font-weight: 700; }
+    /* HEADER */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: flex; align-items: center; gap: 15px;
+    }
+    .back-btn { text-decoration: none; color: var(--text-dark); font-size: 1.2rem; }
+    .header-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--primary); }
 
-  /* PRODUCT LIST */
-  .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
-  .product-list { list-style: none; padding: 0; }
-  .product-item { padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 10px; }
-  .product-item i { color: var(--primary); }
+    /* HERO IMAGE */
+    .hero-container {
+      width: 100%;
+      height: 250px;
+      position: relative;
+    }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay {
+      position: absolute; bottom: 0; left: 0; width: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      height: 100px;
+    }
 
-  /* BOTTOM ACTION BAR */
-  .action-bar {
-    position: fixed; bottom: 0; left: 0; width: 100%; background: white;
-    padding: 15px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-    display: flex; gap: 10px; z-index: 100;
-  }
-  .btn {
-    flex: 1; padding: 12px; border-radius: 50px; border: none;
-    font-weight: 600; cursor: pointer; text-decoration: none;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .btn-call { background: #f5f5f5; color: var(--dark); }
-  .btn-wa { background: #25D366; color: white; }
+    /* MAIN CONTENT */
+    .container { max-width: 800px; margin: -40px auto 0; position: relative; padding: 0 20px; }
+    
+    .info-card {
+      background: white; border-radius: var(--radius);
+      padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
 
-  /* BACK BUTTON */
-  .back-float {
-    position: absolute; top: 15px; left: 15px; background: white;
-    width: 40px; height: 40px; border-radius: 50%; display: flex;
-    align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    text-decoration: none; color: var(--dark);
-  }
-</style>
+    .shop-title-row { display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; line-height: 1.2; }
+    
+    .rating-badge {
+      background: #2e7d32; color: white; padding: 4px 10px;
+      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .meta-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-light); }
+    .meta-item { display: flex; align-items: center; gap: 6px; }
+    .meta-item i { color: var(--primary); }
+
+    .description { line-height: 1.6; color: var(--text-light); margin-bottom: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+
+    /* PRODUCTS LIST */
+    .section-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; color: var(--text-dark); }
+    
+    .product-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    
+    .product-card {
+      background: #f9f9f9; border-radius: 12px; padding: 15px;
+      text-align: center; border: 1px solid #eee;
+    }
+    .prod-name { font-size: 0.9rem; font-weight: 500; margin-bottom: 5px; }
+    .prod-price { color: var(--primary); font-weight: 700; font-size: 0.95rem; }
+
+    /* ACTION BUTTONS */
+    .action-bar {
+      display: flex; gap: 10px; margin-top: 20px;
+    }
+    .btn {
+      flex: 1; padding: 12px; border-radius: 50px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3); }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+
+    /* LOADING/ERROR */
+    #loader { text-align: center; padding: 50px; font-size: 1.2rem; }
+    .error-msg { text-align: center; padding: 50px; color: #c62828; }
+  </style>
 </head>
 <body>
 
-  <a href="retail_shops.html" class="back-float"><i class="fas fa-arrow-left"></i></a>
-  
-  <img id="d-img" class="hero-img" src="" alt="Shop">
+  <header>
+    <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <div class="header-title">Shop Details</div>
+  </header>
 
-  <div class="container">
-    <div class="badges">
-      <span id="d-cat" class="badge b-cat">Category</span>
-      <span id="d-rate" class="badge b-rate">4.5 <i class="fas fa-star"></i></span>
+  <div id="loader"><i class="fas fa-spinner fa-spin"></i> Loading details...</div>
+  <div id="content" style="display: none;">
+    <div class="hero-container">
+      <img id="shopImg" src="" class="hero-img" alt="Shop Image">
+      <div class="hero-overlay"></div>
     </div>
 
-    <h1 id="d-name">Loading...</h1>
-    <div class="address"><i class="fas fa-map-marker-alt"></i> <span id="d-addr">...</span></div>
+    <div class="container">
+      <div class="info-card">
+        <div class="shop-title-row">
+          <h1 id="shopName">Shop Name</h1>
+          <div class="rating-badge"><span id="shopRating">0.0</span> <i class="fas fa-star"></i></div>
+        </div>
 
-    <div class="status-box">
-      <span><i class="far fa-clock"></i> Hours: <span id="d-hours">...</span></span>
-      <span id="d-status" class="closed">Checking...</span>
+        <div class="meta-row">
+          <div class="meta-item"><i class="fas fa-clock"></i> <span id="shopTiming">00:00 - 00:00</span></div>
+          <div class="meta-item"><i class="fas fa-map-marker-alt"></i> <span id="shopLocation">Location</span></div>
+          <div class="meta-item"><i class="fas fa-phone-alt"></i> <span id="shopPhone">Phone</span></div>
+        </div>
+
+        <p id="shopDesc" class="description">Description goes here...</p>
+
+        <div class="action-bar">
+          <a href="#" class="btn btn-outline"><i class="fas fa-phone"></i> Call</a>
+          <a href="#" class="btn btn-primary"><i class="fas fa-directions"></i> Navigate</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3 class="section-title">Popular Items</h3>
+        <div class="product-list" id="productsContainer">
+          </div>
+      </div>
     </div>
-
-    <p id="d-desc" style="line-height: 1.6; color: #555; font-size: 0.95rem;"></p>
-
-    <div class="section-title">Available Items</div>
-    <ul class="product-list" id="d-products">
-      </ul>
   </div>
 
-  <div class="action-bar">
-    <a id="btn-call" href="#" class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</a>
-    <a id="btn-wa" href="#" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
-  </div>
+  <script>
+    // 1. Get ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const shopId = parseInt(urlParams.get('id'));
 
-<script>
-  // 1. Get ID from URL (e.g. shop_details.html?id=1)
-  const urlParams = new URLSearchParams(window.location.search);
-  const shopId = parseInt(urlParams.get('id'));
+    // 2. Fetch Data
+    fetch('retail_shops.json')
+      .then(res => res.json())
+      .then(shops => {
+        const shop = shops.find(s => s.id === shopId);
+        
+        if (shop) {
+          renderDetails(shop);
+        } else {
+          document.body.innerHTML = "<div class='error-msg'><h3>Shop not found</h3><a href='javascript:history.back()'>Go Back</a></div>";
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        document.body.innerHTML = "<div class='error-msg'>Error loading data.</div>";
+      });
 
-  // 2. Fetch Data
-  fetch('shops_data.json')
-    .then(response => response.json())
-    .then(shops => {
-      const shop = shops.find(s => s.id === shopId);
+    // 3. Render Function
+    function renderDetails(shop) {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+
+      // Text Fields
+      document.getElementById('shopName').textContent = shop.name;
+      document.getElementById('shopRating').textContent = shop.rating;
+      document.getElementById('shopDesc').textContent = shop.description;
+      document.getElementById('shopLocation').textContent = shop.location || "Shravanabelagola";
+      document.getElementById('shopPhone').textContent = shop.phone || "Not Available";
       
-      if(shop) {
-        // Populate Data
-        document.getElementById('d-img').src = shop.image;
-        document.getElementById('d-name').innerText = shop.name;
-        document.getElementById('d-cat').innerText = shop.category;
-        document.getElementById('d-rate').innerHTML = `${shop.rating} <i class="fas fa-star"></i>`;
-        document.getElementById('d-addr').innerText = shop.address;
-        document.getElementById('d-hours').innerText = `${convertTo12Hour(shop.openTime)} - ${convertTo12Hour(shop.closeTime)}`;
-        document.getElementById('d-desc').innerText = shop.description;
+      // Images
+      document.getElementById('shopImg').src = shop.image;
+      
+      // Timing formatting
+      const t1 = convertTo12Hour(shop.openTime);
+      const t2 = convertTo12Hour(shop.closeTime);
+      document.getElementById('shopTiming').textContent = `${t1} - ${t2}`;
 
-        // Populate Products
-        const prodList = document.getElementById('d-products');
-        shop.products.forEach(item => {
-          prodList.innerHTML += `<li class="product-item"><i class="fas fa-check-circle"></i> ${item}</li>`;
+      // Products
+      const prodContainer = document.getElementById('productsContainer');
+      if(shop.products && shop.products.length > 0) {
+        shop.products.forEach(prod => {
+          prodContainer.innerHTML += `
+            <div class="product-card">
+              <div class="prod-name">${prod.name}</div>
+              <div class="prod-price">${prod.price}</div>
+            </div>
+          `;
         });
-
-        // Setup Buttons
-        document.getElementById('btn-call').href = `tel:${shop.phone}`;
-        const waMsg = `Hi, I saw ${shop.name} on Vihara app. I want to order...`;
-        document.getElementById('btn-wa').href = `https://wa.me/919483882133?text=${encodeURIComponent(waMsg)}`; // Admin Number
-
-        // Check Status
-        checkOpenStatus(shop.openTime, shop.closeTime);
+      } else {
+        prodContainer.innerHTML = "<p style='color:#888; grid-column:1/-1;'>No products listed.</p>";
       }
-    });
-
-  // Helper: Time Format
-  function convertTo12Hour(time) {
-    let [hours, minutes] = time.split(':');
-    let suffix = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12 || 12;
-    return `${hours}:${minutes} ${suffix}`;
-  }
-
-  // Helper: Open/Close Logic
-  function checkOpenStatus(open, close) {
-    const now = new Date();
-    const current = now.getHours() + (now.getMinutes()/60);
-    
-    const openVal = parseInt(open.split(':')[0]) + (parseInt(open.split(':')[1])/60);
-    const closeVal = parseInt(close.split(':')[0]) + (parseInt(close.split(':')[1])/60);
-
-    const statusEl = document.getElementById('d-status');
-    if(current >= openVal && current < closeVal) {
-      statusEl.innerText = "Open Now";
-      statusEl.className = "open";
-    } else {
-      statusEl.innerText = "Closed";
-      statusEl.className = "closed";
     }
-  }
-</script>
+
+    // Helper: Time Format
+    function convertTo12Hour(time) {
+      if (!time) return "";
+      let [hours, minutes] = time.split(':');
+      let suffix = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+      return `${hours}:${minutes} ${suffix}`;
+    }
+  </script>
+
 </body>
 </html>
