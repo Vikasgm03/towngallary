@@ -12,10 +12,10 @@
     "address": "Main Road, Shravanabelagola",
     "mapUrl": "http://maps.google.com/?q=Nethravathi+General+Store+Shravanabelagola",
     "products": [
-      {"Organic Rice (1kg) - ₹60",
-      "Sugar",
-      "Sunflower Oil",
-      "Spices"}
+      { "name": "Organic Rice (1kg)", "price": "₹60" },
+      { "name": "Sugar (1kg)", "price": "₹45" },
+      { "name": "Sunflower Oil (1L)", "price": "₹135" },
+      { "name": "Mixed Spices Pack", "price": "₹80" }
     ]
   },
   {
@@ -31,10 +31,10 @@
     "address": "B M Road, Shravanabelagola",
     "mapUrl": "http://maps.google.com/?q=Sri+Veerabhadreshwara+Traders+Shravanabelagola",
     "products": [
-      {"Local Spices Pack - ₹120",
-      "Dry Fruits",
-      "Jaggery",
-      "Coffee Powder"}
+      { "name": "Local Spices Pack", "price": "₹120" },
+      { "name": "Dry Fruits Mix (200g)", "price": "₹250" },
+      { "name": "Jaggery Cubes (1kg)", "price": "₹65" },
+      { "name": "Filter Coffee Powder (250g)", "price": "₹180" }
     ]
   },
   {
@@ -50,10 +50,10 @@
     "address": "B M Road, Shravanabelagola",
     "mapUrl": "http://maps.google.com/?q=Sanjay+Provision+Store+Shravanabelagola",
     "products": [
-     { "Toor Dal (1kg) - ₹145",
-      "Masala Powders",
-      "Snacks",
-      "Cleaning Supplies"}
+      { "name": "Toor Dal (1kg)", "price": "₹145" },
+      { "name": "Masala Powder Combo", "price": "₹55" },
+      { "name": "Assorted Snacks", "price": "₹30" },
+      { "name": "Dishwash Bar (Pack of 3)", "price": "₹45" }
     ]
   },
   {
@@ -69,10 +69,10 @@
     "phone": "+91 9900995560",
     "mapUrl": "http://maps.google.com/?q=Padmavathi+Stores+Shravanabelagola",
     "products": [
-     { "Wheat Flour / Atta (5kg) - ₹220",
-      "Ragi Flour",
-      "Cooking Oil",
-      "Tea Powder"}
+      { "name": "Wheat Flour / Atta (5kg)", "price": "₹220" },
+      { "name": "Ragi Flour (1kg)", "price": "₹55" },
+      { "name": "Cooking Oil (1L)", "price": "₹130" },
+      { "name": "Tea Powder (250g)", "price": "₹110" }
     ]
   },
   {
@@ -88,10 +88,10 @@
     "phone": "+91 9731671672",
     "mapUrl": "http://maps.google.com/?q=Sri+Ranganatha+General+Stores+Shravanabelagola",
     "products": [
-      {"Sunflower Oil (1L) - ₹135",
-      "Biscuits",
-      "Soft Drinks",
-      "Stationery"}
+      { "name": "Sunflower Oil (1L)", "price": "₹135" },
+      { "name": "Glucose Biscuits", "price": "₹10" },
+      { "name": "Soft Drink (750ml)", "price": "₹40" },
+      { "name": "School Stationery Kit", "price": "₹85" }
     ]
   },
   {
@@ -104,13 +104,13 @@
     "closeTime": "20:00",
     "description": "Smart shopping starts here. We believe quality shouldn't cost a fortune, which is why we offer the best value on the items you use every day.",
     "address": "Maruthi Circle, Shravanabelagola",
-    "phone": "+91 9483882133", 
+    "phone": "+91 9483882133",
     "mapUrl": "http://maps.google.com/?q=Balaji+Bhandar+Shravanabelagola",
     "products": [
-      {"Sugar (1kg) - ₹45",
-      "Salt",
-      "Soaps",
-      "Detergents"}
+      { "name": "Sugar (1kg)", "price": "₹45" },
+      { "name": "Crystal Salt (1kg)", "price": "₹20" },
+      { "name": "Bathing Soap", "price": "₹35" },
+      { "name": "Detergent Powder (500g)", "price": "₹60" }
     ]
   }
 ]
