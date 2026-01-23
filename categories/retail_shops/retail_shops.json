@@ -12,10 +12,10 @@
     "address": "Main Road, Shravanabelagola",
     "mapUrl": "http://maps.google.com/?q=Nethravathi+General+Store+Shravanabelagola",
     "products": [
-      "Organic Rice (1kg) - ₹60",
+      {"Organic Rice (1kg) - ₹60",
       "Sugar",
       "Sunflower Oil",
-      "Spices"
+      "Spices"}
     ]
   },
   {
@@ -31,10 +31,10 @@
     "address": "B M Road, Shravanabelagola",
     "mapUrl": "http://maps.google.com/?q=Sri+Veerabhadreshwara+Traders+Shravanabelagola",
     "products": [
-      "Local Spices Pack - ₹120",
+      {"Local Spices Pack - ₹120",
       "Dry Fruits",
       "Jaggery",
-      "Coffee Powder"
+      "Coffee Powder"}
     ]
   },
   {
@@ -50,10 +50,10 @@
     "address": "B M Road, Shravanabelagola",
     "mapUrl": "http://maps.google.com/?q=Sanjay+Provision+Store+Shravanabelagola",
     "products": [
-      "Toor Dal (1kg) - ₹145",
+     { "Toor Dal (1kg) - ₹145",
       "Masala Powders",
       "Snacks",
-      "Cleaning Supplies"
+      "Cleaning Supplies"}
     ]
   },
   {
@@ -69,10 +69,10 @@
     "phone": "+91 9900995560",
     "mapUrl": "http://maps.google.com/?q=Padmavathi+Stores+Shravanabelagola",
     "products": [
-      "Wheat Flour / Atta (5kg) - ₹220",
+     { "Wheat Flour / Atta (5kg) - ₹220",
       "Ragi Flour",
       "Cooking Oil",
-      "Tea Powder"
+      "Tea Powder"}
     ]
   },
   {
@@ -88,10 +88,10 @@
     "phone": "+91 9731671672",
     "mapUrl": "http://maps.google.com/?q=Sri+Ranganatha+General+Stores+Shravanabelagola",
     "products": [
-      "Sunflower Oil (1L) - ₹135",
+      {"Sunflower Oil (1L) - ₹135",
       "Biscuits",
       "Soft Drinks",
-      "Stationery"
+      "Stationery"}
     ]
   },
   {
@@ -107,10 +107,10 @@
     "phone": "+91 9483882133", 
     "mapUrl": "http://maps.google.com/?q=Balaji+Bhandar+Shravanabelagola",
     "products": [
-      "Sugar (1kg) - ₹45",
+      {"Sugar (1kg) - ₹45",
       "Salt",
       "Soaps",
-      "Detergents"
+      "Detergents"}
     ]
   }
 ]
