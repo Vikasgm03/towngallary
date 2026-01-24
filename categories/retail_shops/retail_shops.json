@@ -123,10 +123,13 @@
     "closeTime": "20:00",
     "description": "Stretch your dollar further. From pantry fillers to cleaning supplies, get more for less every time you visit.",
     "address": "Sreekantanagara, Shravanabelagola",
-    "phone": "+91 9481986935,
+    "phone": "+91 9481986935",
     "mapUrl": "https://maps.app.goo.gl/PtSGXSv4cJTYQqq56",
     "products": [
-      { "name": "Tea Powder (250g)", "price": "₹110" }
+      { "name": "Tea Powder (250g)", "price": "₹110" },
+      { "name": "Instant Noodles Pack", "price": "₹14" },
+      { "name": "Milk Biscuit Pack", "price": "₹10" },
+      { "name": "Shampoo Sachet (Strip)", "price": "₹40" }
     ]
   },
   {
@@ -139,11 +142,13 @@
     "closeTime": "20:00",
     "description": "Big brands, small prices. Your go-to destination for unbeatable deals on groceries, household items, and seasonal favorites.",
     "address": "Madeena Complex, Shravanabelagola",
-    "phone": "+91 9972281484,
+    "phone": "+91 9972281484",
     "mapUrl": "https://maps.app.goo.gl/dL7gq1E96zdCj5z86",
     "products": [
-     { "name": "Salt Packet (1kg)", "price": "₹20" },
-     { "name": "Turmeric Powder (100g)", "price": "₹35" }
+      { "name": "Salt Packet (1kg)", "price": "₹20" },
+      { "name": "Turmeric Powder (100g)", "price": "₹35" },
+      { "name": "Mustard Seeds (100g)", "price": "₹20" },
+      { "name": "Matchbox Bundle", "price": "₹15" }
     ]
   }
 ]
