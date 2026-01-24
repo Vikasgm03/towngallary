@@ -29,17 +29,17 @@ body {
 }
 
 /* ===== TICKER ===== */
-/* ===== TICKER (Light: Clean & Minimal) ===== */
+/* ===== TICKER (Midnight: Sleek & Subtle) ===== */
 .ticker-wrap {
-  background: #e0e0e0; /* Light Grey */
-  color: #333333; /* Dark Text */
+  background: #1a252f; /* Darker than header */
+  color: #bdc3c7; /* Light grey text for better readability */
   font-size: 0.85rem; 
-  font-weight: 600;
   padding: 8px 0; 
   overflow: hidden; 
   white-space: nowrap;
   position: relative; 
   z-index: 1001;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 .ticker-move { display: inline-block; animation: ticker 25s linear infinite; padding-left: 100%; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
@@ -669,6 +669,7 @@ body {
 
 </body>
 </html>
+
 
 
 
