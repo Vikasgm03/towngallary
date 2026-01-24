@@ -112,5 +112,38 @@
       { "name": "Bathing Soap", "price": "₹35" },
       { "name": "Detergent Powder (500g)", "price": "₹60" }
     ]
+  },
+  {
+    "id": 7,
+    "name": "Sri Durga Stores",
+    "category": "Discount Store",
+    "image": "../../images/explorica/retail_shops/durga.jpg",
+    "rating": 4.8,
+    "openTime": "08:00",
+    "closeTime": "20:00",
+    "description": "Stretch your dollar further. From pantry fillers to cleaning supplies, get more for less every time you visit.",
+    "address": "Sreekantanagara, Shravanabelagola",
+    "phone": "+91 9481986935,
+    "mapUrl": "https://maps.app.goo.gl/PtSGXSv4cJTYQqq56",
+    "products": [
+      { "name": "Tea Powder (250g)", "price": "₹110" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Sri Ram Stores",
+    "category": "Discount Store",
+    "image": "../../images/explorica/retail_shops/sri_ram_stores.jpeg",
+    "rating": 4.8,
+    "openTime": "08:00",
+    "closeTime": "20:00",
+    "description": "Big brands, small prices. Your go-to destination for unbeatable deals on groceries, household items, and seasonal favorites.",
+    "address": "Madeena Complex, Shravanabelagola",
+    "phone": "+91 9972281484,
+    "mapUrl": "https://maps.app.goo.gl/dL7gq1E96zdCj5z86",
+    "products": [
+     { "name": "Salt Packet (1kg)", "price": "₹20" },
+     { "name": "Turmeric Powder (100g)", "price": "₹35" }
+    ]
   }
 ]
