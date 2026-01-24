@@ -29,32 +29,19 @@ body {
 }
 
 /* ===== TICKER ===== */
-/* ===== TICKER (UPDATED: High Visibility) ===== */
+/* ===== TICKER (Teal: Fresh & Trustworthy) ===== */
 .ticker-wrap {
-  /* CHANGED: Accent -> Primary Orange for contrast */
-  background: var(--primary); 
-  
-  color: white; /* Keep text white for readability */
+  background: #00897b; /* Professional Teal */
+  color: white;
   font-size: 0.85rem; 
-  font-weight: 600; /* Made slightly bolder */
-  padding: 10px 0; /* A bit more breathing room */
+  padding: 8px 0; 
   overflow: hidden; 
   white-space: nowrap;
   position: relative; 
   z-index: 1001;
-  box-shadow: 0 2px 10px rgba(255, 153, 51, 0.3); /* Glowing effect */
 }
-
-.ticker-move { 
-  display: inline-block; 
-  animation: ticker 25s linear infinite; 
-  padding-left: 100%; 
-}
-
-@keyframes ticker { 
-  0% { transform: translate3d(0, 0, 0); } 
-  100% { transform: translate3d(-100%, 0, 0); } 
-}
+.ticker-move { display: inline-block; animation: ticker 25s linear infinite; padding-left: 100%; }
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
 /* ===== HEADER ===== */
 /* ===== HEADER (UPDATED: Premium Dark Theme) ===== */
@@ -681,6 +668,7 @@ body {
 
 </body>
 </html>
+
 
 
 
